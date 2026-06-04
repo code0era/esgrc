@@ -1,0 +1,30 @@
+# Secrets — never commit to git
+.streamlit/secrets.toml
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.env
+*.egg-info/
+dist/
+build/
+.venv/
+venv/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Data files (optional — comment out if you want to commit sample data)
+# *.csv
+# *.json
+
+# Database files
+*.db
+esgrc_local.db
