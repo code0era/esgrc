@@ -28,9 +28,10 @@ The **ESGRC Intelligence Platform** is an enterprise-grade Streamlit application
 
 ## Setup & Installation
 
-1. **Clone the repository** (if applicable) and navigate to the project directory:
+1. **Clone the repository** and navigate to the project directory:
    ```bash
-   cd esgrc-streamlit
+   git clone https://github.com/code0era/esgrc.git
+   cd esgrc
    ```
 
 2. **Install the required dependencies**:
