@@ -1,12 +1,15 @@
 """
-ESGRC Intelligence Platform — Streamlit Application
+RISK INTELL Platform — Streamlit Application (Cache Cleared)
 Sky Blue + White | Vertical Main Sections + Right-Side Chat Panel
 """
 
 import io
 import json
+import os
+import tempfile
 import time
 from datetime import datetime
+from typing import Optional, Dict, List, Any
 
 import anthropic
 import pandas as pd
@@ -24,12 +27,13 @@ from utils.db import (
 )
 from utils.esgrc_engine import generate_report
 from utils.pdf_report import generate_pdf
+from utils.pipeline_engine import PIPELINE_STEPS
 
 # ─────────────────────────────────────────────────────────────────────────────
 # PAGE CONFIG
 # ─────────────────────────────────────────────────────────────────────────────
 st.set_page_config(
-    page_title="ESGRC Intelligence Platform",
+    page_title="RISK INTELL Platform",
     page_icon="🛡️",
     layout="wide",
     initial_sidebar_state="expanded",
@@ -44,22 +48,40 @@ st.markdown("""
 
 html, body, [class*="css"] { font-family: 'Inter', sans-serif !important; }
 
-/* ── Hide default Streamlit top bar decoration ───────────────────────── */
+/* ── Hide default Streamlit top bar decoration & footer ───────────────── */
 [data-testid="stDecoration"] { display: none !important; }
 [data-testid="stToolbar"]    { display: none !important; }
+header[data-testid="stHeader"], header { display: none !important; }
+footer, [data-testid="stFooter"] { display: none !important; }
 
-/* ── Push content below our custom header ───────────────────────────── */
-.main .block-container {
-    padding-top: 0 !important;
-    padding-bottom: 0 !important;
+/* ── Reset margins and paddings for all layout wrappers ─────────────── */
+[data-testid="stAppViewContainer"], [data-testid="stAppViewBlockContainer"], [data-testid="stMainBlockContainer"], .main, .block-container, [data-testid="stApp"] {
+    padding-top: 0px !important;
+    margin-top: 0px !important;
+    padding-bottom: 80px !important; /* Space for the sticky footer */
+    margin-bottom: 0px !important;
+}
+div[data-testid="element-container"]:has(style) {
+    display: none !important;
+}
+iframe {
+    margin-top: 0px !important;
 }
 html, body {
     overflow-x: hidden !important;
 }
 
+/* ── Increase Base Font Weight ───────────────────────────────────────── */
+p, span, div, label {
+    font-weight: 500 !important;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 800 !important;
+}
+
 /* ── Sidebar ─────────────────────────────────────────────────────────── */
 [data-testid="stSidebar"] {
-    background: linear-gradient(180deg, #0284C7 0%, #0369A1 100%) !important;
+    background: linear-gradient(180deg, #06363D 0%, #085558 100%) !important;
     border-right: none !important;
 }
 [data-testid="stSidebar"] * { color: #FFFFFF !important; }
@@ -77,22 +99,22 @@ html, body {
 /* ── Section headers ─────────────────────────────────────────────────── */
 .sec-header {
     display: flex; align-items: center; gap: 10px;
-    border-bottom: 2px solid #BAE6FD;
+    border-bottom: 2px solid #84BABF;
     padding-bottom: 0.6rem; margin-bottom: 1.1rem;
     margin-top: 0.5rem;
 }
 .sec-header-text {
-    font-size: 0.82rem; font-weight: 700; color: #0369A1;
+    font-size: 1.1rem; font-weight: 700; color: #0D6F73;
     letter-spacing: 0.08em; text-transform: uppercase;
 }
 
 /* ── Score hero ──────────────────────────────────────────────────────── */
 .score-hero {
-    background: linear-gradient(135deg, #0EA5E9 0%, #0284C7 100%);
+    background: linear-gradient(135deg, #085558 0%, #06363D 100%);
     border-radius: 14px; padding: 1.4rem 1.8rem; color: white;
     display: flex; justify-content: space-between; align-items: center;
     margin-bottom: 1.2rem;
-    box-shadow: 0 4px 20px rgba(14,165,233,0.3);
+    box-shadow: 0 4px 20px rgba(6,54,61,0.3);
 }
 .score-number { font-size: 2.8rem; font-weight: 800; letter-spacing: -2px; line-height: 1; }
 
@@ -100,19 +122,19 @@ html, body {
 .file-badge {
     display: inline-flex; align-items: center; gap: 6px;
     background: #DCFCE7; border: 1px solid #86EFAC; border-radius: 20px;
-    padding: 3px 12px; font-size: 0.78rem; color: #166534; font-weight: 500; margin-top: 5px;
+    padding: 3px 12px; font-size: 1rem; color: #166534; font-weight: 500; margin-top: 5px;
 }
 
 /* ── Buttons ─────────────────────────────────────────────────────────── */
 .stButton > button {
-    background: linear-gradient(135deg, #0EA5E9 0%, #0284C7 100%) !important;
+    background: linear-gradient(135deg, #0D6F73 0%, #085558 100%) !important;
     color: white !important; border: none !important;
     border-radius: 10px !important; font-weight: 600 !important;
     padding: 0.55rem 1.2rem !important; transition: all 0.2s !important;
 }
 .stButton > button:hover {
-    background: linear-gradient(135deg, #38BDF8 0%, #0EA5E9 100%) !important;
-    box-shadow: 0 4px 16px rgba(14,165,233,0.35) !important;
+    background: linear-gradient(135deg, #84BABF 0%, #0D6F73 100%) !important;
+    box-shadow: 0 4px 16px rgba(13,111,115,0.35) !important;
     transform: translateY(-1px) !important;
 }
 .stButton > button:disabled {
@@ -121,92 +143,126 @@ html, body {
 
 /* ── Toggle chat button ──────────────────────────────────────────────── */
 .toggle-btn > button {
-    background: white !important; color: #0369A1 !important;
-    border: 2px solid #7DD3FC !important; border-radius: 20px !important;
-    padding: 0.35rem 1rem !important; font-size: 0.82rem !important;
+    background: white !important; color: #085558 !important;
+    border: 2px solid #84BABF !important; border-radius: 20px !important;
+    padding: 0.35rem 1rem !important; font-size: 1.1rem !important;
 }
 .toggle-btn > button:hover {
-    background: #E0F2FE !important; border-color: #0EA5E9 !important;
+    background: #E0EDE9 !important; border-color: #0D6F73 !important;
     transform: none !important; box-shadow: none !important;
 }
 
 /* ── Download button ─────────────────────────────────────────────────── */
 [data-testid="stDownloadButton"] > button {
-    background: #FFFFFF !important; color: #0369A1 !important;
-    border: 2px solid #0EA5E9 !important;
+    background: #FFFFFF !important; color: #0D6F73 !important;
+    border: 2px solid #0D6F73 !important;
     box-shadow: none !important; transform: none !important;
 }
 
 /* ── File uploader ───────────────────────────────────────────────────── */
 [data-testid="stFileUploader"] {
-    background: #F0F9FF !important; border-radius: 12px !important;
-    border: 2px dashed #7DD3FC !important;
+    background: #E0EDE9 !important; border-radius: 12px !important;
+    border: 2px dashed #84BABF !important;
 }
 
 /* ── DataFrames ──────────────────────────────────────────────────────── */
 [data-testid="stDataFrame"] {
-    border-radius: 10px !important; border: 1px solid #BAE6FD !important;
+    border-radius: 10px !important; border: 1px solid #84BABF !important;
     overflow: hidden !important;
+}
+
+/* ── Tabs ────────────────────────────────────────────────────────────── */
+button[data-baseweb="tab"] {
+    font-size: 1.1rem !important;
+    font-weight: 600 !important;
+    color: #64748B !important;
+    padding: 0.5rem 1.2rem !important;
+    transition: all 0.2s ease !important;
+}
+button[data-baseweb="tab"]:hover {
+    color: #0D6F73 !important;
+    background-color: rgba(13,111,115,0.05) !important;
+    border-radius: 6px !important;
+}
+button[data-baseweb="tab"][aria-selected="true"] {
+    font-weight: 800 !important;
+    color: #0D6F73 !important;
+    background-color: rgba(13,111,115,0.1) !important;
+    border-radius: 6px !important;
 }
 
 /* ── Metrics ─────────────────────────────────────────────────────────── */
 [data-testid="stMetric"] {
-    background: #FFFFFF; border: 1px solid #BAE6FD;
+    background: #FFFFFF; border: 1px solid #84BABF;
     border-radius: 12px; padding: 0.7rem 1rem;
 }
-[data-testid="stMetricValue"] { color: #0369A1 !important; font-weight: 700 !important; }
-[data-testid="stMetricLabel"] { color: #64748B !important; font-size: 0.75rem !important; }
+[data-testid="stMetricValue"] { color: #0D6F73 !important; font-weight: 700 !important; }
+[data-testid="stMetricLabel"] { color: #085558 !important; font-size: 1rem !important; }
 
 /* ── Progress bar ────────────────────────────────────────────────────── */
 .stProgress > div > div > div {
-    background: linear-gradient(90deg, #0EA5E9, #38BDF8) !important;
+    background: linear-gradient(90deg, #0D6F73, #84BABF) !important;
     border-radius: 4px !important;
 }
 
 /* ── Text inputs ─────────────────────────────────────────────────────── */
 .stTextInput > div > div > input,
 .stTextArea > div > div > textarea {
-    border: 1.5px solid #BAE6FD !important; border-radius: 10px !important;
-    background: #FFFFFF !important; color: #0C4A6E !important;
+    border: 1.5px solid #84BABF !important; border-radius: 10px !important;
+    background: #FFFFFF !important; color: #06363D !important;
 }
 .stTextInput > div > div > input:focus,
 .stTextArea > div > div > textarea:focus {
-    border-color: #0EA5E9 !important;
-    box-shadow: 0 0 0 3px rgba(14,165,233,0.15) !important;
+    border-color: #0D6F73 !important;
+    box-shadow: 0 0 0 3px rgba(13,111,115,0.15) !important;
+}
+
+/* ── Hide 'Press Enter to submit form' hint ──────────────────────────── */
+[data-testid="InputInstructions"] {
+    display: none !important;
+}
+
+/* ── Prevent Streamlit from fading/whitening the screen during processing ─ */
+div[data-testid="element-container"], div[data-testid="stVerticalBlock"] {
+    opacity: 1 !important;
+    transition: none !important;
 }
 
 /* ── Custom page header bar ──────────────────────────────────────────── */
-.esgrc-header {
-    background: linear-gradient(135deg, #0284C7 0%, #0369A1 60%, #0C4A6E 100%);
-    border-radius: 0 !important;
-    padding: 1.2rem 2.5rem;
-    display: flex; align-items: center; justify-content: space-between;
-    margin-bottom: 2rem;
-    box-shadow: 0 4px 20px rgba(2,132,199,0.25);
-    border-bottom: 1px solid rgba(255,255,255,0.15);
-    width: 100vw;
-    position: relative;
-    left: 50%;
-    right: 50%;
-    margin-left: -50vw;
-    margin-right: -50vw;
+div[data-testid="stHorizontalBlock"]:has(.risk-intell-header-left) {
+    background: linear-gradient(135deg, #06363D 0%, #085558 100%) !important;
+    padding: 1rem 3rem !important;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    z-index: 99999 !important;
+    margin: 0 !important;
+    border-bottom: 2px solid #0D6F73 !important;
+    box-shadow: 0 8px 15px -5px rgba(0,0,0,0.5) !important;
+    align-items: center !important;
 }
-.esgrc-header-left  { display:flex; align-items:center; gap:14px; }
-.esgrc-header-logo  { font-size:1.8rem; line-height:1; }
-.esgrc-header-title { font-size:1.2rem; font-weight:800; color:#FFFFFF; letter-spacing:-0.3px; }
-.esgrc-header-sub   { font-size:0.72rem; color:rgba(255,255,255,0.72); margin-top:2px; letter-spacing:0.03em; }
-.esgrc-header-right { display:flex; align-items:center; gap:16px; }
-.esgrc-header-badge {
-    background: rgba(255,255,255,0.12);
-    border: 1px solid rgba(255,255,255,0.25);
+[data-testid="stAppViewBlockContainer"] {
+    padding-top: 120px !important;
+}
+.risk-intell-header-left  { display:flex; align-items:center; gap:14px; }
+.risk-intell-header-logo  { font-size:2.2rem; line-height:1; }
+.risk-intell-header-title { font-size:1.8rem; font-weight:800; color:#FFFFFF; letter-spacing:-0.3px; }
+.risk-intell-header-sub   { font-size:1rem; color:#84BABF; margin-top:2px; letter-spacing:0.03em; font-weight: 500; }
+.risk-intell-header-right { display:flex; align-items:center; gap:16px; }
+.risk-intell-header-badge {
+    background: #DCFCE7;
+    border: 1px solid #86EFAC;
     border-radius: 20px;
-    padding: 4px 14px;
+    padding: 3px 10px;
     font-size: 0.75rem;
-    color: white;
-    font-weight: 500;
+    color: #4ADE80;
+    font-weight: 600;
     display: flex; align-items: center; gap: 6px;
+    border: 1px solid rgba(74, 222, 128, 0.4);
+    background: rgba(74, 222, 128, 0.1);
 }
-.esgrc-header-dot {
+.risk-intell-header-dot {
     width: 7px; height: 7px; border-radius: 50%;
     background: #4ADE80;
     box-shadow: 0 0 6px #4ADE80;
@@ -217,32 +273,31 @@ html, body {
     0%,100% { opacity:1; transform:scale(1); }
     50%      { opacity:0.6; transform:scale(0.85); }
 }
-.esgrc-header-date  { font-size:0.72rem; color:rgba(255,255,255,0.65); }
+.risk-intell-header-date  { font-size:0.75rem; font-weight: 500; color:#84BABF; }
 
 /* ── Page footer ─────────────────────────────────────────────────────── */
-.esgrc-footer {
-    background: linear-gradient(135deg, #0C4A6E 0%, #0369A1 100%);
+.risk-intell-footer {
+    background: linear-gradient(135deg, #085558 0%, #06363D 100%);
     border-radius: 0 !important;
-    padding: 1.5rem 2.5rem;
-    margin-top: 3.5rem;
+    padding: 1rem 2.5rem;
+    margin: 0 !important;
     display: flex; align-items: center; justify-content: space-between;
     flex-wrap: wrap; gap: 0.5rem;
-    width: 100vw;
-    position: relative;
-    left: 50%;
-    right: 50%;
-    margin-left: -50vw;
-    margin-right: -50vw;
+    width: 100vw !important;
+    position: fixed !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    z-index: 999999;
 }
-.esgrc-footer-brand { font-size:0.85rem; font-weight:700; color:#FFFFFF; letter-spacing:-0.2px; }
-.esgrc-footer-links { display:flex; gap:20px; }
-.esgrc-footer-link  { font-size:0.72rem; color:rgba(255,255,255,0.65); text-decoration:none; }
-.esgrc-footer-copy  { font-size:0.7rem; color:rgba(255,255,255,0.5); }
-.esgrc-footer-security {
+.risk-intell-footer-brand { font-size:1rem; font-weight:700; color:#FFFFFF; letter-spacing:-0.2px; }
+.risk-intell-footer-links { display:flex; gap:20px; }
+.risk-intell-footer-link  { font-size:0.9rem; color:rgba(255,255,255,0.65); text-decoration:none; }
+.risk-intell-footer-copy  { font-size:0.85rem; color:rgba(255,255,255,0.5); }
+.risk-intell-footer-security {
     display:flex; align-items:center; gap:6px;
-    font-size:0.7rem; color:rgba(255,255,255,0.65);
+    font-size:0.85rem; color:rgba(255,255,255,0.65);
     background: rgba(255,255,255,0.08);
-    border-radius: 12px; padding: 3px 10px;
+    border-radius: 12px; padding: 4px 12px;
 }
 
 /* ── Chat right panel ────────────────────────────────────────────────── */
@@ -306,6 +361,13 @@ hr { border: none !important; border-top: 1.5px solid #E0F2FE !important; margin
 ::-webkit-scrollbar { width: 5px; height: 5px; }
 ::-webkit-scrollbar-track { background: #F0F9FF; }
 ::-webkit-scrollbar-thumb { background: #7DD3FC; border-radius: 4px; }
+
+/* ── Pipeline step cards ─────────────────────────────────────────────── */
+@keyframes pipe-pulse {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0.6; }
+}
+.pipeline-running-row { animation: pipe-pulse 1.2s ease-in-out infinite; }
 </style>
 """, unsafe_allow_html=True)
 
@@ -314,10 +376,16 @@ hr { border: none !important; border-top: 1.5px solid #E0F2FE !important; margin
 # SESSION STATE
 # ─────────────────────────────────────────────────────────────────────────────
 def init_session():
+    qp_logged = st.query_params.get("logged_in") == "true"
+    qp_user_id = st.query_params.get("user_id")
+    qp_username = st.query_params.get("username")
+    qp_role = st.query_params.get("role", "ESGRC")
+    
     defaults = {
-        "logged_in":        False,
-        "user_id":          None,
-        "username":         None,
+        "logged_in":        qp_logged,
+        "user_id":          qp_user_id,
+        "username":         qp_username,
+        "role":             qp_role,
         "csv_bytes":        None,
         "json_data":        None,
         "csv_filename":     "",
@@ -329,6 +397,18 @@ def init_session():
         "is_generating":    False,
         "chat_messages":    [],
         "chat_open":        True,   # right panel visibility
+        # ── Pipeline Automation ───────────────────────────────────────────
+        "pipeline_csv_bytes":       None,
+        "pipeline_json_data":       None,
+        "pipeline_csv_filename":    "",
+        "pipeline_json_filename":   "",
+        "pipeline_json_bytes":      None,
+        "pipeline_additional_csvs": {},
+        "pipeline_work_dir":        None,
+        "pipeline_running":         False,
+        "pipeline_complete":        False,
+        "pipeline_master_report":   "",
+        "pipeline_step_results":    [],
     }
     for k, v in defaults.items():
         if k not in st.session_state:
@@ -348,21 +428,21 @@ def score_label(v):
 
 def build_system_prompt(ctx: Optional[dict]) -> str:
     if not ctx:
-        return """You are an expert ESGRC (Environmental, Social, Governance, Risk, and Compliance) Advisor.
+        return """You are an expert RISK INTELL (Environmental, Social, Governance, Risk, and Compliance) Advisor.
 You help users understand ESG frameworks, risk compliance management, audit preparedness, and industry standards.
 Encourage them to upload their metrics CSV and config JSON files in the panel on the left to generate their interactive performance report.
 
 IMPORTANT FORMATTING RULES:
+- Keep responses extremely short, direct, and concise (under 120 words). No preamble or fluff.
 - Do NOT use # headings or markdown symbols like ** or * in your response.
 - Write in plain, clear, professional prose.
 - Use plain numbered lists (1. 2. 3.) or simple bullet points with a dash (-) only.
-- Keep responses concise and actionable.
 - Be direct, professional, and helpful.
 """
     low_m  = "\n".join(f"  • {m['name']} ({m['id']}): {m['score']}" for m in ctx.get("low_metrics", []))
     low_g  = "\n".join(f"  • {g['name']} ({g['id']}): {g['score']}" for g in ctx.get("low_groups", []))
     low_sm = "\n".join(f"  • {s['name']} ({s['id']}): {s['score']}" for s in ctx.get("low_sub_modules", []))
-    return f"""You are an expert ESGRC analyst embedded in a professional reporting platform.
+    return f"""You are an expert RISK INTELL analyst embedded in a professional reporting platform.
 
 Module: {ctx.get("module_name")} ({ctx.get("module_id")})
 Overall Score: {ctx.get("overall_score")} / 100  ({score_label(ctx.get("overall_score", 0))})
@@ -381,10 +461,10 @@ Full Report:
 {ctx.get("report_text", "")}
 
 IMPORTANT FORMATTING RULES:
+- Keep responses extremely short, direct, and concise (under 120 words). No preamble or fluff.
 - Do NOT use # headings or markdown symbols like ** or * in your response.
 - Write in plain, clear, professional prose.
 - Use plain numbered lists (1. 2. 3.) or simple bullet points with a dash (-) only.
-- Keep responses concise and actionable.
 - Be direct, professional, and helpful.
 """
 
@@ -392,8 +472,8 @@ def stream_claude(messages: list, system: str):
     """Generator that yields text tokens from Claude streaming API."""
     client = anthropic.Anthropic(api_key=st.secrets["ANTHROPIC_API_KEY"])
     with client.messages.stream(
-        model="claude-sonnet-4-5",
-        max_tokens=1200,
+        model="claude-3-5-haiku-20241022",
+        max_tokens=300,
         system=system,
         messages=messages,
     ) as stream:
@@ -405,19 +485,54 @@ def stream_claude(messages: list, system: str):
 # AUTH SCREEN
 # ─────────────────────────────────────────────────────────────────────────────
 def render_auth():
-    _, col_m, _ = st.columns([1, 1.2, 1])
-    with col_m:
-        st.markdown("""
-<div style="text-align:center; padding:2.5rem 0 2rem;">
-    <div style="font-size:2.8rem; margin-bottom:0.6rem;">🛡️</div>
-    <div style="font-size:1.75rem; font-weight:800; color:#0C4A6E;">ESGRC Intelligence</div>
-    <div style="font-size:0.85rem; color:#64748B; margin-top:4px;">
-        Enterprise ESG · Risk · Compliance Platform
+    st.markdown("""
+    <style>
+    [data-testid="stApp"] {
+        background: radial-gradient(circle at 50% -20%, #0D6F73 0%, #06363D 40%, #02181B 100%) !important;
+    }
+    [data-testid="stAppViewBlockContainer"] {
+        background: transparent !important;
+        padding-top: 10vh !important;
+        min-height: 100vh;
+        max-width: 100% !important;
+    }
+    .auth-title {
+        font-size: 3.5rem;
+        font-weight: 900;
+        color: #FFFFFF;
+        text-align: center;
+        letter-spacing: -1px;
+        margin-bottom: 0.5rem;
+    }
+    .auth-subtitle {
+        font-size: 1.25rem;
+        color: #84BABF;
+        text-align: center;
+        margin-bottom: 3rem;
+        font-weight: 500;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    div[data-testid="stTabs"] {
+        background: #FFFFFF;
+        padding: 2.5rem;
+        border-radius: 16px;
+        box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    }
+    header[data-testid="stHeader"] { display: none !important; }
+    </style>
+    
+    <div class="auth-title">RISK INTELL Platform</div>
+    <div class="auth-subtitle">
+        Empower your enterprise with autonomous AI-driven ESG analytics, continuous risk compliance, and intelligent performance reporting.
     </div>
-</div>
-""", unsafe_allow_html=True)
+    """, unsafe_allow_html=True)
 
-        tab_in, tab_reg = st.tabs(["🔑  Sign In", "✨  Create Account"])
+    _, col_m, _ = st.columns([1, 1.2, 1])
+    
+    with col_m:
+        tab_in, tab_reg = st.tabs(["Sign In", "Create Account"])
 
         with tab_in:
             st.markdown("<br>", unsafe_allow_html=True)
@@ -434,6 +549,11 @@ def render_auth():
                         st.session_state.logged_in = True
                         st.session_state.user_id   = str(res["user"]["_id"])
                         st.session_state.username  = res["user"]["username"]
+                        st.session_state.role      = res["user"].get("role", "ESGRC")
+                        st.query_params["logged_in"] = "true"
+                        st.query_params["user_id"]   = str(res["user"]["_id"])
+                        st.query_params["username"]  = res["user"]["username"]
+                        st.query_params["role"]      = st.session_state.role
                         time.sleep(0.4)
                         st.rerun()
                     else:
@@ -442,6 +562,7 @@ def render_auth():
         with tab_reg:
             st.markdown("<br>", unsafe_allow_html=True)
             with st.form("reg_form"):
+                rr = st.radio("Select Role", ["ESGRC", "APEX"], horizontal=True, key="rr")
                 ru = st.text_input("Username",         placeholder="Choose a username",   key="ru")
                 re_ = st.text_input("Email",           placeholder="you@company.com",     key="re")
                 rp = st.text_input("Password",         type="password", placeholder="Min 6 chars", key="rp")
@@ -452,8 +573,11 @@ def render_auth():
                 elif rp != rp2: st.error("Passwords do not match.")
                 elif len(rp) < 6: st.error("Password must be 6+ characters.")
                 else:
-                    res = register_user(ru, re_, rp)
-                    st.success("Account created! Please sign in.") if res["ok"] else st.error(res["error"])
+                    res = register_user(ru, re_, rp, rr)
+                    if res["ok"]:
+                        st.success("Account created! Please sign in.")
+                    else:
+                        st.error(res["error"])
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -463,14 +587,10 @@ def render_sidebar():
     with st.sidebar:
         st.markdown(f"""
 <div style="padding:0.8rem 0 0.5rem;">
-    <div style="font-size:0.68rem; opacity:0.75; text-transform:uppercase; letter-spacing:0.1em;">Signed in as</div>
-    <div style="font-size:1rem; font-weight:700; margin-top:3px;">👤 {st.session_state.username}</div>
+    <div style="font-size:0.9rem; opacity:0.75; text-transform:uppercase; letter-spacing:0.1em;">Signed in as</div>
+    <div style="font-size:1.3rem; font-weight:700; margin-top:3px;">{st.session_state.username}</div>
+    <div style="font-size:1.1rem; color:#84BABF; font-weight:600; margin-top:4px;">Role: {st.session_state.role}</div>
 </div>""", unsafe_allow_html=True)
-
-        if st.button("Sign Out", use_container_width=True):
-            for k in list(st.session_state.keys()):
-                del st.session_state[k]
-            st.rerun()
 
         st.markdown("---")
         st.markdown('<div style="font-size:0.7rem; text-transform:uppercase; letter-spacing:0.1em; opacity:0.7; margin-bottom:0.6rem;">📁 Report History</div>', unsafe_allow_html=True)
@@ -527,39 +647,57 @@ def render_sidebar():
 # HEADER  — branded bar + chat toggle
 # ─────────────────────────────────────────────────────────────────────────────
 def render_header():
-    now_str = datetime.now().strftime("%d %b %Y  ·  %H:%M")
+    now_str = datetime.now().strftime("%d %b %Y  ·  %H:%M:%S")
     user    = st.session_state.get("username", "")
 
-    # Left side of header HTML
-    toggle_html = ""
-    st.markdown(f"""
-<div class="esgrc-header">
-    <div class="esgrc-header-left">
-        <div class="esgrc-header-logo">🛡️</div>
-        <div>
-            <div class="esgrc-header-title">ESGRC Intelligence Platform</div>
-            <div class="esgrc-header-sub">Enterprise ESG &nbsp;·&nbsp; Risk &nbsp;·&nbsp; Compliance — Performance Analysis &amp; AI Reporting</div>
+    st.markdown('<br>', unsafe_allow_html=True)
+    hc1, hc2 = st.columns([10, 2], vertical_alignment="center")
+    
+    with hc1:
+        st.markdown(f"""
+        <div class="risk-intell-header-left">
+            <div>
+                <div class="risk-intell-header-title">RISK INTELL Platform</div>
+                <div class="risk-intell-header-sub">Enterprise ESG &nbsp;·&nbsp; Risk &nbsp;·&nbsp; Compliance — Performance Analysis &amp; AI Reporting</div>
+            </div>
         </div>
-    </div>
-    <div class="esgrc-header-right">
-        <div class="esgrc-header-badge">
-            <span class="esgrc-header-dot"></span> Live
+        """, unsafe_allow_html=True)
+        
+    with hc2:
+        st.markdown(f"""
+        <div style="text-align: right; margin-bottom: 8px; display: flex; justify-content: flex-end; align-items: center; gap: 8px;">
+            <div class="risk-intell-header-badge"><span class="risk-intell-header-dot"></span> Live</div>
+            <div class="risk-intell-header-date" id="live-clock">{now_str}</div>
         </div>
-        <div class="esgrc-header-badge">👤 {user}</div>
-        <div class="esgrc-header-date">📅 {now_str}</div>
-    </div>
-</div>
-""", unsafe_allow_html=True)
-
-    # Chat toggle button (rendered below the header bar, right-aligned)
-    _, col_btn = st.columns([5, 1])
-    with col_btn:
-        label = "◀ Hide Chat" if st.session_state.chat_open else "Show Chat ▶"
-        st.markdown('<div class="toggle-btn">', unsafe_allow_html=True)
-        if st.button(label, key="chat_toggle", use_container_width=True):
-            st.session_state.chat_open = not st.session_state.chat_open
+        """, unsafe_allow_html=True)
+        
+        if st.button("Log Out", key="header_signout", use_container_width=True):
+            for k in list(st.session_state.keys()):
+                del st.session_state[k]
+            st.query_params.clear()
             st.rerun()
-        st.markdown("</div>", unsafe_allow_html=True)
+            
+    st.markdown("""
+<iframe srcdoc="
+    <script>
+        function updateClock() {{
+            const clockEl = window.parent.document.getElementById('live-clock');
+            if (clockEl) {{
+                const now = new Date();
+                const pad = (n) => String(n).padStart(2, '0');
+                const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+                const dateStr = pad(now.getDate()) + ' ' + months[now.getMonth()] + ' ' + now.getFullYear();
+                const timeStr = pad(now.getHours()) + ':' + pad(now.getMinutes()) + ':' + pad(now.getSeconds());
+                clockEl.innerHTML = dateStr + '  ·  ' + timeStr;
+            }}
+        }}
+        if (!window.parent.clockInterval) {{
+            window.parent.clockInterval = setInterval(updateClock, 1000);
+        }}
+        updateClock();
+    </script>
+" style="display:none;"></iframe>
+""", unsafe_allow_html=True)
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -567,19 +705,19 @@ def render_header():
 # ─────────────────────────────────────────────────────────────────────────────
 def render_footer():
     st.markdown("""
-<div class="esgrc-footer">
+<div class="risk-intell-footer">
     <div>
-        <div class="esgrc-footer-brand">🛡️ ESGRC Intelligence Platform</div>
-        <div class="esgrc-footer-copy">© 2024 ESGRC Intelligence · All rights reserved · v2.0</div>
+        <div class="risk-intell-footer-brand">🛡️ RISK INTELL Platform</div>
+        <div class="risk-intell-footer-copy">© 2024 RISK INTELL · All rights reserved · v2.0</div>
     </div>
-    <div class="esgrc-footer-security">
+    <div class="risk-intell-footer-security">
         🔒 End-to-end secure &nbsp;·&nbsp; Data stored in your MongoDB instance
     </div>
-    <div class="esgrc-footer-links">
-        <span class="esgrc-footer-link">Enterprise ESG</span>
-        <span class="esgrc-footer-link">Risk Management</span>
-        <span class="esgrc-footer-link">Compliance</span>
-        <span class="esgrc-footer-link">AI Analytics</span>
+    <div class="risk-intell-footer-links">
+        <span class="risk-intell-footer-link">Enterprise ESG</span>
+        <span class="risk-intell-footer-link">Risk Management</span>
+        <span class="risk-intell-footer-link">Compliance</span>
+        <span class="risk-intell-footer-link">AI Analytics</span>
     </div>
 </div>
 """, unsafe_allow_html=True)
@@ -644,12 +782,12 @@ def render_summary_and_generate():
             st.session_state.report_context  = None
             st.rerun()
     with col_desc:
-        st.markdown('<div style="color:#64748B; font-size:0.82rem; padding-top:0.65rem;">Runs the full ESGRC weighted-average pipeline and identifies the lowest-performing metrics, groups, and sub-modules.</div>', unsafe_allow_html=True)
+        st.markdown('<div style="color:#64748B; font-size:0.82rem; padding-top:0.65rem;">Runs the full RISK INTELL weighted-average pipeline and identifies the lowest-performing metrics, groups, and sub-modules.</div>', unsafe_allow_html=True)
 
 
 def render_generating():
     st.markdown('<div class="sec-header"><span>⚙️</span><span class="sec-header-text">Generating Report…</span></div>', unsafe_allow_html=True)
-    prog   = st.progress(0, text="Initialising ESGRC engine…")
+    prog   = st.progress(0, text="Initialising RISK INTELL engine…")
     status = st.empty()
     steps  = [
         (20, "Loading CSV and JSON data…"),
@@ -676,10 +814,10 @@ def render_generating():
             client = anthropic.Anthropic(api_key=st.secrets["ANTHROPIC_API_KEY"])
             system = build_system_prompt(context)
             resp = client.messages.create(
-                model="claude-3-5-sonnet-20240620",
-                max_tokens=600,
+                model="claude-3-5-haiku-20241022",
+                max_tokens=250,
                 system=system,
-                messages=[{"role": "user", "content": "Please provide a concise executive summary (2-3 paragraphs) of the report's findings, highlighting the most critical areas needing attention based on the low-performing metrics, groups, and sub-modules."}]
+                messages=[{"role": "user", "content": "Please provide an extremely short executive summary (under 100 words, 1 short paragraph) of the report's findings, highlighting the most critical areas needing attention based on the low-performing metrics, groups, and sub-modules."}]
             )
             context["ai_summary"] = resp.content[0].text
         except Exception as e:
@@ -771,7 +909,7 @@ def render_report():
             st.download_button(
                 label="⬇️  Download PDF Report",
                 data=pdf_bytes,
-                file_name=f"ESGRC_Report_{datetime.now().strftime('%Y%m%d_%H%M%S')}.pdf",
+                file_name=f"RISK INTELL_Report_{datetime.now().strftime('%Y%m%d_%H%M%S')}.pdf",
                 mime="application/pdf",
                 use_container_width=True,
             )
@@ -812,7 +950,7 @@ def render_chat_panel():
     <span style="font-size:0.7rem; opacity:0.8; font-weight:400;">{n_msgs} message{'s' if n_msgs!=1 else ''}</span>
 </div>
 <div class="chat-panel-score">
-    <b>General ESGRC Assistant</b> &nbsp;·&nbsp;
+    <b>General RISK INTELL Assistant</b> &nbsp;·&nbsp;
     <span style="color:#0EA5E9; font-weight:700;">Online</span>
 </div>
 """, unsafe_allow_html=True)
@@ -908,6 +1046,328 @@ def render_chat_panel():
 
 
 # ─────────────────────────────────────────────────────────────────────────────
+# PIPELINE AUTOMATION  — helper functions
+# ─────────────────────────────────────────────────────────────────────────────
+
+def _get_pipeline_work_dir() -> str:
+    """Get or create a persistent temp directory for this pipeline session."""
+    if (st.session_state.pipeline_work_dir
+            and os.path.exists(st.session_state.pipeline_work_dir)):
+        return st.session_state.pipeline_work_dir
+    work_dir = tempfile.mkdtemp(prefix="esgrc_pipeline_")
+    st.session_state.pipeline_work_dir = work_dir
+    return work_dir
+
+
+def _execute_pipeline_step(step_id: str, work_dir: str, csv_bytes: bytes,
+                            json_data: dict, additional_csvs: dict):
+    """Route step_id → the correct pipeline_engine function."""
+    from utils.pipeline_engine import (
+        run_step1_low_performance_esgrc, run_step2_split_esgrc,
+        run_step3_spc_fmea_esgrc,       run_step4_correlation_chaid_esgrc,
+        run_step5_regression_esgrc,      run_step6_all_module_consolidation,
+        run_step7_spc_fmea_l0,          run_step8_correlation_chaid_l0,
+        run_step9_regression_l0,         run_final_report_combiner,
+    )
+    dispatch = {
+        "step1": lambda: run_step1_low_performance_esgrc(work_dir, csv_bytes, json_data),
+        "step2": lambda: run_step2_split_esgrc(work_dir, json_data),
+        "step3": lambda: run_step3_spc_fmea_esgrc(work_dir),
+        "step4": lambda: run_step4_correlation_chaid_esgrc(work_dir),
+        "step5": lambda: run_step5_regression_esgrc(work_dir, json_data),
+        "step6": lambda: run_step6_all_module_consolidation(work_dir, additional_csvs),
+        "step7": lambda: run_step7_spc_fmea_l0(work_dir),
+        "step8": lambda: run_step8_correlation_chaid_l0(work_dir),
+        "step9": lambda: run_step9_regression_l0(work_dir),
+        "final": lambda: run_final_report_combiner(work_dir),
+    }
+    fn = dispatch.get(step_id)
+    if fn is None:
+        return False, {}, f"Unknown step id: {step_id}"
+    return fn()
+
+
+def _step_card_html(step: dict, state: str, message: str) -> str:
+    """Return styled HTML for one pipeline step row."""
+    palette = {
+        "pending": ("#F8FAFC", "#CBD5E1", "#0F172A", "#94A3B8", ""),
+        "running": ("#FFFBEB", "#F59E0B", "#92400E", "#92400E",
+                    "class=\"pipeline-running-row\""),
+        "done":    ("#F0FFF4", "#10B981", "#0F172A", "#065F46", ""),
+        "error":   ("#FFF5F5", "#EF4444", "#0F172A", "#7F1D1D", ""),
+    }
+    icons = {"pending": "⬜", "running": "🔄", "done": "✅", "error": "❌"}
+    bg, border, title_c, msg_c, div_cls = palette.get(state, palette["pending"])
+    icon = icons.get(state, "⬜")
+    return (
+        f'<div {div_cls} style="background:{bg};border:1px solid #E2E8F0;'
+        f'border-left:4px solid {border};border-radius:8px;'
+        f'padding:0.65rem 1rem;margin-bottom:0.42rem;">'
+        f'<div style="font-size:0.8rem;font-weight:700;color:{title_c};">'
+        f'{icon}&nbsp; Script&nbsp;{step["number"]} — {step["name"]}</div>'
+        f'<div style="font-size:0.71rem;color:{msg_c};margin-top:3px;">{message}</div>'
+        f'</div>'
+    )
+
+
+def _render_step_grid_preview(steps: list):
+    """Render all steps as a 2-column pending grid."""
+    cols = st.columns(2)
+    for i, step in enumerate(steps):
+        with cols[i % 2]:
+            st.markdown(
+                f'<div style="background:#F8FAFC;border:1px solid #E2E8F0;'
+                f'border-left:3px solid #94A3B8;border-radius:8px;'
+                f'padding:0.6rem 0.85rem;margin-bottom:0.45rem;">'
+                f'<div style="font-size:0.77rem;font-weight:700;color:#0369A1;">'
+                f'Script {step["number"]} &mdash; {step["name"]}</div>'
+                f'<div style="font-size:0.7rem;color:#64748B;margin-top:2px;">'
+                f'{step["description"]}</div></div>',
+                unsafe_allow_html=True,
+            )
+
+
+def _run_full_pipeline():
+    """Execute all 10 pipeline steps with live progress UI update."""
+    csv_bytes       = st.session_state.pipeline_csv_bytes
+    json_data       = st.session_state.pipeline_json_data
+    additional_csvs = dict(st.session_state.pipeline_additional_csvs)
+
+    work_dir = _get_pipeline_work_dir()
+
+    # ── Pre-write required input files ───────────────────────────────────────
+    with open(os.path.join(work_dir, "input_metric_values_esgrc.csv"), "wb") as f:
+        f.write(csv_bytes)
+    with open(os.path.join(work_dir, "esgrc_performance_json_file.json"), "w",
+              encoding="utf-8") as f:
+        json.dump(json_data, f)
+
+    # Copy built-in mapping / matrix if not user-provided
+    for fname in ["module_mapping.csv", "module_matrix.csv"]:
+        if fname not in additional_csvs:
+            src = os.path.join("utils", fname)
+            if os.path.exists(src):
+                with open(src, "rb") as f:
+                    additional_csvs[fname] = f.read()
+
+    # ── UI scaffolding ────────────────────────────────────────────────────────
+    st.markdown(
+        '<div class="sec-header"><span>⚙️</span>'
+        '<span class="sec-header-text">Running Pipeline — Live Progress</span></div>',
+        unsafe_allow_html=True,
+    )
+    progress_bar = st.progress(0, text="Initialising pipeline…")
+    total = len(PIPELINE_STEPS)
+
+    # Create one empty slot per step
+    slots = [st.empty() for _ in PIPELINE_STEPS]
+    for i, step in enumerate(PIPELINE_STEPS):
+        slots[i].markdown(
+            _step_card_html(step, "pending", "Waiting…"),
+            unsafe_allow_html=True,
+        )
+
+    # ── Execute every step ────────────────────────────────────────────────────
+    results, all_ok = [], True
+    for i, step in enumerate(PIPELINE_STEPS):
+        slots[i].markdown(
+            _step_card_html(step, "running", "Running…"),
+            unsafe_allow_html=True,
+        )
+        progress_bar.progress(i / total,
+                              text=f"Script {step['number']}/{total}: {step['name']}…")
+
+        success, outputs, message = _execute_pipeline_step(
+            step["id"], work_dir, csv_bytes, json_data, additional_csvs
+        )
+        if not success:
+            all_ok = False
+
+        state = "done" if success else "error"
+        slots[i].markdown(
+            _step_card_html(step, state, message),
+            unsafe_allow_html=True,
+        )
+        results.append({"step": step, "success": success,
+                         "outputs": outputs, "message": message})
+
+    progress_bar.progress(1.0, text="✅ Pipeline complete!")
+
+    # ── Persist results ───────────────────────────────────────────────────────
+    master = next(
+        (r["outputs"].get("master_content", "")
+         for r in results if r["step"]["id"] == "final" and r["success"]),
+        ""
+    )
+    st.session_state.pipeline_step_results  = results
+    st.session_state.pipeline_complete      = True
+    st.session_state.pipeline_master_report = master
+
+    if all_ok:
+        st.success("🎉 All 10 pipeline steps completed successfully!")
+    else:
+        failed = sum(1 for r in results if not r["success"])
+        st.warning(f"⚠️ Pipeline complete with {failed} step(s) that encountered errors.")
+
+    time.sleep(0.6)
+    st.rerun()
+
+
+def _render_pipeline_results():
+    """Show step results, master report preview, and all download buttons."""
+    results  = st.session_state.pipeline_step_results
+    work_dir = st.session_state.pipeline_work_dir
+    master   = st.session_state.pipeline_master_report
+    passed   = sum(1 for r in results if r["success"])
+    failed   = len(results) - passed
+
+    # ── Summary hero ──────────────────────────────────────────────────────────
+    hero_grad = ("0C4A6E,#0369A1" if failed == 0 else "92400E,#B45309")
+    st.markdown(
+        f'<div style="background:linear-gradient(135deg,#{hero_grad});'
+        f'border-radius:14px;padding:1.4rem 1.8rem;color:white;'
+        f'margin-bottom:1.2rem;box-shadow:0 4px 20px rgba(3,105,161,0.25);">'
+        f'<div style="font-size:1.1rem;font-weight:800;">🎯 Pipeline Complete</div>'
+        f'<div style="font-size:0.85rem;opacity:0.9;margin-top:6px;">'
+        f'✅ {passed} steps passed &nbsp;·&nbsp; '
+        f'{"✅ 0 failed" if failed == 0 else f"❌ {failed} failed"}'
+        f'</div></div>',
+        unsafe_allow_html=True,
+    )
+
+    # ── Step-by-step results ──────────────────────────────────────────────────
+    st.markdown(
+        '<div class="sec-header"><span>📋</span>'
+        '<span class="sec-header-text">Step-by-Step Results</span></div>',
+        unsafe_allow_html=True,
+    )
+    for r in results:
+        st.markdown(
+            _step_card_html(r["step"], "done" if r["success"] else "error", r["message"]),
+            unsafe_allow_html=True,
+        )
+
+    st.divider()
+
+    # ── Master report ─────────────────────────────────────────────────────────
+    st.markdown(
+        '<div class="sec-header"><span>📄</span>'
+        '<span class="sec-header-text">Master Consolidated Report</span></div>',
+        unsafe_allow_html=True,
+    )
+    col_dl, col_info, _ = st.columns([1.4, 2.5, 1])
+    with col_dl:
+        if master:
+            st.download_button(
+                label="⬇️  Download Master Report (.txt)",
+                data=master,
+                file_name=(f"MASTER_CONSOLIDATED_REPORT_"
+                           f"{datetime.now().strftime('%Y%m%d_%H%M%S')}.txt"),
+                mime="text/plain",
+                use_container_width=True,
+            )
+            try:
+                from utils.master_pdf import generate_master_pdf_bytes
+                pdf_bytes = generate_master_pdf_bytes(master)
+                st.download_button(
+                    label="⬇️  Download Master Report (.pdf)",
+                    data=pdf_bytes,
+                    file_name=(f"MASTER_CONSOLIDATED_REPORT_"
+                               f"{datetime.now().strftime('%Y%m%d_%H%M%S')}.pdf"),
+                    mime="application/pdf",
+                    use_container_width=True,
+                )
+            except Exception as e:
+                st.error(f"Error generating PDF: {e}")
+        else:
+            st.warning("Master report not generated.")
+    with col_info:
+        st.markdown(
+            '<div style="color:#64748B;font-size:0.8rem;padding-top:0.65rem;">'
+            '📄 Single text file combining all analysis reports — '
+            'ready for AI/LLM processing.</div>',
+            unsafe_allow_html=True,
+        )
+
+    if master:
+        with st.expander("📖 Preview Master Report", expanded=False):
+            st.text_area("Master Report", master, height=420,
+                         label_visibility="collapsed")
+
+    st.divider()
+
+    # ── Individual file downloads ─────────────────────────────────────────────
+    st.markdown(
+        '<div class="sec-header"><span>📁</span>'
+        '<span class="sec-header-text">Download Individual Output Files</span></div>',
+        unsafe_allow_html=True,
+    )
+
+    if work_dir and os.path.exists(work_dir):
+        all_f   = sorted(os.listdir(work_dir))
+        txt_f   = [f for f in all_f if f.endswith(".txt")
+                   and f != "MASTER_CONSOLIDATED_REPORT.txt"]
+        pdf_f   = [f for f in all_f if f.endswith(".pdf")]
+        csv_f   = [f for f in all_f if f.endswith(".csv")]
+
+        tab_txt, tab_pdf, tab_csv = st.tabs(
+            [f"📄 Text Reports ({len(txt_f)})",
+             f"📊 PDF Charts ({len(pdf_f)})",
+             f"🗂 CSV Data ({len(csv_f)})"]
+        )
+
+        for file_list, tab_widget, mime_type in [
+            (txt_f, tab_txt, "text/plain"),
+            (pdf_f, tab_pdf, "application/pdf"),
+            (csv_f, tab_csv, "text/csv"),
+        ]:
+            with tab_widget:
+                if not file_list:
+                    st.info("No files of this type were generated.")
+                else:
+                    dl_cols = st.columns(2)
+                    for j, fname in enumerate(file_list):
+                        fpath = os.path.join(work_dir, fname)
+                        try:
+                            with open(fpath, "rb") as fh:
+                                fdata = fh.read()
+                            with dl_cols[j % 2]:
+                                st.download_button(
+                                    label=f"⬇️  {fname}",
+                                    data=fdata,
+                                    file_name=fname,
+                                    mime=mime_type,
+                                    key=f"dl_{fname}_{j}",
+                                    use_container_width=True,
+                                )
+                        except Exception as e:
+                            with dl_cols[j % 2]:
+                                st.error(f"Could not read {fname}: {e}")
+
+    st.divider()
+    col_reset, _ = st.columns([1, 3])
+    with col_reset:
+        if st.button("🔁  Run Pipeline Again", use_container_width=True):
+            st.session_state.pipeline_complete      = False
+            st.session_state.pipeline_step_results  = []
+            st.session_state.pipeline_master_report = ""
+            st.session_state.pipeline_work_dir      = None
+            st.rerun()
+
+
+def render_pipeline_tab():
+    """Full Pipeline Automation tab — Tab 2."""
+    from utils.pipeline_flows import render_esgrc_pipeline, render_apex_pipeline
+    
+    role = st.session_state.get("role", "ESGRC")
+    
+    if role == "APEX":
+        render_apex_pipeline()
+    else:
+        render_esgrc_pipeline()
+
+
+# ─────────────────────────────────────────────────────────────────────────────
 # MAIN
 # ─────────────────────────────────────────────────────────────────────────────
 def main():
@@ -924,55 +1384,82 @@ def main():
 
     st.divider()
 
-    # ── Split layout into left column (workflow/report) and right column (agent chat) ──
-    if st.session_state.get("chat_open", True):
-        col_left, col_right = st.columns([2.6, 1.4], gap="large")
-    else:
-        col_left = st.container()
-        col_right = None
+    # ── Main Layout (No Chat Sidebar) ─────────────────────────────────────────
+    # Top Navigation Menu
+    nav_home, nav_get_started, nav_docs, nav_contact, nav_more = st.tabs([
+        "Home", "Get Started", "Docs", "Contact Us", "More"
+    ])
 
-    with col_left:
-        # ── Step 1: Upload (always visible) ───────────────────────────────────
-        render_upload_section()
+    with nav_home:
+        # Hero Landing Page
+        role = st.session_state.get("role", "ESGRC")
+        if role == "APEX":
+            hero_title = "Enterprise Risk Monitoring"
+            hero_subtitle = "Transform your business with intelligent risk analysis and predictive insights."
+        else:
+            hero_title = "Supplier ESG Management"
+            hero_subtitle = "Align supply chain reporting to your sustainability goals and close regulatory gaps."
 
-        # Evaluate AFTER render_upload_section() has set session state
-        has_csv  = st.session_state.csv_bytes is not None
-        has_json = st.session_state.json_data is not None
+        st.markdown(f"""
+        <div style="background: linear-gradient(135deg, #06363D 0%, #085558 100%); 
+                    border-radius: 0px; padding: 5rem 3rem; text-align: center; color: white;
+                    margin-top: 1rem; margin-bottom: 2rem; box-shadow: 0 10px 30px rgba(6,54,61,0.4);
+                    position: relative; left: 50%; right: 50%; margin-left: -50vw; margin-right: -50vw; width: 100vw;">
+            <div style="font-size: 3rem; font-weight: 800; margin-bottom: 1rem;">{hero_title}</div>
+            <div style="font-size: 1.2rem; opacity: 0.9; max-width: 800px; margin: 0 auto 2.5rem auto; line-height: 1.6;">
+                {hero_subtitle}
+            </div>
+            <div style="display: flex; justify-content: center; gap: 1rem;">
+                <button id="get-started-btn"
+                        style="background: #0D6F73; color: white; border: none; padding: 0.8rem 2.5rem; border-radius: 30px; font-weight: 600; font-size: 1.2rem; cursor: pointer; transition: all 0.3s; box-shadow: 0 4px 15px rgba(13,111,115,0.4);">
+                    Get Started →
+                </button>
+            </div>
+            <div style="margin-top: 4rem; display: flex; justify-content: center; gap: 4rem; opacity: 0.8;">
+                <div><div style="font-size: 2.5rem; font-weight: 700;">+200%</div><div style="font-size: 1rem;">Performance Boost</div></div>
+                <div><div style="font-size: 2.5rem; font-weight: 700;">+40x</div><div style="font-size: 1rem;">Faster Analysis</div></div>
+                <div><div style="font-size: 2.5rem; font-weight: 700;">+345%</div><div style="font-size: 1rem;">ROI Increase</div></div>
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
+        
+        import streamlit.components.v1 as components
+        components.html("""
+        <script>
+        const doc = window.parent.document;
+        let checkExist = setInterval(function() {
+            const btn = doc.getElementById('get-started-btn');
+            if (btn && !btn.dataset.bound) {
+                btn.dataset.bound = "true";
+                btn.addEventListener('click', function() {
+                    const tabs = doc.querySelectorAll('button[data-baseweb="tab"]');
+                    if (tabs.length > 1) {
+                        tabs[1].click();
+                    }
+                });
+                clearInterval(checkExist);
+            }
+        }, 100);
+        </script>
+        """, height=0, width=0)
 
-        # ── Step 2 + 3: Summary & Generate (only when both files ready) ───────
-        if has_csv and has_json:
-            st.divider()
-            render_summary_and_generate()
+    with nav_get_started:
+        # Legacy Standard Report Tab + Pipeline
+        render_pipeline_tab()
 
-        # ── Generating progress ───────────────────────────────────────────────
-        if st.session_state.is_generating:
-            st.divider()
-            render_generating()
+    with nav_docs:
+        st.markdown("### Documentation")
+        st.write("Welcome to the Risk Intell platform documentation. Guides and API references will be available here.")
 
-        # ── Report ────────────────────────────────────────────────────────────
-        show_report = (
-            st.session_state.report_generated
-            and st.session_state.report_context is not None
-        )
+    with nav_contact:
+        st.markdown("### Contact Us")
+        st.write("Reach out to our enterprise support team for assistance.")
 
-        if show_report and not st.session_state.is_generating:
-            st.divider()
-            render_report()
+    with nav_more:
+        st.markdown("### More")
+        st.write("Settings and additional configurations.")
 
-        elif not show_report and not st.session_state.is_generating and (not has_csv or not has_json):
-            # Onboarding hint
-            st.markdown("<br>", unsafe_allow_html=True)
-            st.info(
-                "👆 **Get started:** Upload your **Metric CSV** and **Config JSON** files "
-                "above, then click **⚡ Generate Report**.",
-                icon="ℹ️",
-            )
-
-    if col_right:
-        with col_right:
-            render_chat_panel()
-
-    # ── Page footer ────────────────────────────────────────────────────────
+    # ── Page footer ──────────────────────────────────────────────────────────
     render_footer()
 
 

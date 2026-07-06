@@ -1,0 +1,158 @@
+Sub_Module_ID,Sub_Module_Name,Module_ID,Module_Name
+BGL10000,Brand Guidelines,BRDM_001,Brand Management
+DAM10000,Digital Asset Management,BRDM_001,Brand Management
+BTP10000,Brand Templating,BRDM_001,Brand Management
+BAL10000,Brand Analytics,BRDM_001,Brand Management
+BCB10000, Brand Collaboration,BRDM_001,Brand Management
+BLC10000, Brand Localization,BRDM_001,Brand Management
+BSP10000,Business Partner Strategy & Planning,BSPT_001,Business Partner
+BTD10000,Business Partner Tender Management,BSPT_001,Business Partner
+BRR10000,Party Relationship Development & Retirement,BSPT_001,Business Partner
+ODR10000,Business Partner Offering Development & Retirement,BSPT_001,Business Partner
+BPA10000,Business Partner Agreement Management,BSPT_001,Business Partner
+BPS10000,Business Partner Support Management,BSPT_001,Business Partner
+POM10000,Business Partner Order Management,BSPT_001,Business Partner
+BPI10000,Business Partner Interaction Management,BSPT_001,Business Partner
+PPB10000,Business Partner Problem Management,BSPT_001,Business Partner
+BPP10000,Business Partner Performance Management,BSPT_001,Business Partner
+PSE10000,Party Special Event Management,BSPT_001,Business Partner
+PBI10000,BP Bill/Invoice Management,BSPT_001,Business Partner
+PPR10000,BP Bill Payments & Receivables Management,BSPT_001,Business Partner
+RSS10000,Business Partner Revenue Sharing and Settlement,BSPT_001,Business Partner
+INH10000,BP Bill Inquiry Handling,BSPT_001,Business Partner
+INM10000,Party Inventory Management,BSPT_001,Business Partner
+PPV10000,Business Partner Privacy Management,BSPT_001,Business Partner
+CSR10000,Customer Support and Readiness,CUST_001,Customer
+CEM10000,Customer Experience Management,CUST_001,Customer
+ORH10000,Order Handling,CUST_001,Customer
+CRM10000,Customer Relationship Management,CUST_001,Customer
+ITM10000,Customer Interaction Management,CUST_001,Customer
+CIM10000,Customer Information Management,CUST_001,Customer
+CPM10000,Customer Problem Management,CUST_001,Customer
+QSL10000,Customer QoS/SLA Management,CUST_001,Customer
+BIM10000,Billing and Invoice Management,CUST_001,Customer
+BPR10000,Bill Payments and Receivables Management,CUST_001,Customer
+BIH10000,Billing Inquiry Handling,CUST_001,Customer
+BEV10000,Manage Billing Events,CUST_001,Customer
+CHG10000,Charging,CUST_001,Customer
+CBC10000,Manage Balances,CUST_001,Customer
+RTN10000,Customer Retention Management,CUST_001,Customer
+CII10000,Customer Insight and Intelligence,CUST_001,Customer
+CCM10000,Customer Communication Management,CUST_001,Customer
+CSP10000,Customer Segmenttion and Profiling,CUST_001,Customer
+CFS10000,Customer Feedback and Survey Management,CUST_001,Customer
+EST10000,Strategic Management,ETPR_001,Enterprise
+ERK10000,Enterprise Risk Management,ETPR_001,Enterprise
+EFI10000,Financial Management,ETPR_001,Enterprise
+EKW10000,Knowledge Management,ETPR_001,Enterprise
+EHU10000,Human Resources Management,ETPR_001,Enterprise
+EBA10000, Business Assurance Framework Management,ETPR_001,Enterprise
+ESC10000,Supply Chain Management,ETPR_001,Enterprise
+ESE10000,Enterprise Security Management,ETPR_001,Enterprise
+EAS10000,Enterprise Asset Management,ETPR_001,Enterprise
+EPR10000,Enterprise Performance Management,ETPR_001,Enterprise
+EGV10000,Enterprise Governance Management,ETPR_001,Enterprise
+ERS10000,Research Management,ETPR_001,Enterprise
+ELR10000,Learning Management,ETPR_001,Enterprise
+ETR10000,Training Management,ETPR_001,Enterprise
+EAU10000,Enterprise Audit Management,ETPR_001,Enterprise
+EPV10000,Enterprise Privacy Management,ETPR_001,Enterprise
+ECF10000,Corporate Finance Management,ETPR_001,Enterprise
+EIF10000,Enterprise Information Management,ETPR_001,Enterprise
+ESU10000,Environmental Sustainability,ESRC_001,ESGRC
+SSU10000,Social Sustainability,ESRC_001,ESGRC
+CSU10000,Economic Sustainability,ESRC_001,ESGRC
+GNT10000,Governance and Transparency,ESRC_001,ESGRC
+CGS10000,Compliance to Global Standards,ESRC_001,ESGRC
+GRC10000," Governance, Risk, and Compliance (GRC)",ESRC_001,ESGRC
+ERM10000, Enterprise Risk Management (ERM),ESRC_001,ESGRC
+AUD10000, Internal Audit,ESRC_001,ESGRC
+POL10000, Policy Management,ESRC_001,ESGRC
+REG10000, Regulatory Compliance,ESRC_001,ESGRC
+ETI10000, Ethics and Integrity,ESRC_001,ESGRC
+CGV10000, Corporate Governance,ESRC_001,ESGRC
+IGV10000, IT Governance,ESRC_001,ESGRC
+CPI10000, Corporate Strategy and Planning,ESRC_001,ESGRC
+LIN10000,Lifecycle Integration Management,INTG_001,Integration
+API10000,API Implementation Management,INTG_001,Integration
+BRP10000,"Business Requirements, Process & Rules Management",INTG_001,Integration
+FUL10000,Fulfillment Integration Management,INTG_001,Integration
+ASI10000,Assurance Integration Management,INTG_001,Integration
+APM10000,API Management,INTG_001,Integration
+AII10000,AI Integration Management,INTG_001,Integration
+MSP10000,Market Startegy and Policy,MKTS_001,Market_and_Sales
+SSP10000,Sales Strategy and Planning,MKTS_001,Market_and_Sales
+CHM10000,Channel Management,MKTS_001,Market_and_Sales
+SFO10000,Sales Forecasting,MKTS_001,Market_and_Sales
+BRM10000,Brand Management,MKTS_001,Market_and_Sales
+MKR10000,Market Research,MKTS_001,Market_and_Sales
+SDV10000,Sales Development,MKTS_001,Market_and_Sales
+MSR10000,Market Sales Support & Readiness,MKTS_001,Market_and_Sales
+LYP10000,Loyalty Program Management,MKTS_001,Market_and_Sales
+CPG10000,Marketing Campaign Management,MKTS_001,Market_and_Sales
+MKC10000, Marketing Communications,MKTS_001,Market_and_Sales
+ADS10000,Advertising,MKTS_001,Market_and_Sales
+WPO10000,Work Product Orchestration,PROD_001,Product
+PPP10000,Product Offering Portfolio Planning,PROD_001,Product
+TQA10000,Product Test Quality Assurance,PROD_001,Product
+OCD10000,Product Offering Capability Delivery,PROD_001,Product
+SPC10000,Product Specification Management,PROD_001,Product
+CTP10000,Product Catalogue Planning Management,PROD_001,Product
+PCF10000,Product Configuration Management,PROD_001,Product
+POD10000,Product Specification and Offering Development and Retirement,PROD_001,Product
+CTL10000,Product Catalogue Lifecycle Management,PROD_001,Product
+ANL10000,Product Anomaly Lifecycle Management,PROD_001,Product
+PSU10000,Product Support,PROD_001,Product
+INV10000,Product Inventory Management,PROD_001,Product
+TST10000,Product Test Management,PROD_001,Product
+COR10000,Product Catalogue Operational Readiness Management,PROD_001,Product
+PCC10000,Product Catalogue Content Management,PROD_001,Product
+CAP10000,Product Capacity Management,PROD_001,Product
+PUR10000,Product Offering Purchasing,PROD_001,Product
+PBM10000,Product Problem Management,PROD_001,Product
+ANM10000,Product Anomaly Management,PROD_001,Product
+RST10000,Resource Strategy Management,RSRC_001,Resource 
+RCD10000,Resource Capability Delivery,RSRC_001,Resource 
+RSL10000,Resource Specification Lifecycle Management,RSRC_001,Resource 
+RSU10000,Resource Support ManagementÂ ,RSRC_001,Resource 
+ROR10000,Resource Order Management,RSRC_001,Resource 
+RDA10000,Resource Data Management,RSRC_001,Resource 
+RTR10000,Resource Trouble Management,RSRC_001,Resource 
+RPR10000,Resource Performance Management,RSRC_001,Resource 
+RMR10000,Resource Mediation & Reporting,RSRC_001,Resource 
+RCM10000,Resource Capacity Management,RSRC_001,Resource 
+SST10000,Service Strategy Management,SRVC_001,Service
+CPD10000,Service Capability Delivery,SRVC_001,Service
+SPL10000,Service Specification Lifecycle,SRVC_001,Service
+SUP10000,Service Support ManagementÂ ,SRVC_001,Service
+ACT10000,Service Activation Management,SRVC_001,Service
+PRB10000,Service Problem Management,SRVC_001,Service
+PFR10000,Service Performance Management,SRVC_001,Service
+GMD10000,Service Guiding & Mediation,SRVC_001,Service
+SCM10000,Service Capacity Management,SRVC_001,Service
+CLC10000,Service Catalog Lifecycle Management,SRVC_001,Service
+ORC10000,Service Catalog Operational Readiness Management,SRVC_001,Service
+SCC10000,Service Catalog Content Management,SRVC_001,Service
+SCP10000,Service Catalog Planning Management,SRVC_001,Service
+ALM10000,Service Anomaly Lifecycle Management,SRVC_001,Service
+SAN10000,Service Anomaly Management,SRVC_001,Service
+SSM10000,Service Specification Management,SRVC_001,Service
+PVD10000,Privacy Development,SHRD_001,Shared
+PVM10000,Privacy Management,SHRD_001,Shared
+PTY10000,Party Information Management,SHRD_001,Shared
+ANO10000,Anomaly Management,SHRD_001,Shared
+CMM10000,Communications,SHRD_001,Shared
+CNT10000,Content Management,SHRD_001,Shared
+MDM10000,Master Data Management,SHRD_001,Shared
+PJM10000,Project Management,SHRD_001,Shared
+IDP10000,Identification and Permission Management,SHRD_001,Shared
+FLO10000,Fallout Management,SHRD_001,Shared
+BPT10000,Party Management,SHRD_001,Shared
+TCH10000,Technology Management,SHRD_001,Shared
+SYA10000,Systems and Applications Management,SHRD_001,Shared
+DLY10000,Data Analytics,SHRD_001,Shared
+DDD10000,"Develop, Deploy and Deliver",PRCY_001,ICTM
+LCP10000,Project Lifecycle,PRCY_001,ICTM
+RTS10000,Retrospection Analytics,PRCY_001,ICTM
+CIP10000,"CI, PI, Control Phase",PRCY_001,ICTM
+IOP10000,Innovation and Optimisation,PRCY_001,ICTM
