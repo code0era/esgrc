@@ -51,8 +51,34 @@ html, body, [class*="css"] { font-family: 'Inter', sans-serif !important; }
 /* ── Hide default Streamlit top bar decoration & footer ───────────────── */
 [data-testid="stDecoration"] { display: none !important; }
 [data-testid="stToolbar"]    { display: none !important; }
-header[data-testid="stHeader"] { background: transparent !important; }
+header[data-testid="stHeader"] { 
+    background: transparent !important; 
+    z-index: 120 !important;
+    pointer-events: none !important; /* Allow clicking through transparent parts */
+}
 footer, [data-testid="stFooter"] { display: none !important; }
+
+/* ── Highlight Sidebar Toggle Button ──────────────────────────────────── */
+[data-testid="collapsedControl"], [data-testid="stSidebarCollapsedControl"] {
+    background-color: #00C853 !important;
+    border-radius: 8px !important;
+    margin: 10px !important;
+    color: #FFFFFF !important;
+    border: 1px solid #00E676 !important;
+    transition: all 0.3s ease !important;
+    z-index: 120 !important;
+    pointer-events: auto !important; /* Re-enable clicking for the button */
+    position: fixed !important;
+    top: 110px !important;
+    left: 15px !important;
+}
+[data-testid="collapsedControl"]:hover, [data-testid="stSidebarCollapsedControl"]:hover {
+    background-color: #00E676 !important;
+}
+[data-testid="collapsedControl"] svg, [data-testid="stSidebarCollapsedControl"] svg {
+    fill: #FFFFFF !important;
+    stroke: #FFFFFF !important;
+}
 
 /* ── Reset margins and paddings for all layout wrappers ─────────────── */
 [data-testid="stAppViewContainer"], [data-testid="stAppViewBlockContainer"], [data-testid="stMainBlockContainer"], .main, .block-container, [data-testid="stApp"] {
@@ -664,8 +690,15 @@ def render_header():
         """, unsafe_allow_html=True)
         
     with hc2:
+        user_name = st.session_state.get("username", "User")
+        user_role = st.session_state.get("role", "")
+        role_display = f'<span style="opacity: 0.7; font-size: 0.8rem;">({user_role})</span>' if user_role else ''
+        
         st.markdown(f"""
         <div style="text-align: right; margin-bottom: 8px; display: flex; justify-content: flex-end; align-items: center; gap: 8px;">
+            <div style="color: white; font-size: 0.95rem; margin-right: 10px;">
+                Welcome, <b>{user_name}</b> {role_display}
+            </div>
             <div class="risk-intell-header-badge"><span class="risk-intell-header-dot"></span> Live</div>
             <div class="risk-intell-header-date" id="live-clock">{now_str}</div>
         </div>
