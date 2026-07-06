@@ -121,31 +121,13 @@ def is_mongo_reachable() -> bool:
 
 def should_use_sqlite() -> bool:
     """Determine whether to use SQLite instead of MongoDB."""
-    # Check if session state already determined local mode
-    try:
-        if "local_db_mode" in st.session_state:
-            return st.session_state.local_db_mode
-    except Exception:
-        pass
-
-    # Check cached reachability
-    reachable = is_mongo_reachable()
-    
-    # Store result in session state for UI warnings
-    try:
-        st.session_state.local_db_mode = not reachable
-    except Exception:
-        pass
-        
-    return not reachable
+    # Forced to False by user request to ONLY use MongoDB Atlas
+    return False
 
 
 def mark_sqlite_mode():
     """Explicitly switch to SQLite mode in session state."""
-    try:
-        st.session_state.local_db_mode = True
-    except Exception:
-        pass
+    pass
 
 
 def get_db():
@@ -194,7 +176,7 @@ def _verify_password(password: str, stored_hash: str) -> bool:
 # SQLITE BACKEND IMPLEMENTATIONS
 # ─────────────────────────────────────────────────────────────────────────────
 
-def sqlite_register_user(username: str, email: str, password_hash: str) -> Dict[str, Any]:
+def sqlite_register_user(username: str, email: str, password_hash: str, role: str = "ESGRC") -> Dict[str, Any]:
     conn = sqlite3.connect(DB_FILE)
     c = conn.cursor()
     # Check username
@@ -211,9 +193,15 @@ def sqlite_register_user(username: str, email: str, password_hash: str) -> Dict[
     user_id = str(uuid.uuid4())
     created_at = datetime.utcnow().isoformat()
     try:
+        # Check if role column exists, add if not
+        try:
+            c.execute("ALTER TABLE users ADD COLUMN role TEXT DEFAULT 'ESGRC'")
+        except Exception:
+            pass # Column already exists
+            
         c.execute(
-            "INSERT INTO users (id, username, email, password_hash, created_at) VALUES (?, ?, ?, ?, ?)",
-            (user_id, username, email, password_hash, created_at)
+            "INSERT INTO users (id, username, email, password_hash, created_at, role) VALUES (?, ?, ?, ?, ?, ?)",
+            (user_id, username, email, password_hash, created_at, role)
         )
         conn.commit()
         user_doc = {
@@ -221,7 +209,8 @@ def sqlite_register_user(username: str, email: str, password_hash: str) -> Dict[
             "username": username,
             "email": email,
             "password_hash": password_hash,
-            "created_at": created_at
+            "created_at": created_at,
+            "role": role
         }
         conn.close()
         return {"ok": True, "user": user_doc}
@@ -238,13 +227,19 @@ def sqlite_login_user(username: str) -> Optional[Dict[str, Any]]:
     row = c.fetchone()
     conn.close()
     if row:
-        return {
+        doc = {
             "_id": row["id"],
             "username": row["username"],
             "email": row["email"],
             "password_hash": row["password_hash"],
-            "created_at": row["created_at"]
+            "created_at": row["created_at"],
         }
+        # Safely get role for backward compatibility
+        try:
+            doc["role"] = row["role"] if row["role"] else "ESGRC"
+        except IndexError:
+            doc["role"] = "ESGRC"
+        return doc
     return None
 
 
@@ -365,11 +360,11 @@ def sqlite_append_chat_message(report_id: str, role: str, content: str) -> None:
 # PUBLIC DATABASE INTERFACE (WITH AUTO-FALLBACK)
 # ─────────────────────────────────────────────────────────────────────────────
 
-def register_user(username: str, email: str, password: str) -> Dict[str, Any]:
+def register_user(username: str, email: str, password: str, role: str = "ESGRC") -> Dict[str, Any]:
     """Create a new user. Returns {'ok': True, 'user': {...}} or {'ok': False, 'error': str}."""
     hashed = _hash_password(password)
     if should_use_sqlite():
-        return sqlite_register_user(username, email, hashed)
+        return sqlite_register_user(username, email, hashed, role)
         
     try:
         db = get_db()
@@ -383,13 +378,14 @@ def register_user(username: str, email: str, password: str) -> Dict[str, Any]:
             "email": email,
             "password_hash": hashed,
             "created_at": datetime.utcnow(),
+            "role": role
         }
         result = db.users.insert_one(doc)
         doc["_id"] = result.inserted_id
         return {"ok": True, "user": doc}
     except Exception as e:
         mark_sqlite_mode()
-        return sqlite_register_user(username, email, hashed)
+        return sqlite_register_user(username, email, hashed, role)
 
 
 def login_user(username: str, password: str) -> Dict[str, Any]:
@@ -409,6 +405,7 @@ def login_user(username: str, password: str) -> Dict[str, Any]:
             return {"ok": False, "error": "User not found."}
         if not _verify_password(password, user["password_hash"]):
             return {"ok": False, "error": "Incorrect password."}
+        user["role"] = user.get("role", "ESGRC")
         return {"ok": True, "user": user}
     except Exception as e:
         mark_sqlite_mode()
