@@ -51,7 +51,7 @@ html, body, [class*="css"] { font-family: 'Inter', sans-serif !important; }
 /* ── Hide default Streamlit top bar decoration & footer ───────────────── */
 [data-testid="stDecoration"] { display: none !important; }
 [data-testid="stToolbar"]    { display: none !important; }
-header[data-testid="stHeader"], header { display: none !important; }
+header[data-testid="stHeader"] { background: transparent !important; }
 footer, [data-testid="stFooter"] { display: none !important; }
 
 /* ── Reset margins and paddings for all layout wrappers ─────────────── */
