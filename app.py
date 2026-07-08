@@ -11,7 +11,7 @@ import time
 from datetime import datetime
 from typing import Optional, Dict, List, Any
 
-import anthropic
+from groq import Groq
 import pandas as pd
 # pyrefly: ignore [missing-import]
 import streamlit as st
@@ -257,7 +257,7 @@ div[data-testid="element-container"], div[data-testid="stVerticalBlock"] {
 /* ── Custom page header bar ──────────────────────────────────────────── */
 div[data-testid="stHorizontalBlock"]:has(.risk-intell-header-left) {
     background: linear-gradient(135deg, #06363D 0%, #085558 100%) !important;
-    padding: 1rem 3rem !important;
+    padding: 0.5rem 3rem !important;
     position: fixed !important;
     top: 0 !important;
     left: 0 !important;
@@ -269,12 +269,12 @@ div[data-testid="stHorizontalBlock"]:has(.risk-intell-header-left) {
     align-items: center !important;
 }
 [data-testid="stAppViewBlockContainer"] {
-    padding-top: 120px !important;
+    padding-top: 90px !important;
 }
 .risk-intell-header-left  { display:flex; align-items:center; gap:14px; }
-.risk-intell-header-logo  { font-size:2.2rem; line-height:1; }
-.risk-intell-header-title { font-size:1.8rem; font-weight:800; color:#FFFFFF; letter-spacing:-0.3px; }
-.risk-intell-header-sub   { font-size:1rem; color:#84BABF; margin-top:2px; letter-spacing:0.03em; font-weight: 500; }
+.risk-intell-header-logo  { font-size:1.8rem; line-height:1; }
+.risk-intell-header-title { font-size:1.4rem; font-weight:800; color:#FFFFFF; letter-spacing:-0.3px; }
+.risk-intell-header-sub   { font-size:0.85rem; color:#84BABF; margin-top:2px; letter-spacing:0.03em; font-weight: 500; }
 .risk-intell-header-right { display:flex; align-items:center; gap:16px; }
 .risk-intell-header-badge {
     background: #DCFCE7;
@@ -394,6 +394,37 @@ hr { border: none !important; border-top: 1.5px solid #E0F2FE !important; margin
     50%       { opacity: 0.6; }
 }
 .pipeline-running-row { animation: pipe-pulse 1.2s ease-in-out infinite; }
+
+/* ── Responsiveness (Mobile & Tablet) ────────────────────────────────── */
+@media (max-width: 900px) {
+    .risk-intell-header-title { font-size: 1.1rem; letter-spacing: 0; }
+    .risk-intell-header-sub { font-size: 0.65rem; }
+    div[data-testid="stHorizontalBlock"]:has(.risk-intell-header-left) {
+        padding: 0.5rem 1rem !important;
+        flex-wrap: nowrap !important;
+    }
+    div[data-testid="stHorizontalBlock"]:has(.risk-intell-header-left) > div[data-testid="column"] {
+        min-width: auto !important;
+        width: auto !important;
+        flex: 1 1 auto !important;
+    }
+    .risk-intell-footer {
+        flex-direction: column;
+        justify-content: center;
+        padding: 0.5rem;
+        gap: 0.3rem;
+    }
+    .risk-intell-footer-security { display: none; }
+    .risk-intell-footer-links { gap: 10px; flex-wrap: wrap; justify-content: center; }
+    [data-testid="stAppViewBlockContainer"] { padding-top: 80px !important; }
+}
+@media (max-width: 600px) {
+    .risk-intell-header-sub { display: none; }
+    .risk-intell-header-title { font-size: 1rem; }
+    div[data-testid="stHorizontalBlock"]:has(.risk-intell-header-left) { padding: 0.5rem !important; }
+    .risk-intell-footer-brand { font-size: 0.85rem; }
+    .risk-intell-footer-copy { font-size: 0.75rem; }
+}
 </style>
 """, unsafe_allow_html=True)
 
@@ -484,7 +515,7 @@ Low-Performing Sub-Modules:
 {low_sm}
 
 Full Report:
-{ctx.get("report_text", "")}
+{str(ctx.get("report_text", ""))[:80000] + ("..." if len(str(ctx.get("report_text", ""))) > 80000 else "")}
 
 IMPORTANT FORMATTING RULES:
 - Keep responses extremely short, direct, and concise (under 120 words). No preamble or fluff.
@@ -494,17 +525,23 @@ IMPORTANT FORMATTING RULES:
 - Be direct, professional, and helpful.
 """
 
-def stream_claude(messages: list, system: str):
-    """Generator that yields text tokens from Claude streaming API."""
-    client = anthropic.Anthropic(api_key=st.secrets["ANTHROPIC_API_KEY"])
-    with client.messages.stream(
-        model="claude-3-5-haiku-20241022",
-        max_tokens=300,
-        system=system,
-        messages=messages,
-    ) as stream:
-        for token in stream.text_stream:
-            yield token
+def stream_groq(messages: list, system: str):
+    """Generator that yields text tokens from Groq streaming API."""
+    from groq import Groq
+    client = Groq(api_key=st.secrets.get("GROQ_API_KEY", ""))
+    
+    # Groq needs system prompt as a message
+    groq_msgs = [{"role": "system", "content": system}] + messages
+    
+    stream = client.chat.completions.create(
+        model="llama-3.3-70b-versatile",
+        messages=groq_msgs,
+        stream=True,
+        max_tokens=1024,
+    )
+    for chunk in stream:
+        if chunk.choices[0].delta.content is not None:
+            yield chunk.choices[0].delta.content
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -847,10 +884,10 @@ def render_generating():
             client = anthropic.Anthropic(api_key=st.secrets["ANTHROPIC_API_KEY"])
             system = build_system_prompt(context)
             resp = client.messages.create(
-                model="claude-3-5-haiku-20241022",
+                model="claude-3-7-sonnet-latest",
                 max_tokens=250,
                 system=system,
-                messages=[{"role": "user", "content": "Please provide an extremely short executive summary (under 100 words, 1 short paragraph) of the report's findings, highlighting the most critical areas needing attention based on the low-performing metrics, groups, and sub-modules."}]
+                messages=[{"role": "user", "content": "Please provide a comprehensive  executive summary (under 2 pages ) of the report's findings, highlighting the most critical areas needing attention based on the low-performing metrics, groups, and sub-modules."}]
             )
             context["ai_summary"] = resp.content[0].text
         except Exception as e:
@@ -1069,7 +1106,7 @@ def render_chat_panel():
         claude_msgs = [{"role": m["role"], "content": m["content"]} for m in messages]
 
         with st.chat_message("assistant"):
-            full_response = st.write_stream(stream_claude(claude_msgs, system_prompt))
+            full_response = st.write_stream(stream_groq(claude_msgs, system_prompt))
 
         messages.append({"role": "assistant", "content": full_response})
         st.session_state.chat_messages = messages
@@ -1318,7 +1355,7 @@ def _render_pipeline_results():
         st.markdown(
             '<div style="color:#64748B;font-size:0.8rem;padding-top:0.65rem;">'
             '📄 Single text file combining all analysis reports — '
-            'ready for AI/LLM processing.</div>',
+            'ready for AI processing.</div>',
             unsafe_allow_html=True,
         )
 
