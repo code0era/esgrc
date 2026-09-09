@@ -60,28 +60,35 @@ header[data-testid="stHeader"] {
 footer, [data-testid="stFooter"] { display: none !important; }
 
 /* ── Highlight Sidebar Toggle Button ──────────────────────────────────── */
-[data-testid="collapsedControl"], [data-testid="stSidebarCollapsedControl"] {
-    background-color: #CD6752 !important;
-    border-radius: 8px !important;
-    margin: 10px !important;
-    color: #FFFFFF !important;
-    border: 1px solid #E2745D !important;
-    transition: all 0.3s ease !important;
+header[data-testid="stHeader"] button,
+button[kind="header"],
+[data-testid="collapsedControl"], 
+[data-testid="stSidebarCollapsedControl"] {
+    background: transparent !important;
+    border: none !important;
     z-index: 9999999 !important;
-    pointer-events: auto !important; /* Re-enable clicking for the button */
+    pointer-events: auto !important;
     position: fixed !important;
-    top: 75px !important;
-    left: 10px !important;
-    display: flex !important;
-    opacity: 1 !important;
-    visibility: visible !important;
+    top: 60px !important;
+    left: 15px !important;
 }
-[data-testid="collapsedControl"]:hover, [data-testid="stSidebarCollapsedControl"]:hover {
-    background-color: #E2745D !important;
+header[data-testid="stHeader"] svg,
+button[kind="header"] svg,
+[data-testid="collapsedControl"] svg, 
+[data-testid="stSidebarCollapsedControl"] svg {
+    fill: #CD6752 !important;
+    stroke: #CD6752 !important;
+    color: #CD6752 !important;
+    width: 2rem !important;
+    height: 2rem !important;
+    transition: all 0.3s ease !important;
 }
-[data-testid="collapsedControl"] svg, [data-testid="stSidebarCollapsedControl"] svg {
-    fill: #FFFFFF !important;
-    stroke: #FFFFFF !important;
+header[data-testid="stHeader"] svg:hover,
+button[kind="header"] svg:hover,
+[data-testid="collapsedControl"] svg:hover, 
+[data-testid="stSidebarCollapsedControl"] svg:hover {
+    fill: #E2745D !important;
+    stroke: #E2745D !important;
 }
 
 /* ── Reset margins and paddings for all layout wrappers ─────────────── */
