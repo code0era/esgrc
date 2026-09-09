@@ -812,7 +812,6 @@ def render_auth():
         max-width: 450px;
         margin: 0 auto;
     }
-    header[data-testid="stHeader"] { display: none !important; }
     
     /* Style the Tab Headers to look good on dark */
     button[data-baseweb="tab"] {
