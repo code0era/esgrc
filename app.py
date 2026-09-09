@@ -955,9 +955,9 @@ def render_auth():
         <a href="https://meteoerait.com/what-changes" target="_blank">What changes</a>
         <a href="https://meteoerait.com/questions" target="_blank">Questions</a>
         <a href="https://meteoerait.com/who-its-for" target="_blank">Who it's for</a>
-        <a href="https://meteoerait.com/about-us" target="_blank">About us</a>
-        <a href="https://meteoerait.com/contact-us" target="_blank">Contact us</a>
-        <a href="https://meteoerait.com/book-a-demo" class="nav-btn" target="_blank">Book a demo ↗</a>
+        <a href="https://meteoerait.com/about" target="_blank">About us</a>
+        <a href="https://meteoerait.com/contact" target="_blank">Contact us</a>
+        <a href="https://meteoerait.com/contact" class="nav-btn" target="_blank">Book a demo ↗</a>
     </div>
 </div>
 
