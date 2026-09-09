@@ -50,7 +50,8 @@ html, body, [class*="css"] { font-family: 'Inter', sans-serif !important; }
 
 /* ── Hide default Streamlit top bar decoration & footer ───────────────── */
 [data-testid="stDecoration"] { display: none !important; }
-[data-testid="stToolbar"]    { display: none !important; }
+[data-testid="stToolbarActions"] { display: none !important; }
+[data-testid="stMainMenu"] { display: none !important; }
 header[data-testid="stHeader"] { 
     background: transparent !important; 
     z-index: 9999999 !important;
@@ -71,6 +72,9 @@ footer, [data-testid="stFooter"] { display: none !important; }
     position: fixed !important;
     top: 75px !important;
     left: 10px !important;
+    display: flex !important;
+    opacity: 1 !important;
+    visibility: visible !important;
 }
 [data-testid="collapsedControl"]:hover, [data-testid="stSidebarCollapsedControl"]:hover {
     background-color: rgba(255, 255, 255, 0.25) !important;
