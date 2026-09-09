@@ -727,6 +727,7 @@ def render_auth():
         text-align: center;
         letter-spacing: -2px;
         margin-bottom: 0.5rem;
+        margin-top: 15vh;
     }
     .auth-subtitle {
         font-size: 1.25rem;
