@@ -61,11 +61,11 @@ footer, [data-testid="stFooter"] { display: none !important; }
 
 /* ── Highlight Sidebar Toggle Button ──────────────────────────────────── */
 [data-testid="collapsedControl"], [data-testid="stSidebarCollapsedControl"] {
-    background-color: rgba(255, 255, 255, 0.1) !important;
+    background-color: #CD6752 !important;
     border-radius: 8px !important;
     margin: 10px !important;
-    color: #F8F6F0 !important;
-    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    color: #FFFFFF !important;
+    border: 1px solid #E2745D !important;
     transition: all 0.3s ease !important;
     z-index: 9999999 !important;
     pointer-events: auto !important; /* Re-enable clicking for the button */
@@ -77,11 +77,11 @@ footer, [data-testid="stFooter"] { display: none !important; }
     visibility: visible !important;
 }
 [data-testid="collapsedControl"]:hover, [data-testid="stSidebarCollapsedControl"]:hover {
-    background-color: rgba(255, 255, 255, 0.25) !important;
+    background-color: #E2745D !important;
 }
 [data-testid="collapsedControl"] svg, [data-testid="stSidebarCollapsedControl"] svg {
-    fill: #F8F6F0 !important;
-    stroke: #F8F6F0 !important;
+    fill: #FFFFFF !important;
+    stroke: #FFFFFF !important;
 }
 
 /* ── Reset margins and paddings for all layout wrappers ─────────────── */
