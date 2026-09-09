@@ -180,12 +180,27 @@ mkdir .streamlit
 # Edit .streamlit/secrets.toml
 ```
 
-Add the following to `.streamlit/secrets.toml`:
+Add the following to `.streamlit/secrets.toml` (and equivalently in the Streamlit Cloud Secrets interface if deploying):
 
 ```toml
+# AI & Database Secrets
 ANTHROPIC_API_KEY = "your-anthropic-api-key"
-MONGO_URI = "your-mongodb-connection-string" # Optional
+MONGODB_URI = "your-mongodb-connection-string" # Optional (falls back to SQLite locally)
+MONGODB_DB = "esgrc_db"
+APP_SECRET_KEY = "generate-a-random-secret-key-here"
+
+# Email Verification Secrets (Gmail SMTP)
+[smtp]
+email_sender = "your-email@gmail.com"
+email_password = "your-gmail-app-password"
 ```
+
+### 3. Deploy to Streamlit Community Cloud (Recommended)
+1. Commit and push your code to a GitHub repository.
+2. Go to [share.streamlit.io](https://share.streamlit.io) and create a **New app**.
+3. Select your repository, set branch to `main`, and Main file path to `app.py`.
+4. Click **Advanced settings** and paste your secrets (from step 2) into the secrets box.
+5. Click **Deploy!**
 
 ### 3. Run the Application
 
