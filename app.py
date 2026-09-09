@@ -957,7 +957,7 @@ def render_auth():
         <a href="#">Who it's for</a>
         <a href="#">About us</a>
         <a href="https://meteoerait.com/">Contact us</a>
-        <a href="#" class="nav-btn">Book a demo ↗</a>
+        <a href="https://meteoerait.com/" class="nav-btn" target="_blank">Book a demo ↗</a>
     </div>
 </div>
 
