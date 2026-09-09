@@ -952,11 +952,11 @@ def render_auth():
         <span>METEOERAIT SOFTWARE</span>
     </div>
     <div class="auth-nav-right">
-        <a href="#">What changes</a>
-        <a href="#">Questions</a>
-        <a href="#">Who it's for</a>
-        <a href="#">About us</a>
-        <a href="https://meteoerait.com/">Contact us</a>
+        <a href="https://meteoerait.com/" target="_blank">What changes</a>
+        <a href="https://meteoerait.com/" target="_blank">Questions</a>
+        <a href="https://meteoerait.com/" target="_blank">Who it's for</a>
+        <a href="https://meteoerait.com/" target="_blank">About us</a>
+        <a href="https://meteoerait.com/" target="_blank">Contact us</a>
         <a href="https://meteoerait.com/" class="nav-btn" target="_blank">Book a demo ↗</a>
     </div>
 </div>
