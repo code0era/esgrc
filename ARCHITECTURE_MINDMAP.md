@@ -1,6 +1,6 @@
-# RISK INTELL Platform - Architecture & Mindmap
+# METEOERAIT SOFTWARE Platform - Architecture & Mindmap
 
-This document visualizes the architecture, tech stack, and data flow of the **RISK INTELL Platform (ESGRC)** application in highly granular detail.
+This document visualizes the architecture, tech stack, and data flow of the **METEOERAIT SOFTWARE Platform (ESGRC)** application in highly granular detail.
 
 ## 🧠 Comprehensive Architecture Mindmap
 
@@ -8,7 +8,7 @@ The mindmap below extensively details the core components, tech stack, modular s
 
 ```mermaid
 mindmap
-  root((RISK INTELL<br/>Platform))
+  root((METEOERAIT SOFTWARE<br/>Platform))
     Frontend UI
       Streamlit App
         Custom CSS & Theming

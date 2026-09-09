@@ -1,0 +1,372 @@
+{
+  "module_name": "IT Processes",
+  "module_id": "PRCY_001",
+  "sub_modules": [
+    {
+      "sub_module_name": "Develop, Deploy and Deliver",
+      "sub_module_id": "DDD10000",
+      "value": [],
+      "groups": [
+        {
+          "group_name": "Requirement Development and Management",
+          "group_id": "DDD10101",
+          "value": [
+            {
+              "metric_name": "Requirements Volatility(Changes_per_Baseline)",
+              "metric_id": "DDD10102",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Requirements with Bidirectional Traceability",
+              "metric_id": "DDD10103",
+              "value": "75%"
+            },
+            {
+              "metric_name": "Requirements Review Efficiency (Defects_per_Hr)",
+              "metric_id": "DDD10104",
+              "value": "65%"
+            }
+          ]
+        },
+        {
+          "group_name": "Technical Solution",
+          "group_id": "DDD10105",
+          "value": [
+            {
+              "metric_name": "Design Review Defect Density",
+              "metric_id": "DDD10106",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Complexity Index (like Cyclomatic Complexity)",
+              "metric_id": "DDD10107",
+              "value": "75%"
+            },
+            {
+              "metric_name": "Reusable Components Developed",
+              "metric_id": "DDD10108",
+              "value": "65%"
+            }
+          ]
+        },
+        {
+          "group_name": "Product Integration",
+          "group_id": "DDD10109",
+          "value": [
+            {
+              "metric_name": "Number of Integration Build Failures",
+              "metric_id": "DDD10110",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Interface Defect Density",
+              "metric_id": "DDD10111",
+              "value": "75%"
+            },
+            {
+              "metric_name": "Time to Integrate (Avg. cycle time)",
+              "metric_id": "DDD10112",
+              "value": "65%"
+            }
+          ]
+        },
+        {
+          "group_name": "Verification and Validation",
+          "group_id": "DDD10113",
+          "value": [
+            {
+              "metric_name": "Defect Removal Efficiency (DRE)",
+              "metric_id": "DDD10114",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Test Case Execution Pass/Fail Rate",
+              "metric_id": "DDD10115",
+              "value": "75%"
+            },
+            {
+              "metric_name": "Post-Release Defect Leakage",
+              "metric_id": "DDD10116",
+              "value": "65%"
+            }
+          ]
+        }
+	  ]
+    },
+	{
+      "sub_module_name": "Project Lifecycle",
+      "sub_module_id": "LCP10000",
+      "value": [],
+	  "groups": [
+		{
+          "group_name": "Planning and Estimating",
+          "group_id": "LCP10101",
+          "value": [
+            {
+              "metric_name": "Effort Variance (% Actual vs. Estimated)",
+              "metric_id": "LCP10102",
+              "value": "76%"
+            },
+            {
+              "metric_name": "Schedule Variance (% Actual vs. Planned)",
+              "metric_id": "LCP10103",
+              "value": "84%"
+            },
+            {
+              "metric_name": "Size Estimation Accuracy (Lines of Code per FP)",
+              "metric_id": "LCP10104",
+              "value": "86%"
+            }
+          ]
+        },
+        {
+          "group_name": "Monitor and Control",
+          "group_id": "LCP10105",
+          "value": [
+            {
+              "metric_name": "Critical Path Tasks Delayed (%)",
+              "metric_id": "LCP10106",
+              "value": "81%"
+            },
+            {
+              "metric_name": "Resource Utilization Rate",
+              "metric_id": "LCP10107",
+              "value": "76%"
+            },
+            {
+              "metric_name": "Milestone Slippage Rate",
+              "metric_id": "LCP10108",
+              "value": "81%"
+            }			
+          ]
+        },
+        {
+          "group_name": "Risk & Opportunity Management",
+          "group_id": "LCP10109",
+          "value": [
+            {
+              "metric_name": "Risk Exposure Score (Prob x Impact)",
+              "metric_id": "LCP10110",
+              "value": "86%"
+            },
+            {
+              "metric_name": "Mitigation Plans Active vs. Completed",
+              "metric_id": "LCP10111",
+              "value": "86%"
+            },			
+            {
+              "metric_name": "Unmanaged Risk Occurrence Rate",
+              "metric_id": "LCP10112",
+              "value": "76%"
+            }
+          ]
+        },
+        {
+          "group_name": "Configuration Management",
+          "group_id": "LCP10113",
+          "value": [
+            {
+              "metric_name": "Frequency of Unauthorized Baseline Changes",
+              "metric_id": "LCP10114",
+              "value": "81%"
+            },
+            {
+              "metric_name": "Configuration Audit Non-Conformance Rate",
+              "metric_id": "LCP10115",
+              "value": "76%"
+            },
+            {
+              "metric_name": "Build Reproducibility Success Rate",
+              "metric_id": "LCP10116",
+              "value": "81%"
+            }			
+          ]
+        }
+	  ]	
+    },
+    {
+      "sub_module_name": "Retrospection Analytics",
+      "sub_module_id": "RTS10000",
+      "value": [],
+      "groups": [
+        {
+          "group_name": " CAR (Causal Analysis and Resolution)",
+          "group_id": "RTS10101",
+          "value": [
+            {
+              "metric_name": "RCA Pareto",
+              "metric_id": "RTS10102",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Corrective Action Closure Time",
+              "metric_id": "RTS10103",
+              "value": "75%"
+            },
+            {
+              "metric_name": "Recurrence Rate of Same Root Cause",
+              "metric_id": "RTS10104",
+              "value": "65%"
+            }
+          ]
+        },
+        {
+          "group_name": "DAR (Decision Analysis and Resolution)",
+          "group_id": "RTS10105",
+          "value": [
+            {
+              "metric_name": "Decision Response Time (Request to Resolution)",
+              "metric_id": "RTS10106",
+              "value": "65%"
+            },
+            {
+              "metric_name": "High-Impact Decisions using formal DAR(%)",
+              "metric_id": "RTS10107",
+              "value": "69%"
+            },
+            {
+              "metric_name": "DAR Outcome Effectiveness (Post-decision review)",
+              "metric_id": "RTS10108",
+              "value": "78%"
+            }
+          ]
+        }
+      ]
+	},
+    {
+      "sub_module_name": "CI, PI, Control Phase",
+      "sub_module_id": "CIP10000",
+      "value": [],
+      "groups": [
+        {
+          "group_name": "Managing Performance and Measurement",
+          "group_id": "CIP10101",
+          "value": [
+            {
+              "metric_name": "Process Performance Baselines",
+              "metric_id": "CIP10102",
+              "value": "67%"
+            },
+			{
+              "metric_name": "Prediction Interval Accuracy for Performance Models",
+              "metric_id": "CIP10103",
+              "value": "67%"
+            },
+            {
+              "metric_name": "ROI of Process Improvement",
+              "metric_id": "CIP10104",
+              "value": "85%"
+            }
+          ]
+        },
+        {
+          "group_name": "Process Quality Assurance",
+          "group_id": "CIP10105",
+          "value": [
+            {
+              "metric_name": "Non-Compliance (NC) Density per Audit",
+              "metric_id": "CIP10106",
+              "value": "76%"
+            },
+			{
+              "metric_name": "Aging of Open Quality Issues",
+              "metric_id": "CIP10107",
+              "value": "67%"
+            },
+            {
+              "metric_name": "Audit Compliance Score (% passed checks)",
+              "metric_id": "CIP10108",
+              "value": "84%"
+            }
+          ]
+        },
+        {
+          "group_name": "Safety and Information Security",
+          "group_id": "CIP10109",
+          "value": [
+            {
+              "metric_name": "Information Security",
+              "metric_id": "CIP10110",
+              "value": "86%"
+            },
+			{
+              "metric_name": "Number of Security Incidents (by Severity)",
+              "metric_id": "CIP10111",
+              "value": "67%"
+            },
+			{
+              "metric_name": "Average Time to Remediate Vulnerabilities",
+              "metric_id": "CIP10112",
+              "value": "67%"
+            },
+            {
+              "metric_name": "Staff Completing Security Awareness Training(%)",
+              "metric_id": "CIP10113",
+              "value": "81%"
+            },
+            {
+              "metric_name": "Vulnerability Scan Pass Rate(% Assets)",
+              "metric_id": "CIP10114",
+              "value": "76%"
+            }
+          ]
+        }
+      ]	
+	},
+    {
+      "sub_module_name": "Innovation and Optimisation",
+      "sub_module_id": "IOP10000",
+      "value": [],
+      "groups": [	
+        {
+          "group_name": "Stabilisation and Capability",
+          "group_id": "IOP10101",
+          "value": [
+            {
+              "metric_name": "Control Limit Adherence",
+              "metric_id": "IOP10102",
+              "value": "86%"
+            },
+            {
+              "metric_name": "Process Capability(Cp,Cpk)",
+              "metric_id": "IOP10103",
+              "value": "76%"
+            }
+          ]
+        },
+        {
+          "group_name": "Predictiion of Performance",
+          "group_id": "IOP10104",
+          "value": [
+            {
+              "metric_name": "Model Error Rate",
+              "metric_id": "IOP10105",
+              "value": "82%"
+            },
+            {
+              "metric_name": "Simulation Reliability-Variance",
+              "metric_id": "IOP10106",
+              "value": "83%"
+            }
+          ]
+        },
+        {
+          "group_name": "Minimalism and Sufficiency",
+          "group_id": "IOP10107",
+          "value": [
+            {
+              "metric_name": "Innovation Effectiveness and Productivity",
+              "metric_id": "IOP10108",
+              "value": "85%"
+            },
+            {
+			  "metric_name": "Systemic Defect Prevention Rate",
+              "metric_id": "IOP10109",
+              "value": "87%"
+            }
+          ]
+        }
+      ]
+	}
+  ]
+}

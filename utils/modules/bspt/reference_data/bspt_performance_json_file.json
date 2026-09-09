@@ -1,0 +1,2550 @@
+{
+  "module_name": "Business Partner",
+  "module_id": "BSPT_001",
+  "value": [],
+  "sub_modules": [
+    {
+      "sub_module_name": "Business Partner Strategy & Planning",
+      "sub_module_id": "BSP10000",
+      "value": [],
+      "groups": [
+        {
+          "group_name": "1. Partner Recruitment",
+          "group_id": "BSP10101",
+          "value": [
+            {
+              "metric_name": "Number of New Partnerships",
+              "metric_id": "BSP10102",
+              "value": "65%"
+            },
+            {
+              "metric_name": "Partner Join Sources",
+              "metric_id": "BSP10103",
+              "value": "85%"
+            }
+          ]
+        },
+        {
+          "group_name": "2. Partner Activation",
+          "group_id": "BSP10104",
+          "value": [
+            {
+              "metric_name": "Partner Onboarding Time",
+              "metric_id": "BSP10105",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Activation Rate",
+              "metric_id": "BSP10106",
+              "value": "65%"
+            }
+          ]
+        },
+        {
+          "group_name": "3. Partner Engagement",
+          "group_id": "BSP10107",
+          "value": [
+            {
+              "metric_name": "Partner Interaction Frequency",
+              "metric_id": "BSP10108",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Partner Satisfaction Score",
+              "metric_id": "BSP10109",
+              "value": "71%"
+            }
+          ]
+        },
+        {
+          "group_name": "4. Revenue Efficiency",
+          "group_id": "BSP10110",
+          "value": [
+            {
+              "metric_name": "Revenue per Partner",
+              "metric_id": "BSP10111",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Cost per Partner",
+              "metric_id": "BSP10112",
+              "value": "85%"
+            },
+            {
+              "metric_name": "ROI on Partnerships",
+              "metric_id": "BSP10113",
+              "value": "75%"
+            }
+          ]
+        },
+        {
+          "group_name": "5. Market Expansion",
+          "group_id": "BSP10114",
+          "value": [
+            {
+              "metric_name": "New Markets Entered",
+              "metric_id": "BSP10115",
+              "value": "65%"
+            },
+            {
+              "metric_name": "Market Penetration Rate",
+              "metric_id": "BSP10116",
+              "value": "68%"
+            }
+          ]
+        },
+        {
+          "group_name": "6. Partner Performance",
+          "group_id": "BSP10117",
+          "value": [
+            {
+              "metric_name": "Sales Performance",
+              "metric_id": "BSP10118",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Customer Acquisition Cost",
+              "metric_id": "BSP10119",
+              "value": "71%"
+            },
+            {
+              "metric_name": "Customer Retention Rate",
+              "metric_id": "BSP10120",
+              "value": "68%"
+            }
+          ]
+        },
+        {
+          "group_name": "7. Qualitative Measures",
+          "group_id": "BSP10121",
+          "value": [
+            {
+              "metric_name": "Partner Loyalty",
+              "metric_id": "BSP10122",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Partner Collaboration",
+              "metric_id": "BSP10123",
+              "value": "85%"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sub_module_name": "Business Partner Tender Management",
+      "sub_module_id": "BTD10000",
+      "value": [],
+      "groups": [
+        {
+          "group_name": "1. Tender Win Rate",
+          "group_id": "BTD10101",
+          "value": [
+            {
+              "metric_name": "Win Rate",
+              "metric_id": "BTD10102",
+              "value": "65%"
+            },
+            {
+              "metric_name": "Win Ratio",
+              "metric_id": "BTD10103",
+              "value": "85%"
+            }
+          ]
+        },
+        {
+          "group_name": "2. Tender Response Time",
+          "group_id": "BTD10104",
+          "value": [
+            {
+              "metric_name": "Average Response Time",
+              "metric_id": "BTD10105",
+              "value": "75%"
+            },
+            {
+              "metric_name": "On-Time Response Rate",
+              "metric_id": "BTD10106",
+              "value": "65%"
+            }
+          ]
+        },
+        {
+          "group_name": "3. Tender Quality",
+          "group_id": "BTD10107",
+          "value": [
+            {
+              "metric_name": "Evaluation Scores",
+              "metric_id": "BTD10108",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Compliance Rate",
+              "metric_id": "BTD10109",
+              "value": "68%"
+            }
+          ]
+        },
+        {
+          "group_name": "4. Cost Efficiency",
+          "group_id": "BTD10110",
+          "value": [
+            {
+              "metric_name": "Cost per Tender",
+              "metric_id": "BTD10111",
+              "value": "68%"
+            },
+            {
+              "metric_name": "ROI on Tenders",
+              "metric_id": "BTD10112",
+              "value": "85%"
+            }
+          ]
+        },
+        {
+          "group_name": "5. Market Penetration",
+          "group_id": "BTD10113",
+          "value": [
+            {
+              "metric_name": "New Markets Entered",
+              "metric_id": "BTD10114",
+              "value": "75%"
+            },
+            {
+              "metric_name": "Market Share",
+              "metric_id": "BTD10115",
+              "value": "65%"
+            }
+          ]
+        },
+        {
+          "group_name": "6. Partner Collaboration",
+          "group_id": "BTD10116",
+          "value": [
+            {
+              "metric_name": "Partner Interaction Frequency",
+              "metric_id": "BTD10117",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Partner Satisfaction Score",
+              "metric_id": "BTD10118",
+              "value": "85%"
+            }
+          ]
+        },
+        {
+          "group_name": "7. Operational Efficiency",
+          "group_id": "BTD10119",
+          "value": [
+            {
+              "metric_name": "Tender Preparation Time",
+              "metric_id": "BTD10120",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Resource Utilization",
+              "metric_id": "BTD10121",
+              "value": "71%"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sub_module_name": "Party Relationship Development & Retirement",
+      "sub_module_id": "BRR10000",
+      "value": [],
+      "groups": [
+        {
+          "group_name": "1. Relationship Development",
+          "group_id": "BRR10101",
+          "value": [
+            {
+              "metric_name": "New Relationships Established",
+              "metric_id": "BRR10102",
+              "value": "65%"
+            },
+            {
+              "metric_name": "Time to Establish Relationship",
+              "metric_id": "BRR10103",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Partner Satisfaction Score",
+              "metric_id": "BRR10104",
+              "value": "75%"
+            }
+          ]
+        },
+        {
+          "group_name": "2. Relationship Management",
+          "group_id": "BRR10105",
+          "value": [
+            {
+              "metric_name": "Relationship Health Score",
+              "metric_id": "BRR10106",
+              "value": "65%"
+            },
+            {
+              "metric_name": "Interaction Frequency",
+              "metric_id": "BRR10107",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Issue Resolution Time",
+              "metric_id": "BRR10108",
+              "value": "85%"
+            }
+          ]
+        },
+        {
+          "group_name": "3. Performance Improvement",
+          "group_id": "BRR10109",
+          "value": [
+            {
+              "metric_name": "Performance Metrics",
+              "metric_id": "BRR10110",
+              "value": "71%"
+            },
+            {
+              "metric_name": "Service Improvement Rate",
+              "metric_id": "BRR10111",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Innovation Contributions",
+              "metric_id": "BRR10112",
+              "value": "85%"
+            }
+          ]
+        },
+        {
+          "group_name": "4. Retirement Management",
+          "group_id": "BRR10113",
+          "value": [
+            {
+              "metric_name": "Relationship Retirement Rate",
+              "metric_id": "BRR10114",
+              "value": "75%"
+            },
+            {
+              "metric_name": "Cost of Retirement",
+              "metric_id": "BRR10115",
+              "value": "65%"
+            },
+            {
+              "metric_name": "Retirement Satisfaction Score",
+              "metric_id": "BRR10116",
+              "value": "68%"
+            }
+          ]
+        },
+        {
+          "group_name": "5. Compliance and Risk Management",
+          "group_id": "BRR10117",
+          "value": [
+            {
+              "metric_name": "Compliance Rate",
+              "metric_id": "BRR10118",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Risk Assessment Score",
+              "metric_id": "BRR10119",
+              "value": "71%"
+            },
+            {
+              "metric_name": "Incident Rate",
+              "metric_id": "BRR10120",
+              "value": "68%"
+            }
+          ]
+        },
+        {
+          "group_name": "6. Strategic Alignment",
+          "group_id": "BRR10121",
+          "value": [
+            {
+              "metric_name": "Strategic Alignment Score",
+              "metric_id": "BRR10122",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Contribution to Strategic Goals",
+              "metric_id": "BRR10123",
+              "value": "85%"
+            },
+            {
+              "metric_name": "ROI on Relationships",
+              "metric_id": "BRR10124",
+              "value": "71%"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sub_module_name": "Business Partner Offering Development & Retirement",
+      "sub_module_id": "ODR10000",
+      "value": [],
+      "groups": [
+        {
+          "group_name": "1. Offering Development",
+          "group_id": "ODR10101",
+          "value": [
+            {
+              "metric_name": "New Offerings Developed",
+              "metric_id": "ODR10102",
+              "value": "65%"
+            },
+            {
+              "metric_name": "Time to Market",
+              "metric_id": "ODR10103",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Development Cost",
+              "metric_id": "ODR10104",
+              "value": "75%"
+            },
+            {
+              "metric_name": "Innovation Rate",
+              "metric_id": "ODR10105",
+              "value": "72%"
+            }
+          ]
+        },
+        {
+          "group_name": "2. Offering Performance",
+          "group_id": "ODR10106",
+          "value": [
+            {
+              "metric_name": "Revenue Generated",
+              "metric_id": "ODR10107",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Market Share",
+              "metric_id": "ODR10108",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Customer Satisfaction Score",
+              "metric_id": "ODR10109",
+              "value": "65%"
+            },
+            {
+              "metric_name": "Sales Growth Rate",
+              "metric_id": "ODR10110",
+              "value": "71%"
+            }
+          ]
+        },
+        {
+          "group_name": "3. Offering Retirement",
+          "group_id": "ODR10111",
+          "value": [
+            {
+              "metric_name": "Retirement Rate",
+              "metric_id": "ODR10112",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Cost of Retirement",
+              "metric_id": "ODR10113",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Retirement Satisfaction Score",
+              "metric_id": "ODR10114",
+              "value": "75%"
+            },
+            {
+              "metric_name": "Impact on Revenue",
+              "metric_id": "ODR10115",
+              "value": "65%"
+            }
+          ]
+        },
+        {
+          "group_name": "4. Strategic Alignment",
+          "group_id": "ODR10116",
+          "value": [
+            {
+              "metric_name": "Alignment with Strategic Goals",
+              "metric_id": "ODR10117",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Contribution to Strategic Goals",
+              "metric_id": "ODR10118",
+              "value": "85%"
+            },
+            {
+              "metric_name": "ROI on Offerings",
+              "metric_id": "ODR10119",
+              "value": "71%"
+            }
+          ]
+        },
+        {
+          "group_name": "5. Compliance and Risk Management",
+          "group_id": "ODR10120",
+          "value": [
+            {
+              "metric_name": "Compliance Rate",
+              "metric_id": "ODR10121",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Risk Assessment Score",
+              "metric_id": "ODR10122",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Incident Rate",
+              "metric_id": "ODR10123",
+              "value": "85%"
+            }
+          ]
+        },
+        {
+          "group_name": "6. Partner Collaboration",
+          "group_id": "ODR10124",
+          "value": [
+            {
+              "metric_name": "Partner Interaction Frequency",
+              "metric_id": "ODR10125",
+              "value": "71%"
+            },
+            {
+              "metric_name": "Partner Satisfaction Score",
+              "metric_id": "ODR10126",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Collaboration Effectiveness",
+              "metric_id": "ODR10127",
+              "value": "71%"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sub_module_name": "Business Partner Agreement Management",
+      "sub_module_id": "BPA10000",
+      "value": [],
+      "groups": [
+        {
+          "group_name": "1. Agreement Performance",
+          "group_id": "BPA10101",
+          "value": [
+            {
+              "metric_name": "Compliance Rate",
+              "metric_id": "BPA10102",
+              "value": "65%"
+            },
+            {
+              "metric_name": "Performance Metrics",
+              "metric_id": "BPA10103",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Incident Rate",
+              "metric_id": "BPA10104",
+              "value": "75%"
+            }
+          ]
+        },
+        {
+          "group_name": "2. Cost Efficiency",
+          "group_id": "BPA10105",
+          "value": [
+            {
+              "metric_name": "Cost per Agreement",
+              "metric_id": "BPA10106",
+              "value": "65%"
+            },
+            {
+              "metric_name": "ROI on Agreements",
+              "metric_id": "BPA10107",
+              "value": "68%"
+            }
+          ]
+        },
+        {
+          "group_name": "3. Partner Collaboration",
+          "group_id": "BPA10108",
+          "value": [
+            {
+              "metric_name": "Partner Interaction Frequency",
+              "metric_id": "BPA10109",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Partner Satisfaction Score",
+              "metric_id": "BPA10110",
+              "value": "71%"
+            },
+            {
+              "metric_name": "Collaboration Effectiveness",
+              "metric_id": "BPA10111",
+              "value": "68%"
+            }
+          ]
+        },
+        {
+          "group_name": "4. Strategic Alignment",
+          "group_id": "BPA10112",
+          "value": [
+            {
+              "metric_name": "Alignment with Strategic Goals",
+              "metric_id": "BPA10113",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Contribution to Strategic Goals",
+              "metric_id": "BPA10114",
+              "value": "75%"
+            }
+          ]
+        },
+        {
+          "group_name": "5. Risk Management",
+          "group_id": "BPA10115",
+          "value": [
+            {
+              "metric_name": "Risk Assessment Score",
+              "metric_id": "BPA10116",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Risk Mitigation Actions",
+              "metric_id": "BPA10117",
+              "value": "65%"
+            }
+          ]
+        },
+        {
+          "group_name": "6. Operational Efficiency",
+          "group_id": "BPA10118",
+          "value": [
+            {
+              "metric_name": "Agreement Preparation Time",
+              "metric_id": "BPA10119",
+              "value": "71%"
+            },
+            {
+              "metric_name": "Resource Utilization",
+              "metric_id": "BPA10120",
+              "value": "68%"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sub_module_name": "Business Partner Support Management",
+      "sub_module_id": "BPS10000",
+      "value": [],
+      "groups": [
+        {
+          "group_name": "1. Support Responsiveness",
+          "group_id": "BPS10101",
+          "value": [
+            {
+              "metric_name": "Average Response Time",
+              "metric_id": "BPS10102",
+              "value": "65%"
+            },
+            {
+              "metric_name": "First Response Time",
+              "metric_id": "BPS10103",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Resolution Time",
+              "metric_id": "BPS10104",
+              "value": "75%"
+            }
+          ]
+        },
+        {
+          "group_name": "2. Support Quality",
+          "group_id": "BPS10105",
+          "value": [
+            {
+              "metric_name": "Support Satisfaction Score",
+              "metric_id": "BPS10106",
+              "value": "65%"
+            },
+            {
+              "metric_name": "Net Promoter Score (NPS)",
+              "metric_id": "BPS10107",
+              "value": "68%"
+            },
+            {
+              "metric_name": "First Contact Resolution Rate",
+              "metric_id": "BPS10108",
+              "value": "85%"
+            }
+          ]
+        },
+        {
+          "group_name": "3. Efficiency and Cost",
+          "group_id": "BPS10109",
+          "value": [
+            {
+              "metric_name": "Cost per Support Interaction",
+              "metric_id": "BPS10110",
+              "value": "71%"
+            },
+            {
+              "metric_name": "Support Case Volume",
+              "metric_id": "BPS10111",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Support Staff Utilization Rate",
+              "metric_id": "BPS10112",
+              "value": "85%"
+            }
+          ]
+        },
+        {
+          "group_name": "4. Training and Development",
+          "group_id": "BPS10113",
+          "value": [
+            {
+              "metric_name": "Training Hours per Support Staff",
+              "metric_id": "BPS10114",
+              "value": "75%"
+            },
+            {
+              "metric_name": "Skill Improvement Rate",
+              "metric_id": "BPS10115",
+              "value": "65%"
+            }
+          ]
+        },
+        {
+          "group_name": "5. Issue Tracking and Resolution",
+          "group_id": "BPS10116",
+          "value": [
+            {
+              "metric_name": "Issue Escalation Rate",
+              "metric_id": "BPS10117",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Backlog of Unresolved Issues",
+              "metric_id": "BPS10118",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Reopen Rate",
+              "metric_id": "BPS10119",
+              "value": "71%"
+            }
+          ]
+        },
+        {
+          "group_name": "6. Proactive Support",
+          "group_id": "BPS10120",
+          "value": [
+            {
+              "metric_name": "Proactive Issue Resolution Rate",
+              "metric_id": "BPS10121",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Support Knowledge Base Utilization",
+              "metric_id": "BPS10122",
+              "value": "68%"
+            }
+          ]
+        },
+        {
+          "group_name": "7. Communication and Collaboration",
+          "group_id": "BPS10123",
+          "value": [
+            {
+              "metric_name": "Frequency of Partner Updates",
+              "metric_id": "BPS10124",
+              "value": "71%"
+            },
+            {
+              "metric_name": "Partner Feedback Implementation Rate",
+              "metric_id": "BPS10125",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Collaboration Effectiveness Score",
+              "metric_id": "BPS10126",
+              "value": "68%"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sub_module_name": "Business Partner Order Management",
+      "sub_module_id": "POM10000",
+      "value": [],
+      "groups": [
+        {
+          "group_name": "1. Order Processing Efficiency",
+          "group_id": "POM10101",
+          "value": [
+            {
+              "metric_name": "Order Cycle Time",
+              "metric_id": "POM10102",
+              "value": "65%"
+            },
+            {
+              "metric_name": "Order Accuracy Rate",
+              "metric_id": "POM10103",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Order Fulfillment Rate",
+              "metric_id": "POM10104",
+              "value": "75%"
+            }
+          ]
+        },
+        {
+          "group_name": "2. Customer Satisfaction",
+          "group_id": "POM10105",
+          "value": [
+            {
+              "metric_name": "Customer Satisfaction Score (CSAT)",
+              "metric_id": "POM10106",
+              "value": "65%"
+            },
+            {
+              "metric_name": "Net Promoter Score (NPS)",
+              "metric_id": "POM10107",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Customer Complaint Rate",
+              "metric_id": "POM10108",
+              "value": "85%"
+            }
+          ]
+        },
+        {
+          "group_name": "3. Cost Efficiency",
+          "group_id": "POM10109",
+          "value": [
+            {
+              "metric_name": "Cost per Order",
+              "metric_id": "POM10110",
+              "value": "71%"
+            },
+            {
+              "metric_name": "Cost of Returns",
+              "metric_id": "POM10111",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Inventory Carrying Cost",
+              "metric_id": "POM10112",
+              "value": "85%"
+            }
+          ]
+        },
+        {
+          "group_name": "4. Order Quality",
+          "group_id": "POM10113",
+          "value": [
+            {
+              "metric_name": "On Time In Full (OTIF)",
+              "metric_id": "POM10114",
+              "value": "75%"
+            },
+            {
+              "metric_name": "Order Error Rate",
+              "metric_id": "POM10115",
+              "value": "65%"
+            },
+            {
+              "metric_name": "Return Rate",
+              "metric_id": "POM10116",
+              "value": "68%"
+            }
+          ]
+        },
+        {
+          "group_name": "5. Partner Collaboration",
+          "group_id": "POM10117",
+          "value": [
+            {
+              "metric_name": "Partner Interaction Frequency",
+              "metric_id": "POM10118",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Partner Satisfaction Score",
+              "metric_id": "POM10119",
+              "value": "71%"
+            },
+            {
+              "metric_name": "Collaboration Effectiveness",
+              "metric_id": "POM10120",
+              "value": "68%"
+            }
+          ]
+        },
+        {
+          "group_name": "6. Operational Efficiency",
+          "group_id": "POM10121",
+          "value": [
+            {
+              "metric_name": "Order Preparation Time",
+              "metric_id": "POM10122",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Resource Utilization",
+              "metric_id": "POM10123",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Backlog of Unfulfilled Orders",
+              "metric_id": "POM10124",
+              "value": "71%"
+            }
+          ]
+        },
+        {
+          "group_name": "7. Proactive Support",
+          "group_id": "POM10125",
+          "value": [
+            {
+              "metric_name": "Proactive Issue Resolution Rate",
+              "metric_id": "POM10126",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Support Knowledge Base Utilization",
+              "metric_id": "POM10127",
+              "value": "71%"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sub_module_name": "Business Partner Interaction Management",
+      "sub_module_id": "BPI10000",
+      "value": [],
+      "groups": [
+        {
+          "group_name": "1. Interaction Quality",
+          "group_id": "BPI10101",
+          "value": [
+            {
+              "metric_name": "Partner Satisfaction Score",
+              "metric_id": "BPI10102",
+              "value": "65%"
+            },
+            {
+              "metric_name": "Net Promoter Score (NPS)",
+              "metric_id": "BPI10103",
+              "value": "85%"
+            },
+            {
+              "metric_name": "First Contact Resolution Rate",
+              "metric_id": "BPI10104",
+              "value": "75%"
+            }
+          ]
+        },
+        {
+          "group_name": "2. Response Efficiency",
+          "group_id": "BPI10105",
+          "value": [
+            {
+              "metric_name": "Average Response Time",
+              "metric_id": "BPI10106",
+              "value": "65%"
+            },
+            {
+              "metric_name": "First Response Time",
+              "metric_id": "BPI10107",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Resolution Time",
+              "metric_id": "BPI10108",
+              "value": "85%"
+            }
+          ]
+        },
+        {
+          "group_name": "3. Operational Efficiency",
+          "group_id": "BPI10109",
+          "value": [
+            {
+              "metric_name": "Cost per Interaction",
+              "metric_id": "BPI10110",
+              "value": "71%"
+            },
+            {
+              "metric_name": "Interaction Volume",
+              "metric_id": "BPI10111",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Support Staff Utilization Rate",
+              "metric_id": "BPI10112",
+              "value": "85%"
+            }
+          ]
+        },
+        {
+          "group_name": "4. Proactive Support",
+          "group_id": "BPI10113",
+          "value": [
+            {
+              "metric_name": "Proactive Issue Resolution Rate",
+              "metric_id": "BPI10114",
+              "value": "75%"
+            },
+            {
+              "metric_name": "Support Knowledge Base Utilization",
+              "metric_id": "BPI10115",
+              "value": "65%"
+            }
+          ]
+        },
+        {
+          "group_name": "5. Communication and Collaboration",
+          "group_id": "BPI10116",
+          "value": [
+            {
+              "metric_name": "Frequency of Partner Updates",
+              "metric_id": "BPI10117",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Partner Feedback Implementation Rate",
+              "metric_id": "BPI10118",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Collaboration Effectiveness Score",
+              "metric_id": "BPI10119",
+              "value": "71%"
+            }
+          ]
+        },
+        {
+          "group_name": "6. Training and Development",
+          "group_id": "BPI10120",
+          "value": [
+            {
+              "metric_name": "Training Hours per Support Staff",
+              "metric_id": "BPI10121",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Skill Improvement Rate",
+              "metric_id": "BPI10122",
+              "value": "68%"
+            }
+          ]
+        },
+        {
+          "group_name": "7. Issue Tracking and Resolution",
+          "group_id": "BPI10123",
+          "value": [
+            {
+              "metric_name": "Issue Escalation Rate",
+              "metric_id": "BPI10124",
+              "value": "71%"
+            },
+            {
+              "metric_name": "Backlog of Unresolved Issues",
+              "metric_id": "BPI10125",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Reopen Rate",
+              "metric_id": "BPI10126",
+              "value": "68%"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sub_module_name": "Business Partner Problem Management",
+      "sub_module_id": "PPB10000",
+      "value": [],
+      "groups": [
+        {
+          "group_name": "1. Problem Identification",
+          "group_id": "PPB10101",
+          "value": [
+            {
+              "metric_name": "Average Time to Identify",
+              "metric_id": "PPB10102",
+              "value": "65%"
+            },
+            {
+              "metric_name": "Number of Known Problems",
+              "metric_id": "PPB10103",
+              "value": "85%"
+            }
+          ]
+        },
+        {
+          "group_name": "2. Problem Analysis",
+          "group_id": "PPB10104",
+          "value": [
+            {
+              "metric_name": "Average Time to Start Root Cause Analysis (RCA)",
+              "metric_id": "PPB10105",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Total Number of Uncompleted Problems",
+              "metric_id": "PPB10106",
+              "value": "65%"
+            }
+          ]
+        },
+        {
+          "group_name": "3. Problem Resolution",
+          "group_id": "PPB10107",
+          "value": [
+            {
+              "metric_name": "Average Time to Fix",
+              "metric_id": "PPB10108",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Average Resolution Time",
+              "metric_id": "PPB10109",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Total Number of Unresolved Problems",
+              "metric_id": "PPB10110",
+              "value": "71%"
+            }
+          ]
+        },
+        {
+          "group_name": "4. Problem Impact",
+          "group_id": "PPB10111",
+          "value": [
+            {
+              "metric_name": "Incident Rate",
+              "metric_id": "PPB10112",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Percentage Increase/Decrease of Major Incidents",
+              "metric_id": "PPB10113",
+              "value": "75%"
+            }
+          ]
+        },
+        {
+          "group_name": "5. Documentation and Knowledge Management",
+          "group_id": "PPB10114",
+          "value": [
+            {
+              "metric_name": "Total Number of Known Errors",
+              "metric_id": "PPB10115",
+              "value": "65%"
+            },
+            {
+              "metric_name": "Problem Records Reported",
+              "metric_id": "PPB10116",
+              "value": "68%"
+            }
+          ]
+        },
+        {
+          "group_name": "6. Proactive Measures",
+          "group_id": "PPB10117",
+          "value": [
+            {
+              "metric_name": "Proactive Issue Resolution Rate",
+              "metric_id": "PPB10118",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Support Knowledge Base Utilization",
+              "metric_id": "PPB10119",
+              "value": "71%"
+            }
+          ]
+        },
+        {
+          "group_name": "7. Partner Collaboration",
+          "group_id": "PPB10120",
+          "value": [
+            {
+              "metric_name": "Partner Interaction Frequency",
+              "metric_id": "PPB10121",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Partner Satisfaction Score",
+              "metric_id": "PPB10122",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Collaboration Effectiveness Score",
+              "metric_id": "PPB10123",
+              "value": "85%"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sub_module_name": "Business Partner Performance Management",
+      "sub_module_id": "BPP10000",
+      "value": [],
+      "groups": [
+        {
+          "group_name": "1. Performance Metrics",
+          "group_id": "BPP10101",
+          "value": [
+            {
+              "metric_name": "Revenue Contribution",
+              "metric_id": "BPP10102",
+              "value": "65%"
+            },
+            {
+              "metric_name": "Sales Growth Rate",
+              "metric_id": "BPP10103",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Profit Margin",
+              "metric_id": "BPP10104",
+              "value": "75%"
+            }
+          ]
+        },
+        {
+          "group_name": "2. Partner Engagement",
+          "group_id": "BPP10105",
+          "value": [
+            {
+              "metric_name": "Partner Interaction Frequency",
+              "metric_id": "BPP10106",
+              "value": "65%"
+            },
+            {
+              "metric_name": "Partner Satisfaction Score",
+              "metric_id": "BPP10107",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Net Promoter Score (NPS)",
+              "metric_id": "BPP10108",
+              "value": "85%"
+            }
+          ]
+        },
+        {
+          "group_name": "3. Operational Efficiency",
+          "group_id": "BPP10109",
+          "value": [
+            {
+              "metric_name": "Cost per Partner",
+              "metric_id": "BPP10110",
+              "value": "71%"
+            },
+            {
+              "metric_name": "Resource Utilization",
+              "metric_id": "BPP10111",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Backlog of Unresolved Issues",
+              "metric_id": "BPP10112",
+              "value": "85%"
+            }
+          ]
+        },
+        {
+          "group_name": "4. Training and Development",
+          "group_id": "BPP10113",
+          "value": [
+            {
+              "metric_name": "Training Hours per Partner",
+              "metric_id": "BPP10114",
+              "value": "75%"
+            },
+            {
+              "metric_name": "Skill Improvement Rate",
+              "metric_id": "BPP10115",
+              "value": "65%"
+            }
+          ]
+        },
+        {
+          "group_name": "5. Issue Tracking and Resolution",
+          "group_id": "BPP10116",
+          "value": [
+            {
+              "metric_name": "Issue Escalation Rate",
+              "metric_id": "BPP10117",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Backlog of Unresolved Issues",
+              "metric_id": "BPP10118",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Reopen Rate",
+              "metric_id": "BPP10119",
+              "value": "71%"
+            }
+          ]
+        },
+        {
+          "group_name": "6. Proactive Measures",
+          "group_id": "BPP10120",
+          "value": [
+            {
+              "metric_name": "Proactive Issue Resolution Rate",
+              "metric_id": "BPP10121",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Support Knowledge Base Utilization",
+              "metric_id": "BPP10122",
+              "value": "68%"
+            }
+          ]
+        },
+        {
+          "group_name": "7. Communication and Collaboration",
+          "group_id": "BPP10123",
+          "value": [
+            {
+              "metric_name": "Frequency of Partner Updates",
+              "metric_id": "BPP10124",
+              "value": "71%"
+            },
+            {
+              "metric_name": "Partner Feedback Implementation Rate",
+              "metric_id": "BPP10125",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Collaboration Effectiveness Score",
+              "metric_id": "BPP10126",
+              "value": "68%"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sub_module_name": "Party Special Event Management",
+      "sub_module_id": "PSE10000",
+      "value": [],
+      "groups": [
+        {
+          "group_name": "1. Event Success Metrics",
+          "group_id": "PSE10101",
+          "value": [
+            {
+              "metric_name": "Attendance Rate",
+              "metric_id": "PSE10102",
+              "value": "65%"
+            },
+            {
+              "metric_name": "Event Satisfaction Score",
+              "metric_id": "PSE10103",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Net Promoter Score (NPS)",
+              "metric_id": "PSE10104",
+              "value": "75%"
+            }
+          ]
+        },
+        {
+          "group_name": "2. Financial Metrics",
+          "group_id": "PSE10105",
+          "value": [
+            {
+              "metric_name": "Event ROI",
+              "metric_id": "PSE10106",
+              "value": "65%"
+            },
+            {
+              "metric_name": "Cost per Attendee",
+              "metric_id": "PSE10107",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Revenue Generated",
+              "metric_id": "PSE10108",
+              "value": "85%"
+            }
+          ]
+        },
+        {
+          "group_name": "3. Engagement Metrics",
+          "group_id": "PSE10109",
+          "value": [
+            {
+              "metric_name": "Participant Engagement",
+              "metric_id": "PSE10110",
+              "value": "71%"
+            },
+            {
+              "metric_name": "Session Attendance",
+              "metric_id": "PSE10111",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Social Media Engagement",
+              "metric_id": "PSE10112",
+              "value": "85%"
+            }
+          ]
+        },
+        {
+          "group_name": "4. Operational Efficiency",
+          "group_id": "PSE10113",
+          "value": [
+            {
+              "metric_name": "Average Time to Plan",
+              "metric_id": "PSE10114",
+              "value": "75%"
+            },
+            {
+              "metric_name": "Resource Utilization",
+              "metric_id": "PSE10115",
+              "value": "65%"
+            },
+            {
+              "metric_name": "Backlog of Unresolved Issues",
+              "metric_id": "PSE10116",
+              "value": "68%"
+            }
+          ]
+        },
+        {
+          "group_name": "5. Partner Collaboration",
+          "group_id": "PSE10117",
+          "value": [
+            {
+              "metric_name": "Partner Interaction Frequency",
+              "metric_id": "PSE10118",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Partner Feedback Implementation Rate",
+              "metric_id": "PSE10119",
+              "value": "71%"
+            },
+            {
+              "metric_name": "Collaboration Effectiveness Score",
+              "metric_id": "PSE10120",
+              "value": "68%"
+            }
+          ]
+        },
+        {
+          "group_name": "6. Proactive Measures",
+          "group_id": "PSE10121",
+          "value": [
+            {
+              "metric_name": "Proactive Issue Resolution Rate",
+              "metric_id": "PSE10122",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Support Knowledge Base Utilization",
+              "metric_id": "PSE10123",
+              "value": "85%"
+            }
+          ]
+        },
+        {
+          "group_name": "7. Communication and Feedback",
+          "group_id": "PSE10124",
+          "value": [
+            {
+              "metric_name": "Frequency of Partner Updates",
+              "metric_id": "PSE10125",
+              "value": "71%"
+            },
+            {
+              "metric_name": "Survey Results",
+              "metric_id": "PSE10126",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Testimonials",
+              "metric_id": "PSE10127",
+              "value": "71%"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sub_module_name": "BP Bill/Invoice Management",
+      "sub_module_id": "PBI10000",
+      "value": [],
+      "groups": [
+        {
+          "group_name": "1. Billing Accuracy",
+          "group_id": "PBI10101",
+          "value": [
+            {
+              "metric_name": "Invoice Accuracy Rate",
+              "metric_id": "PBI10102",
+              "value": "65%"
+            },
+            {
+              "metric_name": "Dispute Rate",
+              "metric_id": "PBI10103",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Error Resolution Time",
+              "metric_id": "PBI10104",
+              "value": "75%"
+            }
+          ]
+        },
+        {
+          "group_name": "2. Billing Efficiency",
+          "group_id": "PBI10105",
+          "value": [
+            {
+              "metric_name": "Average Invoice Processing Time",
+              "metric_id": "PBI10106",
+              "value": "65%"
+            },
+            {
+              "metric_name": "Cost per Invoice",
+              "metric_id": "PBI10107",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Automation Rate",
+              "metric_id": "PBI10108",
+              "value": "85%"
+            }
+          ]
+        },
+        {
+          "group_name": "3. Payment Performance",
+          "group_id": "PBI10109",
+          "value": [
+            {
+              "metric_name": "On-Time Payment Rate",
+              "metric_id": "PBI10110",
+              "value": "71%"
+            },
+            {
+              "metric_name": "Days Sales Outstanding (DSO)",
+              "metric_id": "PBI10111",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Collection Efficiency",
+              "metric_id": "PBI10112",
+              "value": "85%"
+            }
+          ]
+        },
+        {
+          "group_name": "4. Partner Satisfaction",
+          "group_id": "PBI10113",
+          "value": [
+            {
+              "metric_name": "Partner Satisfaction Score",
+              "metric_id": "PBI10114",
+              "value": "75%"
+            },
+            {
+              "metric_name": "Net Promoter Score (NPS)",
+              "metric_id": "PBI10115",
+              "value": "65%"
+            }
+          ]
+        },
+        {
+          "group_name": "5. Financial Metrics",
+          "group_id": "PBI10116",
+          "value": [
+            {
+              "metric_name": "Revenue Recognition Accuracy",
+              "metric_id": "PBI10117",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Bad Debt Rate",
+              "metric_id": "PBI10118",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Invoice Aging",
+              "metric_id": "PBI10119",
+              "value": "71%"
+            }
+          ]
+        },
+        {
+          "group_name": "6. Operational Efficiency",
+          "group_id": "PBI10120",
+          "value": [
+            {
+              "metric_name": "Resource Utilization",
+              "metric_id": "PBI10121",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Backlog of Unprocessed Invoices",
+              "metric_id": "PBI10122",
+              "value": "68%"
+            }
+          ]
+        },
+        {
+          "group_name": "7. Proactive Support",
+          "group_id": "PBI10123",
+          "value": [
+            {
+              "metric_name": "Proactive Issue Resolution Rate",
+              "metric_id": "PBI10124",
+              "value": "71%"
+            },
+            {
+              "metric_name": "Support Knowledge Base Utilization",
+              "metric_id": "PBI10125",
+              "value": "85%"
+            }
+          ]
+        },
+        {
+          "group_name": "8. Communication and Collaboration",
+          "group_id": "PBI10126",
+          "value": [
+            {
+              "metric_name": "Frequency of Partner Updates",
+              "metric_id": "PBI10127",
+              "value": "71%"
+            },
+            {
+              "metric_name": "Partner Feedback Implementation Rate",
+              "metric_id": "PBI10128",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Collaboration Effectiveness Score",
+              "metric_id": "PBI10129",
+              "value": "68%"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sub_module_name": "BP Bill Payments & Receivables Management",
+      "sub_module_id": "PPR10000",
+      "value": [],
+      "groups": [
+        {
+          "group_name": "1. Payment Processing Efficiency",
+          "group_id": "PPR10101",
+          "value": [
+            {
+              "metric_name": "Average Payment Processing Time",
+              "metric_id": "PPR10102",
+              "value": "65%"
+            },
+            {
+              "metric_name": "On-Time Payment Rate",
+              "metric_id": "PPR10103",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Payment Error Rate",
+              "metric_id": "PPR10104",
+              "value": "75%"
+            }
+          ]
+        },
+        {
+          "group_name": "2. Receivables Management",
+          "group_id": "PPR10105",
+          "value": [
+            {
+              "metric_name": "Days Sales Outstanding (DSO)",
+              "metric_id": "PPR10106",
+              "value": "65%"
+            },
+            {
+              "metric_name": "Receivables Turnover Ratio",
+              "metric_id": "PPR10107",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Outstanding Receivables",
+              "metric_id": "PPR10108",
+              "value": "85%"
+            }
+          ]
+        },
+        {
+          "group_name": "3. Cash Flow Management",
+          "group_id": "PPR10109",
+          "value": [
+            {
+              "metric_name": "Cash Conversion Cycle (CCC)",
+              "metric_id": "PPR10110",
+              "value": "71%"
+            },
+            {
+              "metric_name": "Liquidity Ratio",
+              "metric_id": "PPR10111",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Cash Flow Forecast Accuracy",
+              "metric_id": "PPR10112",
+              "value": "85%"
+            }
+          ]
+        },
+        {
+          "group_name": "4. Dispute Management",
+          "group_id": "PPR10113",
+          "value": [
+            {
+              "metric_name": "Dispute Resolution Time",
+              "metric_id": "PPR10114",
+              "value": "75%"
+            },
+            {
+              "metric_name": "Dispute Frequency",
+              "metric_id": "PPR10115",
+              "value": "65%"
+            },
+            {
+              "metric_name": "Dispute Impact on Cash Flow",
+              "metric_id": "PPR10116",
+              "value": "68%"
+            }
+          ]
+        },
+        {
+          "group_name": "5. Partner Satisfaction",
+          "group_id": "PPR10117",
+          "value": [
+            {
+              "metric_name": "Partner Satisfaction Score",
+              "metric_id": "PPR10118",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Net Promoter Score (NPS)",
+              "metric_id": "PPR10119",
+              "value": "71%"
+            }
+          ]
+        },
+        {
+          "group_name": "6. Financial Metrics",
+          "group_id": "PPR10120",
+          "value": [
+            {
+              "metric_name": "Bad Debt Rate",
+              "metric_id": "PPR10121",
+              "value": "71%"
+            },
+            {
+              "metric_name": "Revenue Recognition Accuracy",
+              "metric_id": "PPR10122",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Aging of Receivables",
+              "metric_id": "PPR10123",
+              "value": "85%"
+            }
+          ]
+        },
+        {
+          "group_name": "7. Operational Efficiency",
+          "group_id": "PPR10124",
+          "value": [
+            {
+              "metric_name": "Resource Utilization",
+              "metric_id": "PPR10125",
+              "value": "71%"
+            },
+            {
+              "metric_name": "Backlog of Unprocessed Payments",
+              "metric_id": "PPR10126",
+              "value": "68%"
+            }
+          ]
+        },
+        {
+          "group_name": "8. Proactive Support",
+          "group_id": "PPR10127",
+          "value": [
+            {
+              "metric_name": "Proactive Issue Resolution Rate",
+              "metric_id": "PPR10128",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Support Knowledge Base Utilization",
+              "metric_id": "PPR10129",
+              "value": "68%"
+            }
+          ]
+        },
+        {
+          "group_name": "9. Communication and Collaboration",
+          "group_id": "PPR10130",
+          "value": [
+            {
+              "metric_name": "Frequency of Partner Updates",
+              "metric_id": "PPR10131",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Partner Feedback Implementation Rate",
+              "metric_id": "PPR10132",
+              "value": "71%"
+            },
+            {
+              "metric_name": "Collaboration Effectiveness Score",
+              "metric_id": "PPR10133",
+              "value": "81%"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sub_module_name": "Business Partner Revenue Sharing and Settlement",
+      "sub_module_id": "RSS10000",
+      "value": [],
+      "groups": [
+        {
+          "group_name": "1. Revenue Sharing Accuracy",
+          "group_id": "RSS10101",
+          "value": [
+            {
+              "metric_name": "Revenue Share Calculation Accuracy",
+              "metric_id": "RSS10102",
+              "value": "65%"
+            },
+            {
+              "metric_name": "Dispute Rate",
+              "metric_id": "RSS10103",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Error Resolution Time",
+              "metric_id": "RSS10104",
+              "value": "75%"
+            }
+          ]
+        },
+        {
+          "group_name": "2. Settlement Efficiency",
+          "group_id": "RSS10105",
+          "value": [
+            {
+              "metric_name": "Average Settlement Time",
+              "metric_id": "RSS10106",
+              "value": "65%"
+            },
+            {
+              "metric_name": "On-Time Settlement Rate",
+              "metric_id": "RSS10107",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Cost per Settlement",
+              "metric_id": "RSS10108",
+              "value": "85%"
+            }
+          ]
+        },
+        {
+          "group_name": "3. Revenue Recognition",
+          "group_id": "RSS10109",
+          "value": [
+            {
+              "metric_name": "Revenue Recognition Accuracy",
+              "metric_id": "RSS10110",
+              "value": "71%"
+            },
+            {
+              "metric_name": "Days Sales Outstanding (DSO)",
+              "metric_id": "RSS10111",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Revenue Growth Rate",
+              "metric_id": "RSS10112",
+              "value": "85%"
+            }
+          ]
+        },
+        {
+          "group_name": "4. Partner Satisfaction",
+          "group_id": "RSS10113",
+          "value": [
+            {
+              "metric_name": "Partner Satisfaction Score",
+              "metric_id": "RSS10114",
+              "value": "75%"
+            },
+            {
+              "metric_name": "Net Promoter Score (NPS)",
+              "metric_id": "RSS10115",
+              "value": "65%"
+            },
+            {
+              "metric_name": "Partner Feedback Implementation Rate",
+              "metric_id": "RSS10116",
+              "value": "68%"
+            }
+          ]
+        },
+        {
+          "group_name": "5. Financial Metrics",
+          "group_id": "RSS10117",
+          "value": [
+            {
+              "metric_name": "Revenue Share Percentage",
+              "metric_id": "RSS10118",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Return on Investment (ROI)",
+              "metric_id": "RSS10119",
+              "value": "71%"
+            },
+            {
+              "metric_name": "Profit Margin",
+              "metric_id": "RSS10120",
+              "value": "68%"
+            }
+          ]
+        },
+        {
+          "group_name": "6. Operational Efficiency",
+          "group_id": "RSS10121",
+          "value": [
+            {
+              "metric_name": "Resource Utilization",
+              "metric_id": "RSS10122",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Backlog of Unsettled Revenues",
+              "metric_id": "RSS10123",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Automation Rate",
+              "metric_id": "RSS10124",
+              "value": "71%"
+            }
+          ]
+        },
+        {
+          "group_name": "7. Proactive Support",
+          "group_id": "RSS10125",
+          "value": [
+            {
+              "metric_name": "Proactive Issue Resolution Rate",
+              "metric_id": "RSS10126",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Support Knowledge Base Utilization",
+              "metric_id": "RSS10127",
+              "value": "71%"
+            }
+          ]
+        },
+        {
+          "group_name": "8. Compliance and Risk Management",
+          "group_id": "RSS10128",
+          "value": [
+            {
+              "metric_name": "Compliance Rate",
+              "metric_id": "RSS10129",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Risk Assessment Score",
+              "metric_id": "RSS10130",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Incident Rate",
+              "metric_id": "RSS10131",
+              "value": "85%"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sub_module_name": "BP Bill Inquiry Handling",
+      "sub_module_id": "INH10000",
+      "value": [],
+      "groups": [
+        {
+          "group_name": "1. Inquiry Response Efficiency",
+          "group_id": "INH10101",
+          "value": [
+            {
+              "metric_name": "Average Response Time",
+              "metric_id": "INH10102",
+              "value": "65%"
+            },
+            {
+              "metric_name": "First Response Time",
+              "metric_id": "INH10103",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Resolution Time",
+              "metric_id": "INH10104",
+              "value": "75%"
+            }
+          ]
+        },
+        {
+          "group_name": "2. Inquiry Volume and Trends",
+          "group_id": "INH10105",
+          "value": [
+            {
+              "metric_name": "Inquiry Volume",
+              "metric_id": "INH10106",
+              "value": "65%"
+            },
+            {
+              "metric_name": "Inquiry Category Distribution",
+              "metric_id": "INH10107",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Trends in Inquiries",
+              "metric_id": "INH10108",
+              "value": "85%"
+            }
+          ]
+        },
+        {
+          "group_name": "3. Inquiry Resolution Quality",
+          "group_id": "INH10109",
+          "value": [
+            {
+              "metric_name": "First Contact Resolution Rate",
+              "metric_id": "INH10110",
+              "value": "71%"
+            },
+            {
+              "metric_name": "Reopen Rate",
+              "metric_id": "INH10111",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Resolution Accuracy",
+              "metric_id": "INH10112",
+              "value": "85%"
+            }
+          ]
+        },
+        {
+          "group_name": "4. Customer and Partner Satisfaction",
+          "group_id": "INH10113",
+          "value": [
+            {
+              "metric_name": "Satisfaction Score",
+              "metric_id": "INH10114",
+              "value": "75%"
+            },
+            {
+              "metric_name": "Net Promoter Score (NPS)",
+              "metric_id": "INH10115",
+              "value": "65%"
+            },
+            {
+              "metric_name": "Complaint Rate",
+              "metric_id": "INH10116",
+              "value": "68%"
+            }
+          ]
+        },
+        {
+          "group_name": "5. Operational Efficiency",
+          "group_id": "INH10117",
+          "value": [
+            {
+              "metric_name": "Cost per Inquiry",
+              "metric_id": "INH10118",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Support Staff Utilization Rate",
+              "metric_id": "INH10119",
+              "value": "71%"
+            },
+            {
+              "metric_name": "Backlog of Unresolved Inquiries",
+              "metric_id": "INH10120",
+              "value": "68%"
+            }
+          ]
+        },
+        {
+          "group_name": "6. Training and Development",
+          "group_id": "INH10121",
+          "value": [
+            {
+              "metric_name": "Training Hours per Support Staff",
+              "metric_id": "INH10122",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Skill Improvement Rate",
+              "metric_id": "INH10123",
+              "value": "85%"
+            }
+          ]
+        },
+        {
+          "group_name": "7. Communication and Feedback",
+          "group_id": "INH10124",
+          "value": [
+            {
+              "metric_name": "Frequency of Partner Updates",
+              "metric_id": "INH10125",
+              "value": "71%"
+            },
+            {
+              "metric_name": "Partner Feedback Implementation Rate",
+              "metric_id": "INH10126",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Collaboration Effectiveness Score",
+              "metric_id": "INH10127",
+              "value": "71%"
+            }
+          ]
+        },
+        {
+          "group_name": "8. Proactive Support",
+          "group_id": "INH10128",
+          "value": [
+            {
+              "metric_name": "Proactive Issue Resolution Rate",
+              "metric_id": "INH10129",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Support Knowledge Base Utilization",
+              "metric_id": "INH10130",
+              "value": "68%"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sub_module_name": "Party Inventory Management",
+      "sub_module_id": "INM10000",
+      "value": [],
+      "groups": [
+        {
+          "group_name": "1. Inventory Accuracy",
+          "group_id": "INM10101",
+          "value": [
+            {
+              "metric_name": "Inventory Accuracy Rate",
+              "metric_id": "INM10102",
+              "value": "65%"
+            },
+            {
+              "metric_name": "Cycle Count Accuracy",
+              "metric_id": "INM10103",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Discrepancy Rate",
+              "metric_id": "INM10104",
+              "value": "75%"
+            }
+          ]
+        },
+        {
+          "group_name": "2. Inventory Turnover",
+          "group_id": "INM10105",
+          "value": [
+            {
+              "metric_name": "Inventory Turnover Ratio",
+              "metric_id": "INM10106",
+              "value": "65%"
+            },
+            {
+              "metric_name": "Days Inventory Outstanding (DIO)",
+              "metric_id": "INM10107",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Stock Rotation Rate",
+              "metric_id": "INM10108",
+              "value": "85%"
+            }
+          ]
+        },
+        {
+          "group_name": "3. Stock Management",
+          "group_id": "INM10109",
+          "value": [
+            {
+              "metric_name": "Stock Out Rate",
+              "metric_id": "INM10110",
+              "value": "71%"
+            },
+            {
+              "metric_name": "Backorder Rate",
+              "metric_id": "INM10111",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Excess Inventory Rate",
+              "metric_id": "INM10112",
+              "value": "85%"
+            }
+          ]
+        },
+        {
+          "group_name": "4. Order Fulfillment",
+          "group_id": "INM10113",
+          "value": [
+            {
+              "metric_name": "Order Fulfillment Cycle Time",
+              "metric_id": "INM10114",
+              "value": "75%"
+            },
+            {
+              "metric_name": "Order Accuracy Rate",
+              "metric_id": "INM10115",
+              "value": "65%"
+            },
+            {
+              "metric_name": "Perfect Order Rate",
+              "metric_id": "INM10116",
+              "value": "68%"
+            }
+          ]
+        },
+        {
+          "group_name": "5. Cost Management",
+          "group_id": "INM10117",
+          "value": [
+            {
+              "metric_name": "Carrying Cost of Inventory",
+              "metric_id": "INM10118",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Cost per Unit of Inventory",
+              "metric_id": "INM10119",
+              "value": "71%"
+            },
+            {
+              "metric_name": "Inventory Shrinkage Rate",
+              "metric_id": "INM10120",
+              "value": "68%"
+            }
+          ]
+        },
+        {
+          "group_name": "6. Supplier Performance",
+          "group_id": "INM10121",
+          "value": [
+            {
+              "metric_name": "Supplier Lead Time",
+              "metric_id": "INM10122",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Supplier On-Time Delivery Rate",
+              "metric_id": "INM10123",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Supplier Defect Rate",
+              "metric_id": "INM10124",
+              "value": "71%"
+            }
+          ]
+        },
+        {
+          "group_name": "7. Inventory Utilization",
+          "group_id": "INM10125",
+          "value": [
+            {
+              "metric_name": "Space Utilization Rate",
+              "metric_id": "INM10126",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Inventory to Sales Ratio",
+              "metric_id": "INM10127",
+              "value": "71%"
+            },
+            {
+              "metric_name": "Slow-Moving Inventory Rate",
+              "metric_id": "INM10128",
+              "value": "68%"
+            }
+          ]
+        },
+        {
+          "group_name": "8. Partner Collaboration",
+          "group_id": "INM10129",
+          "value": [
+            {
+              "metric_name": "Partner Interaction Frequency",
+              "metric_id": "INM10130",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Partner Satisfaction Score",
+              "metric_id": "INM10131",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Collaboration Effectiveness Score",
+              "metric_id": "INM10132",
+              "value": "71%"
+            }
+          ]
+        },
+        {
+          "group_name": "9. Proactive Measures",
+          "group_id": "INM10133",
+          "value": [
+            {
+              "metric_name": "Proactive Issue Resolution Rate",
+              "metric_id": "INM10134",
+              "value": "71%"
+            },
+            {
+              "metric_name": "Support Knowledge Base Utilization",
+              "metric_id": "INM10135",
+              "value": "68%"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sub_module_name": "Business Partner Privacy Management",
+      "sub_module_id": "PPV10000",
+      "value": [],
+      "groups": [
+        {
+          "group_name": "1. Privacy Compliance",
+          "group_id": "PPV10101",
+          "value": [
+            {
+              "metric_name": "Compliance Rate",
+              "metric_id": "PPV10102",
+              "value": "65%"
+            },
+            {
+              "metric_name": "Audit Findings",
+              "metric_id": "PPV10103",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Compliance Training Completion Rate",
+              "metric_id": "PPV10104",
+              "value": "75%"
+            }
+          ]
+        },
+        {
+          "group_name": "2. Data Protection",
+          "group_id": "PPV10105",
+          "value": [
+            {
+              "metric_name": "Data Breach Incidents",
+              "metric_id": "PPV10106",
+              "value": "65%"
+            },
+            {
+              "metric_name": "Data Encryption Rate",
+              "metric_id": "PPV10107",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Access Control Compliance",
+              "metric_id": "PPV10108",
+              "value": "85%"
+            }
+          ]
+        },
+        {
+          "group_name": "3. Risk Management",
+          "group_id": "PPV10109",
+          "value": [
+            {
+              "metric_name": "Privacy Risk Assessment Score",
+              "metric_id": "PPV10110",
+              "value": "71%"
+            },
+            {
+              "metric_name": "Incident Response Time",
+              "metric_id": "PPV10111",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Risk Mitigation Actions",
+              "metric_id": "PPV10112",
+              "value": "85%"
+            }
+          ]
+        },
+        {
+          "group_name": "4. Data Handling Practices",
+          "group_id": "PPV10113",
+          "value": [
+            {
+              "metric_name": "Data Retention Compliance",
+              "metric_id": "PPV10114",
+              "value": "75%"
+            },
+            {
+              "metric_name": "Third-Party Data Handling Compliance",
+              "metric_id": "PPV10115",
+              "value": "65%"
+            },
+            {
+              "metric_name": "Data Usage Transparency",
+              "metric_id": "PPV10116",
+              "value": "68%"
+            }
+          ]
+        },
+        {
+          "group_name": "5. Partner Awareness and Training",
+          "group_id": "PPV10117",
+          "value": [
+            {
+              "metric_name": "Training Participation Rate",
+              "metric_id": "PPV10118",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Awareness Campaign Effectiveness",
+              "metric_id": "PPV10119",
+              "value": "71%"
+            },
+            {
+              "metric_name": "Knowledge Assessment Scores",
+              "metric_id": "PPV10120",
+              "value": "68%"
+            }
+          ]
+        },
+        {
+          "group_name": "6. Incident Management",
+          "group_id": "PPV10121",
+          "value": [
+            {
+              "metric_name": "Incident Detection Rate",
+              "metric_id": "PPV10122",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Incident Resolution Time",
+              "metric_id": "PPV10123",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Incident Recurrence Rate",
+              "metric_id": "PPV10124",
+              "value": "71%"
+            }
+          ]
+        },
+        {
+          "group_name": "7. Partner Satisfaction",
+          "group_id": "PPV10125",
+          "value": [
+            {
+              "metric_name": "Partner Satisfaction Score",
+              "metric_id": "PPV10126",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Net Promoter Score (NPS)",
+              "metric_id": "PPV10127",
+              "value": "71%"
+            },
+            {
+              "metric_name": "Feedback Implementation Rate",
+              "metric_id": "PPV10128",
+              "value": "68%"
+            }
+          ]
+        },
+        {
+          "group_name": "8. Continuous Improvement",
+          "group_id": "PPV10129",
+          "value": [
+            {
+              "metric_name": "Policy Update Frequency",
+              "metric_id": "PPV10130",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Process Improvement Rate",
+              "metric_id": "PPV10131",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Innovation in Privacy Management",
+              "metric_id": "PPV10132",
+              "value": "71%"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

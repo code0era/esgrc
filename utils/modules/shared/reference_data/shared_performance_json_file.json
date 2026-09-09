@@ -1,0 +1,2120 @@
+{
+  "module_name": "Shared",
+  "module_id": "SHRD_001",
+  "sub_modules": [
+    {
+      "sub_module_name": "Privacy Development",
+      "sub_module_id": "PVD10000",
+      "value": [],
+      "groups": [
+        {
+          "group_name": "1. Privacy Policy Development",
+          "group_id": "PVD10101",
+          "value": [
+            {
+              "metric_name": "Policy Development Time",
+              "metric_id": "PVD10102",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Policy Coverage",
+              "metric_id": "PVD10103",
+              "value": "75%"
+            },
+            {
+              "metric_name": "Stakeholder Engagement in Policy Development",
+              "metric_id": "PVD10104",
+              "value": "65%"
+            }
+          ]
+        },
+        {
+          "group_name": "2. Privacy Training and Awareness",
+          "group_id": "PVD10105",
+          "value": [
+            {
+              "metric_name": "Employee Knowledge Score",
+              "metric_id": "PVD10106",
+              "value": "65%"
+            }
+          ]
+        },
+        {
+          "group_name": "3. Privacy Impact Assessments",
+          "group_id": "PVD10107",
+          "value": [
+            {
+              "metric_name": "Number of Privacy Impact Assessments Conducted",
+              "metric_id": "PVD10108",
+              "value": "78%"
+            }
+          ]
+        },
+        {
+          "group_name": "4. Policy Review and Update",
+          "group_id": "PVD10109",
+          "value": [
+            {
+              "metric_name": "Policy Review Frequency",
+              "metric_id": "PVD10110",
+              "value": "67%"
+            },
+            {
+              "metric_name": "Policy Revision Accuracy",
+              "metric_id": "PVD10111",
+              "value": "85%"
+            }
+          ]
+        },
+        {
+          "group_name": "5. Stakeholder Feedback",
+          "group_id": "PVD10112",
+          "value": [
+            {
+              "metric_name": "Feedback Collection Rate",
+              "metric_id": "PVD10113",
+              "value": "76%"
+            },
+            {
+              "metric_name": "Feedback Implementation Rate",
+              "metric_id": "PVD10114",
+              "value": "84%"
+            },
+            {
+              "metric_name": "Stakeholder Satisfaction with Policy Development",
+              "metric_id": "PVD10115",
+              "value": "86%"
+            }
+          ]
+        },
+        {
+          "group_name": "6. Compliance with Best Practices",
+          "group_id": "PVD10116",
+          "value": [
+            {
+              "metric_name": "Benchmarking Performance",
+              "metric_id": "PVD10117",
+              "value": "81%"
+            },
+            {
+              "metric_name": "Adoption of Emerging Best Practices",
+              "metric_id": "PVD10118",
+              "value": "76%"
+            }
+          ]
+        },
+        {
+          "group_name": "7. Resource Allocation",
+          "group_id": "PVD10119",
+          "value": [
+            {
+              "metric_name": "Budget Utilization for Policy Development",
+              "metric_id": "PVD10120",
+              "value": "86%"
+            },
+            {
+              "metric_name": "Resource Allocation Efficiency",
+              "metric_id": "PVD10121",
+              "value": "76%"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sub_module_name": "Privacy Management",
+      "sub_module_id": "PVM10000",
+      "value": [],
+      "groups": [
+        {
+          "group_name": "1. Privacy Policy Enforcement",
+          "group_id": "PVM10101",
+          "value": [
+            {
+              "metric_name": "Policy Enforcement Rate",
+              "metric_id": "PVM10102",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Policy Violation Incidents",
+              "metric_id": "PVM10103",
+              "value": "75%"
+            },
+            {
+              "metric_name": "Policy Violation Resolution Time",
+              "metric_id": "PVM10104",
+              "value": "65%"
+            }
+          ]
+        },
+        {
+          "group_name": "2. Privacy Audit and Monitoring",
+          "group_id": "PVM10105",
+          "value": [
+            {
+              "metric_name": "Audit Compliance Rate",
+              "metric_id": "PVM10106",
+              "value": "65%"
+            },
+            {
+              "metric_name": "Audit Coverage",
+              "metric_id": "PVM10107",
+              "value": "69%"
+            },
+            {
+              "metric_name": "Audit Findings Resolution Time",
+              "metric_id": "PVM10108",
+              "value": "78%"
+            }
+          ]
+        },
+        {
+          "group_name": "3. Privacy Training and Awareness",
+          "group_id": "PVM10109",
+          "value": [
+            {
+              "metric_name": "Training Completion Rate",
+              "metric_id": "PVM10110",
+              "value": "67%"
+            },
+            {
+              "metric_name": "Awareness Campaign Effectiveness",
+              "metric_id": "PVM10111",
+              "value": "85%"
+            }
+          ]
+        },
+        {
+          "group_name": "4. Privacy Impact Assessments",
+          "group_id": "PVM10112",
+          "value": [
+            {
+              "metric_name": "Privacy Impact Assessment Accuracy",
+              "metric_id": "PVM10113",
+              "value": "76%"
+            },
+            {
+              "metric_name": "Implementation of Recommendations",
+              "metric_id": "PVM10114",
+              "value": "84%"
+            }
+          ]
+        },
+        {
+          "group_name": "5. Data Subject Requests",
+          "group_id": "PVM10115",
+          "value": [
+            {
+              "metric_name": "Request Handling Time",
+              "metric_id": "PVM10116",
+              "value": "86%"
+            },
+            {
+              "metric_name": "Request Completion Rate",
+              "metric_id": "PVM10117",
+              "value": "81%"
+            },
+            {
+              "metric_name": "Request Satisfaction Score",
+              "metric_id": "PVM10118",
+              "value": "76%"
+            }
+          ]
+        },
+        {
+          "group_name": "6. Privacy Breach Management",
+          "group_id": "PVM10119",
+          "value": [
+            {
+              "metric_name": "Breach Detection Time",
+              "metric_id": "PVM10120",
+              "value": "86%"
+            },
+            {
+              "metric_name": "Breach Notification Time",
+              "metric_id": "PVM10121",
+              "value": "76%"
+            },
+            {
+              "metric_name": "Breach Resolution Time",
+              "metric_id": "PVM10122",
+              "value": "81%"
+            }
+          ]
+        },
+        {
+          "group_name": "7. Third-Party Compliance",
+          "group_id": "PVM10123",
+          "value": [
+            {
+              "metric_name": "Third-Party Compliance Rate",
+              "metric_id": "PVM10124",
+              "value": "82%"
+            },
+            {
+              "metric_name": "Third-Party Audit Findings",
+              "metric_id": "PVM10125",
+              "value": "83%"
+            },
+            {
+              "metric_name": "Third-Party Data Protection Agreements",
+              "metric_id": "PVM10126",
+              "value": "84%"
+            }
+          ]
+        },
+        {
+          "group_name": "8. Continuous Improvement",
+          "group_id": "PVM10127",
+          "value": [
+            {
+              "metric_name": "Policy Update Frequency",
+              "metric_id": "PVM10128",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Process Improvement Rate",
+              "metric_id": "PVM10129",
+              "value": "86%"
+            },
+            {
+              "metric_name": "Innovation in Privacy Management",
+              "metric_id": "PVM10130",
+              "value": "87%"
+            }
+          ]
+        },
+        {
+          "group_name": "9. Stakeholder Satisfaction",
+          "group_id": "PVM10131",
+          "value": [
+            {
+              "metric_name": "Stakeholder Satisfaction Score",
+              "metric_id": "PVM10132",
+              "value": "88%"
+            },
+            {
+              "metric_name": "Stakeholder Feedback Implementation Rate",
+              "metric_id": "PVM10133",
+              "value": "89%"
+            },
+            {
+              "metric_name": "Net Promoter Score (NPS)",
+              "metric_id": "PVM10134",
+              "value": "90%"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sub_module_name": "Party Information Management",
+      "sub_module_id": "PTY10000",
+      "value": [],
+      "groups": [
+        {
+          "group_name": "1. Data Quality",
+          "group_id": "PTY10101",
+          "value": [
+            {
+              "metric_name": "Data Accuracy",
+              "metric_id": "PTY10102",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Data Completeness",
+              "metric_id": "PTY10103",
+              "value": "75%"
+            },
+            {
+              "metric_name": "Data Consistency",
+              "metric_id": "PTY10104",
+              "value": "65%"
+            }
+          ]
+        },
+        {
+          "group_name": "2. Data Management",
+          "group_id": "PTY10105",
+          "value": [
+            {
+              "metric_name": "Data Update Frequency",
+              "metric_id": "PTY10106",
+              "value": "65%"
+            },
+            {
+              "metric_name": "Data Entry Error Rate",
+              "metric_id": "PTY10107",
+              "value": "69%"
+            },
+            {
+              "metric_name": "Data Validation Success Rate",
+              "metric_id": "PTY10108",
+              "value": "78%"
+            }
+          ]
+        },
+        {
+          "group_name": "3. Data Security",
+          "group_id": "PTY10109",
+          "value": [
+            {
+              "metric_name": "Access Control Compliance",
+              "metric_id": "PTY10110",
+              "value": "67%"
+            },
+            {
+              "metric_name": "Data Breach Incidents",
+              "metric_id": "PTY10111",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Data Encryption Rate",
+              "metric_id": "PTY10112",
+              "value": "81%"
+            }
+          ]
+        },
+        {
+          "group_name": "4. Data Utilization",
+          "group_id": "PTY10113",
+          "value": [
+            {
+              "metric_name": "Data Usage Rate",
+              "metric_id": "PTY10114",
+              "value": "84%"
+            },
+            {
+              "metric_name": "Data Integration Success Rate",
+              "metric_id": "PTY10115",
+              "value": "79%"
+            },
+            {
+              "metric_name": "Data Accessibility Score",
+              "metric_id": "PTY10116",
+              "value": "86%"
+            }
+          ]
+        },
+        {
+          "group_name": "5. Data Governance",
+          "group_id": "PTY10117",
+          "value": [
+            {
+              "metric_name": "Compliance Rate",
+              "metric_id": "PTY10118",
+              "value": "76%"
+            },
+            {
+              "metric_name": "Audit Findings Resolution Time",
+              "metric_id": "PTY10119",
+              "value": "74%"
+            },
+            {
+              "metric_name": "Policy Update Frequency",
+              "metric_id": "PTY10120",
+              "value": "86%"
+            }
+          ]
+        },
+        {
+          "group_name": "6. Stakeholder Satisfaction",
+          "group_id": "PTY10121",
+          "value": [
+            {
+              "metric_name": "Stakeholder Satisfaction Score",
+              "metric_id": "PTY10122",
+              "value": "81%"
+            },
+            {
+              "metric_name": "Feedback Implementation Rate",
+              "metric_id": "PTY10123",
+              "value": "73%"
+            },
+            {
+              "metric_name": "Net Promoter Score (NPS)",
+              "metric_id": "PTY10124",
+              "value": "82%"
+            }
+          ]
+        },
+        {
+          "group_name": "7. Continuous Improvement",
+          "group_id": "PTY10125",
+          "value": [
+            {
+              "metric_name": "Process Improvement Rate",
+              "metric_id": "PTY10126",
+              "value": "84%"
+            },
+            {
+              "metric_name": "Innovation in Data Management",
+              "metric_id": "PTY10127",
+              "value": "83%"
+            },
+            {
+              "metric_name": "Policy Update Frequency",
+              "metric_id": "PTY10128",
+              "value": "85%"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sub_module_name": "Anomaly Management",
+      "sub_module_id": "ANO10000",
+      "value": [],
+      "groups": [
+        {
+          "group_name": "1. Anomaly Detection",
+          "group_id": "ANO10101",
+          "value": [
+            {
+              "metric_name": "Detection Rate",
+              "metric_id": "ANO10102",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Detection Time",
+              "metric_id": "ANO10103",
+              "value": "75%"
+            },
+            {
+              "metric_name": "False Positive Rate",
+              "metric_id": "ANO10104",
+              "value": "65%"
+            }
+          ]
+        },
+        {
+          "group_name": "2. Anomaly Diagnosis",
+          "group_id": "ANO10105",
+          "value": [
+            {
+              "metric_name": "Diagnosis Accuracy",
+              "metric_id": "ANO10106",
+              "value": "65%"
+            },
+            {
+              "metric_name": "Diagnosis Time",
+              "metric_id": "ANO10107",
+              "value": "69%"
+            },
+            {
+              "metric_name": "Root Cause Identification Rate",
+              "metric_id": "ANO10108",
+              "value": "78%"
+            }
+          ]
+        },
+        {
+          "group_name": "3. Anomaly Resolution",
+          "group_id": "ANO10109",
+          "value": [
+            {
+              "metric_name": "Resolution Rate",
+              "metric_id": "ANO10110",
+              "value": "67%"
+            },
+            {
+              "metric_name": "Resolution Time",
+              "metric_id": "ANO10111",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Reoccurrence Rate",
+              "metric_id": "ANO10112",
+              "value": "81%"
+            }
+          ]
+        },
+        {
+          "group_name": "4. Anomaly Prevention",
+          "group_id": "ANO10113",
+          "value": [
+            {
+              "metric_name": "Prevention Rate",
+              "metric_id": "ANO10114",
+              "value": "84%"
+            },
+            {
+              "metric_name": "Preventive Actions Implemented",
+              "metric_id": "ANO10115",
+              "value": "76%"
+            },
+            {
+              "metric_name": "Prevention Effectiveness",
+              "metric_id": "ANO10116",
+              "value": "86%"
+            }
+          ]
+        },
+        {
+          "group_name": "5. Stakeholder Satisfaction",
+          "group_id": "ANO10117",
+          "value": [
+            {
+              "metric_name": "Stakeholder Satisfaction Score",
+              "metric_id": "ANO10118",
+              "value": "76%"
+            },
+            {
+              "metric_name": "Feedback Implementation Rate",
+              "metric_id": "ANO10119",
+              "value": "74%"
+            },
+            {
+              "metric_name": "Net Promoter Score (NPS)",
+              "metric_id": "ANO10120",
+              "value": "86%"
+            }
+          ]
+        },
+        {
+          "group_name": "6. Continuous Improvement",
+          "group_id": "ANO10121",
+          "value": [
+            {
+              "metric_name": "Process Improvement Rate",
+              "metric_id": "ANO10122",
+              "value": "81%"
+            },
+            {
+              "metric_name": "Innovation in Anomaly Management",
+              "metric_id": "ANO10123",
+              "value": "73%"
+            },
+            {
+              "metric_name": "Policy Update Frequency",
+              "metric_id": "ANO10124",
+              "value": "82%"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sub_module_name": "Communications",
+      "sub_module_id": "CMM10000",
+      "value": [],
+      "groups": [
+        {
+          "group_name": "1. Communication Quality",
+          "group_id": "CMM10101",
+          "value": [
+            {
+              "metric_name": "Call Quality Score",
+              "metric_id": "CMM10102",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Data Transmission Quality",
+              "metric_id": "CMM10103",
+              "value": "75%"
+            },
+            {
+              "metric_name": "Network Latency",
+              "metric_id": "CMM10104",
+              "value": "65%"
+            }
+          ]
+        },
+        {
+          "group_name": "2. Communication Reliability",
+          "group_id": "CMM10105",
+          "value": [
+            {
+              "metric_name": "Uptime Percentage",
+              "metric_id": "CMM10106",
+              "value": "65%"
+            },
+            {
+              "metric_name": "Downtime Incidents",
+              "metric_id": "CMM10107",
+              "value": "69%"
+            },
+            {
+              "metric_name": "Mean Time to Repair (MTTR)",
+              "metric_id": "CMM10108",
+              "value": "78%"
+            }
+          ]
+        },
+        {
+          "group_name": "3. Communication Security",
+          "group_id": "CMM10109",
+          "value": [
+            {
+              "metric_name": "Security Incident Rate",
+              "metric_id": "CMM10110",
+              "value": "67%"
+            },
+            {
+              "metric_name": "Encryption Rate",
+              "metric_id": "CMM10111",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Access Control Compliance",
+              "metric_id": "CMM10112",
+              "value": "81%"
+            }
+          ]
+        },
+        {
+          "group_name": "4. Communication Efficiency",
+          "group_id": "CMM10113",
+          "value": [
+            {
+              "metric_name": "Bandwidth Utilization",
+              "metric_id": "CMM10114",
+              "value": "84%"
+            },
+            {
+              "metric_name": "Resource Utilization Rate",
+              "metric_id": "CMM10115",
+              "value": "76%"
+            },
+            {
+              "metric_name": "Cost per Communication Unit",
+              "metric_id": "CMM10116",
+              "value": "86%"
+            }
+          ]
+        },
+        {
+          "group_name": "5. Stakeholder Satisfaction",
+          "group_id": "CMM10117",
+          "value": [
+            {
+              "metric_name": "Stakeholder Satisfaction Score",
+              "metric_id": "CMM10118",
+              "value": "76%"
+            },
+            {
+              "metric_name": "Feedback Implementation Rate",
+              "metric_id": "CMM10119",
+              "value": "74%"
+            },
+            {
+              "metric_name": "Net Promoter Score (NPS)",
+              "metric_id": "CMM10120",
+              "value": "86%"
+            }
+          ]
+        },
+        {
+          "group_name": "6. Continuous Improvement",
+          "group_id": "CMM10121",
+          "value": [
+            {
+              "metric_name": "Process Improvement Rate",
+              "metric_id": "CMM10122",
+              "value": "81%"
+            },
+            {
+              "metric_name": "Innovation in Communication",
+              "metric_id": "CMM10123",
+              "value": "73%"
+            },
+            {
+              "metric_name": "Policy Update Frequency",
+              "metric_id": "CMM10124",
+              "value": "82%"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sub_module_name": "Content Management",
+      "sub_module_id": "CNT10000",
+      "value": [],
+      "groups": [
+        {
+          "group_name": "1. Content Quality",
+          "group_id": "CNT10101",
+          "value": [
+            {
+              "metric_name": "Content Accuracy",
+              "metric_id": "CNT10102",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Content Completeness",
+              "metric_id": "CNT10103",
+              "value": "75%"
+            },
+            {
+              "metric_name": "Content Consistency",
+              "metric_id": "CNT10104",
+              "value": "65%"
+            }
+          ]
+        },
+        {
+          "group_name": "2. Content Management",
+          "group_id": "CNT10105",
+          "value": [
+            {
+              "metric_name": "Content Update Frequency",
+              "metric_id": "CNT10106",
+              "value": "65%"
+            },
+            {
+              "metric_name": "Content Entry Error Rate",
+              "metric_id": "CNT10107",
+              "value": "69%"
+            },
+            {
+              "metric_name": "Content Validation Success Rate",
+              "metric_id": "CNT10108",
+              "value": "78%"
+            }
+          ]
+        },
+        {
+          "group_name": "3. Content Security",
+          "group_id": "CNT10109",
+          "value": [
+            {
+              "metric_name": "Access Control Compliance",
+              "metric_id": "CNT10110",
+              "value": "67%"
+            },
+            {
+              "metric_name": "Content Breach Incidents",
+              "metric_id": "CNT10111",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Content Encryption Rate",
+              "metric_id": "CNT10112",
+              "value": "81%"
+            }
+          ]
+        },
+        {
+          "group_name": "4. Content Utilization",
+          "group_id": "CNT10113",
+          "value": [
+            {
+              "metric_name": "Content Usage Rate",
+              "metric_id": "CNT10114",
+              "value": "84%"
+            },
+            {
+              "metric_name": "Content Integration Success Rate",
+              "metric_id": "CNT10115",
+              "value": "74%"
+            },
+            {
+              "metric_name": "Content Accessibility Score",
+              "metric_id": "CNT10116",
+              "value": "86%"
+            }
+          ]
+        },
+        {
+          "group_name": "5. Content Governance",
+          "group_id": "CNT10117",
+          "value": [
+            {
+              "metric_name": "Compliance Rate",
+              "metric_id": "CNT10118",
+              "value": "76%"
+            },
+            {
+              "metric_name": "Audit Findings Resolution Time",
+              "metric_id": "CNT10119",
+              "value": "74%"
+            },
+            {
+              "metric_name": "Policy Update Frequency",
+              "metric_id": "CNT10120",
+              "value": "86%"
+            }
+          ]
+        },
+        {
+          "group_name": "6. Stakeholder Satisfaction",
+          "group_id": "CNT10121",
+          "value": [
+            {
+              "metric_name": "Stakeholder Satisfaction Score",
+              "metric_id": "CNT10122",
+              "value": "81%"
+            },
+            {
+              "metric_name": "Feedback Implementation Rate",
+              "metric_id": "CNT10123",
+              "value": "73%"
+            },
+            {
+              "metric_name": "Net Promoter Score (NPS)",
+              "metric_id": "CNT10124",
+              "value": "82%"
+            }
+          ]
+        },
+        {
+          "group_name": "7. Continuous Improvement",
+          "group_id": "CNT10125",
+          "value": [
+            {
+              "metric_name": "Process Improvement Rate",
+              "metric_id": "CNT10126",
+              "value": "86%"
+            },
+            {
+              "metric_name": "Innovation in Content Management",
+              "metric_id": "CNT10127",
+              "value": "81%"
+            },
+            {
+              "metric_name": "Policy Update Frequency",
+              "metric_id": "CNT10128",
+              "value": "73%"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sub_module_name": "Master Data Management",
+      "sub_module_id": "MDM10000",
+      "value": [],
+      "groups": [
+        {
+          "group_name": "1. Data Quality",
+          "group_id": "MDM10101",
+          "value": [
+            {
+              "metric_name": "Data Accuracy",
+              "metric_id": "MDM10102",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Data Completeness",
+              "metric_id": "MDM10103",
+              "value": "75%"
+            },
+            {
+              "metric_name": "Data Consistency",
+              "metric_id": "MDM10104",
+              "value": "65%"
+            }
+          ]
+        },
+        {
+          "group_name": "2. Data Management",
+          "group_id": "MDM10105",
+          "value": [
+            {
+              "metric_name": "Data Update Frequency",
+              "metric_id": "MDM10106",
+              "value": "65%"
+            },
+            {
+              "metric_name": "Data Entry Error Rate",
+              "metric_id": "MDM10107",
+              "value": "69%"
+            },
+            {
+              "metric_name": "Data Validation Success Rate",
+              "metric_id": "MDM10108",
+              "value": "78%"
+            }
+          ]
+        },
+        {
+          "group_name": "3. Data Security",
+          "group_id": "MDM10109",
+          "value": [
+            {
+              "metric_name": "Access Control Compliance",
+              "metric_id": "MDM10110",
+              "value": "67%"
+            },
+            {
+              "metric_name": "Data Breach Incidents",
+              "metric_id": "MDM10111",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Data Encryption Rate",
+              "metric_id": "MDM10112",
+              "value": "81%"
+            }
+          ]
+        },
+        {
+          "group_name": "4. Data Utilization",
+          "group_id": "MDM10113",
+          "value": [
+            {
+              "metric_name": "Data Usage Rate",
+              "metric_id": "MDM10114",
+              "value": "84%"
+            },
+            {
+              "metric_name": "Data Integration Success Rate",
+              "metric_id": "MDM10115",
+              "value": "74%"
+            },
+            {
+              "metric_name": "Data Accessibility Score",
+              "metric_id": "MDM10116",
+              "value": "86%"
+            }
+          ]
+        },
+        {
+          "group_name": "5. Data Governance",
+          "group_id": "MDM10117",
+          "value": [
+            {
+              "metric_name": "Compliance Rate",
+              "metric_id": "MDM10118",
+              "value": "76%"
+            },
+            {
+              "metric_name": "Audit Findings Resolution Time",
+              "metric_id": "MDM10119",
+              "value": "74%"
+            },
+            {
+              "metric_name": "Policy Update Frequency",
+              "metric_id": "MDM10120",
+              "value": "86%"
+            }
+          ]
+        },
+        {
+          "group_name": "6. Stakeholder Satisfaction",
+          "group_id": "MDM10121",
+          "value": [
+            {
+              "metric_name": "Stakeholder Satisfaction Score",
+              "metric_id": "MDM10122",
+              "value": "81%"
+            },
+            {
+              "metric_name": "Feedback Implementation Rate",
+              "metric_id": "MDM10123",
+              "value": "73%"
+            },
+            {
+              "metric_name": "Net Promoter Score (NPS)",
+              "metric_id": "MDM10124",
+              "value": "82%"
+            }
+          ]
+        },
+        {
+          "group_name": "7. Continuous Improvement",
+          "group_id": "MDM10125",
+          "value": [
+            {
+              "metric_name": "Process Improvement Rate",
+              "metric_id": "MDM10126",
+              "value": "81%"
+            },
+            {
+              "metric_name": "Innovation in Data Management",
+              "metric_id": "MDM10127",
+              "value": "73%"
+            },
+            {
+              "metric_name": "Policy Update Frequency",
+              "metric_id": "MDM10128",
+              "value": "82%"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sub_module_name": "Project Management",
+      "sub_module_id": "PJM10000",
+      "value": [],
+      "groups": [
+        {
+          "group_name": "1. Project Planning",
+          "group_id": "PJM10101",
+          "value": [
+            {
+              "metric_name": "Project Plan Accuracy",
+              "metric_id": "PJM10102",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Plan Development Time",
+              "metric_id": "PJM10103",
+              "value": "75%"
+            },
+            {
+              "metric_name": "Stakeholder Engagement in Planning",
+              "metric_id": "PJM10104",
+              "value": "65%"
+            }
+          ]
+        },
+        {
+          "group_name": "2. Project Execution",
+          "group_id": "PJM10105",
+          "value": [
+            {
+              "metric_name": "Task Completion Rate",
+              "metric_id": "PJM10106",
+              "value": "65%"
+            },
+            {
+              "metric_name": "Resource Utilization Rate",
+              "metric_id": "PJM10107",
+              "value": "69%"
+            },
+            {
+              "metric_name": "Budget Adherence",
+              "metric_id": "PJM10108",
+              "value": "78%"
+            }
+          ]
+        },
+        {
+          "group_name": "3. Project Monitoring and Control",
+          "group_id": "PJM10109",
+          "value": [
+            {
+              "metric_name": "Progress Tracking Accuracy",
+              "metric_id": "PJM10110",
+              "value": "67%"
+            },
+            {
+              "metric_name": "Issue Resolution Time",
+              "metric_id": "PJM10111",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Change Request Handling Time",
+              "metric_id": "PJM10112",
+              "value": "81%"
+            }
+          ]
+        },
+        {
+          "group_name": "4. Project Quality",
+          "group_id": "PJM10113",
+          "value": [
+            {
+              "metric_name": "Quality Control Compliance",
+              "metric_id": "PJM10114",
+              "value": "84%"
+            },
+            {
+              "metric_name": "Defect Rate",
+              "metric_id": "PJM10115",
+              "value": "74%"
+            },
+            {
+              "metric_name": "Quality Assurance Activities",
+              "metric_id": "PJM10116",
+              "value": "86%"
+            }
+          ]
+        },
+        {
+          "group_name": "5. Project Risk Management",
+          "group_id": "PJM10117",
+          "value": [
+            {
+              "metric_name": "Risk Identification Rate",
+              "metric_id": "PJM10118",
+              "value": "76%"
+            },
+            {
+              "metric_name": "Risk Mitigation Effectiveness",
+              "metric_id": "PJM10119",
+              "value": "74%"
+            },
+            {
+              "metric_name": "Risk Response Time",
+              "metric_id": "PJM10120",
+              "value": "86%"
+            }
+          ]
+        },
+        {
+          "group_name": "6. Stakeholder Satisfaction",
+          "group_id": "PJM10121",
+          "value": [
+            {
+              "metric_name": "Stakeholder Satisfaction Score",
+              "metric_id": "PJM10122",
+              "value": "81%"
+            },
+            {
+              "metric_name": "Feedback Implementation Rate",
+              "metric_id": "PJM10123",
+              "value": "73%"
+            },
+            {
+              "metric_name": "Net Promoter Score (NPS)",
+              "metric_id": "PJM10124",
+              "value": "82%"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sub_module_name": "Identification and Permission Management",
+      "sub_module_id": "IDP10000",
+      "value": [],
+      "groups": [
+        {
+          "group_name": "1. Identification Accuracy",
+          "group_id": "IDP10101",
+          "value": [
+            {
+              "metric_name": "Identification Accuracy Rate",
+              "metric_id": "IDP10102",
+              "value": "85%"
+            },
+            {
+              "metric_name": "False Identification Rate",
+              "metric_id": "IDP10103",
+              "value": "75%"
+            }
+          ]
+        },
+        {
+          "group_name": "2. Permission Management",
+          "group_id": "IDP10104",
+          "value": [
+            {
+              "metric_name": "Permission Grant Accuracy",
+              "metric_id": "IDP10105",
+              "value": "78%"
+            },
+            {
+              "metric_name": "Permission Revocation Accuracy",
+              "metric_id": "IDP10106",
+              "value": "65%"
+            },
+            {
+              "metric_name": "Permission Change Time",
+              "metric_id": "IDP10107",
+              "value": "69%"
+            }
+          ]
+        },
+        {
+          "group_name": "3. Access Control",
+          "group_id": "IDP10108",
+          "value": [
+            {
+              "metric_name": "Access Control Compliance",
+              "metric_id": "IDP10109",
+              "value": "81%"
+            },
+            {
+              "metric_name": "Unauthorized Access Attempts",
+              "metric_id": "IDP10110",
+              "value": "67%"
+            },
+            {
+              "metric_name": "Access Control Policy Updates",
+              "metric_id": "IDP10111",
+              "value": "85%"
+            }
+          ]
+        },
+        {
+          "group_name": "4. User Authentication",
+          "group_id": "IDP10112",
+          "value": [
+            {
+              "metric_name": "Authentication Success Rate",
+              "metric_id": "IDP10113",
+              "value": "79%"
+            },
+            {
+              "metric_name": "Authentication Failure Rate",
+              "metric_id": "IDP10114",
+              "value": "84%"
+            },
+            {
+              "metric_name": "Authentication Method Diversity",
+              "metric_id": "IDP10115",
+              "value": "84%"
+            }
+          ]
+        },
+        {
+          "group_name": "5. User Activity Monitoring",
+          "group_id": "IDP10116",
+          "value": [
+            {
+              "metric_name": "Activity Monitoring Coverage",
+              "metric_id": "IDP10117",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Anomaly Detection Rate",
+              "metric_id": "IDP10118",
+              "value": "76%"
+            },
+            {
+              "metric_name": "Monitoring Response Time",
+              "metric_id": "IDP10119",
+              "value": "74%"
+            }
+          ]
+        },
+        {
+          "group_name": "6. Stakeholder Satisfaction",
+          "group_id": "IDP10120",
+          "value": [
+            {
+              "metric_name": "Stakeholder Satisfaction Score",
+              "metric_id": "IDP10121",
+              "value": "82%"
+            },
+            {
+              "metric_name": "Feedback Implementation Rate",
+              "metric_id": "IDP10122",
+              "value": "81%"
+            },
+            {
+              "metric_name": "Net Promoter Score (NPS)",
+              "metric_id": "IDP10123",
+              "value": "73%"
+            }
+          ]
+        },
+        {
+          "group_name": "7. Continuous Improvement",
+          "group_id": "IDP10124",
+          "value": [
+            {
+              "metric_name": "Process Improvement Rate",
+              "metric_id": "IDP10125",
+              "value": "79%"
+            },
+            {
+              "metric_name": "Innovation in Identification and Permission Management",
+              "metric_id": "IDP10126",
+              "value": "81%"
+            },
+            {
+              "metric_name": "Policy Update Frequency",
+              "metric_id": "IDP10127",
+              "value": "73%"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sub_module_name": "Fallout Management",
+      "sub_module_id": "FLO10000",
+      "value": [],
+      "groups": [
+        {
+          "group_name": "1. Issue Identification",
+          "group_id": "FLO10101",
+          "value": [
+            {
+              "metric_name": "Issue Detection Rate",
+              "metric_id": "FLO10102",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Average Detection Time",
+              "metric_id": "FLO10103",
+              "value": "75%"
+            },
+            {
+              "metric_name": "False Positive Rate",
+              "metric_id": "FLO10104",
+              "value": "65%"
+            }
+          ]
+        },
+        {
+          "group_name": "2. Issue Investigation",
+          "group_id": "FLO10105",
+          "value": [
+            {
+              "metric_name": "Investigation Time",
+              "metric_id": "FLO10106",
+              "value": "65%"
+            },
+            {
+              "metric_name": "Investigation Accuracy",
+              "metric_id": "FLO10107",
+              "value": "69%"
+            },
+            {
+              "metric_name": "Root Cause Identification Rate",
+              "metric_id": "FLO10108",
+              "value": "78%"
+            }
+          ]
+        },
+        {
+          "group_name": "3. Issue Resolution",
+          "group_id": "FLO10109",
+          "value": [
+            {
+              "metric_name": "Resolution Rate",
+              "metric_id": "FLO10110",
+              "value": "67%"
+            },
+            {
+              "metric_name": "Average Resolution Time",
+              "metric_id": "FLO10111",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Reoccurrence Rate",
+              "metric_id": "FLO10112",
+              "value": "81%"
+            }
+          ]
+        },
+        {
+          "group_name": "4. Issue Prevention",
+          "group_id": "FLO10113",
+          "value": [
+            {
+              "metric_name": "Prevention Rate",
+              "metric_id": "FLO10114",
+              "value": "84%"
+            },
+            {
+              "metric_name": "Preventive Actions Implemented",
+              "metric_id": "FLO10115",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Prevention Effectiveness",
+              "metric_id": "FLO10116",
+              "value": "86%"
+            }
+          ]
+        },
+        {
+          "group_name": "5. Stakeholder Satisfaction",
+          "group_id": "FLO10117",
+          "value": [
+            {
+              "metric_name": "Stakeholder Satisfaction Score",
+              "metric_id": "FLO10118",
+              "value": "76%"
+            },
+            {
+              "metric_name": "Feedback Implementation Rate",
+              "metric_id": "FLO10119",
+              "value": "74%"
+            },
+            {
+              "metric_name": "Net Promoter Score (NPS)",
+              "metric_id": "FLO10120",
+              "value": "86%"
+            }
+          ]
+        },
+        {
+          "group_name": "6. Continuous Improvement",
+          "group_id": "FLO10121",
+          "value": [
+            {
+              "metric_name": "Process Improvement Rate",
+              "metric_id": "FLO10122",
+              "value": "81%"
+            },
+            {
+              "metric_name": "Innovation in Fallout Management",
+              "metric_id": "FLO10123",
+              "value": "73%"
+            },
+            {
+              "metric_name": "Policy Update Frequency",
+              "metric_id": "FLO10124",
+              "value": "82%"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sub_module_name": "Party Management",
+      "sub_module_id": "BPT10000",
+      "value": [],
+      "groups": [
+        {
+          "group_name": "1. Data Quality",
+          "group_id": "BPT10101",
+          "value": [
+            {
+              "metric_name": "Data Accuracy",
+              "metric_id": "BPT10102",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Data Completeness",
+              "metric_id": "BPT10103",
+              "value": "75%"
+            },
+            {
+              "metric_name": "Data Consistency",
+              "metric_id": "BPT10104",
+              "value": "65%"
+            }
+          ]
+        },
+        {
+          "group_name": "2. Data Management",
+          "group_id": "BPT10105",
+          "value": [
+            {
+              "metric_name": "Data Update Frequency",
+              "metric_id": "BPT10106",
+              "value": "65%"
+            },
+            {
+              "metric_name": "Data Entry Error Rate",
+              "metric_id": "BPT10107",
+              "value": "69%"
+            },
+            {
+              "metric_name": "Data Validation Success Rate",
+              "metric_id": "BPT10108",
+              "value": "78%"
+            }
+          ]
+        },
+        {
+          "group_name": "3. Data Security",
+          "group_id": "BPT10109",
+          "value": [
+            {
+              "metric_name": "Access Control Compliance",
+              "metric_id": "BPT10110",
+              "value": "67%"
+            },
+            {
+              "metric_name": "Data Breach Incidents",
+              "metric_id": "BPT10111",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Data Encryption Rate",
+              "metric_id": "BPT10112",
+              "value": "81%"
+            }
+          ]
+        },
+        {
+          "group_name": "4. Data Utilization",
+          "group_id": "BPT10113",
+          "value": [
+            {
+              "metric_name": "Data Usage Rate",
+              "metric_id": "BPT10114",
+              "value": "84%"
+            },
+            {
+              "metric_name": "Data Integration Success Rate",
+              "metric_id": "BPT10115",
+              "value": "79%"
+            },
+            {
+              "metric_name": "Data Accessibility Score",
+              "metric_id": "BPT10116",
+              "value": "86%"
+            }
+          ]
+        },
+        {
+          "group_name": "5. Data Governance",
+          "group_id": "BPT10117",
+          "value": [
+            {
+              "metric_name": "Compliance Rate",
+              "metric_id": "BPT10118",
+              "value": "76%"
+            },
+            {
+              "metric_name": "Audit Findings Resolution Time",
+              "metric_id": "BPT10119",
+              "value": "74%"
+            },
+            {
+              "metric_name": "Policy Update Frequency",
+              "metric_id": "BPT10120",
+              "value": "86%"
+            }
+          ]
+        },
+        {
+          "group_name": "6. Stakeholder Satisfaction",
+          "group_id": "BPT10121",
+          "value": [
+            {
+              "metric_name": "Stakeholder Satisfaction Score",
+              "metric_id": "BPT10122",
+              "value": "81%"
+            },
+            {
+              "metric_name": "Feedback Implementation Rate",
+              "metric_id": "BPT10123",
+              "value": "73%"
+            },
+            {
+              "metric_name": "Net Promoter Score (NPS)",
+              "metric_id": "BPT10124",
+              "value": "82%"
+            }
+          ]
+        },
+        {
+          "group_name": "7. Continuous Improvement",
+          "group_id": "BPT10125",
+          "value": [
+            {
+              "metric_name": "Process Improvement Rate",
+              "metric_id": "BPT10126",
+              "value": "81%"
+            },
+            {
+              "metric_name": "Innovation in Data Management",
+              "metric_id": "BPT10127",
+              "value": "73%"
+            },
+            {
+              "metric_name": "Policy Update Frequency",
+              "metric_id": "BPT10128",
+              "value": "82%"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sub_module_name": "Technology Management",
+      "sub_module_id": "TCH10000",
+      "value": [],
+      "groups": [
+        {
+          "group_name": "1. Innovation and Growth",
+          "group_id": "TCH10101",
+          "value": [
+            {
+              "metric_name": "Technology Innovation Rate",
+              "metric_id": "TCH10102",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Technology Adoption Rate",
+              "metric_id": "TCH10103",
+              "value": "75%"
+            },
+            {
+              "metric_name": "Time to Market for New Technologies",
+              "metric_id": "TCH10104",
+              "value": "65%"
+            }
+          ]
+        },
+        {
+          "group_name": "2. Strategic Alignment",
+          "group_id": "TCH10105",
+          "value": [
+            {
+              "metric_name": "Strategic Alignment Score",
+              "metric_id": "TCH10106",
+              "value": "88%"
+            },
+            {
+              "metric_name": "Technology Portfolio ROI",
+              "metric_id": "TCH10107",
+              "value": "80%"
+            },
+            {
+              "metric_name": "Percentage of Projects Aligned with Business Goals",
+              "metric_id": "TCH10108",
+              "value": "90%"
+            }
+          ]
+        },
+        {
+          "group_name": "3. Risk and Compliance",
+          "group_id": "TCH10109",
+          "value": [
+            {
+              "metric_name": "Risk Mitigation Index",
+              "metric_id": "TCH10110",
+              "value": "82%"
+            },
+            {
+              "metric_name": "Compliance with Technology Standards",
+              "metric_id": "TCH10111",
+              "value": "95%"
+            },
+            {
+              "metric_name": "Technology Risk Assessment Frequency",
+              "metric_id": "TCH10112",
+              "value": "86%"
+            }
+          ]
+        },
+        {
+          "group_name": "4. Cost Management",
+          "group_id": "TCH10113",
+          "value": [
+            {
+              "metric_name": "Total Cost of Ownership (TCO) Reduction",
+              "metric_id": "TCH10114",
+              "value": "60%"
+            },
+            {
+              "metric_name": "Technology Cost Savings Achieved",
+              "metric_id": "TCH10115",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Budget Variance",
+              "metric_id": "TCH10116",
+              "value": "73%"
+            }
+          ]
+        },
+        {
+          "group_name": "5. Lifecycle Management",
+          "group_id": "TCH10117",
+          "value": [
+            {
+              "metric_name": "Technology Lifecycle Management Efficiency",
+              "metric_id": "TCH10118",
+              "value": "88%"
+            },
+            {
+              "metric_name": "Percentage of Assets within Supported Lifecycle",
+              "metric_id": "TCH10119",
+              "value": "90%"
+            },
+            {
+              "metric_name": "Asset Retirement Rate",
+              "metric_id": "TCH10120",
+              "value": "55%"
+            }
+          ]
+        },
+        {
+          "group_name": "6. Vendor and Partner Management",
+          "group_id": "TCH10121",
+          "value": [
+            {
+              "metric_name": "Vendor Performance Score",
+              "metric_id": "TCH10122",
+              "value": "92%"
+            },
+            {
+              "metric_name": "Supplier Contract Compliance Rate",
+              "metric_id": "TCH10123",
+              "value": "95%"
+            },
+            {
+              "metric_name": "Vendor SLA Compliance",
+              "metric_id": "TCH10124",
+              "value": "98%"
+            }
+          ]
+        },
+        {
+          "group_name": "7. User and Stakeholder Satisfaction",
+          "group_id": "TCH10125",
+          "value": [
+            {
+              "metric_name": "Technology User Satisfaction Score",
+              "metric_id": "TCH10126",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Stakeholder Engagement Level",
+              "metric_id": "TCH10127",
+              "value": "78%"
+            },
+            {
+              "metric_name": "Feedback Implementation Rate",
+              "metric_id": "TCH10128",
+              "value": "75%"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sub_module_name": "Systems and Applications Management",
+      "sub_module_id": "SYA10000",
+      "value": [],
+      "groups": [
+        {
+          "group_name": "1. Reliability and Availability",
+          "group_id": "SYA10101",
+          "value": [
+            {
+              "metric_name": "System Uptime Percentage",
+              "metric_id": "SYA10102",
+              "value": "90%"
+            },
+            {
+              "metric_name": "Mean Time Between Failures (MTBF)",
+              "metric_id": "SYA10103",
+              "value": "65%"
+            },
+            {
+              "metric_name": "Mean Time to Repair (MTTR)",
+              "metric_id": "SYA10104",
+              "value": "80%"
+            },
+            {
+              "metric_name": " Total time systems are non-operational",
+              "metric_id": "SYA10105",
+              "value": "90%"
+            }
+          ]
+        },
+        {
+          "group_name": "2. Performance",
+          "group_id": "SYA10106",
+          "value": [
+            {
+              "metric_name": "Application Response Time",
+              "metric_id": "SYA10107",
+              "value": "70%"
+            },
+            {
+              "metric_name": "Resource Utilization Rate",
+              "metric_id": "SYA10108",
+              "value": "75%"
+            },
+            {
+              "metric_name": " Degree of resource capacity being utilized",
+              "metric_id": "SYA10109",
+              "value": "80%"
+            },
+	    {
+              "metric_name": "Performance Efficiency",
+              "metric_id": "SYA10110",
+              "value": "80%"
+            }
+          ]
+        },
+        {
+          "group_name": "3. Incident and Problem Management",
+          "group_id": "SYA10111",
+          "value": [
+            {
+              "metric_name": "Incident Resolution Rate",
+              "metric_id": "SYA10112",
+              "value": "90%"
+            },
+            {
+              "metric_name": "Incident Response Time",
+              "metric_id": "SYA10113",
+              "value": "30 minutes"
+            },
+            {
+              "metric_name": "Change Success Rate",
+              "metric_id": "SYA10114",
+              "value": "95%"
+            },
+            {
+              "metric_name": "Problem Resolution Time",
+              "metric_id": "SYA10115",
+              "value": "95%"
+            }
+          ]
+        },
+        {
+          "group_name": "4. User Experience",
+          "group_id": "SYA10116",
+          "value": [
+            {
+              "metric_name": "User Satisfaction Score (USS)",
+              "metric_id": "SYA10117",
+              "value": "88%"
+            },
+            {
+              "metric_name": "Number of User Complaints",
+              "metric_id": "SYA10118",
+              "value": "79%"
+            },
+            {
+              "metric_name": "Application Usability Rating",
+              "metric_id": "SYA10119",
+              "value": "68%"
+            }
+          ]
+        },
+        {
+          "group_name": "5. Maintenance and Support",
+          "group_id": "SYA10120",
+          "value": [
+            {
+              "metric_name": "Backup and Recovery Success Rate",
+              "metric_id": "SYA10121",
+              "value": "99%"
+            },
+            {
+              "metric_name": "Maintenance Task Completion Rate",
+              "metric_id": "SYA10122",
+              "value": "95%"
+            },
+            {
+              "metric_name": "Support Ticket Resolution Time",
+              "metric_id": "SYA10123",
+              "value": "89%"
+            }
+          ]
+        },
+        {
+          "group_name": "6. Security and Compliance",
+          "group_id": "SYA10124",
+          "value": [
+            {
+              "metric_name": "Security Incident Frequency",
+              "metric_id": "SYA10125",
+              "value": "79%"
+            },
+            {
+              "metric_name": "Compliance Audit Pass Rate",
+              "metric_id": "SYA10126",
+              "value": "80%"
+            },
+            {
+              "metric_name": "Vulnerability Remediation Time",
+              "metric_id": "SYA10127",
+              "value": "90%"
+            }
+          ]
+        },
+        {
+          "group_name": "7. Continuous Improvement",
+          "group_id": "SYA10128",
+          "value": [
+            {
+              "metric_name": "Performance Improvement Rate",
+              "metric_id": "SYA10129",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Process Improvement Initiatives Implemented",
+              "metric_id": "SYA10130",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Training Completion Rate for IT Staff",
+              "metric_id": "SYA10131",
+              "value": "90%"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sub_module_name": "Data Analytics",
+      "sub_module_id": "DLY10000",
+      "value": [],
+      "groups": [
+        {
+          "group_name": "1. Data Quality",
+          "group_id": "DLY10101",
+          "value": [
+            {
+              "metric_name": "Data Accuracy Rate",
+              "metric_id": "DLY10102",
+              "value": "95%"
+            },
+            {
+              "metric_name": "Data Completeness",
+              "metric_id": "DLY10103",
+              "value": "98%"
+            },
+            {
+              "metric_name": "Data Consistency Score",
+              "metric_id": "DLY10104",
+              "value": "97%"
+            },
+            {
+              "metric_name": "Data Error Rate",
+              "metric_id": "DLY10105",
+              "value": "97%"
+            }
+          ]
+        },
+        {
+          "group_name": "2. Analytical Effectiveness",
+          "group_id": "DLY10106",
+          "value": [
+            {
+              "metric_name": "Insight-to-Action Ratio",
+              "metric_id": "DLY10107",
+              "value": "70%"
+            },
+            {
+              "metric_name": "Predictive Model Accuracy",
+              "metric_id": "DLY10108",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Number of Insights Generated",
+              "metric_id": "DLY10109",
+              "value": "90%"
+            },
+            {
+              "metric_name": "Analytics Project Success Rate",
+              "metric_id": "DLY10110",
+              "value": "80%"
+            }
+          ]
+        },
+        {
+          "group_name": "3. Adoption and Utilization",
+          "group_id": "DLY10111",
+          "value": [
+            {
+              "metric_name": "Analytics Adoption Rate",
+              "metric_id": "DLY10112",
+              "value": "80%"
+            },
+            {
+              "metric_name": "Self-Service Analytics Utilization",
+              "metric_id": "DLY10113",
+              "value": "65%"
+            },
+            {
+              "metric_name": "Number of Active Analytics Users",
+              "metric_id": "DLY10114",
+              "value": "80%"
+            },
+            {
+              "metric_name": "Frequency of Analytics Tool Usage",
+              "metric_id": "DLY10115",
+              "value": "75%"
+            }
+          ]
+        },
+        {
+          "group_name": "4. Processing Efficiency",
+          "group_id": "DLY10116",
+          "value": [
+            {
+              "metric_name": "Data Processing Speed",
+              "metric_id": "DLY10117",
+              "value": "90%"
+            },
+            {
+              "metric_name": "Query Response Time",
+              "metric_id": "DLY10118",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Data Loading Time",
+              "metric_id": "DLY10119",
+              "value": "66%"
+            },
+            {
+              "metric_name": "Analytics Throughput",
+              "metric_id": "DLY10120",
+              "value": "78%"
+            }
+          ]
+        },
+        {
+          "group_name": "5. Impact on Decision-Making",
+          "group_id": "DLY10121",
+          "value": [
+            {
+              "metric_name": "Business Decisions Influenced",
+              "metric_id": "DLY10122",
+              "value": "65"
+            },
+            {
+              "metric_name": "Return on Analytics Investment (ROAI)",
+              "metric_id": "DLY10123",
+              "value": "70%"
+            },
+            {
+              "metric_name": "Revenue Growth Attributable to Analytics",
+              "metric_id": "DLY10124",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Cost Savings from Analytics Insights",
+              "metric_id": "DLY10125",
+              "value": "90%"
+            }
+          ]
+        },
+        {
+          "group_name": "6. Governance and Compliance",
+          "group_id": "DLY10126",
+          "value": [
+            {
+              "metric_name": "Data Governance Compliance Rate",
+              "metric_id": "DLY10127",
+              "value": "97%"
+            },
+            {
+              "metric_name": "Data Privacy Incident Rate",
+              "metric_id": "DLY10128",
+              "value": "90%"
+            },
+            {
+              "metric_name": "Regulatory Compliance Score",
+              "metric_id": "DLY10129",
+              "value": "80%"
+            },
+            {
+              "metric_name": "Data Access Violation Incidents",
+              "metric_id": "DLY10130",
+              "value": "80%"
+            }
+          ]
+        },
+        {
+          "group_name": "7. Visualization and Communication",
+          "group_id": "DLY10131",
+          "value": [
+            {
+              "metric_name": "Data Visualization Effectiveness Score",
+              "metric_id": "DLY10132",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Number of Dashboards Created",
+              "metric_id": "DLY10133",
+              "value": "80%"
+            },
+            {
+              "metric_name": "User Feedback on Reports",
+              "metric_id": "DLY10134",
+              "value": "90%"
+            },
+            {
+              "metric_name": "Time to Deliver Reports",
+              "metric_id": "DLY10135",
+              "value": "80%"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

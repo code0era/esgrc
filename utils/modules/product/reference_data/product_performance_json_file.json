@@ -1,0 +1,4402 @@
+{
+  "module_name": "Product",
+  "module_id": "PROD_001",
+  "value": [],
+  "sub_modules": [
+    {
+      "sub_module_name": "Work Product Orchestration",
+      "sub_module_id": "WPO10000",
+      "value": [],
+      "groups": [
+        {
+          "group_name": "1. Work Item Decomposition",
+          "group_id": "WPO10101",
+          "value": [
+            {
+              "metric_name": "Number of Work Items Decomposed",
+              "metric_id": "WPO10102",
+              "value": "85.0%"
+            },
+            {
+              "metric_name": "Average Decomposition Time",
+              "metric_id": "WPO10103",
+              "value": "75.0%"
+            },
+            {
+              "metric_name": "Decomposition Accuracy",
+              "metric_id": "WPO10104",
+              "value": "65.0%"
+            }
+          ]
+        },
+        {
+          "group_name": "2. Work Item Decomposition Configuration",
+          "group_id": "WPO10105",
+          "value": [
+            {
+              "metric_name": "Configuration Changes",
+              "metric_id": "WPO10106",
+              "value": "53.0%"
+            },
+            {
+              "metric_name": "Configuration Time",
+              "metric_id": "WPO10107",
+              "value": "85.0%"
+            },
+            {
+              "metric_name": "Configuration Errors",
+              "metric_id": "WPO10108",
+              "value": "74.0%"
+            }
+          ]
+        },
+        {
+          "group_name": "3. Work Item Execution",
+          "group_id": "WPO10109",
+          "value": [
+            {
+              "metric_name": "Execution Time",
+              "metric_id": "WPO10110",
+              "value": "84.0%"
+            },
+            {
+              "metric_name": "Success Rate",
+              "metric_id": "WPO10111",
+              "value": "83.0%"
+            },
+            {
+              "metric_name": "Error Rate",
+              "metric_id": "WPO10112",
+              "value": "79.0%"
+            }
+          ]
+        },
+        {
+          "group_name": "4. Work Item Orchestration Instance Lifecycle Management",
+          "group_id": "WPO10113",
+          "value": [
+            {
+              "metric_name": "Lifecycle Duration",
+              "metric_id": "WPO10114",
+              "value": "80.0%"
+            },
+            {
+              "metric_name": "Instances Created",
+              "metric_id": "WPO10115",
+              "value": "81.0%"
+            },
+            {
+              "metric_name": "Instances Completed",
+              "metric_id": "WPO10116",
+              "value": "93.0%"
+            }
+          ]
+        },
+        {
+          "group_name": "5. Work Item Policy Control Configuration",
+          "group_id": "WPO10117",
+          "value": [
+            {
+              "metric_name": "Policy Changes",
+              "metric_id": "WPO10118",
+              "value": "86.0%"
+            },
+            {
+              "metric_name": "Policy Update Time",
+              "metric_id": "WPO10119",
+              "value": "86.9%"
+            },
+            {
+              "metric_name": "Policy Compliance",
+              "metric_id": "WPO10120",
+              "value": "87.9%"
+            }
+          ]
+        },
+        {
+          "group_name": "6. Work Item Sequence Control",
+          "group_id": "WPO10121",
+          "value": [
+            {
+              "metric_name": "Sequence Accuracy",
+              "metric_id": "WPO10122",
+              "value": "89.7%"
+            },
+            {
+              "metric_name": "Control Failures",
+              "metric_id": "WPO10123",
+              "value": "90.6%"
+            },
+            {
+              "metric_name": "Sequence Execution Time",
+              "metric_id": "WPO10124",
+              "value": "91.5%"
+            }
+          ]
+        },
+        {
+          "group_name": "7. Work Item Sequence Control Configuration",
+          "group_id": "WPO10125",
+          "value": [
+            {
+              "metric_name": "Configuration Changes",
+              "metric_id": "WPO10126",
+              "value": "93.3%"
+            },
+            {
+              "metric_name": "Configuration Time",
+              "metric_id": "WPO10127",
+              "value": "94.2%"
+            },
+            {
+              "metric_name": "Configuration Errors",
+              "metric_id": "WPO10128",
+              "value": "95.1%"
+            }
+          ]
+        },
+        {
+          "group_name": "8. Work Item Sequence Execution",
+          "group_id": "WPO10129",
+          "value": [
+            {
+              "metric_name": "Execution Time",
+              "metric_id": "WPO10130",
+              "value": "97.0%"
+            },
+            {
+              "metric_name": "Success Rate",
+              "metric_id": "WPO10131",
+              "value": "97.9%"
+            },
+            {
+              "metric_name": "Error Rate",
+              "metric_id": "WPO10132",
+              "value": "98.8%"
+            },
+            {
+              "metric_name": "Success Rate",
+              "metric_id": "WPO10133",
+              "value": "65.0%"
+            }
+          ]
+        },
+        {
+          "group_name": "9. Work Item Sequence Execution Configuration",
+          "group_id": "WPO10134",
+          "value": [
+            {
+              "metric_name": "Configuration Changes",
+              "metric_id": "WPO10135",
+              "value": "85.0%"
+            },
+            {
+              "metric_name": "Configuration Time",
+              "metric_id": "WPO10136",
+              "value": "91.0%"
+            },
+            {
+              "metric_name": "Configuration Errors",
+              "metric_id": "WPO10137",
+              "value": "95.0%"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sub_module_name": "Product Offering Portfolio Planning",
+      "sub_module_id": "PPP10000",
+      "value": [],
+      "groups": [
+        {
+          "group_name": "1. Market and Customer Fit",
+          "group_id": "PPP10101",
+          "value": [
+            {
+              "metric_name": "Market Share",
+              "metric_id": "PPP10102",
+              "value": "85.0%"
+            },
+            {
+              "metric_name": "Customer Acquisition Cost (CAC) by Product",
+              "metric_id": "PPP10103",
+              "value": "75.0%"
+            },
+            {
+              "metric_name": "Customer Lifetime Value (CLV) by Product",
+              "metric_id": "PPP10104",
+              "value": "65.0%"
+            },
+            {
+              "metric_name": "Net Promoter Score (NPS) by Product",
+              "metric_id": "PPP10105",
+              "value": "53.0%"
+            }
+          ]
+        },
+        {
+          "group_name": "2. Product Performance",
+          "group_id": "PPP10106",
+          "value": [
+            {
+              "metric_name": "Active Usage by Product",
+              "metric_id": "PPP10107",
+              "value": "85.0%"
+            },
+            {
+              "metric_name": "Revenue per User (ARPU) by Product",
+              "metric_id": "PPP10108",
+              "value": "74.0%"
+            },
+            {
+              "metric_name": "Customer Churn Rate by Product",
+              "metric_id": "PPP10109",
+              "value": "83.0%"
+            },
+            {
+              "metric_name": "Conversion Rate by Product/Service",
+              "metric_id": "PPP10110",
+              "value": "84.0%"
+            }
+          ]
+        },
+        {
+          "group_name": "3. Portfolio Optimization",
+          "group_id": "PPP10111",
+          "value": [
+            {
+              "metric_name": "Resource Allocation by Product",
+              "metric_id": "PPP10112",
+              "value": "79.0%"
+            },
+            {
+              "metric_name": "Product Cannibalization",
+              "metric_id": "PPP10113",
+              "value": "84.0%"
+            },
+            {
+              "metric_name": "Innovation Rate",
+              "metric_id": "PPP10114",
+              "value": "80.0%"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sub_module_name": "Product Test Quality Assurance",
+      "sub_module_id": "TQA10000",
+      "value": [],
+      "groups": [
+        {
+          "group_name": "1. Test Case Design",
+          "group_id": "TQA10101",
+          "value": [
+            {
+              "metric_name": "Number of Test Cases",
+              "metric_id": "TQA10102",
+              "value": "85.0%"
+            },
+            {
+              "metric_name": "Test Case Coverage",
+              "metric_id": "TQA10103",
+              "value": "75.0%"
+            },
+            {
+              "metric_name": "Test Case Design Time",
+              "metric_id": "TQA10104",
+              "value": "65.0%"
+            }
+          ]
+        },
+        {
+          "group_name": "2. Test Execution",
+          "group_id": "TQA10105",
+          "value": [
+            {
+              "metric_name": "Test Execution Time",
+              "metric_id": "TQA10106",
+              "value": "53.0%"
+            },
+            {
+              "metric_name": "Test Pass Rate",
+              "metric_id": "TQA10107",
+              "value": "85.0%"
+            },
+            {
+              "metric_name": "Test Fail Rate",
+              "metric_id": "TQA10108",
+              "value": "74.0%"
+            },
+            {
+              "metric_name": "Defects Found",
+              "metric_id": "TQA10109",
+              "value": "83.0%"
+            }
+          ]
+        },
+        {
+          "group_name": "3. Test Automation",
+          "group_id": "TQA10110",
+          "value": [
+            {
+              "metric_name": "Automation Coverage",
+              "metric_id": "TQA10111",
+              "value": "84.0%"
+            },
+            {
+              "metric_name": "Automation Execution Time",
+              "metric_id": "TQA10112",
+              "value": "79.0%"
+            },
+            {
+              "metric_name": "Automation Success Rate",
+              "metric_id": "TQA10113",
+              "value": "84.0%"
+            },
+            {
+              "metric_name": "Automation Fail Rate",
+              "metric_id": "TQA10114",
+              "value": "80.0%"
+            }
+          ]
+        },
+        {
+          "group_name": "4. Defect Management",
+          "group_id": "TQA10115",
+          "value": [
+            {
+              "metric_name": "Defect Density",
+              "metric_id": "TQA10116",
+              "value": "84.0%"
+            },
+            {
+              "metric_name": "Defect Resolution Time",
+              "metric_id": "TQA10117",
+              "value": "79.0%"
+            },
+            {
+              "metric_name": "Reopen Rate",
+              "metric_id": "TQA10118",
+              "value": "84.0%"
+            },
+            {
+              "metric_name": "Severity of Defects",
+              "metric_id": "TQA10119",
+              "value": "80.0%"
+            }
+          ]
+        },
+        {
+          "group_name": "5. Test Environment Management",
+          "group_id": "TQA10120",
+          "value": [
+            {
+              "metric_name": "Environment Stability",
+              "metric_id": "TQA10121",
+              "value": "84.0%"
+            },
+            {
+              "metric_name": "Environment Setup Time",
+              "metric_id": "TQA10122",
+              "value": "84.0%"
+            },
+            {
+              "metric_name": "Environment Downtime",
+              "metric_id": "TQA10123",
+              "value": "80.0%"
+            }
+          ]
+        },
+        {
+          "group_name": "6. Regression Testing",
+          "group_id": "TQA10124",
+          "value": [
+            {
+              "metric_name": "Regression Test Pass Rate",
+              "metric_id": "TQA10125",
+              "value": "84.0%"
+            },
+            {
+              "metric_name": "Regression Test Execution Time",
+              "metric_id": "TQA10126",
+              "value": "79.0%"
+            },
+            {
+              "metric_name": "Regression Test Coverage",
+              "metric_id": "TQA10127",
+              "value": "80.0%"
+            }
+          ]
+        },
+        {
+          "group_name": "7. Performance Testing",
+          "group_id": "TQA10128",
+          "value": [
+            {
+              "metric_name": "Response Time",
+              "metric_id": "TQA10129",
+              "value": "84.0%"
+            },
+            {
+              "metric_name": "Throughput",
+              "metric_id": "TQA10130",
+              "value": "79.0%"
+            },
+            {
+              "metric_name": "Scalability",
+              "metric_id": "TQA10131",
+              "value": "84.0%"
+            },
+            {
+              "metric_name": "Resource Utilization",
+              "metric_id": "TQA10132",
+              "value": "80.0%"
+            }
+          ]
+        },
+        {
+          "group_name": "8. User Acceptance Testing (UAT)",
+          "group_id": "TQA10133",
+          "value": [
+            {
+              "metric_name": "UAT Pass Rate",
+              "metric_id": "TQA10134",
+              "value": "84.0%"
+            },
+            {
+              "metric_name": "UAT Execution Time",
+              "metric_id": "TQA10135",
+              "value": "79.0%"
+            },
+            {
+              "metric_name": "UAT Defects Found",
+              "metric_id": "TQA10136",
+              "value": "80.0%"
+            }
+          ]
+        },
+        {
+          "group_name": "9. Test Reporting",
+          "group_id": "TQA10137",
+          "value": [
+            {
+              "metric_name": "Test Reports Generated",
+              "metric_id": "TQA10138",
+              "value": "84.0%"
+            },
+            {
+              "metric_name": "Report Accuracy",
+              "metric_id": "TQA10139",
+              "value": "79.0%"
+            },
+            {
+              "metric_name": "Report Generation Time",
+              "metric_id": "TQA10140",
+              "value": "80.0%"
+            }
+          ]
+        },
+        {
+          "group_name": "10. Continuous Integration (CI)",
+          "group_id": "TQA10141",
+          "value": [
+            {
+              "metric_name": "CI Build Success Rate",
+              "metric_id": "TQA10142",
+              "value": "84.0%"
+            },
+            {
+              "metric_name": "CI Build Time",
+              "metric_id": "TQA10143",
+              "value": "79.0%"
+            },
+            {
+              "metric_name": "CI Test Coverage",
+              "metric_id": "TQA10144",
+              "value": "80.0%"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sub_module_name": "Product Offering Capability Delivery",
+      "sub_module_id": "OCD10000",
+      "value": [],
+      "groups": [
+        {
+          "group_name": "1. Product Capability Requirements Definition",
+          "group_id": "OCD10101",
+          "value": [
+            {
+              "metric_name": "Requirements Identified",
+              "metric_id": "OCD10102",
+              "value": "85.0%"
+            },
+            {
+              "metric_name": "Requirement Validation Time",
+              "metric_id": "OCD10103",
+              "value": "75.0%"
+            },
+            {
+              "metric_name": "Stakeholder Satisfaction",
+              "metric_id": "OCD10104",
+              "value": "65.0%"
+            }
+          ]
+        },
+        {
+          "group_name": "2. Product Capability Shortfall Capture",
+          "group_id": "OCD10105",
+          "value": [
+            {
+              "metric_name": "Shortfalls Identified",
+              "metric_id": "OCD10106",
+              "value": "53.0%"
+            },
+            {
+              "metric_name": "Shortfall Resolution Time",
+              "metric_id": "OCD10107",
+              "value": "85.0%"
+            },
+            {
+              "metric_name": "Shortfall Impact Analysis",
+              "metric_id": "OCD10108",
+              "value": "74.0%"
+            }
+          ]
+        },
+        {
+          "group_name": "3. Product Business Case Approval",
+          "group_id": "OCD10109",
+          "value": [
+            {
+              "metric_name": "Business Cases Submitted",
+              "metric_id": "OCD10110",
+              "value": "86.0%"
+            },
+            {
+              "metric_name": "Approval Time",
+              "metric_id": "OCD10111",
+              "value": "84.0%"
+            },
+            {
+              "metric_name": "Approval Rate",
+              "metric_id": "OCD10112",
+              "value": "79.0%"
+            }
+          ]
+        },
+        {
+          "group_name": "4. Product Delivery",
+          "group_id": "OCD10113",
+          "value": [
+            {
+              "metric_name": "Delivery Time",
+              "metric_id": "OCD10114",
+              "value": "80.0%"
+            },
+            {
+              "metric_name": "On-Time Delivery Rate",
+              "metric_id": "OCD10115",
+              "value": "81.5%"
+            },
+            {
+              "metric_name": "Delivery Quality",
+              "metric_id": "OCD10116",
+              "value": "82.2%"
+            }
+          ]
+        },
+        {
+          "group_name": "5. Product Portfolio Strategy",
+          "group_id": "OCD10117",
+          "value": [
+            {
+              "metric_name": "Strategy Development Time",
+              "metric_id": "OCD10118",
+              "value": "83.6%"
+            },
+            {
+              "metric_name": "Strategy Implementation Rate",
+              "metric_id": "OCD10119",
+              "value": "84.3%"
+            },
+            {
+              "metric_name": "Market Alignment",
+              "metric_id": "OCD10120",
+              "value": "85.0%"
+            }
+          ]
+        },
+        {
+          "group_name": "6. Product Portfolio Business Plans",
+          "group_id": "OCD10121",
+          "value": [
+            {
+              "metric_name": "Business Plans Developed",
+              "metric_id": "OCD10122",
+              "value": "86.4%"
+            },
+            {
+              "metric_name": "Plan Execution Time",
+              "metric_id": "OCD10123",
+              "value": "87.1%"
+            },
+            {
+              "metric_name": "Plan Success Rate",
+              "metric_id": "OCD10124",
+              "value": "87.8%"
+            }
+          ]
+        },
+        {
+          "group_name": "7. Product Capability Deployment",
+          "group_id": "OCD10125",
+          "value": [
+            {
+              "metric_name": "Deployment Time",
+              "metric_id": "OCD10126",
+              "value": "89.2%"
+            },
+            {
+              "metric_name": "Deployment Success Rate",
+              "metric_id": "OCD10127",
+              "value": "90.0%"
+            },
+            {
+              "metric_name": "Deployment Issues",
+              "metric_id": "OCD10128",
+              "value": "90.7%"
+            }
+          ]
+        },
+        {
+          "group_name": "8. Product Capability Monitoring",
+          "group_id": "OCD10129",
+          "value": [
+            {
+              "metric_name": "Monitoring Frequency",
+              "metric_id": "OCD10130",
+              "value": "92.1%"
+            },
+            {
+              "metric_name": "Performance Metrics",
+              "metric_id": "OCD10131",
+              "value": "92.8%"
+            },
+            {
+              "metric_name": "Monitoring Accuracy",
+              "metric_id": "OCD10132",
+              "value": "93.5%"
+            }
+          ]
+        },
+        {
+          "group_name": "9. Product Capability Improvement Initiatives",
+          "group_id": "OCD10133",
+          "value": [
+            {
+              "metric_name": "Initiatives Launched",
+              "metric_id": "OCD10134",
+              "value": "94.9%"
+            },
+            {
+              "metric_name": "Initiative Success Rate",
+              "metric_id": "OCD10135",
+              "value": "95.6%"
+            },
+            {
+              "metric_name": "Customer Feedback",
+              "metric_id": "OCD10136",
+              "value": "96.3%"
+            }
+          ]
+        },
+        {
+          "group_name": "10. Product Capability Retirement",
+          "group_id": "OCD10137",
+          "value": [
+            {
+              "metric_name": "Retirement Rate",
+              "metric_id": "OCD10138",
+              "value": "97.7%"
+            },
+            {
+              "metric_name": "Retirement Time",
+              "metric_id": "OCD10139",
+              "value": "98.4%"
+            },
+            {
+              "metric_name": "Retirement Impact Analysis",
+              "metric_id": "OCD10140",
+              "value": "99.1%"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sub_module_name": "Product Specification Management",
+      "sub_module_id": "SPC10000",
+      "value": [],
+      "groups": [
+        {
+          "group_name": "1. Product Specification Creation",
+          "group_id": "SPC10101",
+          "value": [
+            {
+              "metric_name": "Number of Specifications Created",
+              "metric_id": "SPC10102",
+              "value": "85.0%"
+            },
+            {
+              "metric_name": "Specification Creation Time",
+              "metric_id": "SPC10103",
+              "value": "75.0%"
+            },
+            {
+              "metric_name": "Accuracy of Specifications",
+              "metric_id": "SPC10104",
+              "value": "65.0%"
+            }
+          ]
+        },
+        {
+          "group_name": "2. Specification Review and Approval",
+          "group_id": "SPC10105",
+          "value": [
+            {
+              "metric_name": "Review Cycle Time",
+              "metric_id": "SPC10106",
+              "value": "53.0%"
+            },
+            {
+              "metric_name": "Approval Rate",
+              "metric_id": "SPC10107",
+              "value": "85.0%"
+            },
+            {
+              "metric_name": "Review Iterations",
+              "metric_id": "SPC10108",
+              "value": "74.0%"
+            }
+          ]
+        },
+        {
+          "group_name": "3. Specification Compliance",
+          "group_id": "SPC10109",
+          "value": [
+            {
+              "metric_name": "Compliance Rate",
+              "metric_id": "SPC10110",
+              "value": ""
+            },
+            {
+              "metric_name": "Audit Findings",
+              "metric_id": "SPC10111",
+              "value": "84.0%"
+            },
+            {
+              "metric_name": "Compliance Correction Time",
+              "metric_id": "SPC10112",
+              "value": "79.0%"
+            }
+          ]
+        },
+        {
+          "group_name": "4. Specification Updates and Maintenance",
+          "group_id": "SPC10113",
+          "value": [
+            {
+              "metric_name": "Update Frequency",
+              "metric_id": "SPC10114",
+              "value": "80.0%"
+            },
+            {
+              "metric_name": "Update Time",
+              "metric_id": "SPC10115",
+              "value": "81.5%"
+            },
+            {
+              "metric_name": "Update Accuracy",
+              "metric_id": "SPC10116",
+              "value": "82.2%"
+            }
+          ]
+        },
+        {
+          "group_name": "5. Specification Distribution",
+          "group_id": "SPC10117",
+          "value": [
+            {
+              "metric_name": "Distribution Time",
+              "metric_id": "SPC10118",
+              "value": "83.6%"
+            },
+            {
+              "metric_name": "Stakeholder Access",
+              "metric_id": "SPC10119",
+              "value": "84.3%"
+            },
+            {
+              "metric_name": "Distribution Errors",
+              "metric_id": "SPC10120",
+              "value": "85.0%"
+            }
+          ]
+        },
+        {
+          "group_name": "6. Specification Impact Analysis",
+          "group_id": "SPC10121",
+          "value": [
+            {
+              "metric_name": "Impact Analysis Completion Time",
+              "metric_id": "SPC10122",
+              "value": "86.4%"
+            },
+            {
+              "metric_name": "Impact Accuracy",
+              "metric_id": "SPC10123",
+              "value": "87.1%"
+            },
+            {
+              "metric_name": "Stakeholder Satisfaction",
+              "metric_id": "SPC10124",
+              "value": "87.8%"
+            }
+          ]
+        },
+        {
+          "group_name": "7. Change Management",
+          "group_id": "SPC10125",
+          "value": [
+            {
+              "metric_name": "Change Request Volume",
+              "metric_id": "SPC10126",
+              "value": "89.2%"
+            },
+            {
+              "metric_name": "Change Approval Rate",
+              "metric_id": "SPC10127",
+              "value": "90.0%"
+            },
+            {
+              "metric_name": "Change Implementation Time",
+              "metric_id": "SPC10128",
+              "value": "90.7%"
+            }
+          ]
+        },
+        {
+          "group_name": "8. Documentation Quality",
+          "group_id": "SPC10129",
+          "value": [
+            {
+              "metric_name": "Document Quality Score",
+              "metric_id": "SPC10130",
+              "value": "92.1%"
+            },
+            {
+              "metric_name": "Document Review Time",
+              "metric_id": "SPC10131",
+              "value": "92.8%"
+            },
+            {
+              "metric_name": "Documentation Errors",
+              "metric_id": "SPC10132",
+              "value": "93.5%"
+            }
+          ]
+        },
+        {
+          "group_name": "9. Communication Effectiveness",
+          "group_id": "SPC10133",
+          "value": [
+            {
+              "metric_name": "Communication Timeliness",
+              "metric_id": "SPC10134",
+              "value": "94.9%"
+            },
+            {
+              "metric_name": "Communication Clarity",
+              "metric_id": "SPC10135",
+              "value": "95.6%"
+            },
+            {
+              "metric_name": "Feedback Responsiveness",
+              "metric_id": "SPC10136",
+              "value": "96.3%"
+            }
+          ]
+        },
+        {
+          "group_name": "10. Stakeholder Engagement",
+          "group_id": "SPC10137",
+          "value": [
+            {
+              "metric_name": "Engagement Rate",
+              "metric_id": "SPC10138",
+              "value": "97.7%"
+            },
+            {
+              "metric_name": "Feedback Incorporation",
+              "metric_id": "SPC10139",
+              "value": "98.4%"
+            },
+            {
+              "metric_name": "Stakeholder Satisfaction",
+              "metric_id": "SPC10140",
+              "value": "99.1%"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sub_module_name": "Product Catalogue Planning Management",
+      "sub_module_id": "CTP10000",
+      "value": [],
+      "groups": [
+        {
+          "group_name": "1. Product Specification Creation",
+          "group_id": "CTP10101",
+          "value": [
+            {
+              "metric_name": "Number of Specifications Created",
+              "metric_id": "CTP10102",
+              "value": "85.0%"
+            },
+            {
+              "metric_name": "Specification Creation Time",
+              "metric_id": "CTP10103",
+              "value": "75.0%"
+            },
+            {
+              "metric_name": "Accuracy of Specifications",
+              "metric_id": "CTP10104",
+              "value": "65.0%"
+            }
+          ]
+        },
+        {
+          "group_name": "2. Specification Review and Approval",
+          "group_id": "CTP10105",
+          "value": [
+            {
+              "metric_name": "Review Cycle Time",
+              "metric_id": "CTP10106",
+              "value": "53.0%"
+            },
+            {
+              "metric_name": "Approval Rate",
+              "metric_id": "CTP10107",
+              "value": "85.0%"
+            },
+            {
+              "metric_name": "Review Iterations",
+              "metric_id": "CTP10108",
+              "value": "74.0%"
+            }
+          ]
+        },
+        {
+          "group_name": "3. Specification Compliance",
+          "group_id": "CTP10109",
+          "value": [
+            {
+              "metric_name": "Compliance Rate",
+              "metric_id": "CTP10110",
+              "value": ""
+            },
+            {
+              "metric_name": "Audit Findings",
+              "metric_id": "CTP10111",
+              "value": "84.0%"
+            },
+            {
+              "metric_name": "Compliance Correction Time",
+              "metric_id": "CTP10112",
+              "value": "79.0%"
+            }
+          ]
+        },
+        {
+          "group_name": "4. Specification Updates and Maintenance",
+          "group_id": "CTP10113",
+          "value": [
+            {
+              "metric_name": "Update Frequency",
+              "metric_id": "CTP10114",
+              "value": "80.0%"
+            },
+            {
+              "metric_name": "Update Time",
+              "metric_id": "CTP10115",
+              "value": "81.5%"
+            },
+            {
+              "metric_name": "Update Accuracy",
+              "metric_id": "CTP10116",
+              "value": "82.2%"
+            }
+          ]
+        },
+        {
+          "group_name": "5. Specification Distribution",
+          "group_id": "CTP10117",
+          "value": [
+            {
+              "metric_name": "Distribution Time",
+              "metric_id": "CTP10118",
+              "value": "83.6%"
+            },
+            {
+              "metric_name": "Stakeholder Access",
+              "metric_id": "CTP10119",
+              "value": "84.3%"
+            },
+            {
+              "metric_name": "Distribution Errors",
+              "metric_id": "CTP10120",
+              "value": "85.0%"
+            }
+          ]
+        },
+        {
+          "group_name": "6. Specification Impact Analysis",
+          "group_id": "CTP10121",
+          "value": [
+            {
+              "metric_name": "Impact Analysis Completion Time",
+              "metric_id": "CTP10122",
+              "value": "86.4%"
+            },
+            {
+              "metric_name": "Impact Accuracy",
+              "metric_id": "CTP10123",
+              "value": "87.1%"
+            },
+            {
+              "metric_name": "Stakeholder Satisfaction",
+              "metric_id": "CTP10124",
+              "value": "87.8%"
+            }
+          ]
+        },
+        {
+          "group_name": "7. Change Management",
+          "group_id": "CTP10125",
+          "value": [
+            {
+              "metric_name": "Change Request Volume",
+              "metric_id": "CTP10126",
+              "value": "89.2%"
+            },
+            {
+              "metric_name": "Change Approval Rate",
+              "metric_id": "CTP10127",
+              "value": "90.0%"
+            },
+            {
+              "metric_name": "Change Implementation Time",
+              "metric_id": "CTP10128",
+              "value": "90.7%"
+            }
+          ]
+        },
+        {
+          "group_name": "8. Documentation Quality",
+          "group_id": "CTP10129",
+          "value": [
+            {
+              "metric_name": "Document Quality Score",
+              "metric_id": "CTP10130",
+              "value": "92.1%"
+            },
+            {
+              "metric_name": "Document Review Time",
+              "metric_id": "CTP10131",
+              "value": "92.8%"
+            },
+            {
+              "metric_name": "Documentation Errors",
+              "metric_id": "CTP10132",
+              "value": "93.5%"
+            }
+          ]
+        },
+        {
+          "group_name": "9. Communication Effectiveness",
+          "group_id": "CTP10133",
+          "value": [
+            {
+              "metric_name": "Communication Timeliness",
+              "metric_id": "CTP10134",
+              "value": "94.9%"
+            },
+            {
+              "metric_name": "Communication Clarity",
+              "metric_id": "CTP10135",
+              "value": "95.6%"
+            },
+            {
+              "metric_name": "Feedback Responsiveness",
+              "metric_id": "CTP10136",
+              "value": "96.3%"
+            }
+          ]
+        },
+        {
+          "group_name": "10. Stakeholder Engagement",
+          "group_id": "CTP10137",
+          "value": [
+            {
+              "metric_name": "Engagement Rate",
+              "metric_id": "CTP10138",
+              "value": "97.7%"
+            },
+            {
+              "metric_name": "Feedback Incorporation",
+              "metric_id": "CTP10139",
+              "value": "98.4%"
+            },
+            {
+              "metric_name": "Stakeholder Satisfaction",
+              "metric_id": "CTP10140",
+              "value": "99.1%"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sub_module_name": "Product Configuration Management",
+      "sub_module_id": "PCF10000",
+      "value": [],
+      "groups": [
+        {
+          "group_name": "1. Configuration Changes",
+          "group_id": "PCF10101",
+          "value": [
+            {
+              "metric_name": "Number of Configuration Changes",
+              "metric_id": "PCF10102",
+              "value": "85.0%"
+            },
+            {
+              "metric_name": "Change Approval Rate",
+              "metric_id": "PCF10103",
+              "value": "75.0%"
+            },
+            {
+              "metric_name": "Change Implementation Time",
+              "metric_id": "PCF10104",
+              "value": "65.0%"
+            }
+          ]
+        },
+        {
+          "group_name": "2. Configuration Accuracy",
+          "group_id": "PCF10105",
+          "value": [
+            {
+              "metric_name": "Configuration Error Rate",
+              "metric_id": "PCF10106",
+              "value": "53.0%"
+            },
+            {
+              "metric_name": "Configuration Correction Time",
+              "metric_id": "PCF10107",
+              "value": "85.0%"
+            },
+            {
+              "metric_name": "Accuracy of Initial Configuration",
+              "metric_id": "PCF10108",
+              "value": "74.0%"
+            }
+          ]
+        },
+        {
+          "group_name": "3. Configuration Compliance",
+          "group_id": "PCF10109",
+          "value": [
+            {
+              "metric_name": "Compliance Rate",
+              "metric_id": "PCF10110",
+              "value": "86.0%"
+            },
+            {
+              "metric_name": "Audit Findings",
+              "metric_id": "PCF10111",
+              "value": "84.0%"
+            },
+            {
+              "metric_name": "Compliance Correction Time",
+              "metric_id": "PCF10112",
+              "value": "79.0%"
+            }
+          ]
+        },
+        {
+          "group_name": "4. Configuration Update Frequency",
+          "group_id": "PCF10113",
+          "value": [
+            {
+              "metric_name": "Update Frequency",
+              "metric_id": "PCF10114",
+              "value": "80.0%"
+            },
+            {
+              "metric_name": "Frequency of Critical Updates",
+              "metric_id": "PCF10115",
+              "value": "81.5%"
+            },
+            {
+              "metric_name": "Update Lead Time",
+              "metric_id": "PCF10116",
+              "value": "82.2%"
+            }
+          ]
+        },
+        {
+          "group_name": "5. Configuration Version Control",
+          "group_id": "PCF10117",
+          "value": [
+            {
+              "metric_name": "Version Control Accuracy",
+              "metric_id": "PCF10118",
+              "value": "83.6%"
+            },
+            {
+              "metric_name": "Version Control Issues",
+              "metric_id": "PCF10119",
+              "value": "84.3%"
+            },
+            {
+              "metric_name": "Rollback Frequency",
+              "metric_id": "PCF10120",
+              "value": "85.0%"
+            }
+          ]
+        },
+        {
+          "group_name": "6. Stakeholder Satisfaction",
+          "group_id": "PCF10121",
+          "value": [
+            {
+              "metric_name": "Stakeholder Satisfaction Score",
+              "metric_id": "PCF10122",
+              "value": "86.4%"
+            },
+            {
+              "metric_name": "Feedback Incorporation Rate",
+              "metric_id": "PCF10123",
+              "value": "87.1%"
+            },
+            {
+              "metric_name": "Configuration Change Requests",
+              "metric_id": "PCF10124",
+              "value": "87.8%"
+            }
+          ]
+        },
+        {
+          "group_name": "7. Configuration Documentation",
+          "group_id": "PCF10125",
+          "value": [
+            {
+              "metric_name": "Documentation Completeness",
+              "metric_id": "PCF10126",
+              "value": "89.2%"
+            },
+            {
+              "metric_name": "Documentation Update Time",
+              "metric_id": "PCF10127",
+              "value": "90.0%"
+            },
+            {
+              "metric_name": "Documentation Errors",
+              "metric_id": "PCF10128",
+              "value": "90.7%"
+            }
+          ]
+        },
+        {
+          "group_name": "8. Configuration Impact Analysis",
+          "group_id": "PCF10129",
+          "value": [
+            {
+              "metric_name": "Impact Analysis Completion Time",
+              "metric_id": "PCF10130",
+              "value": "92.1%"
+            },
+            {
+              "metric_name": "Impact Analysis Accuracy",
+              "metric_id": "PCF10131",
+              "value": "92.8%"
+            },
+            {
+              "metric_name": "Stakeholder Review",
+              "metric_id": "PCF10132",
+              "value": "93.5%"
+            }
+          ]
+        },
+        {
+          "group_name": "9. Configuration Performance Monitoring",
+          "group_id": "PCF10133",
+          "value": [
+            {
+              "metric_name": "Performance Deviation",
+              "metric_id": "PCF10134",
+              "value": "94.9%"
+            },
+            {
+              "metric_name": "Monitoring Frequency",
+              "metric_id": "PCF10135",
+              "value": "95.6%"
+            },
+            {
+              "metric_name": "Monitoring Alerts",
+              "metric_id": "PCF10136",
+              "value": "96.3%"
+            }
+          ]
+        },
+        {
+          "group_name": "10. Configuration Management Efficiency",
+          "group_id": "PCF10137",
+          "value": [
+            {
+              "metric_name": "Efficiency Ratio",
+              "metric_id": "PCF10138",
+              "value": "97.7%"
+            },
+            {
+              "metric_name": "Resource Utilization",
+              "metric_id": "PCF10139",
+              "value": "98.4%"
+            },
+            {
+              "metric_name": "Process Improvement Initiatives",
+              "metric_id": "PCF10140",
+              "value": "99.1%"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sub_module_name": "Product Catalogue Lifecycle Management",
+      "sub_module_id": "CTL10000",
+      "value": [],
+      "groups": [
+        {
+          "group_name": "1. Product Catalogue Creation",
+          "group_id": "CTL10101",
+          "value": [
+            {
+              "metric_name": "Number of New Specifications",
+              "metric_id": "CTL10102",
+              "value": "85.0%"
+            },
+            {
+              "metric_name": "Development Time",
+              "metric_id": "CTL10103",
+              "value": "75.0%"
+            },
+            {
+              "metric_name": "Specification Approval Rate",
+              "metric_id": "CTL10104",
+              "value": "65.0%"
+            },
+            {
+              "metric_name": "Stakeholder Feedback",
+              "metric_id": "CTL10105",
+              "value": "53.0%"
+            }
+          ]
+        },
+        {
+          "group_name": "2. Product Catalogue Updates",
+          "group_id": "CTL10106",
+          "value": [
+            {
+              "metric_name": "Number of New Offerings",
+              "metric_id": "CTL10107",
+              "value": "85.0%"
+            },
+            {
+              "metric_name": "Development Time",
+              "metric_id": "CTL10108",
+              "value": "74.0%"
+            },
+            {
+              "metric_name": "Offering Approval Rate",
+              "metric_id": "CTL10109",
+              "value": "84.0%"
+            },
+            {
+              "metric_name": "Market Research",
+              "metric_id": "CTL10110",
+              "value": "86.0%"
+            }
+          ]
+        },
+        {
+          "group_name": "3. Product Catalogue Distribution",
+          "group_id": "CTL10111",
+          "value": [
+            {
+              "metric_name": "Number of Catalogues Created",
+              "metric_id": "CTL10112",
+              "value": "79.0%"
+            },
+            {
+              "metric_name": "Creation Time",
+              "metric_id": "CTL10113",
+              "value": "69.0%"
+            },
+            {
+              "metric_name": "Catalogue Approval Rate",
+              "metric_id": "CTL10114",
+              "value": "80.0%"
+            },
+            {
+              "metric_name": "Stakeholder Feedback",
+              "metric_id": "CTL10115",
+              "value": "81.5%"
+            }
+          ]
+        },
+        {
+          "group_name": "4. Product Catalogue Compliance",
+          "group_id": "CTL10116",
+          "value": [
+            {
+              "metric_name": "Update Frequency",
+              "metric_id": "CTL10117",
+              "value": "75.0%"
+            },
+            {
+              "metric_name": "Update Time",
+              "metric_id": "CTL10118",
+              "value": "83.6%"
+            },
+            {
+              "metric_name": "Update Accuracy",
+              "metric_id": "CTL10119",
+              "value": "84.3%"
+            }
+          ]
+        },
+        {
+          "group_name": "5. Product Catalogue Performance Monitoring",
+          "group_id": "CTL10120",
+          "value": [
+            {
+              "metric_name": "Distribution Time",
+              "metric_id": "CTL10121",
+              "value": "70.0%"
+            },
+            {
+              "metric_name": "Stakeholder Access",
+              "metric_id": "CTL10122",
+              "value": "86.4%"
+            },
+            {
+              "metric_name": "Distribution Errors",
+              "metric_id": "CTL10123",
+              "value": "87.1%"
+            }
+          ]
+        },
+        {
+          "group_name": "6. Product Catalogue Retirement",
+          "group_id": "CTL10124",
+          "value": [
+            {
+              "metric_name": "Retirement Rate",
+              "metric_id": "CTL10125",
+              "value": "82.0%"
+            },
+            {
+              "metric_name": "Retirement Time",
+              "metric_id": "CTL10126",
+              "value": "89.2%"
+            },
+            {
+              "metric_name": "Retirement Impact Analysis",
+              "metric_id": "CTL10127",
+              "value": "90.0%"
+            },
+            {
+              "metric_name": "Customer Feedback",
+              "metric_id": "CTL10128",
+              "value": "90.7%"
+            }
+          ]
+        },
+        {
+          "group_name": "7. Product Catalogue Version Control",
+          "group_id": "CTL10129",
+          "value": [
+            {
+              "metric_name": "Version Control Accuracy",
+              "metric_id": "CTL10130",
+              "value": "92.1%"
+            },
+            {
+              "metric_name": "Version Control Issues",
+              "metric_id": "CTL10131",
+              "value": "92.8%"
+            },
+            {
+              "metric_name": "Rollback Frequency",
+              "metric_id": "CTL10132",
+              "value": "93.5%"
+            }
+          ]
+        },
+        {
+          "group_name": "8. Stakeholder Engagement",
+          "group_id": "CTL10133",
+          "value": [
+            {
+              "metric_name": "Engagement Rate",
+              "metric_id": "CTL10134",
+              "value": "94.9%"
+            },
+            {
+              "metric_name": "Feedback Incorporation",
+              "metric_id": "CTL10135",
+              "value": "95.6%"
+            },
+            {
+              "metric_name": "Stakeholder Satisfaction",
+              "metric_id": "CTL10136",
+              "value": "96.3%"
+            }
+          ]
+        },
+        {
+          "group_name": "9. Documentation Quality",
+          "group_id": "CTL10137",
+          "value": [
+            {
+              "metric_name": "Document Quality Score",
+              "metric_id": "CTL10138",
+              "value": "97.7%"
+            },
+            {
+              "metric_name": "Document Review Time",
+              "metric_id": "CTL10139",
+              "value": "98.4%"
+            },
+            {
+              "metric_name": "Documentation Errors",
+              "metric_id": "CTL10140",
+              "value": "99.1%"
+            }
+          ]
+        },
+        {
+          "group_name": "10. Innovation and Development",
+          "group_id": "CTL10141",
+          "value": [
+            {
+              "metric_name": "Innovation Rate",
+              "metric_id": "CTL10142",
+              "value": "90.0%"
+            },
+            {
+              "metric_name": "Development Time",
+              "metric_id": "CTL10143",
+              "value": "85.0%"
+            },
+            {
+              "metric_name": "R&D Investment",
+              "metric_id": "CTL10144",
+              "value": "79.0%"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sub_module_name": "Product Specification and Offering Development and Retirement",
+      "sub_module_id": "POD10000",
+      "value": [],
+      "groups": [
+        {
+          "group_name": "1. Product Specification Development",
+          "group_id": "POD10101",
+          "value": [
+            {
+              "metric_name": "Number of New Specifications",
+              "metric_id": "POD10102",
+              "value": "85.0%"
+            },
+            {
+              "metric_name": "Development Time",
+              "metric_id": "POD10103",
+              "value": "75.0%"
+            },
+            {
+              "metric_name": "Specification Approval Rate",
+              "metric_id": "POD10104",
+              "value": "65.0%"
+            },
+            {
+              "metric_name": "Stakeholder Feedback",
+              "metric_id": "POD10105",
+              "value": "53.0%"
+            }
+          ]
+        },
+        {
+          "group_name": "2. Product Offering Development",
+          "group_id": "POD10106",
+          "value": [
+            {
+              "metric_name": "Number of New Offerings",
+              "metric_id": "POD10107",
+              "value": "85.0%"
+            },
+            {
+              "metric_name": "Development Time",
+              "metric_id": "POD10108",
+              "value": "74.0%"
+            },
+            {
+              "metric_name": "Offering Approval Rate",
+              "metric_id": "POD10109",
+              "value": "84.0%"
+            },
+            {
+              "metric_name": "Market Research",
+              "metric_id": "POD10110",
+              "value": "86.0%"
+            }
+          ]
+        },
+        {
+          "group_name": "3. Product Commercialization",
+          "group_id": "POD10111",
+          "value": [
+            {
+              "metric_name": "Commercialization Time",
+              "metric_id": "POD10112",
+              "value": "79.0%"
+            },
+            {
+              "metric_name": "Market Launch Success Rate",
+              "metric_id": "POD10113",
+              "value": "69.0%"
+            },
+            {
+              "metric_name": "Marketing Campaign Effectiveness",
+              "metric_id": "POD10114",
+              "value": "80.0%"
+            },
+            {
+              "metric_name": "Customer Acquisition Rate",
+              "metric_id": "POD10115",
+              "value": "81.5%"
+            }
+          ]
+        },
+        {
+          "group_name": "4. Product Performance Monitoring",
+          "group_id": "POD10116",
+          "value": [
+            {
+              "metric_name": "Performance Metrics",
+              "metric_id": "POD10117",
+              "value": "75.0%"
+            },
+            {
+              "metric_name": "Monitoring Frequency",
+              "metric_id": "POD10118",
+              "value": "83.6%"
+            },
+            {
+              "metric_name": "Performance Improvement Initiatives",
+              "metric_id": "POD10119",
+              "value": "84.3%"
+            },
+            {
+              "metric_name": "Customer Satisfaction",
+              "metric_id": "POD10120",
+              "value": "82.0%"
+            }
+          ]
+        },
+        {
+          "group_name": "5. Product Offering Retirement",
+          "group_id": "POD10121",
+          "value": [
+            {
+              "metric_name": "Retirement Rate",
+              "metric_id": "POD10122",
+              "value": "86.4%"
+            },
+            {
+              "metric_name": "Retirement Time",
+              "metric_id": "POD10123",
+              "value": "87.1%"
+            },
+            {
+              "metric_name": "Retirement Impact Analysis",
+              "metric_id": "POD10124",
+              "value": "75.0%"
+            },
+            {
+              "metric_name": "Customer Feedback",
+              "metric_id": "POD10125",
+              "value": "82.0%"
+            }
+          ]
+        },
+        {
+          "group_name": "6. Product Lifecycle Management",
+          "group_id": "POD10126",
+          "value": [
+            {
+              "metric_name": "Lifecycle Duration",
+              "metric_id": "POD10127",
+              "value": "90.0%"
+            },
+            {
+              "metric_name": "Lifecycle Costs",
+              "metric_id": "POD10128",
+              "value": "90.7%"
+            },
+            {
+              "metric_name": "Lifecycle Efficiency",
+              "metric_id": "POD10129",
+              "value": "90.0%"
+            }
+          ]
+        },
+        {
+          "group_name": "7. Product Portfolio Strategy",
+          "group_id": "POD10130",
+          "value": [
+            {
+              "metric_name": "Strategy Development Time",
+              "metric_id": "POD10131",
+              "value": "92.8%"
+            },
+            {
+              "metric_name": "Strategy Implementation Rate",
+              "metric_id": "POD10132",
+              "value": "93.5%"
+            },
+            {
+              "metric_name": "Market Alignment",
+              "metric_id": "POD10133",
+              "value": "90.0%"
+            }
+          ]
+        },
+        {
+          "group_name": "8. Market Analysis",
+          "group_id": "POD10134",
+          "value": [
+            {
+              "metric_name": "Market Analysis Frequency",
+              "metric_id": "POD10135",
+              "value": "95.6%"
+            },
+            {
+              "metric_name": "Market Trends Identified",
+              "metric_id": "POD10136",
+              "value": "96.3%"
+            },
+            {
+              "metric_name": "Market Analysis Accuracy",
+              "metric_id": "POD10137",
+              "value": "89.0%"
+            }
+          ]
+        },
+        {
+          "group_name": "9. Stakeholder Engagement",
+          "group_id": "POD10138",
+          "value": [
+            {
+              "metric_name": "Engagement Rate",
+              "metric_id": "POD10139",
+              "value": "98.4%"
+            },
+            {
+              "metric_name": "Feedback Incorporation",
+              "metric_id": "POD10140",
+              "value": "99.1%"
+            },
+            {
+              "metric_name": "Stakeholder Satisfaction",
+              "metric_id": "POD10141",
+              "value": "99.1%"
+            }
+          ]
+        },
+        {
+          "group_name": "10. Innovation and Development",
+          "group_id": "POD10142",
+          "value": [
+            {
+              "metric_name": "Innovation Rate",
+              "metric_id": "POD10143",
+              "value": "89.0%"
+            },
+            {
+              "metric_name": "Development Time",
+              "metric_id": "POD10144",
+              "value": "98.4%"
+            },
+            {
+              "metric_name": "R&D Investment",
+              "metric_id": "POD10145",
+              "value": "99.1%"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sub_module_name": "Product Anomaly Lifecycle Management",
+      "sub_module_id": "ANL10000",
+      "value": [],
+      "groups": [
+        {
+          "group_name": "1. Anomaly Detection",
+          "group_id": "ANL10101",
+          "value": [
+            {
+              "metric_name": "Detection Accuracy",
+              "metric_id": "ANL10102",
+              "value": "85.0%"
+            },
+            {
+              "metric_name": "False Positive Rate",
+              "metric_id": "ANL10103",
+              "value": "75.0%"
+            },
+            {
+              "metric_name": "False Negative Rate",
+              "metric_id": "ANL10104",
+              "value": "65.0%"
+            },
+            {
+              "metric_name": "Detection Time",
+              "metric_id": "ANL10105",
+              "value": "53.0%"
+            }
+          ]
+        },
+        {
+          "group_name": "2. Anomaly Reporting",
+          "group_id": "ANL10106",
+          "value": [
+            {
+              "metric_name": "Reporting Rate",
+              "metric_id": "ANL10107",
+              "value": "85.0%"
+            },
+            {
+              "metric_name": "Report Accuracy",
+              "metric_id": "ANL10108",
+              "value": "74.0%"
+            },
+            {
+              "metric_name": "Report Time",
+              "metric_id": "ANL10109",
+              "value": "84.0%"
+            },
+            {
+              "metric_name": "Stakeholder Feedback",
+              "metric_id": "ANL10110",
+              "value": "86.0%"
+            }
+          ]
+        },
+        {
+          "group_name": "3. Anomaly Analysis",
+          "group_id": "ANL10111",
+          "value": [
+            {
+              "metric_name": "Analysis Time",
+              "metric_id": "ANL10112",
+              "value": "79.0%"
+            },
+            {
+              "metric_name": "Root Cause Identification Rate",
+              "metric_id": "ANL10113",
+              "value": "69.0%"
+            },
+            {
+              "metric_name": "Analysis Accuracy",
+              "metric_id": "ANL10114",
+              "value": "80.0%"
+            },
+            {
+              "metric_name": "Analytical Tools Utilization",
+              "metric_id": "ANL10115",
+              "value": "81.5%"
+            }
+          ]
+        },
+        {
+          "group_name": "4. Anomaly Resolution",
+          "group_id": "ANL10116",
+          "value": [
+            {
+              "metric_name": "Resolution Time",
+              "metric_id": "ANL10117",
+              "value": "75.0%"
+            },
+            {
+              "metric_name": "Resolution Success Rate",
+              "metric_id": "ANL10118",
+              "value": "83.6%"
+            },
+            {
+              "metric_name": "Reoccurrence Rate",
+              "metric_id": "ANL10119",
+              "value": "84.3%"
+            },
+            {
+              "metric_name": "Resolution Methods",
+              "metric_id": "ANL10120",
+              "value": "82.0%"
+            }
+          ]
+        },
+        {
+          "group_name": "5. Anomaly Communication",
+          "group_id": "ANL10121",
+          "value": [
+            {
+              "metric_name": "Communication Timeliness",
+              "metric_id": "ANL10122",
+              "value": "86.4%"
+            },
+            {
+              "metric_name": "Stakeholder Engagement",
+              "metric_id": "ANL10123",
+              "value": "87.1%"
+            },
+            {
+              "metric_name": "Feedback Incorporation Rate",
+              "metric_id": "ANL10124",
+              "value": "75.0%"
+            },
+            {
+              "metric_name": "Communication Clarity",
+              "metric_id": "ANL10125",
+              "value": "82.0%"
+            }
+          ]
+        },
+        {
+          "group_name": "6. Anomaly Impact Assessment",
+          "group_id": "ANL10126",
+          "value": [
+            {
+              "metric_name": "Impact Analysis Time",
+              "metric_id": "ANL10127",
+              "value": "90.0%"
+            },
+            {
+              "metric_name": "Impact Severity",
+              "metric_id": "ANL10128",
+              "value": "90.7%"
+            },
+            {
+              "metric_name": "Impact Mitigation Success",
+              "metric_id": "ANL10129",
+              "value": "90.0%"
+            },
+            {
+              "metric_name": "Customer Impact",
+              "metric_id": "ANL10130",
+              "value": "90.0%"
+            }
+          ]
+        },
+        {
+          "group_name": "7. Continuous Monitoring",
+          "group_id": "ANL10131",
+          "value": [
+            {
+              "metric_name": "Monitoring Frequency",
+              "metric_id": "ANL10132",
+              "value": "93.5%"
+            },
+            {
+              "metric_name": "Monitoring Coverage",
+              "metric_id": "ANL10133",
+              "value": "90.0%"
+            },
+            {
+              "metric_name": "Monitoring Alerts",
+              "metric_id": "ANL10134",
+              "value": "86.0%"
+            },
+            {
+              "metric_name": "Monitoring Accuracy",
+              "metric_id": "ANL10135",
+              "value": "95.6%"
+            }
+          ]
+        },
+        {
+          "group_name": "8. Documentation and Knowledge Management",
+          "group_id": "ANL10136",
+          "value": [
+            {
+              "metric_name": "Documentation Completeness",
+              "metric_id": "ANL10137",
+              "value": "89.0%"
+            },
+            {
+              "metric_name": "Knowledge Base Usage",
+              "metric_id": "ANL10138",
+              "value": "79.0%"
+            },
+            {
+              "metric_name": "Document Update Frequency",
+              "metric_id": "ANL10139",
+              "value": "86.0%"
+            },
+            {
+              "metric_name": "Knowledge Transfer Sessions",
+              "metric_id": "ANL10140",
+              "value": "80.0%"
+            }
+          ]
+        },
+        {
+          "group_name": "9. Risk Management",
+          "group_id": "ANL10141",
+          "value": [
+            {
+              "metric_name": "Risk Identification Rate",
+              "metric_id": "ANL10142",
+              "value": "85.0%"
+            },
+            {
+              "metric_name": "Risk Mitigation Time",
+              "metric_id": "ANL10143",
+              "value": "79.0%"
+            },
+            {
+              "metric_name": "Risk Severity",
+              "metric_id": "ANL10144",
+              "value": "82.0%"
+            },
+            {
+              "metric_name": "Risk Resolution Rate",
+              "metric_id": "ANL10145",
+              "value": "81.0%"
+            }
+          ]
+        },
+        {
+          "group_name": "10. Continuous Improvement",
+          "group_id": "ANL10146",
+          "value": [
+            {
+              "metric_name": "Improvement Initiatives",
+              "metric_id": "ANL10147",
+              "value": "90.0%"
+            },
+            {
+              "metric_name": "Improvement Impact",
+              "metric_id": "ANL10148",
+              "value": "86.0%"
+            },
+            {
+              "metric_name": "Innovation Rate",
+              "metric_id": "ANL10149",
+              "value": "81.0%"
+            },
+            {
+              "metric_name": "Employee Suggestions",
+              "metric_id": "ANL10150",
+              "value": "68.0%"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sub_module_name": "Product Support",
+      "sub_module_id": "PSU10000",
+      "value": [],
+      "groups": [
+        {
+          "group_name": "1. Incident Management",
+          "group_id": "PSU10101",
+          "value": [
+            {
+              "metric_name": "Incident Volume",
+              "metric_id": "PSU10102",
+              "value": "85.0%"
+            },
+            {
+              "metric_name": "Incident Resolution Time",
+              "metric_id": "PSU10103",
+              "value": "75.0%"
+            },
+            {
+              "metric_name": "First Call Resolution Rate",
+              "metric_id": "PSU10104",
+              "value": "65.0%"
+            },
+            {
+              "metric_name": "Incident Reopen Rate",
+              "metric_id": "PSU10105",
+              "value": "53.0%"
+            }
+          ]
+        },
+        {
+          "group_name": "2. Service Request Management",
+          "group_id": "PSU10106",
+          "value": [
+            {
+              "metric_name": "Service Request Volume",
+              "metric_id": "PSU10107",
+              "value": "85.0%"
+            },
+            {
+              "metric_name": "Request Fulfillment Time",
+              "metric_id": "PSU10108",
+              "value": "74.0%"
+            },
+            {
+              "metric_name": "Request Escalation Rate",
+              "metric_id": "PSU10109",
+              "value": "84.0%"
+            },
+            {
+              "metric_name": "Customer Satisfaction",
+              "metric_id": "PSU10110",
+              "value": "86.0%"
+            }
+          ]
+        },
+        {
+          "group_name": "3. Problem Management",
+          "group_id": "PSU10111",
+          "value": [
+            {
+              "metric_name": "Problem Volume",
+              "metric_id": "PSU10112",
+              "value": "79.0%"
+            },
+            {
+              "metric_name": "Problem Resolution Time",
+              "metric_id": "PSU10113",
+              "value": "69.0%"
+            },
+            {
+              "metric_name": "Root Cause Analysis Time",
+              "metric_id": "PSU10114",
+              "value": "80.0%"
+            },
+            {
+              "metric_name": "Recurring Problem Rate",
+              "metric_id": "PSU10115",
+              "value": "81.5%"
+            }
+          ]
+        },
+        {
+          "group_name": "4. Change Management",
+          "group_id": "PSU10116",
+          "value": [
+            {
+              "metric_name": "Change Volume",
+              "metric_id": "PSU10117",
+              "value": "75.0%"
+            },
+            {
+              "metric_name": "Change Success Rate",
+              "metric_id": "PSU10118",
+              "value": "83.6%"
+            },
+            {
+              "metric_name": "Change Implementation Time",
+              "metric_id": "PSU10119",
+              "value": "84.3%"
+            },
+            {
+              "metric_name": "Change-Related Incidents",
+              "metric_id": "PSU10120",
+              "value": "82.0%"
+            }
+          ]
+        },
+        {
+          "group_name": "5. Knowledge Management",
+          "group_id": "PSU10121",
+          "value": [
+            {
+              "metric_name": "Knowledge Base Articles",
+              "metric_id": "PSU10122",
+              "value": "86.4%"
+            },
+            {
+              "metric_name": "Knowledge Base Usage",
+              "metric_id": "PSU10123",
+              "value": "87.1%"
+            },
+            {
+              "metric_name": "Knowledge Base Accuracy",
+              "metric_id": "PSU10124",
+              "value": "75.0%"
+            },
+            {
+              "metric_name": "User Feedback",
+              "metric_id": "PSU10125",
+              "value": "82.0%"
+            }
+          ]
+        },
+        {
+          "group_name": "6. Support Team Performance",
+          "group_id": "PSU10126",
+          "value": [
+            {
+              "metric_name": "Agent Utilization",
+              "metric_id": "PSU10127",
+              "value": "90.0%"
+            },
+            {
+              "metric_name": "Agent Productivity",
+              "metric_id": "PSU10128",
+              "value": "90.7%"
+            },
+            {
+              "metric_name": "Training Hours",
+              "metric_id": "PSU10129",
+              "value": "90.0%"
+            },
+            {
+              "metric_name": "Agent Satisfaction",
+              "metric_id": "PSU10130",
+              "value": "90.0%"
+            }
+          ]
+        },
+        {
+          "group_name": "7. Customer Satisfaction and Feedback",
+          "group_id": "PSU10131",
+          "value": [
+            {
+              "metric_name": "Customer Satisfaction Score (CSAT)",
+              "metric_id": "PSU10132",
+              "value": "93.5%"
+            },
+            {
+              "metric_name": "Net Promoter Score (NPS)",
+              "metric_id": "PSU10133",
+              "value": "90.0%"
+            },
+            {
+              "metric_name": "Customer Feedback Volume",
+              "metric_id": "PSU10134",
+              "value": "86.0%"
+            },
+            {
+              "metric_name": "Feedback Resolution Time",
+              "metric_id": "PSU10135",
+              "value": "95.6%"
+            }
+          ]
+        },
+        {
+          "group_name": "8. Service Level Agreement (SLA) Compliance",
+          "group_id": "PSU10136",
+          "value": [
+            {
+              "metric_name": "SLA Compliance Rate",
+              "metric_id": "PSU10137",
+              "value": "89.0%"
+            },
+            {
+              "metric_name": "SLA Breach Rate",
+              "metric_id": "PSU10138",
+              "value": ""
+            },
+            {
+              "metric_name": "Average Response Time",
+              "metric_id": "PSU10139",
+              "value": "98.4%"
+            },
+            {
+              "metric_name": "Average Resolution Time",
+              "metric_id": "PSU10140",
+              "value": "99.1%"
+            }
+          ]
+        },
+        {
+          "group_name": "9. Product Support Cost Management",
+          "group_id": "PSU10141",
+          "value": [
+            {
+              "metric_name": "Cost per Incident",
+              "metric_id": "PSU10142",
+              "value": "75.0%"
+            },
+            {
+              "metric_name": "Support Budget Utilization",
+              "metric_id": "PSU10143",
+              "value": "65.0%"
+            },
+            {
+              "metric_name": "Cost Savings Initiatives",
+              "metric_id": "PSU10144",
+              "value": "71.0%"
+            },
+            {
+              "metric_name": "Return on Investment (ROI)",
+              "metric_id": "PSU10145",
+              "value": "65.0%"
+            }
+          ]
+        },
+        {
+          "group_name": "10. Continuous Improvement",
+          "group_id": "PSU10146",
+          "value": [
+            {
+              "metric_name": "Improvement Initiatives",
+              "metric_id": "PSU10147",
+              "value": "80.0%"
+            },
+            {
+              "metric_name": "Improvement Impact",
+              "metric_id": "PSU10148",
+              "value": "89.0%"
+            },
+            {
+              "metric_name": "Innovation Rate",
+              "metric_id": "PSU10149",
+              "value": "84.0%"
+            },
+            {
+              "metric_name": "Employee Suggestions",
+              "metric_id": "PSU10150",
+              "value": "84.0%"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sub_module_name": "Product Inventory Management",
+      "sub_module_id": "INV10000",
+      "value": [],
+      "groups": [
+        {
+          "group_name": "1. Inventory Accuracy",
+          "group_id": "INV10101",
+          "value": [
+            {
+              "metric_name": "Inventory Accuracy Rate",
+              "metric_id": "INV10102",
+              "value": "85.0%"
+            },
+            {
+              "metric_name": "Inventory Discrepancies",
+              "metric_id": "INV10103",
+              "value": "75.0%"
+            },
+            {
+              "metric_name": "Cycle Count Accuracy",
+              "metric_id": "INV10104",
+              "value": "65.0%"
+            }
+          ]
+        },
+        {
+          "group_name": "2. Stock Levels",
+          "group_id": "INV10105",
+          "value": [
+            {
+              "metric_name": "Average Inventory Levels",
+              "metric_id": "INV10106",
+              "value": "54.0%"
+            },
+            {
+              "metric_name": "Stockout Rate",
+              "metric_id": "INV10107",
+              "value": "85.0%"
+            },
+            {
+              "metric_name": "Overstock Rate",
+              "metric_id": "INV10108",
+              "value": "74.0%"
+            }
+          ]
+        },
+        {
+          "group_name": "3. Inventory Turnover",
+          "group_id": "INV10109",
+          "value": [
+            {
+              "metric_name": "Inventory Turnover Ratio",
+              "metric_id": "INV10110",
+              "value": "86.0%"
+            },
+            {
+              "metric_name": "Days Sales of Inventory (DSI)",
+              "metric_id": "INV10111",
+              "value": "64.0%"
+            },
+            {
+              "metric_name": "Sell-Through Rate",
+              "metric_id": "INV10112",
+              "value": "79.0%"
+            }
+          ]
+        },
+        {
+          "group_name": "4. Order Management",
+          "group_id": "INV10113",
+          "value": [
+            {
+              "metric_name": "Order Accuracy",
+              "metric_id": "INV10114",
+              "value": "80.0%"
+            },
+            {
+              "metric_name": "Order Cycle Time",
+              "metric_id": "INV10115",
+              "value": "81.5%"
+            },
+            {
+              "metric_name": "Backorder Rate",
+              "metric_id": "INV10116",
+              "value": "76.0%"
+            }
+          ]
+        },
+        {
+          "group_name": "5. Supplier Performance",
+          "group_id": "INV10117",
+          "value": [
+            {
+              "metric_name": "Supplier Lead Time",
+              "metric_id": "INV10118",
+              "value": "83.6%"
+            },
+            {
+              "metric_name": "Supplier Reliability",
+              "metric_id": "INV10119",
+              "value": "84.3%"
+            },
+            {
+              "metric_name": "Supplier Defect Rate",
+              "metric_id": "INV10120",
+              "value": "82.0%"
+            }
+          ]
+        },
+        {
+          "group_name": "6. Inventory Costs",
+          "group_id": "INV10121",
+          "value": [
+            {
+              "metric_name": "Carrying Costs",
+              "metric_id": "INV10122",
+              "value": "86.4%"
+            },
+            {
+              "metric_name": "Ordering Costs",
+              "metric_id": "INV10123",
+              "value": "87.1%"
+            },
+            {
+              "metric_name": "Stockout Costs",
+              "metric_id": "INV10124",
+              "value": "75.0%"
+            }
+          ]
+        },
+        {
+          "group_name": "7. Inventory Turnover by Category",
+          "group_id": "INV10125",
+          "value": [
+            {
+              "metric_name": "Category Turnover Rate",
+              "metric_id": "INV10126",
+              "value": "80.0%"
+            },
+            {
+              "metric_name": "Category Performance",
+              "metric_id": "INV10127",
+              "value": "90.0%"
+            },
+            {
+              "metric_name": "Category Stock Levels",
+              "metric_id": "INV10128",
+              "value": "90.7%"
+            }
+          ]
+        },
+        {
+          "group_name": "8. Inventory Utilization",
+          "group_id": "INV10129",
+          "value": [
+            {
+              "metric_name": "Utilization Rate",
+              "metric_id": "INV10130",
+              "value": "90.0%"
+            },
+            {
+              "metric_name": "Idle Inventory",
+              "metric_id": "INV10131",
+              "value": "85.0%"
+            },
+            {
+              "metric_name": "Obsolete Inventory",
+              "metric_id": "INV10132",
+              "value": "93.5%"
+            }
+          ]
+        },
+        {
+          "group_name": "9. Demand Forecasting Accuracy",
+          "group_id": "INV10133",
+          "value": [
+            {
+              "metric_name": "Forecast Accuracy",
+              "metric_id": "INV10134",
+              "value": "86.0%"
+            },
+            {
+              "metric_name": "Forecast Error Rate",
+              "metric_id": "INV10135",
+              "value": "95.6%"
+            },
+            {
+              "metric_name": "Forecast Bias",
+              "metric_id": "INV10136",
+              "value": "79.0%"
+            }
+          ]
+        },
+        {
+          "group_name": "10. Continuous Improvement",
+          "group_id": "INV10137",
+          "value": [
+            {
+              "metric_name": "Process Improvement Initiatives",
+              "metric_id": "INV10138",
+              "value": "78.0%"
+            },
+            {
+              "metric_name": "Improvement Impact",
+              "metric_id": "INV10139",
+              "value": "98.4%"
+            },
+            {
+              "metric_name": "Employee Suggestions",
+              "metric_id": "INV10140",
+              "value": "99.1%"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sub_module_name": "Product Test Management",
+      "sub_module_id": "TST10000",
+      "value": [],
+      "groups": [
+        {
+          "group_name": "1. Test Planning",
+          "group_id": "TST10101",
+          "value": [
+            {
+              "metric_name": "Test Plan Completeness",
+              "metric_id": "TST10102",
+              "value": "85.0%"
+            },
+            {
+              "metric_name": "Test Plan Approval Rate",
+              "metric_id": "TST10103",
+              "value": "75.0%"
+            },
+            {
+              "metric_name": "Planning Accuracy",
+              "metric_id": "TST10104",
+              "value": "65.0%"
+            }
+          ]
+        },
+        {
+          "group_name": "2. Test Resource Management",
+          "group_id": "TST10105",
+          "value": [
+            {
+              "metric_name": "Resource Utilization",
+              "metric_id": "TST10106",
+              "value": "54.0%"
+            },
+            {
+              "metric_name": "Resource Allocation Time",
+              "metric_id": "TST10107",
+              "value": "85.0%"
+            },
+            {
+              "metric_name": "Resource Productivity",
+              "metric_id": "TST10108",
+              "value": "74.0%"
+            }
+          ]
+        },
+        {
+          "group_name": "3. Test Schedule Adherence",
+          "group_id": "TST10109",
+          "value": [
+            {
+              "metric_name": "Schedule Adherence Rate",
+              "metric_id": "TST10110",
+              "value": "86.0%"
+            },
+            {
+              "metric_name": "Schedule Slippage",
+              "metric_id": "TST10111",
+              "value": "64.0%"
+            },
+            {
+              "metric_name": "Test Cycle Time",
+              "metric_id": "TST10112",
+              "value": "79.0%"
+            }
+          ]
+        },
+        {
+          "group_name": "4. Test Budget Management",
+          "group_id": "TST10113",
+          "value": [
+            {
+              "metric_name": "Budget Adherence",
+              "metric_id": "TST10114",
+              "value": "80.0%"
+            },
+            {
+              "metric_name": "Cost per Test Case",
+              "metric_id": "TST10115",
+              "value": "81.5%"
+            },
+            {
+              "metric_name": "Cost Savings Initiatives",
+              "metric_id": "TST10116",
+              "value": "76.0%"
+            }
+          ]
+        },
+        {
+          "group_name": "5. Defect Management Efficiency",
+          "group_id": "TST10117",
+          "value": [
+            {
+              "metric_name": "Defect Detection Efficiency",
+              "metric_id": "TST10118",
+              "value": "83.6%"
+            },
+            {
+              "metric_name": "Defect Leakage",
+              "metric_id": "TST10119",
+              "value": "84.3%"
+            },
+            {
+              "metric_name": "Defect Fix Efficiency",
+              "metric_id": "TST10120",
+              "value": "82.0%"
+            }
+          ]
+        },
+        {
+          "group_name": "6. Test Process Improvement",
+          "group_id": "TST10121",
+          "value": [
+            {
+              "metric_name": "Improvement Initiatives",
+              "metric_id": "TST10122",
+              "value": "86.4%"
+            },
+            {
+              "metric_name": "Improvement Impact",
+              "metric_id": "TST10123",
+              "value": "87.1%"
+            },
+            {
+              "metric_name": "Employee Suggestions",
+              "metric_id": "TST10124",
+              "value": "75.0%"
+            }
+          ]
+        },
+        {
+          "group_name": "7. Risk Management",
+          "group_id": "TST10125",
+          "value": [
+            {
+              "metric_name": "Risk Identification Rate",
+              "metric_id": "TST10126",
+              "value": "80.0%"
+            },
+            {
+              "metric_name": "Risk Mitigation Success",
+              "metric_id": "TST10127",
+              "value": "90.0%"
+            },
+            {
+              "metric_name": "Risk Impact Analysis",
+              "metric_id": "TST10128",
+              "value": "90.7%"
+            }
+          ]
+        },
+        {
+          "group_name": "8. Stakeholder Communication",
+          "group_id": "TST10129",
+          "value": [
+            {
+              "metric_name": "Communication Timeliness",
+              "metric_id": "TST10130",
+              "value": "90.0%"
+            },
+            {
+              "metric_name": "Stakeholder Feedback",
+              "metric_id": "TST10131",
+              "value": "85.0%"
+            },
+            {
+              "metric_name": "Issue Resolution Time",
+              "metric_id": "TST10132",
+              "value": "93.5%"
+            }
+          ]
+        },
+        {
+          "group_name": "9. Compliance and Audit",
+          "group_id": "TST10133",
+          "value": [
+            {
+              "metric_name": "Compliance Rate",
+              "metric_id": "TST10134",
+              "value": "86.0%"
+            },
+            {
+              "metric_name": "Audit Findings",
+              "metric_id": "TST10135",
+              "value": "95.6%"
+            },
+            {
+              "metric_name": "Compliance Correction Time",
+              "metric_id": "TST10136",
+              "value": "79.0%"
+            }
+          ]
+        },
+        {
+          "group_name": "10. Customer Satisfaction",
+          "group_id": "TST10137",
+          "value": [
+            {
+              "metric_name": "Customer Satisfaction Score (CSAT)",
+              "metric_id": "TST10138",
+              "value": "78.0%"
+            },
+            {
+              "metric_name": "Net Promoter Score (NPS)",
+              "metric_id": "TST10139",
+              "value": "98.4%"
+            },
+            {
+              "metric_name": "Customer Feedback Volume",
+              "metric_id": "TST10140",
+              "value": "99.1%"
+            },
+            {
+              "metric_name": "Feedback Resolution Time",
+              "metric_id": "TST10141",
+              "value": "85.0%"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sub_module_name": "Product Catalogue Operational Readiness Management",
+      "sub_module_id": "COR10000",
+      "value": [],
+      "groups": [
+        {
+          "group_name": "1. Readiness Assessment",
+          "group_id": "COR10101",
+          "value": [
+            {
+              "metric_name": "Readiness Score",
+              "metric_id": "COR10102",
+              "value": "85.0%"
+            },
+            {
+              "metric_name": "Assessment Completion Rate",
+              "metric_id": "COR10103",
+              "value": "75.0%"
+            },
+            {
+              "metric_name": "Assessment Accuracy",
+              "metric_id": "COR10104",
+              "value": "65.0%"
+            },
+            {
+              "metric_name": "Assessment Time",
+              "metric_id": "COR10105",
+              "value": "54.0%"
+            }
+          ]
+        },
+        {
+          "group_name": "2. Catalogue Configuration and Deployment",
+          "group_id": "COR10106",
+          "value": [
+            {
+              "metric_name": "Configuration Accuracy",
+              "metric_id": "COR10107",
+              "value": "85.0%"
+            },
+            {
+              "metric_name": "Deployment Time",
+              "metric_id": "COR10108",
+              "value": "74.0%"
+            },
+            {
+              "metric_name": "Deployment Success Rate",
+              "metric_id": "COR10109",
+              "value": "64.0%"
+            },
+            {
+              "metric_name": "Rollback Frequency",
+              "metric_id": "COR10110",
+              "value": "86.0%"
+            }
+          ]
+        },
+        {
+          "group_name": "3. Testing and Validation",
+          "group_id": "COR10111",
+          "value": [
+            {
+              "metric_name": "Test Coverage",
+              "metric_id": "COR10112",
+              "value": "79.0%"
+            },
+            {
+              "metric_name": "Test Pass Rate",
+              "metric_id": "COR10113",
+              "value": "75.0%"
+            },
+            {
+              "metric_name": "Defect Density",
+              "metric_id": "COR10114",
+              "value": "80.0%"
+            },
+            {
+              "metric_name": "Validation Time",
+              "metric_id": "COR10115",
+              "value": "81.5%"
+            }
+          ]
+        },
+        {
+          "group_name": "4. Change Management",
+          "group_id": "COR10116",
+          "value": [
+            {
+              "metric_name": "Change Request Volume",
+              "metric_id": "COR10117",
+              "value": "78.0%"
+            },
+            {
+              "metric_name": "Change Approval Rate",
+              "metric_id": "COR10118",
+              "value": "83.6%"
+            },
+            {
+              "metric_name": "Change Implementation Time",
+              "metric_id": "COR10119",
+              "value": "84.3%"
+            },
+            {
+              "metric_name": "Change-Related Incidents",
+              "metric_id": "COR10120",
+              "value": "82.0%"
+            }
+          ]
+        },
+        {
+          "group_name": "5. Training and Knowledge Transfer",
+          "group_id": "COR10121",
+          "value": [
+            {
+              "metric_name": "Training Completion Rate",
+              "metric_id": "COR10122",
+              "value": "86.4%"
+            },
+            {
+              "metric_name": "Training Effectiveness",
+              "metric_id": "COR10123",
+              "value": "87.1%"
+            },
+            {
+              "metric_name": "Knowledge Transfer Sessions",
+              "metric_id": "COR10124",
+              "value": "75.0%"
+            },
+            {
+              "metric_name": "Training Time",
+              "metric_id": "COR10125",
+              "value": "79.0%"
+            }
+          ]
+        },
+        {
+          "group_name": "6. Stakeholder Engagement",
+          "group_id": "COR10126",
+          "value": [
+            {
+              "metric_name": "Engagement Rate",
+              "metric_id": "COR10127",
+              "value": "90.0%"
+            },
+            {
+              "metric_name": "Feedback Incorporation Rate",
+              "metric_id": "COR10128",
+              "value": "90.7%"
+            },
+            {
+              "metric_name": "Stakeholder Satisfaction",
+              "metric_id": "COR10129",
+              "value": "83.0%"
+            },
+            {
+              "metric_name": "Communication Timeliness",
+              "metric_id": "COR10130",
+              "value": "86.0%"
+            }
+          ]
+        },
+        {
+          "group_name": "7. Documentation Quality",
+          "group_id": "COR10131",
+          "value": [
+            {
+              "metric_name": "Documentation Completeness",
+              "metric_id": "COR10132",
+              "value": "78.0%"
+            },
+            {
+              "metric_name": "Document Review Time",
+              "metric_id": "COR10133",
+              "value": "68.0%"
+            },
+            {
+              "metric_name": "Documentation Errors",
+              "metric_id": "COR10134",
+              "value": "78.0%"
+            },
+            {
+              "metric_name": "Document Update Frequency",
+              "metric_id": "COR10135",
+              "value": "84.0%"
+            }
+          ]
+        },
+        {
+          "group_name": "8. Performance Monitoring",
+          "group_id": "COR10136",
+          "value": [
+            {
+              "metric_name": "Monitoring Frequency",
+              "metric_id": "COR10137",
+              "value": "69.0%"
+            },
+            {
+              "metric_name": "Performance Metrics",
+              "metric_id": "COR10138",
+              "value": "78.0%"
+            },
+            {
+              "metric_name": "Monitoring Alerts",
+              "metric_id": "COR10139",
+              "value": "79.0%"
+            },
+            {
+              "metric_name": "Performance Deviation",
+              "metric_id": "COR10140",
+              "value": "86.0%"
+            }
+          ]
+        },
+        {
+          "group_name": "9. Risk Management",
+          "group_id": "COR10141",
+          "value": [
+            {
+              "metric_name": "Risk Identification Rate",
+              "metric_id": "COR10142",
+              "value": "76.0%"
+            },
+            {
+              "metric_name": "Risk Mitigation Time",
+              "metric_id": "COR10143",
+              "value": "78.0%"
+            },
+            {
+              "metric_name": "Risk Severity",
+              "metric_id": "COR10144",
+              "value": "98.4%"
+            },
+            {
+              "metric_name": "Risk Resolution Rate",
+              "metric_id": "COR10145",
+              "value": "99.1%"
+            }
+          ]
+        },
+        {
+          "group_name": "10. Continuous Improvement",
+          "group_id": "COR10146",
+          "value": [
+            {
+              "metric_name": "Improvement Initiatives",
+              "metric_id": "COR10147",
+              "value": "89.0%"
+            },
+            {
+              "metric_name": "Improvement Impact",
+              "metric_id": "COR10148",
+              "value": "78.0%"
+            },
+            {
+              "metric_name": "Innovation Rate",
+              "metric_id": "COR10149",
+              "value": "60.0%"
+            },
+            {
+              "metric_name": "Employee Suggestions",
+              "metric_id": "COR10150",
+              "value": "75.0%"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sub_module_name": "Product Catalogue Content Management",
+      "sub_module_id": "PCC10000",
+      "value": [],
+      "groups": [
+        {
+          "group_name": "1. Content Accuracy",
+          "group_id": "PCC10101",
+          "value": [
+            {
+              "metric_name": "Accuracy Rate",
+              "metric_id": "PCC10102",
+              "value": "85.0%"
+            },
+            {
+              "metric_name": "Content Errors",
+              "metric_id": "PCC10103",
+              "value": "75.0%"
+            },
+            {
+              "metric_name": "Correction Time",
+              "metric_id": "PCC10104",
+              "value": "65.0%"
+            }
+          ]
+        },
+        {
+          "group_name": "2. Content Completeness",
+          "group_id": "PCC10105",
+          "value": [
+            {
+              "metric_name": "Completeness Rate",
+              "metric_id": "PCC10106",
+              "value": "65.0%"
+            },
+            {
+              "metric_name": "Missing Information Incidents",
+              "metric_id": "PCC10107",
+              "value": "85.0%"
+            },
+            {
+              "metric_name": "Completion Time",
+              "metric_id": "PCC10108",
+              "value": "55.0%"
+            }
+          ]
+        },
+        {
+          "group_name": "3. Content Relevance",
+          "group_id": "PCC10109",
+          "value": [
+            {
+              "metric_name": "Relevance Score",
+              "metric_id": "PCC10110",
+              "value": "86.0%"
+            },
+            {
+              "metric_name": "Content Update Frequency",
+              "metric_id": "PCC10111",
+              "value": "76.0%"
+            },
+            {
+              "metric_name": "Stakeholder Satisfaction",
+              "metric_id": "PCC10112",
+              "value": "79.0%"
+            }
+          ]
+        },
+        {
+          "group_name": "4. Content Consistency",
+          "group_id": "PCC10113",
+          "value": [
+            {
+              "metric_name": "Consistency Rate",
+              "metric_id": "PCC10114",
+              "value": "80.0%"
+            },
+            {
+              "metric_name": "Inconsistency Incidents",
+              "metric_id": "PCC10115",
+              "value": "81.5%"
+            },
+            {
+              "metric_name": "Correction Time for Inconsistencies",
+              "metric_id": "PCC10116",
+              "value": "78.0%"
+            }
+          ]
+        },
+        {
+          "group_name": "5. Content Timeliness",
+          "group_id": "PCC10117",
+          "value": [
+            {
+              "metric_name": "Update Time",
+              "metric_id": "PCC10118",
+              "value": "83.6%"
+            },
+            {
+              "metric_name": "Timely Updates Rate",
+              "metric_id": "PCC10119",
+              "value": "84.3%"
+            },
+            {
+              "metric_name": "Stale Content Incidents",
+              "metric_id": "PCC10120",
+              "value": "82.0%"
+            }
+          ]
+        },
+        {
+          "group_name": "6. Content Accessibility",
+          "group_id": "PCC10121",
+          "value": [
+            {
+              "metric_name": "Accessibility Rate",
+              "metric_id": "PCC10122",
+              "value": "86.4%"
+            },
+            {
+              "metric_name": "User Access Issues",
+              "metric_id": "PCC10123",
+              "value": "87.1%"
+            },
+            {
+              "metric_name": "Resolution Time for Access Issues",
+              "metric_id": "PCC10124",
+              "value": "75.0%"
+            }
+          ]
+        },
+        {
+          "group_name": "7. Content Compliance",
+          "group_id": "PCC10125",
+          "value": [
+            {
+              "metric_name": "Compliance Rate",
+              "metric_id": "PCC10126",
+              "value": "55.0%"
+            },
+            {
+              "metric_name": "Audit Findings",
+              "metric_id": "PCC10127",
+              "value": "90.0%"
+            },
+            {
+              "metric_name": "Compliance Correction Time",
+              "metric_id": "PCC10128",
+              "value": "90.7%"
+            }
+          ]
+        },
+        {
+          "group_name": "8. Content Engagement",
+          "group_id": "PCC10129",
+          "value": [
+            {
+              "metric_name": "Engagement Rate",
+              "metric_id": "PCC10130",
+              "value": "86.0%"
+            },
+            {
+              "metric_name": "Feedback Volume",
+              "metric_id": "PCC10131",
+              "value": "68.0%"
+            },
+            {
+              "metric_name": "Incorporation Rate",
+              "metric_id": "PCC10132",
+              "value": "78.0%"
+            }
+          ]
+        },
+        {
+          "group_name": "9. Content Effectiveness",
+          "group_id": "PCC10133",
+          "value": [
+            {
+              "metric_name": "Effectiveness Score",
+              "metric_id": "PCC10134",
+              "value": "78.0%"
+            },
+            {
+              "metric_name": "Usage Metrics",
+              "metric_id": "PCC10135",
+              "value": "84.0%"
+            },
+            {
+              "metric_name": "Impact Analysis",
+              "metric_id": "PCC10136",
+              "value": "74.0%"
+            }
+          ]
+        },
+        {
+          "group_name": "10. Content Improvement",
+          "group_id": "PCC10137",
+          "value": [
+            {
+              "metric_name": "Improvement Initiatives",
+              "metric_id": "PCC10138",
+              "value": "78.0%"
+            },
+            {
+              "metric_name": "Improvement Impact",
+              "metric_id": "PCC10139",
+              "value": "79.0%"
+            },
+            {
+              "metric_name": "Innovation Rate",
+              "metric_id": "PCC10140",
+              "value": "86.0%"
+            },
+            {
+              "metric_name": "Employee Suggestions",
+              "metric_id": "PCC10141",
+              "value": "68.0%"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sub_module_name": "Product Capacity Management",
+      "sub_module_id": "CAP10000",
+      "value": [],
+      "groups": [
+        {
+          "group_name": "1. Capacity Utilization",
+          "group_id": "CAP10101",
+          "value": [
+            {
+              "metric_name": "Utilization Rate",
+              "metric_id": "CAP10102",
+              "value": "85.0%"
+            },
+            {
+              "metric_name": "Peak Utilization",
+              "metric_id": "CAP10103",
+              "value": "75.0%"
+            },
+            {
+              "metric_name": "Idle Capacity",
+              "metric_id": "CAP10104",
+              "value": "65.0%"
+            },
+            {
+              "metric_name": "Capacity Buffer",
+              "metric_id": "CAP10105",
+              "value": "65.0%"
+            }
+          ]
+        },
+        {
+          "group_name": "2. Capacity Planning",
+          "group_id": "CAP10106",
+          "value": [
+            {
+              "metric_name": "Planning Accuracy",
+              "metric_id": "CAP10107",
+              "value": "85.0%"
+            },
+            {
+              "metric_name": "Forecast Error Rate",
+              "metric_id": "CAP10108",
+              "value": "55.0%"
+            },
+            {
+              "metric_name": "Planning Lead Time",
+              "metric_id": "CAP10109",
+              "value": "59.0%"
+            },
+            {
+              "metric_name": "Scenario Analysis",
+              "metric_id": "CAP10110",
+              "value": "86.0%"
+            }
+          ]
+        },
+        {
+          "group_name": "3. Capacity Expansion",
+          "group_id": "CAP10111",
+          "value": [
+            {
+              "metric_name": "Expansion Projects",
+              "metric_id": "CAP10112",
+              "value": "79.0%"
+            },
+            {
+              "metric_name": "Expansion Time",
+              "metric_id": "CAP10113",
+              "value": "81.0%"
+            },
+            {
+              "metric_name": "Expansion Cost",
+              "metric_id": "CAP10114",
+              "value": "80.0%"
+            },
+            {
+              "metric_name": "Post-Expansion Utilization",
+              "metric_id": "CAP10115",
+              "value": "81.5%"
+            }
+          ]
+        },
+        {
+          "group_name": "4. Resource Allocation",
+          "group_id": "CAP10116",
+          "value": [
+            {
+              "metric_name": "Resource Allocation Accuracy",
+              "metric_id": "CAP10117",
+              "value": "79.0%"
+            },
+            {
+              "metric_name": "Resource Allocation Time",
+              "metric_id": "CAP10118",
+              "value": "83.6%"
+            },
+            {
+              "metric_name": "Resource Availability",
+              "metric_id": "CAP10119",
+              "value": "84.3%"
+            },
+            {
+              "metric_name": "Allocation Efficiency",
+              "metric_id": "CAP10120",
+              "value": "82.0%"
+            }
+          ]
+        },
+        {
+          "group_name": "5. Performance Monitoring",
+          "group_id": "CAP10121",
+          "value": [
+            {
+              "metric_name": "Monitoring Frequency",
+              "metric_id": "CAP10122",
+              "value": "86.4%"
+            },
+            {
+              "metric_name": "Key Performance Indicators (KPIs)",
+              "metric_id": "CAP10123",
+              "value": "87.1%"
+            },
+            {
+              "metric_name": "Monitoring Alerts",
+              "metric_id": "CAP10124",
+              "value": "75.0%"
+            },
+            {
+              "metric_name": "Performance Deviation",
+              "metric_id": "CAP10125",
+              "value": "80.0%"
+            }
+          ]
+        },
+        {
+          "group_name": "6. Scalability",
+          "group_id": "CAP10126",
+          "value": [
+            {
+              "metric_name": "Scalability Index",
+              "metric_id": "CAP10127",
+              "value": "90.0%"
+            },
+            {
+              "metric_name": "Scaling Time",
+              "metric_id": "CAP10128",
+              "value": "90.7%"
+            },
+            {
+              "metric_name": "Elasticity",
+              "metric_id": "CAP10129",
+              "value": "85.0%"
+            },
+            {
+              "metric_name": "Scaling Costs",
+              "metric_id": "CAP10130",
+              "value": "86.0%"
+            }
+          ]
+        },
+        {
+          "group_name": "7. Risk Management",
+          "group_id": "CAP10131",
+          "value": [
+            {
+              "metric_name": "Risk Identification Rate",
+              "metric_id": "CAP10132",
+              "value": "78.0%"
+            },
+            {
+              "metric_name": "Risk Mitigation Success",
+              "metric_id": "CAP10133",
+              "value": "75.0%"
+            },
+            {
+              "metric_name": "Risk Impact Analysis",
+              "metric_id": "CAP10134",
+              "value": "78.0%"
+            },
+            {
+              "metric_name": "Risk Resolution Time",
+              "metric_id": "CAP10135",
+              "value": "84.0%"
+            }
+          ]
+        },
+        {
+          "group_name": "8. Capacity Optimization",
+          "group_id": "CAP10136",
+          "value": [
+            {
+              "metric_name": "Optimization Initiatives",
+              "metric_id": "CAP10137",
+              "value": "75.0%"
+            },
+            {
+              "metric_name": "Optimization Impact",
+              "metric_id": "CAP10138",
+              "value": "78.0%"
+            },
+            {
+              "metric_name": "Process Improvement",
+              "metric_id": "CAP10139",
+              "value": "79.0%"
+            },
+            {
+              "metric_name": "Cost Savings",
+              "metric_id": "CAP10140",
+              "value": "86.0%"
+            }
+          ]
+        },
+        {
+          "group_name": "9. Compliance and Reporting",
+          "group_id": "CAP10141",
+          "value": [
+            {
+              "metric_name": "Compliance Rate",
+              "metric_id": "CAP10142",
+              "value": "78.0%"
+            },
+            {
+              "metric_name": "Audit Findings",
+              "metric_id": "CAP10143",
+              "value": "78.0%"
+            },
+            {
+              "metric_name": "Compliance Correction Time",
+              "metric_id": "CAP10144",
+              "value": "79.0%"
+            },
+            {
+              "metric_name": "Reporting Accuracy",
+              "metric_id": "CAP10145",
+              "value": "86.0%"
+            }
+          ]
+        },
+        {
+          "group_name": "10. Stakeholder Engagement",
+          "group_id": "CAP10146",
+          "value": [
+            {
+              "metric_name": "Stakeholder Satisfaction",
+              "metric_id": "CAP10147",
+              "value": "68.0%"
+            },
+            {
+              "metric_name": "Feedback Incorporation",
+              "metric_id": "CAP10148",
+              "value": "78.0%"
+            },
+            {
+              "metric_name": "Engagement Rate",
+              "metric_id": "CAP10149",
+              "value": "79.0%"
+            },
+            {
+              "metric_name": "Communication Timeliness",
+              "metric_id": "CAP10150",
+              "value": "86.0%"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sub_module_name": "Product Offering Purchasing",
+      "sub_module_id": "PUR10000",
+      "value": [],
+      "groups": [
+        {
+          "group_name": "1. Purchase Order Management",
+          "group_id": "PUR10101",
+          "value": [
+            {
+              "metric_name": "Number of Purchase Orders",
+              "metric_id": "PUR10102",
+              "value": "85.0%"
+            },
+            {
+              "metric_name": "Order Accuracy",
+              "metric_id": "PUR10103",
+              "value": "75.0%"
+            },
+            {
+              "metric_name": "Order Fulfillment Time",
+              "metric_id": "PUR10104",
+              "value": "65.0%"
+            },
+            {
+              "metric_name": "Order Approval Rate",
+              "metric_id": "PUR10105",
+              "value": "65.0%"
+            }
+          ]
+        },
+        {
+          "group_name": "2. Supplier Performance",
+          "group_id": "PUR10106",
+          "value": [
+            {
+              "metric_name": "Supplier Lead Time",
+              "metric_id": "PUR10107",
+              "value": "85.0%"
+            },
+            {
+              "metric_name": "Supplier Reliability",
+              "metric_id": "PUR10108",
+              "value": "55.0%"
+            },
+            {
+              "metric_name": "Supplier Defect Rate",
+              "metric_id": "PUR10109",
+              "value": "59.0%"
+            },
+            {
+              "metric_name": "Supplier Performance Score",
+              "metric_id": "PUR10110",
+              "value": "86.0%"
+            }
+          ]
+        },
+        {
+          "group_name": "3. Cost Management",
+          "group_id": "PUR10111",
+          "value": [
+            {
+              "metric_name": "Purchase Cost per Unit",
+              "metric_id": "PUR10112",
+              "value": "79.0%"
+            },
+            {
+              "metric_name": "Cost Variance",
+              "metric_id": "PUR10113",
+              "value": "81.0%"
+            },
+            {
+              "metric_name": "Discount Utilization",
+              "metric_id": "PUR10114",
+              "value": "80.0%"
+            },
+            {
+              "metric_name": "Cost Savings Initiatives",
+              "metric_id": "PUR10115",
+              "value": "81.5%"
+            }
+          ]
+        },
+        {
+          "group_name": "4. Inventory Management",
+          "group_id": "PUR10116",
+          "value": [
+            {
+              "metric_name": "Inventory Turnover",
+              "metric_id": "PUR10117",
+              "value": "79.0%"
+            },
+            {
+              "metric_name": "Stockout Rate",
+              "metric_id": "PUR10118",
+              "value": "83.6%"
+            },
+            {
+              "metric_name": "Overstock Rate",
+              "metric_id": "PUR10119",
+              "value": "84.3%"
+            },
+            {
+              "metric_name": "Inventory Holding Costs",
+              "metric_id": "PUR10120",
+              "value": "82.0%"
+            }
+          ]
+        },
+        {
+          "group_name": "5. Order Fulfillment",
+          "group_id": "PUR10121",
+          "value": [
+            {
+              "metric_name": "Fulfillment Accuracy",
+              "metric_id": "PUR10122",
+              "value": "86.4%"
+            },
+            {
+              "metric_name": "Fulfillment Lead Time",
+              "metric_id": "PUR10123",
+              "value": "87.1%"
+            },
+            {
+              "metric_name": "Backorder Rate",
+              "metric_id": "PUR10124",
+              "value": "75.0%"
+            },
+            {
+              "metric_name": "Customer Satisfaction",
+              "metric_id": "PUR10125",
+              "value": "80.0%"
+            }
+          ]
+        },
+        {
+          "group_name": "6. Compliance and Reporting",
+          "group_id": "PUR10126",
+          "value": [
+            {
+              "metric_name": "Compliance Rate",
+              "metric_id": "PUR10127",
+              "value": "90.0%"
+            },
+            {
+              "metric_name": "Audit Findings",
+              "metric_id": "PUR10128",
+              "value": "90.7%"
+            },
+            {
+              "metric_name": "Compliance Correction Time",
+              "metric_id": "PUR10129",
+              "value": "85.0%"
+            },
+            {
+              "metric_name": "Accuracy of purchasing reports.",
+              "metric_id": "PUR10130",
+              "value": "86.0%"
+            }
+          ]
+        },
+        {
+          "group_name": "7. Risk Management",
+          "group_id": "PUR10131",
+          "value": [
+            {
+              "metric_name": "Risk Identification Rate",
+              "metric_id": "PUR10132",
+              "value": "78.0%"
+            },
+            {
+              "metric_name": "Risk Mitigation Success",
+              "metric_id": "PUR10133",
+              "value": "75.0%"
+            },
+            {
+              "metric_name": "Risk Impact Analysis",
+              "metric_id": "PUR10134",
+              "value": "78.0%"
+            },
+            {
+              "metric_name": "Risk Resolution Time",
+              "metric_id": "PUR10135",
+              "value": "84.0%"
+            }
+          ]
+        },
+        {
+          "group_name": "8. Supplier Relationship Management",
+          "group_id": "PUR10136",
+          "value": [
+            {
+              "metric_name": "Supplier Engagement Rate",
+              "metric_id": "PUR10137",
+              "value": "75.0%"
+            },
+            {
+              "metric_name": "Supplier Feedback Incorporation",
+              "metric_id": "PUR10138",
+              "value": "78.0%"
+            },
+            {
+              "metric_name": "Supplier Satisfaction",
+              "metric_id": "PUR10139",
+              "value": "79.0%"
+            },
+            {
+              "metric_name": "Communication Timeliness",
+              "metric_id": "PUR10140",
+              "value": "86.0%"
+            }
+          ]
+        },
+        {
+          "group_name": "9. Purchase Order Cycle Time",
+          "group_id": "PUR10141",
+          "value": [
+            {
+              "metric_name": "Cycle Time",
+              "metric_id": "PUR10142",
+              "value": "78.0%"
+            },
+            {
+              "metric_name": "Cycle Time Variability",
+              "metric_id": "PUR10143",
+              "value": "78.0%"
+            },
+            {
+              "metric_name": "Process Bottlenecks",
+              "metric_id": "PUR10144",
+              "value": "79.0%"
+            },
+            {
+              "metric_name": "Continuous Improvement",
+              "metric_id": "PUR10145",
+              "value": "86.0%"
+            }
+          ]
+        },
+        {
+          "group_name": "10. Sustainability and Ethical Sourcing",
+          "group_id": "PUR10146",
+          "value": [
+            {
+              "metric_name": "Sustainability Metrics",
+              "metric_id": "PUR10147",
+              "value": "68.0%"
+            },
+            {
+              "metric_name": "Ethical Sourcing Compliance",
+              "metric_id": "PUR10148",
+              "value": "78.0%"
+            },
+            {
+              "metric_name": "Green Purchasing Initiatives",
+              "metric_id": "PUR10149",
+              "value": "79.0%"
+            },
+            {
+              "metric_name": "Environmental Impact",
+              "metric_id": "PUR10150",
+              "value": "86.0%"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sub_module_name": "Product Problem Management",
+      "sub_module_id": "PBM10000",
+      "value": [],
+      "groups": [
+        {
+          "group_name": "1. Problem Identification",
+          "group_id": "PBM10101",
+          "value": [
+            {
+              "metric_name": "Problem Detection Rate",
+              "metric_id": "PBM10102",
+              "value": "85.0%"
+            },
+            {
+              "metric_name": "Detection Accuracy",
+              "metric_id": "PBM10103",
+              "value": "75.0%"
+            },
+            {
+              "metric_name": "False Positive Rate",
+              "metric_id": "PBM10104",
+              "value": "65.0%"
+            },
+            {
+              "metric_name": "Detection Time",
+              "metric_id": "PBM10105",
+              "value": "65.0%"
+            }
+          ]
+        },
+        {
+          "group_name": "2. Problem Reporting",
+          "group_id": "PBM10106",
+          "value": [
+            {
+              "metric_name": "Reporting Rate",
+              "metric_id": "PBM10107",
+              "value": "85.0%"
+            },
+            {
+              "metric_name": "Report Accuracy",
+              "metric_id": "PBM10108",
+              "value": "55.0%"
+            },
+            {
+              "metric_name": "Reporting Time",
+              "metric_id": "PBM10109",
+              "value": "59.0%"
+            },
+            {
+              "metric_name": "Stakeholder Feedback",
+              "metric_id": "PBM10110",
+              "value": "86.0%"
+            }
+          ]
+        },
+        {
+          "group_name": "3. Problem Analysis",
+          "group_id": "PBM10111",
+          "value": [
+            {
+              "metric_name": "Analysis Completion Time",
+              "metric_id": "PBM10112",
+              "value": "79.0%"
+            },
+            {
+              "metric_name": "Root Cause Identification Rate",
+              "metric_id": "PBM10113",
+              "value": "81.0%"
+            },
+            {
+              "metric_name": "Analysis Accuracy",
+              "metric_id": "PBM10114",
+              "value": "80.0%"
+            },
+            {
+              "metric_name": "Analytical Tools Utilization",
+              "metric_id": "PBM10115",
+              "value": "81.5%"
+            }
+          ]
+        },
+        {
+          "group_name": "4. Problem Resolution",
+          "group_id": "PBM10116",
+          "value": [
+            {
+              "metric_name": "Resolution Time",
+              "metric_id": "PBM10117",
+              "value": "79.0%"
+            },
+            {
+              "metric_name": "Resolution Success Rate",
+              "metric_id": "PBM10118",
+              "value": "83.6%"
+            },
+            {
+              "metric_name": "Reoccurrence Rate",
+              "metric_id": "PBM10119",
+              "value": "84.3%"
+            },
+            {
+              "metric_name": "Resolution Methods",
+              "metric_id": "PBM10120",
+              "value": "82.0%"
+            }
+          ]
+        },
+        {
+          "group_name": "5. Problem Communication",
+          "group_id": "PBM10121",
+          "value": [
+            {
+              "metric_name": "Communication Timeliness",
+              "metric_id": "PBM10122",
+              "value": "86.4%"
+            },
+            {
+              "metric_name": "Stakeholder Engagement",
+              "metric_id": "PBM10123",
+              "value": "87.1%"
+            },
+            {
+              "metric_name": "Feedback Incorporation Rate",
+              "metric_id": "PBM10124",
+              "value": "75.0%"
+            },
+            {
+              "metric_name": "Communication Clarity",
+              "metric_id": "PBM10125",
+              "value": "80.0%"
+            }
+          ]
+        },
+        {
+          "group_name": "6. Problem Impact Assessment",
+          "group_id": "PBM10126",
+          "value": [
+            {
+              "metric_name": "Impact Analysis Time",
+              "metric_id": "PBM10127",
+              "value": "90.0%"
+            },
+            {
+              "metric_name": "Impact Severity",
+              "metric_id": "PBM10128",
+              "value": "90.7%"
+            },
+            {
+              "metric_name": "Impact Mitigation Success",
+              "metric_id": "PBM10129",
+              "value": "85.0%"
+            },
+            {
+              "metric_name": "Customer Impact",
+              "metric_id": "PBM10130",
+              "value": "86.0%"
+            }
+          ]
+        },
+        {
+          "group_name": "7. Continuous Monitoring",
+          "group_id": "PBM10131",
+          "value": [
+            {
+              "metric_name": "Monitoring Frequency",
+              "metric_id": "PBM10132",
+              "value": "78.0%"
+            },
+            {
+              "metric_name": "Monitoring Coverage",
+              "metric_id": "PBM10133",
+              "value": "75.0%"
+            },
+            {
+              "metric_name": "Monitoring Alerts",
+              "metric_id": "PBM10134",
+              "value": "78.0%"
+            },
+            {
+              "metric_name": "Monitoring Accuracy",
+              "metric_id": "PBM10135",
+              "value": "84.0%"
+            }
+          ]
+        },
+        {
+          "group_name": "8. Documentation and Knowledge Management",
+          "group_id": "PBM10136",
+          "value": [
+            {
+              "metric_name": "Documentation Completeness",
+              "metric_id": "PBM10137",
+              "value": "75.0%"
+            },
+            {
+              "metric_name": "Knowledge Base Usage",
+              "metric_id": "PBM10138",
+              "value": "78.0%"
+            },
+            {
+              "metric_name": "Document Update Frequency",
+              "metric_id": "PBM10139",
+              "value": "79.0%"
+            },
+            {
+              "metric_name": "Knowledge Transfer Sessions",
+              "metric_id": "PBM10140",
+              "value": "86.0%"
+            }
+          ]
+        },
+        {
+          "group_name": "9. Risk Management",
+          "group_id": "PBM10141",
+          "value": [
+            {
+              "metric_name": "Risk Identification Rate",
+              "metric_id": "PBM10142",
+              "value": "78.0%"
+            },
+            {
+              "metric_name": "Risk Mitigation Time",
+              "metric_id": "PBM10143",
+              "value": "78.0%"
+            },
+            {
+              "metric_name": "Risk Severity",
+              "metric_id": "PBM10144",
+              "value": "79.0%"
+            },
+            {
+              "metric_name": "Risk Resolution Rate",
+              "metric_id": "PBM10145",
+              "value": "86.0%"
+            }
+          ]
+        },
+        {
+          "group_name": "10. Continuous Improvement",
+          "group_id": "PBM10146",
+          "value": [
+            {
+              "metric_name": "Improvement Initiatives",
+              "metric_id": "PBM10147",
+              "value": "68.0%"
+            },
+            {
+              "metric_name": "Improvement Impact",
+              "metric_id": "PBM10148",
+              "value": "78.0%"
+            },
+            {
+              "metric_name": "Innovation Rate",
+              "metric_id": "PBM10149",
+              "value": "79.0%"
+            },
+            {
+              "metric_name": "Employee Suggestions",
+              "metric_id": "PBM10150",
+              "value": "86.0%"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sub_module_name": "Product Anomaly Management",
+      "sub_module_id": "ANM10000",
+      "value": [],
+      "groups": [
+        {
+          "group_name": "1. Anomaly Detection",
+          "group_id": "ANM10101",
+          "value": [
+            {
+              "metric_name": "Detection Accuracy",
+              "metric_id": "ANM10102",
+              "value": "85.0%"
+            },
+            {
+              "metric_name": "False Positive Rate",
+              "metric_id": "ANM10103",
+              "value": "75.0%"
+            },
+            {
+              "metric_name": "False Negative Rate",
+              "metric_id": "ANM10104",
+              "value": "65.0%"
+            },
+            {
+              "metric_name": "Detection Time",
+              "metric_id": "ANM10105",
+              "value": "65.0%"
+            }
+          ]
+        },
+        {
+          "group_name": "2. Anomaly Reporting",
+          "group_id": "ANM10106",
+          "value": [
+            {
+              "metric_name": "Reporting Rate",
+              "metric_id": "ANM10107",
+              "value": "85.0%"
+            },
+            {
+              "metric_name": "Report Accuracy",
+              "metric_id": "ANM10108",
+              "value": "55.0%"
+            },
+            {
+              "metric_name": "Report Time",
+              "metric_id": "ANM10109",
+              "value": "59.0%"
+            },
+            {
+              "metric_name": "Stakeholder Feedback",
+              "metric_id": "ANM10110",
+              "value": "86.0%"
+            }
+          ]
+        },
+        {
+          "group_name": "3. Anomaly Analysis",
+          "group_id": "ANM10111",
+          "value": [
+            {
+              "metric_name": "Analysis Completion Time",
+              "metric_id": "ANM10112",
+              "value": "79.0%"
+            },
+            {
+              "metric_name": "Root Cause Identification Rate",
+              "metric_id": "ANM10113",
+              "value": "81.0%"
+            },
+            {
+              "metric_name": "Analysis Accuracy",
+              "metric_id": "ANM10114",
+              "value": "80.0%"
+            },
+            {
+              "metric_name": "Analytical Tools Utilization",
+              "metric_id": "ANM10115",
+              "value": "81.5%"
+            }
+          ]
+        },
+        {
+          "group_name": "4. Anomaly Resolution",
+          "group_id": "ANM10116",
+          "value": [
+            {
+              "metric_name": "Resolution Time",
+              "metric_id": "ANM10117",
+              "value": "79.0%"
+            },
+            {
+              "metric_name": "Resolution Success Rate",
+              "metric_id": "ANM10118",
+              "value": "83.6%"
+            },
+            {
+              "metric_name": "Reoccurrence Rate",
+              "metric_id": "ANM10119",
+              "value": "84.3%"
+            },
+            {
+              "metric_name": "Resolution Methods",
+              "metric_id": "ANM10120",
+              "value": "82.0%"
+            }
+          ]
+        },
+        {
+          "group_name": "5. Anomaly Communication",
+          "group_id": "ANM10121",
+          "value": [
+            {
+              "metric_name": "Communication Timeliness",
+              "metric_id": "ANM10122",
+              "value": "86.4%"
+            },
+            {
+              "metric_name": "Stakeholder Engagement",
+              "metric_id": "ANM10123",
+              "value": "87.1%"
+            },
+            {
+              "metric_name": "Feedback Incorporation Rate",
+              "metric_id": "ANM10124",
+              "value": "75.0%"
+            },
+            {
+              "metric_name": "Communication Clarity",
+              "metric_id": "ANM10125",
+              "value": "80.0%"
+            }
+          ]
+        },
+        {
+          "group_name": "6. Anomaly Impact Assessment",
+          "group_id": "ANM10126",
+          "value": [
+            {
+              "metric_name": "Impact Analysis Time",
+              "metric_id": "ANM10127",
+              "value": "90.0%"
+            },
+            {
+              "metric_name": "Impact Severity",
+              "metric_id": "ANM10128",
+              "value": "90.7%"
+            },
+            {
+              "metric_name": "Impact Mitigation Success",
+              "metric_id": "ANM10129",
+              "value": "85.0%"
+            },
+            {
+              "metric_name": "Customer Impact",
+              "metric_id": "ANM10130",
+              "value": "86.0%"
+            }
+          ]
+        },
+        {
+          "group_name": "7. Continuous Monitoring",
+          "group_id": "ANM10131",
+          "value": [
+            {
+              "metric_name": "Monitoring Frequency",
+              "metric_id": "ANM10132",
+              "value": "78.0%"
+            },
+            {
+              "metric_name": "Monitoring Coverage",
+              "metric_id": "ANM10133",
+              "value": "75.0%"
+            },
+            {
+              "metric_name": "Monitoring Alerts",
+              "metric_id": "ANM10134",
+              "value": "78.0%"
+            },
+            {
+              "metric_name": "Monitoring Accuracy",
+              "metric_id": "ANM10135",
+              "value": "84.0%"
+            }
+          ]
+        },
+        {
+          "group_name": "8. Documentation and Knowledge Management",
+          "group_id": "ANM10136",
+          "value": [
+            {
+              "metric_name": "Documentation Completeness",
+              "metric_id": "ANM10137",
+              "value": "75.0%"
+            },
+            {
+              "metric_name": "Knowledge Base Usage",
+              "metric_id": "ANM10138",
+              "value": "78.0%"
+            },
+            {
+              "metric_name": "Document Update Frequency",
+              "metric_id": "ANM10139",
+              "value": "79.0%"
+            },
+            {
+              "metric_name": "Knowledge Transfer Sessions",
+              "metric_id": "ANM10140",
+              "value": "86.0%"
+            }
+          ]
+        },
+        {
+          "group_name": "9. Risk Management",
+          "group_id": "ANM10141",
+          "value": [
+            {
+              "metric_name": "Risk Identification Rate",
+              "metric_id": "ANM10142",
+              "value": "78.0%"
+            },
+            {
+              "metric_name": "Risk Mitigation Time",
+              "metric_id": "ANM10143",
+              "value": "78.0%"
+            },
+            {
+              "metric_name": "Risk Severity",
+              "metric_id": "ANM10144",
+              "value": "79.0%"
+            },
+            {
+              "metric_name": "Risk Resolution Rate",
+              "metric_id": "ANM10145",
+              "value": "86.0%"
+            }
+          ]
+        },
+        {
+          "group_name": "10. Continuous Improvement",
+          "group_id": "ANM10146",
+          "value": [
+            {
+              "metric_name": "Improvement Initiatives",
+              "metric_id": "ANM10147",
+              "value": "68.0%"
+            },
+            {
+              "metric_name": "Improvement Impact",
+              "metric_id": "ANM10148",
+              "value": "78.0%"
+            },
+            {
+              "metric_name": "Innovation Rate",
+              "metric_id": "ANM10149",
+              "value": "79.0%"
+            },
+            {
+              "metric_name": "Employee Suggestions",
+              "metric_id": "ANM10150",
+              "value": "86.0%"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

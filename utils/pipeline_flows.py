@@ -91,12 +91,12 @@ def render_download_section(pipeline_key: str, total_steps: int, work_dir: str):
         
         if work_dir and os.path.exists(work_dir):
             # Highlight Master and Final Reports First
-            master_path = os.path.join(work_dir, "MASTER_CONSOLIDATED_REPORT.txt")
-            final_esgrc = os.path.join(work_dir, "FINAL_CLIENT_REPORT_ESGRC.txt")
-            final_apex  = os.path.join(work_dir, "FINAL_ENTERPRISE_REPORT.txt")
+            master_path = os.path.join(work_dir, f"MASTER_CONSOLIDATED_REPORT_{pe.ANALYSIS_DATE}.txt")
+            final_esgrc = os.path.join(work_dir, f"FINAL_CLIENT_REPORT_ESGRC_{pe.ANALYSIS_DATE}.txt")
+            final_apex  = os.path.join(work_dir, f"FINAL_ENTERPRISE_REPORT_{pe.ANALYSIS_DATE}.txt")
             
             for path, title in [(final_esgrc, "Final Recommended AI Report (ESGRC)"),
-                                (final_apex, "Final Recommended AI Report (APEX)")]:
+                                (final_apex, "Final Recommended AI Report (Enterprise Risk)")]:
                 if os.path.exists(path):
                     with open(path, "r", encoding="utf-8") as f:
                         text_data = f.read()
@@ -159,21 +159,37 @@ def render_esgrc_pipeline():
     st.write("This pipeline executes the 7 foundational steps for ESGRC low-performance analysis, SPC charting, and reporting.")
     
     # --- Step 1 ---
+    # JSON config is permanently bundled in reference_data — only CSV is needed from user
+    _ESGRC_JSON_PATH = os.path.join(
+        os.path.dirname(__file__), "modules", "esgrc", "reference_data", "esgrc_performance_json_file.json"
+    )
+
     def render_inputs_step1():
-        st.markdown("**Upload Required Files:**")
-        csv_file = st.file_uploader("1. Metric CSV (input_metric_values_esgrc.csv)", type=["csv"], key="esgrc_s1_csv")
-        json_file = st.file_uploader("2. Config JSON (esgrc_performance_json_file.json)", type=["json"], key="esgrc_s1_json")
-        
-        if csv_file and json_file:
+        st.markdown("**Upload Your Metric CSV File:**")
+        csv_file = st.file_uploader(
+            "Metric CSV (input_metric_values_esgrc.csv)",
+            type=["csv"],
+            key="esgrc_s1_csv",
+            help="Upload the ESGRC metrics CSV. The config JSON is pre-bundled automatically."
+        )
+
+        # Auto-load the bundled JSON config
+        try:
+            with open(_ESGRC_JSON_PATH, "r", encoding="utf-8") as jf:
+                j_data = json.load(jf)
+            st.success("✅ Config JSON auto-loaded from module reference data.")
+        except Exception as e:
+            st.error(f"❌ Could not load bundled JSON config: {e}")
+            return False, {}
+
+        if csv_file:
             try:
-                j_data = json.loads(json_file.read())
                 st.session_state["current_json_data"] = j_data
-                # Write csv to work_dir so next scripts can find it
                 with open(os.path.join(work_dir, "input_metric_values_esgrc.csv"), "wb") as f:
                     f.write(csv_file.getvalue())
                 return True, {"work_dir": work_dir, "csv_bytes": csv_file.getvalue(), "json_data": j_data}
             except Exception as e:
-                st.error(f"Invalid JSON file: {e}")
+                st.error(f"Error processing CSV: {e}")
         return False, {}
         
     render_pipeline_step(pipeline_key, 1, total_steps, "Low Performance Analysis",
@@ -217,15 +233,15 @@ def render_esgrc_pipeline():
         return True, {
             "work_dir": work_dir,
             "input_files": [
-                os.path.join(work_dir, "low_performing_entities_report_esgrc.txt"),
+                os.path.join(work_dir, f"low_performing_entities_report_esgrc_{pe.ANALYSIS_DATE}.txt"),
                 os.path.join(work_dir, f"metrics_summary_{pe.ANALYSIS_DATE}.txt"),
-                os.path.join(work_dir, "M_G_SM_correlation_report_esgrc.txt"),
-                os.path.join(work_dir, "trends_and_repetitions_report_esgrc.txt"),
-                os.path.join(work_dir, "inconsistencies_report_esgrc.txt"),
-                os.path.join(work_dir, "chaid_risk_segmentation_report_esgrc.txt"),
-                os.path.join(work_dir, "ESGRC_Module_model_summary.txt")
+                os.path.join(work_dir, f"M_G_SM_correlation_report_esgrc_{pe.ANALYSIS_DATE}.txt"),
+                os.path.join(work_dir, f"trends_and_repetitions_report_esgrc_{pe.ANALYSIS_DATE}.txt"),
+                os.path.join(work_dir, f"inconsistencies_report_esgrc_{pe.ANALYSIS_DATE}.txt"),
+                os.path.join(work_dir, f"chaid_risk_segmentation_report_esgrc_{pe.ANALYSIS_DATE}.txt"),
+                os.path.join(work_dir, f"ESGRC_Module_model_summary_{pe.ANALYSIS_DATE}.txt")
             ],
-            "output_filename": "MASTER_CONSOLIDATED_REPORT.txt"
+            "output_filename": f"MASTER_CONSOLIDATED_REPORT_{pe.ANALYSIS_DATE}.txt"
         }
     render_pipeline_step(pipeline_key, 6, total_steps, "Compile Master Report",
                          "Combines all previous text reports into a single consolidated file.",
@@ -238,29 +254,76 @@ def render_esgrc_pipeline():
         
     def run_step7_report(work_dir):
         from groq import Groq
-        master_path = os.path.join(work_dir, "MASTER_CONSOLIDATED_REPORT.txt")
+        master_path = os.path.join(work_dir, f"MASTER_CONSOLIDATED_REPORT_{pe.ANALYSIS_DATE}.txt")
         if not os.path.exists(master_path):
             return False, {}, "Master Consolidated Report not found. Please re-run Step 6."
             
-        out_name = "FINAL_CLIENT_REPORT_ESGRC.txt"
-        pdf_name = "FINAL_CLIENT_REPORT_ESGRC.pdf"
-        out_name = "FINAL_CLIENT_REPORT_ESGRC.txt"
-        pdf_name = "FINAL_CLIENT_REPORT_ESGRC.pdf"
+        out_name = f"FINAL_CLIENT_REPORT_ESGRC_{pe.ANALYSIS_DATE}.txt"
+        pdf_name = f"FINAL_CLIENT_REPORT_ESGRC_{pe.ANALYSIS_DATE}.pdf"
         
-        # Skipping the AI API call as requested to avoid context length errors
-        skipped_text = "AI Interpretation skipped as requested.\n\nMaster report was generated successfully in the previous steps. Please refer to the MASTER_CONSOLIDATED_REPORT.txt"
-        
-        with open(os.path.join(work_dir, out_name), "w", encoding="utf-8") as fout:
-            fout.write(skipped_text)
-            
         try:
-            pdf_bytes = generate_ai_pdf(skipped_text, "FINAL RECOMMENDED AI REPORT - SKIPPED")
+            with open(master_path, "r", encoding="utf-8") as fin:
+                content = fin.read()
+                
+            from utils.master_pdf import generate_master_pdf_bytes
+            import base64
+            
+            pdf_bytes_for_llm = generate_master_pdf_bytes(content)
+            pdf_base64 = base64.b64encode(pdf_bytes_for_llm).decode('utf-8')
+            
+            import anthropic
+            client = anthropic.Anthropic(api_key=st.secrets.get("ANTHROPIC_API_KEY", ""))
+            sys_prompt = "You are an expert ESGRC risk analyst. Analyze the attached consolidated report and provide a comprehensive structured executive summary, key risk findings, and actionable recommendations. Be detailed but clear."
+            
+            response = client.messages.create(
+                model="claude-opus-4-6",
+                max_tokens=8192,
+                system=sys_prompt,
+                messages=[
+                    {
+                        "role": "user", 
+                        "content": [
+                            {
+                                "type": "document",
+                                "source": {
+                                    "type": "base64",
+                                    "media_type": "application/pdf",
+                                    "data": pdf_base64
+                                }
+                            },
+                            {
+                                "type": "text",
+                                "text": "Please analyze this report."
+                            }
+                        ]
+                    }
+                ]
+            )
+            AI_text = "".join(block.text for block in response.content if block.type == "text")
+            
+            with open(os.path.join(work_dir, out_name), "w", encoding="utf-8") as fout:
+                fout.write(AI_text)
+                
+            pdf_bytes = generate_ai_pdf(AI_text, "FINAL RECOMMENDED AI REPORT")
             with open(os.path.join(work_dir, pdf_name), "wb") as fpdf:
                 fpdf.write(pdf_bytes)
-        except:
-            pass
+                
+            return True, {"files": [out_name, pdf_name]}, "AI Report Generation complete (TXT & PDF generated)."
             
-        return True, {"files": [out_name, pdf_name]}, "AI Report Generation skipped."
+        except Exception as e:
+            fallback_text = f"AI Report Generation failed due to API error: {str(e)}"
+            
+            with open(os.path.join(work_dir, out_name), "w", encoding="utf-8") as fout:
+                fout.write(fallback_text)
+                
+            try:
+                pdf_bytes = generate_ai_pdf(fallback_text, "FINAL RECOMMENDED AI REPORT - ERROR")
+                with open(os.path.join(work_dir, pdf_name), "wb") as fpdf:
+                    fpdf.write(pdf_bytes)
+            except:
+                pass
+                
+            return True, {"files": [out_name, pdf_name]}, f"AI Report Generation Bypassed: {str(e)}"
         
     render_pipeline_step(pipeline_key, 7, total_steps, "Final Output Generation",
                          "Compiles predictive Risk Models and Master Data into final deliverables.",
@@ -274,12 +337,12 @@ def render_esgrc_pipeline():
 # ─────────────────────────────────────────────────────────────────────────────
 
 def render_apex_pipeline():
-    total_steps = 6
+    total_steps = 8
     pipeline_key = "apex_pipeline"
     init_pipeline_state(pipeline_key, total_steps)
     work_dir = _get_work_dir()
     
-    st.markdown("## Enterprise APEX Pipeline")
+    st.markdown("## Enterprise Risk Pipeline")
     st.write("This pipeline executes the full 8-step enterprise-wide L0 consolidation analysis.")
     
     # --- Step 1 ---
@@ -305,14 +368,18 @@ def render_apex_pipeline():
         
         uploaded_names = [f.name for f in uploaded] if uploaded else []
         
-        st.markdown("### Upload Checklist")
-        missing_count = 0
-        for req in required_files:
-            if req in uploaded_names:
-                st.markdown(f"<div style='color: #16A34A; margin-bottom: 4px;'>✅ {req}</div>", unsafe_allow_html=True)
-            else:
-                st.markdown(f"<div style='color: #DC2626; margin-bottom: 4px;'>❌ {req} (Missing)</div>", unsafe_allow_html=True)
-                missing_count += 1
+        missing_files = [req for req in required_files if req not in uploaded_names]
+        missing_count = len(missing_files)
+        
+        if missing_count == 0 and len(uploaded_names) >= len(required_files):
+            st.success("✅ All 12 required files uploaded successfully!")
+        else:
+            st.markdown("### Upload Checklist")
+            for req in required_files:
+                if req in uploaded_names:
+                    st.markdown(f"<div style='color: #16A34A; margin-bottom: 4px;'>✅ {req}</div>", unsafe_allow_html=True)
+                else:
+                    st.markdown(f"<div style='color: #DC2626; margin-bottom: 4px;'>❌ {req} (Missing)</div>", unsafe_allow_html=True)
                 
         if missing_count == 0 and len(uploaded_names) > 0:
             # Write all files to work_dir
@@ -340,9 +407,16 @@ def render_apex_pipeline():
                          
     def render_inputs_apex_s4():
         st.markdown("Optional: Upload module_mapping.csv and module_matrix.csv")
-        st.file_uploader("Module Mapping", key="map_l0")
-        st.file_uploader("Module Matrix", key="mat_l0")
-        # In a real impl, we'd save these. For now, just return true.
+        map_l0 = st.file_uploader("Module Mapping", key="map_l0")
+        mat_l0 = st.file_uploader("Module Matrix", key="mat_l0")
+        
+        if map_l0:
+            with open(os.path.join(work_dir, "module_mapping.csv"), "wb") as f:
+                f.write(map_l0.getvalue())
+        if mat_l0:
+            with open(os.path.join(work_dir, "module_matrix.csv"), "wb") as f:
+                f.write(mat_l0.getvalue())
+                
         return True, {"work_dir": work_dir}
     render_pipeline_step(pipeline_key, 4, total_steps, "Regression + Risk Scenarios L0",
                          "Full regression suite and Monte Carlo scenarios at enterprise level.",
@@ -352,15 +426,15 @@ def render_apex_pipeline():
         return True, {
             "work_dir": work_dir,
             "input_files": [
-                os.path.join(work_dir, "performance_report_2025.txt"),
+                os.path.join(work_dir, f"performance_report_{pe.ANALYSIS_DATE}.txt"),
                 os.path.join(work_dir, f"SPC_summary_L0_{pe.ANALYSIS_DATE}.txt"),
-                os.path.join(work_dir, "correlation_analysis_L0.txt"),
-                os.path.join(work_dir, "trends_and_repetitions_report_L0.txt"),
-                os.path.join(work_dir, "inconsistency_report_L0.txt"),
-                os.path.join(work_dir, "chaid_risk_segmentation_L0.txt"),
-                os.path.join(work_dir, "L0_Risk_Analysis_Report_2025.txt")
+                os.path.join(work_dir, f"correlation_analysis_L0_{pe.ANALYSIS_DATE}.txt"),
+                os.path.join(work_dir, f"trends_and_repetitions_report_L0_{pe.ANALYSIS_DATE}.txt"),
+                os.path.join(work_dir, f"inconsistency_report_L0_{pe.ANALYSIS_DATE}.txt"),
+                os.path.join(work_dir, f"chaid_risk_segmentation_L0_{pe.ANALYSIS_DATE}.txt"),
+                os.path.join(work_dir, f"L0_Risk_Analysis_Report_{pe.ANALYSIS_DATE}.txt")
             ],
-            "output_filename": "MASTER_CONSOLIDATED_REPORT.txt"
+            "output_filename": f"MASTER_CONSOLIDATED_REPORT_{pe.ANALYSIS_DATE}.txt"
         }
     render_pipeline_step(pipeline_key, 5, total_steps, "Compile Master Report",
                          "Combines all enterprise L0 text reports into a single consolidated file.",
@@ -372,32 +446,236 @@ def render_apex_pipeline():
         
     def run_step6_report(work_dir):
         from groq import Groq
-        master_path = os.path.join(work_dir, "MASTER_CONSOLIDATED_REPORT.txt")
+        master_path = os.path.join(work_dir, f"MASTER_CONSOLIDATED_REPORT_{pe.ANALYSIS_DATE}.txt")
         if not os.path.exists(master_path):
             return False, {}, "Master Consolidated Report not found. Please re-run Step 5."
             
-        out_name = "FINAL_ENTERPRISE_REPORT.txt"
-        pdf_name = "FINAL_ENTERPRISE_REPORT.pdf"
-        out_name = "FINAL_ENTERPRISE_REPORT.txt"
-        pdf_name = "FINAL_ENTERPRISE_REPORT.pdf"
+        out_name = f"FINAL_ENTERPRISE_REPORT_{pe.ANALYSIS_DATE}.txt"
+        pdf_name = f"FINAL_ENTERPRISE_REPORT_{pe.ANALYSIS_DATE}.pdf"
         
-        # Skipping the AI API call as requested to avoid context length errors
-        skipped_text = "AI Interpretation skipped as requested.\n\nMaster report was generated successfully in the previous steps. Please refer to the MASTER_CONSOLIDATED_REPORT.txt"
-        
-        with open(os.path.join(work_dir, out_name), "w", encoding="utf-8") as fout:
-            fout.write(skipped_text)
-            
         try:
-            pdf_bytes = generate_ai_pdf(skipped_text, "FINAL ENTERPRISE RECOMMENDED AI REPORT - SKIPPED")
+            with open(master_path, "r", encoding="utf-8") as fin:
+                content = fin.read()
+                
+            from utils.master_pdf import generate_master_pdf_bytes
+            import base64
+            
+            pdf_bytes_for_llm = generate_master_pdf_bytes(content)
+            pdf_base64 = base64.b64encode(pdf_bytes_for_llm).decode('utf-8')
+            
+            import anthropic
+            client = anthropic.Anthropic(api_key=st.secrets.get("ANTHROPIC_API_KEY", ""))
+            sys_prompt = "You are an expert Enterprise Risk analyst. Analyze the attached consolidated L0 enterprise report and provide a comprehensive structured executive summary, key enterprise risk findings, and actionable recommendations. Be detailed but clear."
+            
+            response = client.messages.create(
+                model="claude-opus-4-6",
+                max_tokens=8192,
+                system=sys_prompt,
+                messages=[
+                    {
+                        "role": "user", 
+                        "content": [
+                            {
+                                "type": "document",
+                                "source": {
+                                    "type": "base64",
+                                    "media_type": "application/pdf",
+                                    "data": pdf_base64
+                                }
+                            },
+                            {
+                                "type": "text",
+                                "text": "Please analyze this report."
+                            }
+                        ]
+                    }
+                ]
+            )
+            AI_text = "".join(block.text for block in response.content if block.type == "text")
+            
+            with open(os.path.join(work_dir, out_name), "w", encoding="utf-8") as fout:
+                fout.write(AI_text)
+                
+            pdf_bytes = generate_ai_pdf(AI_text, "FINAL ENTERPRISE RECOMMENDED AI REPORT")
             with open(os.path.join(work_dir, pdf_name), "wb") as fpdf:
                 fpdf.write(pdf_bytes)
-        except:
-            pass
+                
+            return True, {"files": [out_name, pdf_name]}, "AI Report Generation complete (TXT & PDF generated)."
             
-        return True, {"files": [out_name, pdf_name]}, "AI Report Generation skipped."
+        except Exception as e:
+            fallback_text = f"AI Report Generation failed due to API error: {str(e)}"
+            
+            with open(os.path.join(work_dir, out_name), "w", encoding="utf-8") as fout:
+                fout.write(fallback_text)
+                
+            try:
+                pdf_bytes = generate_ai_pdf(fallback_text, "FINAL ENTERPRISE RECOMMENDED AI REPORT - ERROR")
+                with open(os.path.join(work_dir, pdf_name), "wb") as fpdf:
+                    fpdf.write(pdf_bytes)
+            except:
+                pass
+                
+            return True, {"files": [out_name, pdf_name]}, f"AI Report Generation Bypassed: {str(e)}"
         
     render_pipeline_step(pipeline_key, 6, total_steps, "Final Output Generation",
                          "Compiles predictive Risk Models and Master Data into final deliverables.",
                          render_inputs_apex_s6, run_step6_report)
+
+    def render_inputs_apex_s7():
+        st.markdown("**Combiner:** Merging SPC and RPN statistical reports.")
+        return True, {"work_dir": work_dir}
+    render_pipeline_step(pipeline_key, 7, total_steps, "Combine SPC, Six Sigma and RPN reports",
+                         "Consolidated input file for LLM interpretation of the statistical reports.",
+                         render_inputs_apex_s7, pe.run_step10_combine_spc_rpn)
+
+    def render_inputs_apex_s8():
+        st.markdown("**Claude Analysis 2:** Analyzing SPC trends and DPMO calculations.")
+        return True, {"work_dir": work_dir}
+    render_pipeline_step(pipeline_key, 8, total_steps, "Claude Analysis 2 (SPC Six Sigma and RPN)",
+                         "Generate a detailed report with recommendations and action items.",
+                         render_inputs_apex_s8, pe.run_step11_claude_analysis_2)
+
+    render_download_section(pipeline_key, total_steps, work_dir)
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# MODULE REGISTRY  — Single source of truth for all 12 modules
+# ─────────────────────────────────────────────────────────────────────────────
+
+MODULE_REGISTRY = {
+    "brand":       {"display": "Brand",       "csv": "input_metric_values_brand.csv"},
+    "bspt":        {"display": "BSPT",        "csv": "input_metric_values_bspt.csv"},
+    "customer":    {"display": "Customer",    "csv": "input_metric_values_customer.csv"},
+    "enterprise":  {"display": "Enterprise",  "csv": "input_metric_values_enterprise.csv"},
+    "esgrc":       {"display": "ESGRC",       "csv": "input_metric_values_esgrc.csv"},
+    "ictm":        {"display": "ICTM",        "csv": "input_metric_values_ictm.csv"},
+    "integration": {"display": "Integration", "csv": "input_metric_values_integration.csv"},
+    "mkts":        {"display": "MKTS",        "csv": "input_metric_values_mkts.csv"},
+    "product":     {"display": "Product",     "csv": "input_metric_values_product.csv"},
+    "resource":    {"display": "Resource",    "csv": "input_metric_values_resource.csv"},
+    "service":     {"display": "Service",     "csv": "input_metric_values_service.csv"},
+    "shared":      {"display": "Shared",      "csv": "input_metric_values_shared.csv"},
+}
+
+# All 13 roles available at registration (12 modules + APEX)
+ALL_ROLES = ["APEX"] + [v["display"].upper() for v in MODULE_REGISTRY.values()]
+
+
+def _load_module_json(module_key: str) -> dict:
+    """Auto-load the bundled JSON config for a given module."""
+    mk   = module_key.lower()
+    base = os.path.join(os.path.dirname(__file__), "modules", mk, "reference_data")
+    path = os.path.join(base, f"{mk}_performance_json_file.json")
+    if os.path.exists(path):
+        with open(path, "r", encoding="utf-8") as f:
+            return json.load(f)
+    return {}
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# GENERIC MODULE PIPELINE  — One function handles ALL 12 modules
+# ─────────────────────────────────────────────────────────────────────────────
+
+def render_module_pipeline(module_key: str):
+    """
+    Renders the complete 7-step pipeline for any module.
+    Identical UI to ESGRC but parameterized — zero duplication.
+    """
+    mk           = module_key.lower()
+    info         = MODULE_REGISTRY.get(mk, {"display": mk.upper(), "csv": f"input_metric_values_{mk}.csv"})
+    display_name = info["display"]
+    expected_csv = info["csv"]
+    total_steps  = 7
+    pipeline_key = f"{mk}_pipeline"
+
+    init_pipeline_state(pipeline_key, total_steps)
+    work_dir = _get_work_dir()
+
+    st.markdown(f"## {display_name} Analytical Pipeline")
+    st.write(f"7-step pipeline for {display_name} low-performance analysis, SPC charting, and AI reporting.")
+
+    # Pre-load bundled JSON (never shown to user)
+    j_data = _load_module_json(mk)
+    if j_data:
+        st.session_state[f"{mk}_json_data"] = j_data
+    else:
+        st.warning(f"⚠️ Could not load bundled JSON for {display_name}. Check `utils/modules/{mk}/reference_data/`.")
+
+    # ── Step 1: Upload CSV ────────────────────────────────────────────────────
+    def render_s1():
+        st.markdown(f"**Upload your Metric CSV file** for {display_name}:")
+        csv_file = st.file_uploader(
+            f"Metric CSV ({expected_csv})", type=["csv"],
+            key=f"{mk}_s1_csv",
+            help=f"Upload {expected_csv}. Config JSON is pre-bundled automatically."
+        )
+        jd = st.session_state.get(f"{mk}_json_data", {})
+        if jd:
+            st.success("✅ Config JSON auto-loaded from reference data.")
+        if csv_file and jd:
+            try:
+                with open(os.path.join(work_dir, expected_csv), "wb") as f:
+                    f.write(csv_file.getvalue())
+                st.session_state[f"{mk}_csv_bytes"] = csv_file.getvalue()
+                st.session_state["current_json_data"] = jd
+                return True, {"work_dir": work_dir, "csv_bytes": csv_file.getvalue(),
+                               "json_data": jd, "module_key": mk}
+            except Exception as e:
+                st.error(f"Error: {e}")
+        return False, {}
+
+    render_pipeline_step(pipeline_key, 1, total_steps,
+                         f"Low Performance Analysis ({display_name})",
+                         f"Weighted averages + low-performer identification for {display_name}.",
+                         render_s1,
+                         lambda work_dir, csv_bytes, json_data, module_key=mk:
+                             pe.run_module_step1_low_performance(work_dir, csv_bytes, json_data, module_key))
+
+    # ── Steps 2-7: No extra input needed ─────────────────────────────────────
+    jd = st.session_state.get(f"{mk}_json_data", st.session_state.get("current_json_data", {}))
+
+    def _s2_inputs(): return True, {"work_dir": work_dir, "json_data": jd, "module_key": mk}
+    render_pipeline_step(pipeline_key, 2, total_steps, f"Data Split — M / G / Sub-M",
+                         "Splits data into metrics, groups, and sub-modules CSVs.",
+                         _s2_inputs,
+                         lambda work_dir, json_data, module_key=mk:
+                             pe.run_module_step2_split(work_dir, json_data, module_key))
+
+    def _s3_inputs(): return True, {"work_dir": work_dir, "module_key": mk}
+    render_pipeline_step(pipeline_key, 3, total_steps, "SPC & FMEA X-Bar-R Charts",
+                         "X-MR control charts and FMEA RPN scoring.",
+                         _s3_inputs,
+                         lambda work_dir, module_key=mk:
+                             pe.run_module_step3_spc_fmea(work_dir, module_key))
+
+    def _s4_inputs(): return True, {"work_dir": work_dir, "module_key": mk}
+    render_pipeline_step(pipeline_key, 4, total_steps, "Correlation + CHAID + Fourier",
+                         "Correlation matrices, Fourier trend analysis, and CHAID risk segmentation.",
+                         _s4_inputs,
+                         lambda work_dir, module_key=mk:
+                             pe.run_module_step4_correlation_chaid(work_dir, module_key))
+
+    def _s5_inputs(): return True, {"work_dir": work_dir, "json_data": jd, "module_key": mk}
+    render_pipeline_step(pipeline_key, 5, total_steps, "Multiple Regression + Risk Scenarios",
+                         "Regression suite and Monte Carlo scenario simulations.",
+                         _s5_inputs,
+                         lambda work_dir, json_data, module_key=mk:
+                             pe.run_module_step5_regression(work_dir, json_data, module_key))
+
+    def _s6_inputs(): return True, {"work_dir": work_dir, "module_key": mk}
+    render_pipeline_step(pipeline_key, 6, total_steps, "Compile Master Report",
+                         "Combines all analysis reports into a single consolidated file.",
+                         _s6_inputs,
+                         lambda work_dir, module_key=mk:
+                             pe.run_module_step6_compile_report(work_dir, module_key))
+
+    def _s7_inputs():
+        st.markdown("**AI Interpretation:** Generating a structured AI Executive Summary.")
+        return True, {"work_dir": work_dir, "module_key": mk}
+    render_pipeline_step(pipeline_key, 7, total_steps, "Final AI Report Generation",
+                         "Claude AI analyses all reports and generates the final executive summary.",
+                         _s7_inputs,
+                         lambda work_dir, module_key=mk:
+                             pe.run_module_step7_ai_report(work_dir, module_key))
 
     render_download_section(pipeline_key, total_steps, work_dir)

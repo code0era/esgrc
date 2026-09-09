@@ -53,6 +53,15 @@ def init_sqlite_db():
                 updated_at TEXT
             )
         """)
+        c.execute("""
+            CREATE TABLE IF NOT EXISTS otps (
+                email TEXT PRIMARY KEY,
+                otp_code TEXT,
+                expiry TEXT,
+                context TEXT,
+                data TEXT
+            )
+        """)
         conn.commit()
         conn.close()
     except Exception as e:
@@ -219,11 +228,11 @@ def sqlite_register_user(username: str, email: str, password_hash: str, role: st
         return {"ok": False, "error": f"Local database error: {str(e)}"}
 
 
-def sqlite_login_user(username: str) -> Optional[Dict[str, Any]]:
+def sqlite_login_user(username_or_email: str) -> Optional[Dict[str, Any]]:
     conn = sqlite3.connect(DB_FILE)
     conn.row_factory = sqlite3.Row
     c = conn.cursor()
-    c.execute("SELECT * FROM users WHERE username = ?", (username,))
+    c.execute("SELECT * FROM users WHERE username = ? OR email = ?", (username_or_email, username_or_email))
     row = c.fetchone()
     conn.close()
     if row:
@@ -388,10 +397,10 @@ def register_user(username: str, email: str, password: str, role: str = "ESGRC")
         return sqlite_register_user(username, email, hashed, role)
 
 
-def login_user(username: str, password: str) -> Dict[str, Any]:
+def login_user(username_or_email: str, password: str) -> Dict[str, Any]:
     """Verify credentials. Returns {'ok': True, 'user': {...}} or {'ok': False, 'error': str}."""
     if should_use_sqlite():
-        user = sqlite_login_user(username)
+        user = sqlite_login_user(username_or_email)
         if not user:
             return {"ok": False, "error": "User not found (Local Mode)."}
         if not _verify_password(password, user["password_hash"]):
@@ -400,7 +409,7 @@ def login_user(username: str, password: str) -> Dict[str, Any]:
         
     try:
         db = get_db()
-        user = db.users.find_one({"username": username})
+        user = db.users.find_one({"$or": [{"username": username_or_email}, {"email": username_or_email}]})
         if not user:
             return {"ok": False, "error": "User not found."}
         if not _verify_password(password, user["password_hash"]):
@@ -409,7 +418,7 @@ def login_user(username: str, password: str) -> Dict[str, Any]:
         return {"ok": True, "user": user}
     except Exception as e:
         mark_sqlite_mode()
-        user = sqlite_login_user(username)
+        user = sqlite_login_user(username_or_email)
         if not user:
             return {"ok": False, "error": f"User not found (Offline Mode). MongoDB error: {e}"}
         if not _verify_password(password, user["password_hash"]):
@@ -540,3 +549,153 @@ def get_chat_history(report_id: str) -> List[Dict]:
         if doc:
             return doc.get("chat_history", [])
         return []
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# OTP AND PASSWORD RESET LOGIC
+# ─────────────────────────────────────────────────────────────────────────────
+
+def store_otp(email: str, otp_code: str, context: str, data: dict = None, expiry_minutes: int = 10) -> bool:
+    import json
+    from datetime import datetime, timedelta
+    expiry_time = (datetime.utcnow() + timedelta(minutes=expiry_minutes)).isoformat()
+    data_str = json.dumps(data) if data else ""
+    
+    # Try MongoDB first
+    client = _get_mongo_client()
+    if client:
+        try:
+            db = get_db()
+            db.otps.update_one(
+                {"email": email},
+                {"$set": {
+                    "otp_code": otp_code,
+                    "expiry": expiry_time,
+                    "context": context,
+                    "data": data_str
+                }},
+                upsert=True
+            )
+            return True
+        except Exception as e:
+            print(f"MongoDB OTP store error: {e}")
+            
+    # Fallback SQLite
+    try:
+        conn = sqlite3.connect(DB_FILE)
+        c = conn.cursor()
+        c.execute("""
+            INSERT INTO otps (email, otp_code, expiry, context, data)
+            VALUES (?, ?, ?, ?, ?)
+            ON CONFLICT(email) DO UPDATE SET
+                otp_code=excluded.otp_code,
+                expiry=excluded.expiry,
+                context=excluded.context,
+                data=excluded.data
+        """, (email, otp_code, expiry_time, context, data_str))
+        conn.commit()
+        conn.close()
+        return True
+    except Exception as e:
+        print(f"SQLite OTP store error: {e}")
+        return False
+
+def verify_otp(email: str, otp_code: str, context: str) -> dict:
+    import json
+    from datetime import datetime
+    # Try MongoDB
+    client = _get_mongo_client()
+    doc = None
+    if client:
+        try:
+            db = get_db()
+            doc = db.otps.find_one({"email": email, "context": context})
+        except: pass
+        
+    if not doc:
+        # Fallback SQLite
+        try:
+            conn = sqlite3.connect(DB_FILE)
+            conn.row_factory = sqlite3.Row
+            c = conn.cursor()
+            c.execute("SELECT * FROM otps WHERE email = ? AND context = ?", (email, context))
+            row = c.fetchone()
+            conn.close()
+            if row:
+                doc = dict(row)
+        except: pass
+        
+    if not doc:
+        return {"ok": False, "error": "No OTP found for this email."}
+        
+    if doc.get("otp_code") != otp_code:
+        return {"ok": False, "error": "Invalid verification code."}
+        
+    expiry = doc.get("expiry")
+    if expiry and datetime.utcnow().isoformat() > expiry:
+        return {"ok": False, "error": "Verification code has expired."}
+        
+    data = doc.get("data")
+    return {"ok": True, "data": json.loads(data) if data else {}}
+
+def clear_otp(email: str):
+    client = _get_mongo_client()
+    if client:
+        try:
+            db = get_db()
+            db.otps.delete_one({"email": email})
+        except: pass
+    try:
+        conn = sqlite3.connect(DB_FILE)
+        c = conn.cursor()
+        c.execute("DELETE FROM otps WHERE email = ?", (email,))
+        conn.commit()
+        conn.close()
+    except: pass
+
+def update_password(email: str, new_password: str) -> bool:
+    new_hash = _hash_password(new_password)
+    success = False
+    
+    # Try Mongo
+    client = _get_mongo_client()
+    if client:
+        try:
+            db = get_db()
+            res = db.users.update_one({"email": email}, {"$set": {"password_hash": new_hash}})
+            if res.modified_count > 0:
+                success = True
+        except: pass
+        
+    # SQLite
+    try:
+        conn = sqlite3.connect(DB_FILE)
+        c = conn.cursor()
+        c.execute("UPDATE users SET password_hash = ? WHERE email = ?", (new_hash, email))
+        if c.rowcount > 0:
+            success = True
+        conn.commit()
+        conn.close()
+    except: pass
+    
+    if success:
+        clear_otp(email)
+    return success
+
+def user_exists(email: str) -> bool:
+    client = _get_mongo_client()
+    if client:
+        try:
+            db = get_db()
+            if db.users.find_one({"email": email}):
+                return True
+        except: pass
+    try:
+        conn = sqlite3.connect(DB_FILE)
+        c = conn.cursor()
+        c.execute("SELECT id FROM users WHERE email = ?", (email,))
+        res = c.fetchone()
+        conn.close()
+        if res: return True
+    except: pass
+    return False

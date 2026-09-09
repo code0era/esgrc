@@ -1,0 +1,97 @@
+CHAID Risk Segmentation Report
+Generated: 2026-07-08 21:58:41
+
+CHAID Tree Summary:
+[([], {'Critical': 36.0, 'High': 48.0}, (Repetition, p=4.947747615111712e-20, score=84.0, groups=[['Irregular'], ['Repetitive']]), dof=1)), (['Irregular'], {'Critical': 36.0, 'High': 0}, <Invalid Chaid Split> - the node only contains single category respondents), (['Repetitive'], {'Critical': 0, 'High': 48.0}, <Invalid Chaid Split> - the node only contains single category respondents)]
+
+Risk Level Distribution:
+Risk_Level
+High        48
+Critical    36
+
+High-Risk Metrics:
+  Metric Risk_Level      Trend Repetition Avg_Correlation Inconsistency_Level
+ESU10102   Critical     Stable  Irregular             Low           Very High
+ESU10103       High     Stable Repetitive             Low           Very High
+ESU10104       High Increasing Repetitive             Low           Very High
+ESU10106       High Decreasing Repetitive             Low           Very High
+ESU10107   Critical Decreasing  Irregular             Low           Very High
+ESU10109       High     Stable Repetitive             Low           Very High
+ESU10110   Critical Increasing  Irregular             Low           Very High
+SSU10102       High Increasing Repetitive             Low           Very High
+SSU10103       High Increasing Repetitive             Low           Very High
+SSU10105       High Decreasing Repetitive             Low           Very High
+SSU10106       High     Stable Repetitive             Low           Very High
+SSU10108       High Increasing Repetitive             Low           Very High
+SSU10109       High Increasing Repetitive             Low           Very High
+CSU10102       High     Stable Repetitive             Low           Very High
+CSU10103   Critical     Stable  Irregular             Low           Very High
+CSU10105       High Decreasing Repetitive             Low           Very High
+CSU10106       High Decreasing Repetitive             Low           Very High
+CSU10108       High     Stable Repetitive             Low           Very High
+CSU10109       High Increasing Repetitive             Low           Very High
+GNT10102       High     Stable Repetitive             Low           Very High
+GNT10103   Critical     Stable  Irregular             Low           Very High
+GNT10105       High Decreasing Repetitive             Low           Very High
+GNT10106       High Increasing Repetitive             Low           Very High
+CGS10102       High Decreasing Repetitive             Low           Very High
+CGS10103   Critical Increasing  Irregular             Low           Very High
+CGS10105   Critical     Stable  Irregular             Low           Very High
+CGS10106   Critical Increasing  Irregular             Low           Very High
+CGS10108   Critical Decreasing  Irregular             Low           Very High
+CGS10109       High     Stable Repetitive             Low           Very High
+GRC10102   Critical Increasing  Irregular             Low           Very High
+GRC10103   Critical Decreasing  Irregular             Low           Very High
+GRC10104       High Increasing Repetitive             Low           Very High
+GRC10106       High Decreasing Repetitive             Low           Very High
+GRC10107       High     Stable Repetitive             Low           Very High
+GRC10109       High     Stable Repetitive             Low           Very High
+GRC10110       High Increasing Repetitive             Low           Very High
+ERM10102   Critical     Stable  Irregular             Low           Very High
+ERM10103   Critical     Stable  Irregular             Low           Very High
+ERM10105       High Decreasing Repetitive             Low           Very High
+ERM10106   Critical Decreasing  Irregular             Low           Very High
+ERM10108       High Decreasing Repetitive             Low           Very High
+ERM10109       High Decreasing Repetitive             Low           Very High
+AUD10102   Critical Decreasing  Irregular             Low           Very High
+AUD10103   Critical     Stable  Irregular             Low           Very High
+AUD10105       High Decreasing Repetitive             Low           Very High
+AUD10106       High Decreasing Repetitive             Low           Very High
+AUD10108   Critical     Stable  Irregular             Low           Very High
+AUD10109   Critical Increasing  Irregular             Low           Very High
+POL10102   Critical     Stable  Irregular             Low           Very High
+POL10103   Critical Increasing  Irregular             Low           Very High
+POL10105       High Increasing Repetitive             Low           Very High
+POL10106   Critical Increasing  Irregular             Low           Very High
+POL10108   Critical Increasing  Irregular             Low           Very High
+POL10109       High     Stable Repetitive             Low           Very High
+REG10102       High Decreasing Repetitive             Low           Very High
+REG10103   Critical Decreasing  Irregular             Low           Very High
+REG10105       High Increasing Repetitive             Low           Very High
+REG10106       High Decreasing Repetitive             Low           Very High
+REG10108   Critical Decreasing  Irregular             Low           Very High
+REG10109       High Decreasing Repetitive             Low           Very High
+ETI10102       High Decreasing Repetitive             Low           Very High
+ETI10103       High Increasing Repetitive             Low           Very High
+ETI10105       High Increasing Repetitive             Low           Very High
+ETI10106       High Increasing Repetitive             Low           Very High
+ETI10108   Critical     Stable  Irregular             Low           Very High
+ETI10109       High Decreasing Repetitive             Low           Very High
+CGV10102   Critical Decreasing  Irregular             Low           Very High
+CGV10103       High Increasing Repetitive             Low           Very High
+CGV10105   Critical Increasing  Irregular             Low           Very High
+CGV10106       High     Stable Repetitive             Low           Very High
+CGV10108       High Increasing Repetitive             Low           Very High
+CGV10109   Critical     Stable  Irregular             Low           Very High
+IGV10102   Critical Decreasing  Irregular             Low           Very High
+IGV10103   Critical Increasing  Irregular             Low           Very High
+IGV10105   Critical Decreasing  Irregular             Low           Very High
+IGV10106       High Increasing Repetitive             Low           Very High
+IGV10108       High Decreasing Repetitive             Low           Very High
+IGV10109   Critical Increasing  Irregular             Low           Very High
+CPI10102   Critical Increasing  Irregular             Low           Very High
+CPI10103   Critical     Stable  Irregular             Low           Very High
+CPI10105       High     Stable Repetitive             Low           Very High
+CPI10106       High     Stable Repetitive             Low           Very High
+CPI10108   Critical Decreasing  Irregular             Low           Very High
+CPI10109   Critical Decreasing  Irregular             Low           Very High

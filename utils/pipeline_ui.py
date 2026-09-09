@@ -38,7 +38,7 @@ def render_pipeline_step(
     if prev_state != "completed":
         return # Hide if previous step is not done
         
-    st.markdown(f"<h3 style='color: #0D6F73;'>Step {step_num}: {title}</h3>", unsafe_allow_html=True)
+    st.markdown(f"<h3 style='color: #162130; margin-top: 1rem;'>Step {step_num}: {title}</h3>", unsafe_allow_html=True)
     
     if state == "completed":
         # Greyed out completed band
@@ -81,4 +81,4 @@ def render_pipeline_step(
                     else:
                         st.error(msg)
     
-    st.markdown("<hr style='border: 1px solid #E0EDE9;'/>", unsafe_allow_html=True)
+    st.markdown("<hr style='border: 1px solid rgba(0,0,0,0.1); margin-top: 1.5rem; margin-bottom: 1.5rem;'/>", unsafe_allow_html=True)

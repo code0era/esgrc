@@ -158,7 +158,7 @@ def convert_txt_to_pdf(txt_path: str, pdf_path: str):
     
     story = []
     filename = os.path.basename(txt_path)
-    story.append(Paragraph(f"RISK INTELL Analysis Report: {filename}", title_style))
+    story.append(Paragraph(f"METEOERAIT SOFTWARE Analysis Report: {filename}", title_style))
     story.append(Spacer(1, 8))
     
     try:
@@ -169,7 +169,7 @@ def convert_txt_to_pdf(txt_path: str, pdf_path: str):
             with open(txt_path, 'r', encoding='latin-1') as f:
                 content = f.read()
                 
-        # Dynamically replace ESGRC/ESGR to RISK INTELL while preserving 'esgrc module' case-insensitively
+        # Dynamically replace ESGRC/ESGR to METEOERAIT SOFTWARE while preserving 'esgrc module' case-insensitively
         placeholders = []
         def protect(match):
             placeholders.append(match.group(0))
@@ -178,10 +178,10 @@ def convert_txt_to_pdf(txt_path: str, pdf_path: str):
         content_sub = re.sub(r"esgrc\s+module", protect, content, flags=re.IGNORECASE)
         content_sub = re.sub(r"esgrc_module", protect, content_sub, flags=re.IGNORECASE)
         
-        content_sub = re.sub(r"ESGRC Intelligence Platform", "RISK INTELL Platform", content_sub)
-        content_sub = re.sub(r"ESGRC Intelligence", "RISK INTELL", content_sub)
-        content_sub = re.sub(r"ESGRC", "RISK INTELL", content_sub)
-        content_sub = re.sub(r"ESGR", "RISK INTELL", content_sub)
+        content_sub = re.sub(r"ESGRC Intelligence Platform", "METEOERAIT SOFTWARE", content_sub)
+        content_sub = re.sub(r"ESGRC Intelligence", "METEOERAIT SOFTWARE", content_sub)
+        content_sub = re.sub(r"ESGRC", "METEOERAIT SOFTWARE", content_sub)
+        content_sub = re.sub(r"ESGR", "METEOERAIT SOFTWARE", content_sub)
         
         for idx, orig in enumerate(placeholders):
             content_sub = content_sub.replace(f"___PLACEHOLDER_{idx}___", orig)
@@ -552,7 +552,7 @@ def run_step1_low_performance_esgrc(
         enriched = enriched.apply(lambda x: x.round(2) if x.dtype.kind in "fc" else x)
 
         with _working_dir(work_dir):
-            enriched.to_csv("module_values_esgrc.csv", index=False)
+            enriched.to_csv(f"module_values_esgrc_{ANALYSIS_DATE}.csv", index=False)
 
             # ── Identify low performers ───────────────────────────────────────
             def _low(ids, df, top=10):
@@ -564,7 +564,7 @@ def run_step1_low_performance_esgrc(
             lsm = _low(sub_module_ids, enriched)
             oa  = _wavg(mod_avgs, [1.0] * len(mod_avgs)) if mod_avgs else 0.0
 
-            with open("low_performing_entities_report_esgrc.txt", "w", encoding="utf-8") as f:
+            with open(f"low_performing_entities_report_esgrc_{ANALYSIS_DATE}.txt", "w", encoding="utf-8") as f:
                 f.write("Low-Performing Metrics\nS.No,Metric Id,Metric Name,Metric Value\n")
                 for i, (mid, val) in enumerate(lm, 1):
                     f.write(f"{i},{mid},{id_name.get(mid, mid)},{val:.2f}\n")
@@ -576,10 +576,10 @@ def run_step1_low_performance_esgrc(
                     f.write(f"{i},{smid},{id_name.get(smid, smid)},{val:.2f}\n")
                 f.write(f"\nOverall Module Average,{module_id},{oa:.2f}\n")
 
-            convert_txt_to_pdf("low_performing_entities_report_esgrc.txt", "low_performing_entities_report_esgrc.pdf")
+            convert_txt_to_pdf(f"low_performing_entities_report_esgrc_{ANALYSIS_DATE}.txt", f"low_performing_entities_report_esgrc_{ANALYSIS_DATE}.pdf")
 
         return True, {
-            "files":         ["module_values_esgrc.csv", "low_performing_entities_report_esgrc.txt", "low_performing_entities_report_esgrc.pdf"],
+            "files":         [f"module_values_esgrc_{ANALYSIS_DATE}.csv", f"low_performing_entities_report_esgrc_{ANALYSIS_DATE}.txt", f"low_performing_entities_report_esgrc_{ANALYSIS_DATE}.pdf"],
             "overall_avg":   round(oa, 2),
             "metric_count":  len(lm),
         }, (f"Weighted averages computed for {len(metric_ids)} metrics. "
@@ -600,10 +600,10 @@ def run_step2_split_esgrc(work_dir: str, json_data: dict) -> Tuple[bool, Dict, s
     """
     try:
         with _working_dir(work_dir):
-            if not os.path.exists("module_values_esgrc.csv"):
+            if not os.path.exists(f"module_values_esgrc_{ANALYSIS_DATE}.csv"):
                 return False, {}, "module_values_esgrc.csv not found — run Step 1 first."
 
-            df = pd.read_csv("module_values_esgrc.csv", low_memory=False)
+            df = pd.read_csv(f"module_values_esgrc_{ANALYSIS_DATE}.csv", low_memory=False)
 
             mc, gc, sc = [], [], []
             for sm in json_data.get("sub_modules", []):
@@ -724,7 +724,7 @@ def run_step4_correlation_chaid_esgrc(work_dir: str) -> Tuple[bool, Dict, str]:
             mc = df_m.corr(); gc = df_g.corr(); sc = df_sm.corr()
 
             # Correlation report
-            corr_f = "M_G_SM_correlation_report_esgrc.txt"
+            corr_f = f"M_G_SM_correlation_report_esgrc_{ANALYSIS_DATE}.txt"
             with open(corr_f, "w", encoding="utf-8") as f:
                 f.write("Metrics Correlation Matrix\n"); mc.to_csv(f)
                 f.write("\nGroups Correlation Matrix\n"); gc.to_csv(f)
@@ -733,7 +733,7 @@ def run_step4_correlation_chaid_esgrc(work_dir: str) -> Tuple[bool, Dict, str]:
             # Trends & Fourier
             trends      = _identify_trends(df_m)
             repetitions = _assess_fourier(df_m)
-            trend_f = "trends_and_repetitions_report_esgrc.txt"
+            trend_f = f"trends_and_repetitions_report_esgrc_{ANALYSIS_DATE}.txt"
             with open(trend_f, "w", encoding="utf-8") as f:
                 f.write("Metrics Trends:\n")
                 for v, t in trends.items(): f.write(f"{v}: {t}\n")
@@ -742,7 +742,7 @@ def run_step4_correlation_chaid_esgrc(work_dir: str) -> Tuple[bool, Dict, str]:
 
             # Inconsistencies
             dep_inc, ind_inc = _detect_inconsistencies(mc, df_m)
-            inc_f = "inconsistencies_report_esgrc.txt"
+            inc_f = f"inconsistencies_report_esgrc_{ANALYSIS_DATE}.txt"
             with open(inc_f, "w", encoding="utf-8") as f:
                 f.write(f"Inconsistencies Report\nGenerated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n\n")
                 f.write("Dependent Inconsistencies:\n")
@@ -761,7 +761,7 @@ def run_step4_correlation_chaid_esgrc(work_dir: str) -> Tuple[bool, Dict, str]:
             # CHAID
             chaid_df = _bin_features(trends, repetitions, dep_inc, ind_inc, mc)
             chaid_summary = _run_chaid(chaid_df, ["Trend", "Repetition", "Avg_Correlation", "Inconsistency_Level"])
-            chaid_f = "chaid_risk_segmentation_report_esgrc.txt"
+            chaid_f = f"chaid_risk_segmentation_report_esgrc_{ANALYSIS_DATE}.txt"
             with open(chaid_f, "w", encoding="utf-8") as f:
                 f.write(f"CHAID Risk Segmentation Report\nGenerated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n\n")
                 f.write("CHAID Tree Summary:\n"); f.write(chaid_summary); f.write("\n\n")
@@ -811,10 +811,10 @@ def run_step5_regression_esgrc(work_dir: str, json_data: dict) -> Tuple[bool, Di
             return False, {}, "Step 5 skipped — scikit-learn not installed."
 
         with _working_dir(work_dir):
-            if not os.path.exists("module_values_esgrc.csv"):
+            if not os.path.exists(f"module_values_esgrc_{ANALYSIS_DATE}.csv"):
                 return False, {}, "module_values_esgrc.csv not found — run Step 1 first."
 
-            data = pd.read_csv("module_values_esgrc.csv")
+            data = pd.read_csv(f"module_values_esgrc_{ANALYSIS_DATE}.csv")
             dup  = data.columns[data.columns.duplicated()].tolist()
             if dup:
                 return False, {}, f"Duplicate column IDs: {dup}"
@@ -878,7 +878,7 @@ def run_step5_regression_esgrc(work_dir: str, json_data: dict) -> Tuple[bool, Di
                 names    = [id_to_name.get(m, m) for m in top_mets]
                 lines.append(f"  High risk in {s} (avg={risk:.3f}) → {', '.join(names)}")
 
-            out_f = "ESGRC_Module_model_summary.txt"
+            out_f = f"ESGRC_Module_model_summary_{ANALYSIS_DATE}.txt"
             pdf_f = "ESGRC_Module_model_summary.pdf"
             with open(out_f, "w", encoding="utf-8") as f:
                 f.write("\n".join(lines))
@@ -937,7 +937,7 @@ def run_step6_all_module_consolidation(
             combined = combined.loc[:, ~combined.columns.duplicated()]
             mod_cols = [c for c in combined.columns if mod_pat.match(str(c))]
             combined["L0ER_001"] = combined[mod_cols].mean(axis=1).round(2) if mod_cols else 0.0
-            combined.to_csv("all_module_values.csv", index=False)
+            combined.to_csv(f"all_module_values_{ANALYSIS_DATE}.csv", index=False)
 
             all_ids = combined.columns.tolist()
             mod_ids = [i for i in all_ids if mod_pat.match(str(i))]
@@ -950,7 +950,7 @@ def run_step6_all_module_consolidation(
             low_mods = _low3(mod_ids, combined)
             low_sms  = _low3(sm_ids,  combined)
 
-            rpt = "performance_report_2025.txt"
+            rpt = f"performance_report_{ANALYSIS_DATE}.txt"
             with open(rpt, "w", encoding="utf-8") as f:
                 f.write("--- PERFORMANCE ANALYSIS REPORT (2025) ---\n")
                 f.write(f"Files processed: {len(risk_files)}\n")
@@ -965,7 +965,7 @@ def run_step6_all_module_consolidation(
             convert_txt_to_pdf(rpt, "performance_report_2025.pdf")
 
         return True, {
-            "files": ["all_module_values.csv", rpt, "performance_report_2025.pdf"],
+            "files": [f"all_module_values_{ANALYSIS_DATE}.csv", rpt, "performance_report_2025.pdf"],
             "files_processed": len(risk_files),
             "module_count": len(mod_ids),
             "sub_module_count": len(sm_ids),
@@ -988,10 +988,10 @@ def run_step7_spc_fmea_l0(work_dir: str) -> Tuple[bool, Dict, str]:
     """
     try:
         with _working_dir(work_dir):
-            if not os.path.exists("all_module_values.csv"):
+            if not os.path.exists(f"all_module_values_{ANALYSIS_DATE}.csv"):
                 return False, {}, "all_module_values.csv not found — run Step 6 first."
 
-            df_wide  = pd.read_csv("all_module_values.csv")
+            df_wide  = pd.read_csv(f"all_module_values_{ANALYSIS_DATE}.csv")
             long_df  = _to_long(df_wide)
             metric_ids = sorted(long_df["metric_id"].unique())
 
@@ -1029,7 +1029,10 @@ def run_step7_spc_fmea_l0(work_dir: str) -> Tuple[bool, Dict, str]:
                 txt_f, sep="\t", index=False)
             convert_txt_to_pdf(txt_f, pdf_f)
 
-            files_generated = [txt_f, pdf_f]
+            rpn_txt_f = f"rpn_summary_L0_{ANALYSIS_DATE}.txt"
+            summary[["metric_id", "RPN", "signals", "Sigma_Level", "analysis_date"]].to_csv(
+                rpn_txt_f, sep="\t", index=False)
+            files_generated = [txt_f, pdf_f, rpn_txt_f]
             msg_suffix = "PDF charts skipped (matplotlib not installed)."
             if MATPLOTLIB_AVAILABLE:
                 rpn_f = f"RPN_summary_L0_{ANALYSIS_DATE}.pdf"
@@ -1060,10 +1063,10 @@ def run_step8_correlation_chaid_l0(work_dir: str) -> Tuple[bool, Dict, str]:
     """
     try:
         with _working_dir(work_dir):
-            if not os.path.exists("all_module_values.csv"):
+            if not os.path.exists(f"all_module_values_{ANALYSIS_DATE}.csv"):
                 return False, {}, "all_module_values.csv not found — run Step 6 first."
 
-            raw = pd.read_csv("all_module_values.csv", low_memory=False)
+            raw = pd.read_csv(f"all_module_values_{ANALYSIS_DATE}.csv", low_memory=False)
             df_num = pd.DataFrame({c: pd.to_numeric(raw[c], errors="coerce") for c in raw.columns}).dropna(axis=1, how="all")
             df_norm  = (df_num - df_num.mean()) / df_num.std().replace(0, 1)
             df_clean = df_norm.fillna(0)
@@ -1071,7 +1074,7 @@ def run_step8_correlation_chaid_l0(work_dir: str) -> Tuple[bool, Dict, str]:
             corr_mat = df_num.corr()
 
             # Correlation report
-            corr_f = "correlation_analysis_L0.txt"
+            corr_f = f"correlation_analysis_L0_{ANALYSIS_DATE}.txt"
             with open(corr_f, "w", encoding="utf-8") as f:
                 f.write(f"Enterprise Correlation Matrix (L0)\nGenerated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n\n")
                 corr_mat.to_csv(f)
@@ -1079,7 +1082,7 @@ def run_step8_correlation_chaid_l0(work_dir: str) -> Tuple[bool, Dict, str]:
             # Trends & Fourier
             trends      = _identify_trends(df_norm)
             repetitions = _assess_fourier(df_norm)
-            trend_f = "trends_and_repetitions_report_L0.txt"
+            trend_f = f"trends_and_repetitions_report_L0_{ANALYSIS_DATE}.txt"
             with open(trend_f, "w", encoding="utf-8") as f:
                 f.write(f"Enterprise Trends & Repetitions (L0)\nGenerated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n\n")
                 f.write("Trends:\n")
@@ -1089,7 +1092,7 @@ def run_step8_correlation_chaid_l0(work_dir: str) -> Tuple[bool, Dict, str]:
 
             # Inconsistencies
             dep_inc, ind_inc = _detect_inconsistencies(corr_mat, df_clean)
-            inc_f = "inconsistency_report_L0.txt"
+            inc_f = f"inconsistency_report_L0_{ANALYSIS_DATE}.txt"
             with open(inc_f, "w", encoding="utf-8") as f:
                 f.write(f"Inconsistency Report (L0)\nGenerated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n\n")
                 f.write("Dependent Inconsistencies:\n")
@@ -1109,7 +1112,7 @@ def run_step8_correlation_chaid_l0(work_dir: str) -> Tuple[bool, Dict, str]:
             chaid_df = _bin_features(trends, repetitions, dep_inc, ind_inc, corr_mat)
             chaid_df["Domain"] = chaid_df["Metric"].apply(lambda x: x[:3] if len(x) >= 3 else "UNK")
             chaid_summary = _run_chaid(chaid_df, ["Domain", "Trend", "Repetition", "Avg_Correlation", "Inconsistency_Level"])
-            chaid_f = "chaid_risk_segmentation_L0.txt"
+            chaid_f = f"chaid_risk_segmentation_L0_{ANALYSIS_DATE}.txt"
             with open(chaid_f, "w", encoding="utf-8") as f:
                 f.write(f"CHAID Risk Segmentation Report (L0)\nGenerated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n\n")
                 f.write("CHAID Tree Summary:\n"); f.write(chaid_summary); f.write("\n\n")
@@ -1150,10 +1153,10 @@ def run_step9_regression_l0(work_dir: str) -> Tuple[bool, Dict, str]:
             return False, {}, "Step 9 skipped — scikit-learn not installed."
 
         with _working_dir(work_dir):
-            if not os.path.exists("all_module_values.csv"):
+            if not os.path.exists(f"all_module_values_{ANALYSIS_DATE}.csv"):
                 return False, {}, "all_module_values.csv not found — run Step 6 first."
 
-            df = pd.read_csv("all_module_values.csv")
+            df = pd.read_csv(f"all_module_values_{ANALYSIS_DATE}.csv")
             df.columns = df.columns.str.strip()
 
             # Load mapping (optional)
@@ -1229,7 +1232,7 @@ def run_step9_regression_l0(work_dir: str) -> Tuple[bool, Dict, str]:
 
             overall_risk = sum(v * 0.1 for v in risk_map.values())
 
-            report_path = "L0_Risk_Analysis_Report_2025.txt"
+            report_path = f"L0_Risk_Analysis_Report_{ANALYSIS_DATE}.txt"
             pdf_path = "L0_Risk_Analysis_Report_2025.pdf"
             with open(report_path, "w", encoding="utf-8") as f:
                 f.write(f"a. Overall Risk: {overall_risk:.6f}\n\n")
@@ -1278,7 +1281,7 @@ def run_final_report_combiner(work_dir: str) -> Tuple[bool, Dict, str]:
     Combines every .txt file in work_dir into MASTER_CONSOLIDATED_REPORT.txt.
     """
     try:
-        output_file = "MASTER_CONSOLIDATED_REPORT.txt"
+        output_file = f"MASTER_CONSOLIDATED_REPORT_{ANALYSIS_DATE}.txt"
         with _working_dir(work_dir):
             files = sorted(f for f in glob.glob("*.txt") if f != output_file)
             if not files:
@@ -1324,7 +1327,7 @@ PIPELINE_STEPS = [
         "name": "Low Performance Analysis",
         "description": "Compute weighted averages & identify low performers (ESGRC module)",
         "script": "AI_ready_Low_Performing_M_G_SM_ESGRC_4_0.py",
-        "outputs": ["module_values_esgrc.csv", "low_performing_entities_report_esgrc.txt"],
+        "outputs": [f"module_values_esgrc_{ANALYSIS_DATE}.csv", f"low_performing_entities_report_esgrc_{ANALYSIS_DATE}.txt"],
     },
     {
         "id": "step2", "number": 2,
@@ -1336,8 +1339,8 @@ PIPELINE_STEPS = [
     },
     {
         "id": "step3", "number": 3,
-        "name": "SPC / FMEA X-Bar-R Charts  (RISK INTELL)",
-        "description": "Statistical process control + FMEA RPN scoring for RISK INTELL metrics",
+        "name": "SPC / FMEA X-Bar-R Charts  (METEOERAIT SOFTWARE)",
+        "description": "Statistical process control + FMEA RPN scoring for METEOERAIT SOFTWARE metrics",
         "script": "x_bar_r_chart_fmea_esg_5_0.py",
         "outputs": [f"metrics_summary_{ANALYSIS_DATE}.txt",
                     f"RPN_summary_report_{ANALYSIS_DATE}.pdf",
@@ -1345,25 +1348,25 @@ PIPELINE_STEPS = [
     },
     {
         "id": "step4", "number": 4,
-        "name": "Correlation + CHAID + Fourier  (RISK INTELL)",
+        "name": "Correlation + CHAID + Fourier  (METEOERAIT SOFTWARE)",
         "description": "Correlation matrices, Fourier trend analysis & CHAID risk segmentation",
         "script": "Correlation_CHAID_FT_Analysis_ESGRC_8_0.py",
-        "outputs": ["M_G_SM_correlation_report_esgrc.txt", "trends_and_repetitions_report_esgrc.txt",
-                    "inconsistencies_report_esgrc.txt", "chaid_risk_segmentation_report_esgrc.txt"],
+        "outputs": [f"M_G_SM_correlation_report_esgrc_{ANALYSIS_DATE}.txt", f"trends_and_repetitions_report_esgrc_{ANALYSIS_DATE}.txt",
+                    f"inconsistencies_report_esgrc_{ANALYSIS_DATE}.txt", f"chaid_risk_segmentation_report_esgrc_{ANALYSIS_DATE}.txt"],
     },
     {
         "id": "step5", "number": 5,
-        "name": "Multiple Regression Model  (RISK INTELL)",
-        "description": "Regression suite + Monte Carlo scenario simulation for RISK INTELL",
+        "name": "Multiple Regression Model  (METEOERAIT SOFTWARE)",
+        "description": "Regression suite + Monte Carlo scenario simulation for METEOERAIT SOFTWARE",
         "script": "AI_ready_Mutiple_Regression_Model_implementation_ESGRC_5_0.py",
-        "outputs": ["ESGRC_Module_model_summary.txt"],
+        "outputs": [f"ESGRC_Module_model_summary_{ANALYSIS_DATE}.txt"],
     },
     {
         "id": "step6", "number": 6,
         "name": "All-Module L0 Consolidation",
         "description": "Consolidate all module risk files → enterprise L0 view + low-performer report",
         "script": "all_module_low_performance_analysis_1_0.py",
-        "outputs": ["all_module_values.csv", "performance_report_2025.txt"],
+        "outputs": [f"all_module_values_{ANALYSIS_DATE}.csv", f"performance_report_{ANALYSIS_DATE}.txt"],
     },
     {
         "id": "step7", "number": 7,
@@ -1379,22 +1382,22 @@ PIPELINE_STEPS = [
         "name": "Correlation + CHAID L0  (Enterprise)",
         "description": "Enterprise-wide correlation, Fourier & CHAID risk segmentation",
         "script": "AI_Ready_Correlation_and_CHAID_Analysis_L0_6_0.py",
-        "outputs": ["correlation_analysis_L0.txt", "trends_and_repetitions_report_L0.txt",
-                    "inconsistency_report_L0.txt", "chaid_risk_segmentation_L0.txt"],
+        "outputs": [f"correlation_analysis_L0_{ANALYSIS_DATE}.txt", f"trends_and_repetitions_report_L0_{ANALYSIS_DATE}.txt",
+                    f"inconsistency_report_L0_{ANALYSIS_DATE}.txt", f"chaid_risk_segmentation_L0_{ANALYSIS_DATE}.txt"],
     },
     {
         "id": "step9", "number": 9,
         "name": "Regression + Risk Scenarios L0",
         "description": "Full regression suite + Monte Carlo scenarios at enterprise level",
         "script": "AI_ready_Mutiple_Regression_Model_implementation_L0_19_0.py",
-        "outputs": ["L0_Risk_Analysis_Report_2025.txt"],
+        "outputs": [f"L0_Risk_Analysis_Report_{ANALYSIS_DATE}.txt"],
     },
     {
         "id": "final", "number": 10,
         "name": "Master Report Combiner",
         "description": "Combine all text reports → MASTER_CONSOLIDATED_REPORT.txt",
         "script": "text-report-combiner.py",
-        "outputs": ["MASTER_CONSOLIDATED_REPORT.txt"],
+        "outputs": [f"MASTER_CONSOLIDATED_REPORT_{ANALYSIS_DATE}.txt"],
     },
 ]
 
@@ -1426,9 +1429,583 @@ def combine_text_reports(work_dir: str, input_files: List[str], output_filename:
                 else:
                     combined_content.append(f"\n\n[FILE NOT FOUND OR SKIPPED: {os.path.basename(fpath)}]\n\n")
                     
+            master_text = "".join(combined_content)
             with open(output_filename, 'w', encoding='utf-8') as fout:
-                fout.write("".join(combined_content))
+                fout.write(master_text)
                 
-        return True, {"files": [output_filename]}, f"Combined {found_count} report(s) into {output_filename}."
+            pdf_filename = output_filename.replace('.txt', '.pdf')
+            files_out = [output_filename]
+            try:
+                from utils.master_pdf import generate_master_pdf_bytes
+                pdf_bytes = generate_master_pdf_bytes(master_text)
+                with open(pdf_filename, 'wb') as fpdf:
+                    fpdf.write(pdf_bytes)
+                files_out.append(pdf_filename)
+            except Exception as e:
+                print(f"Warning: Could not generate PDF summary: {e}")
+                
+        return True, {"files": files_out}, f"Combined {found_count} report(s) into {output_filename}."
     except Exception as e:
         return False, {}, f"Failed to combine reports: {traceback.format_exc()}"
+
+# ─────────────────────────────────────────────────────────────────────────────
+# APEX STEP 7: COMBINE SPC AND RPN REPORTS
+# ─────────────────────────────────────────────────────────────────────────────
+
+def run_step10_combine_spc_rpn(work_dir: str) -> tuple:
+    import os
+    import traceback
+    from datetime import datetime
+    try:
+        from utils.pipeline_engine import ANALYSIS_DATE, _working_dir
+        with _working_dir(work_dir):
+            spc_file = f"SPC_summary_L0_{ANALYSIS_DATE}.txt"
+            rpn_file = f"rpn_summary_L0_{ANALYSIS_DATE}.txt"
+            out_file = f"MASTER_CONSOLIDATED_STATISTICAL_REPORT_{ANALYSIS_DATE}.txt"
+            
+            combined_content = []
+            combined_content.append(f"{'='*60}\nMASTER CONSOLIDATED STATISTICAL REPORT\nGenerated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n{'='*60}\n\n")
+            
+            found = 0
+            for fname in [spc_file, rpn_file]:
+                if os.path.exists(fname):
+                    found += 1
+                    combined_content.append(f"\n\n{'='*40}\n--- SOURCE: {fname} ---\n{'='*40}\n\n")
+                    with open(fname, 'r', encoding='utf-8') as fin:
+                        combined_content.append(fin.read())
+                else:
+                    combined_content.append(f"\n\n[FILE NOT FOUND: {fname}]\n\n")
+            
+            with open(out_file, 'w', encoding='utf-8') as fout:
+                fout.write("".join(combined_content))
+                
+        return True, {"files": [out_file]}, f"Combined SPC and RPN reports into {out_file}."
+    except Exception as e:
+        return False, {}, f"Failed to combine statistical reports: {traceback.format_exc()}"
+
+# ─────────────────────────────────────────────────────────────────────────────
+# APEX STEP 8: CLAUDE ANALYSIS 2 (SPC/RPN)
+# ─────────────────────────────────────────────────────────────────────────────
+
+def run_step11_claude_analysis_2(work_dir: str) -> tuple:
+    import os
+    import traceback
+    try:
+        from utils.pipeline_engine import ANALYSIS_DATE, _working_dir
+        import anthropic
+        import streamlit as st
+        
+        with _working_dir(work_dir):
+            in_file = f"MASTER_CONSOLIDATED_STATISTICAL_REPORT_{ANALYSIS_DATE}.txt"
+            out_file = f"FINAL_STATISTICAL_CLIENT_REPORT_{ANALYSIS_DATE}.txt"
+            
+            if not os.path.exists(in_file):
+                return False, {}, f"{in_file} not found. Run Step 7 first."
+                
+            with open(in_file, 'r', encoding='utf-8') as f:
+                content = f.read()
+                
+            sys_prompt = "As an expert SPC and Risk Management Analyst, analyse the submitted details for SPC trends and DPMO calculations for Six Sigma, and RPN ranking for Risk assessment. Identify the outliers, and Operational control voilations and vulnerabilities for the metrics that are assessed and presented through the attached file. Generate a detailed report with recommendations and action items to control the risk associated with the high scoring RPN numbers, outliers and operational control violators as necessary to reduce the vulnerability and overall and assoicated business risk."
+            
+            client = anthropic.Anthropic(api_key=st.secrets.get("ANTHROPIC_API_KEY", ""))
+            response = client.messages.create(
+                model="claude-opus-4-6",
+                max_tokens=8192,
+                system=sys_prompt,
+                messages=[{"role": "user", "content": content}]
+            )
+            
+            AI_text = "".join(block.text for block in response.content if block.type == "text")
+            
+            with open(out_file, "w", encoding="utf-8") as fout:
+                fout.write(AI_text)
+                
+        return True, {"files": [out_file]}, f"Statistical Analysis complete. Report generated at {out_file}"
+    except Exception as e:
+        return False, {}, f"Statistical Analysis failed: {traceback.format_exc()}"
+
+
+# ═════════════════════════════════════════════════════════════════════════════
+# GENERIC MODULE PIPELINE  — Works for ANY of the 12 module keys
+# (brand, bspt, customer, enterprise, ictm, integration, mkts,
+#  product, resource, service, shared, esgrc)
+# ═════════════════════════════════════════════════════════════════════════════
+
+def run_module_step1_low_performance(
+    work_dir: str, csv_bytes: bytes, json_data: dict, module_key: str
+) -> Tuple[bool, Dict, str]:
+    """Generic Step 1: Vectorized weighted-average low-performance analysis for any module."""
+    mk = module_key.lower()
+    try:
+        metric_data = pd.read_csv(io.BytesIO(csv_bytes), low_memory=False)
+
+        metric_ids, group_ids, sub_module_ids = [], [], []
+        id_name: Dict[str, str] = {}
+        
+        # We will collect the calculated columns here
+        new_cols = {}
+        
+        sm_list = json_data.get("sub_modules", [])
+        module_id = json_data.get("module_id", mk.upper())
+        mod_sm_cols = []
+        metrics_found_in_csv = 0
+        
+        for sm in sm_list:
+            sm_id = sm["sub_module_id"]
+            sub_module_ids.append(sm_id)
+            id_name[sm_id] = sm.get("sub_module_name", sm_id)
+            
+            sm_group_cols = []
+            for g in sm.get("groups", []):
+                g_id = g["group_id"]
+                group_ids.append(g_id)
+                id_name[g_id] = g.get("group_name", g_id)
+                
+                g_metrics = []
+                g_weights = []
+                for p in g.get("value", []):
+                    m_id = p["metric_id"]
+                    metric_ids.append(m_id)
+                    id_name[m_id] = p.get("metric_name", m_id)
+                    
+                    if m_id in metric_data.columns:
+                        g_metrics.append(m_id)
+                        g_weights.append(float(p.get("weight", 1)))
+                        metrics_found_in_csv += 1
+                
+                # Vectorized group average across all rows
+                if g_metrics:
+                    subset = metric_data[g_metrics].apply(pd.to_numeric, errors='coerce').fillna(0)
+                    weights_series = pd.Series(g_weights, index=g_metrics)
+                    total_weight = sum(g_weights)
+                    
+                    if total_weight > 0:
+                        g_avg = (subset * weights_series).sum(axis=1) / total_weight
+                    else:
+                        g_avg = pd.Series(0.0, index=metric_data.index)
+                        
+                    new_cols[g_id] = g_avg.round(2)
+                    sm_group_cols.append(g_id)
+                else:
+                    new_cols[g_id] = pd.Series(np.nan, index=metric_data.index)
+            
+            if sm_group_cols:
+                g_subset = pd.DataFrame({c: new_cols[c] for c in sm_group_cols})
+                sm_avg = g_subset.mean(axis=1, skipna=True)
+                new_cols[sm_id] = sm_avg.round(2)
+                mod_sm_cols.append(sm_id)
+            else:
+                new_cols[sm_id] = pd.Series(np.nan, index=metric_data.index)
+                
+        if mod_sm_cols:
+            sm_subset = pd.DataFrame({c: new_cols[c] for c in mod_sm_cols})
+            mod_avg = sm_subset.mean(axis=1, skipna=True)
+            new_cols[module_id] = mod_avg.round(2)
+        else:
+            new_cols[module_id] = pd.Series(np.nan, index=metric_data.index)
+
+        # Fail fast if wrong CSV was uploaded
+        if metrics_found_in_csv == 0:
+            return False, {}, f"[{mk.upper()}] No matching metrics found in the uploaded CSV. Did you upload the correct file for this role?"
+
+        # Combine original data with the new calculated averages
+        new_df = pd.DataFrame(new_cols)
+        enriched = pd.concat([metric_data, new_df], axis=1)
+        enriched = enriched.loc[:, ~enriched.columns.duplicated()]
+
+        with _working_dir(work_dir):
+            csv_out = f"module_values_{mk}_{ANALYSIS_DATE}.csv"
+            enriched.to_csv(csv_out, index=False)
+
+            def _low(ids, df, top=10):
+                scores = {}
+                for i in ids:
+                    if i in df.columns and len(df) > 0:
+                        try:
+                            scores[i] = float(df[i].iloc[0])
+                        except Exception:
+                            pass
+                return sorted(scores.items(), key=lambda x: x[1])[:top]
+
+            lm  = _low(metric_ids, enriched)
+            lg  = _low(group_ids,  enriched)
+            lsm = _low(sub_module_ids, enriched)
+            
+            if module_id in enriched.columns and len(enriched) > 0:
+                try:
+                    oa = float(enriched[module_id].iloc[0])
+                except:
+                    oa = 0.0
+            else:
+                oa = 0.0
+
+            txt_out = f"low_performing_entities_report_{mk}_{ANALYSIS_DATE}.txt"
+            with open(txt_out, "w", encoding="utf-8") as f:
+                f.write(f"Low-Performing Metrics [{mk.upper()}]\nS.No,Metric Id,Metric Name,Metric Value\n")
+                for i, (mid, val) in enumerate(lm, 1):
+                    f.write(f"{i},{mid},{id_name.get(mid, mid)},{val:.2f}\n")
+                f.write("\nLow-Performing Groups\nS.No,Group Id,Group Name,Group Value\n")
+                for i, (gid, val) in enumerate(lg, 1):
+                    f.write(f"{i},{gid},{id_name.get(gid, gid)},{val:.2f}\n")
+                f.write("\nLow-Performing Sub-Modules\nS.No,Sub-Module Id,Sub-Module Name,Sub-Module Value\n")
+                for i, (smid, val) in enumerate(lsm, 1):
+                    f.write(f"{i},{smid},{id_name.get(smid, smid)},{val:.2f}\n")
+                f.write(f"\nOverall Module Average,{module_id},{oa:.2f}\n")
+            convert_txt_to_pdf(txt_out, txt_out.replace(".txt", ".pdf"))
+
+        return True, {
+            "files": [csv_out, txt_out],
+            "overall_avg": round(oa, 2),
+            "metric_count": len(lm),
+        }, f"[{mk.upper()}] Vectorized processing complete. Score: {oa:.2f}."
+
+    except Exception:
+        return False, {}, f"[{mk.upper()}] Step 1 failed:\n{traceback.format_exc()}"
+
+
+def run_module_step2_split(
+    work_dir: str, json_data: dict, module_key: str
+) -> Tuple[bool, Dict, str]:
+    """Generic Step 2: M/G/Sub-M split for any module."""
+    mk = module_key.lower()
+    try:
+        with _working_dir(work_dir):
+            src = f"module_values_{mk}_{ANALYSIS_DATE}.csv"
+            if not os.path.exists(src):
+                return False, {}, f"{src} not found — run Step 1 first."
+
+            df  = pd.read_csv(src, low_memory=False)
+            mc, gc, sc = [], [], []
+            module_id = json_data.get("module_id", mk.upper())
+
+            for sm in json_data.get("sub_modules", []):
+                sc.append(sm["sub_module_id"])
+                for g in sm.get("groups", []):
+                    gc.append(g["group_id"])
+                    for p in g.get("value", []):
+                        mc.append(p["metric_id"])
+
+            mc = [c for c in mc if c in df.columns]
+            gc = [c for c in gc if c in df.columns]
+            sc = [c for c in sc if c in df.columns]
+            rc = sc + ([module_id] if module_id in df.columns else [])
+
+            df[mc].to_csv(f"filtered_metrics_data_{mk}.csv",     index=False)
+            df[gc].to_csv(f"filtered_groups_data_{mk}.csv",      index=False)
+            df[sc].to_csv(f"filtered_sub_modules_data_{mk}.csv", index=False)
+            df[rc].to_csv(f"data_for_risk_assessment_{mk}.csv",  index=False)
+
+        return True, {
+            "files": [f"filtered_metrics_data_{mk}.csv", f"filtered_groups_data_{mk}.csv",
+                      f"filtered_sub_modules_data_{mk}.csv", f"data_for_risk_assessment_{mk}.csv"],
+            "metric_count": len(mc), "group_count": len(gc), "sub_module_count": len(sc),
+        }, f"[{mk.upper()}] Split — {len(mc)} metrics, {len(gc)} groups, {len(sc)} sub-modules."
+
+    except Exception:
+        return False, {}, f"[{mk.upper()}] Step 2 failed:\n{traceback.format_exc()}"
+
+
+def run_module_step3_spc_fmea(
+    work_dir: str, module_key: str
+) -> Tuple[bool, Dict, str]:
+    """Generic Step 3: SPC/FMEA X-Bar-R charts for any module."""
+    mk = module_key.lower()
+    csv_filename = f"input_metric_values_{mk}.csv"
+    try:
+        with _working_dir(work_dir):
+            if not os.path.exists(csv_filename):
+                return False, {}, f"{csv_filename} not found."
+
+            df_wide    = pd.read_csv(csv_filename)
+            long_df    = _to_long(df_wide)
+            metric_ids = sorted(long_df["metric_id"].unique())
+            rows = []
+            for mid in metric_ids:
+                df_m   = long_df[long_df["metric_id"] == mid].sort_values("timestamp")
+                lim    = _xmr_limits(df_m["value"])
+                df_sig = _detect_xmr(df_m, lim)
+                sigs   = int(df_sig["signal_x"].sum() + df_sig["signal_mr"].sum())
+                rpn    = 7 * min(10, max(1, sigs)) * 5
+                rows.append({
+                    "metric_id": mid, "mean": round(lim["xbar"], 2),
+                    "sigma": round(lim["sigma"], 2),
+                    "UCL": round(lim["ucl_x"], 2), "LCL": round(lim["lcl_x"], 2),
+                    "signals": sigs, "RPN": rpn,
+                })
+
+            summary = (pd.DataFrame(rows)
+                       .sort_values(["RPN", "signals", "metric_id"], ascending=[False, False, True])
+                       .reset_index(drop=True))
+            summary["analysis_date"] = ANALYSIS_DATE
+
+            txt_f = f"metrics_summary_{mk}_{ANALYSIS_DATE}.txt"
+            pdf_f = f"metrics_summary_{mk}_{ANALYSIS_DATE}.pdf"
+            summary.to_csv(txt_f, sep="\t", index=False)
+            convert_txt_to_pdf(txt_f, pdf_f)
+
+            files_generated = [txt_f, pdf_f]
+            if MATPLOTLIB_AVAILABLE:
+                rpn_f = f"RPN_summary_{mk}_{ANALYSIS_DATE}.pdf"
+                spc_f = f"SPC_charts_{mk}_{ANALYSIS_DATE}.pdf"
+                _save_rpn_pdf(summary, rpn_f)
+                _save_spc_pdf(long_df, metric_ids, spc_f)
+                files_generated.extend([rpn_f, spc_f])
+
+        return True, {
+            "files": files_generated, "metric_count": len(metric_ids),
+        }, f"[{mk.upper()}] SPC/FMEA — {len(metric_ids)} metrics analysed."
+
+    except Exception:
+        return False, {}, f"[{mk.upper()}] Step 3 failed:\n{traceback.format_exc()}"
+
+
+def run_module_step4_correlation_chaid(
+    work_dir: str, module_key: str
+) -> Tuple[bool, Dict, str]:
+    """Generic Step 4: Correlation + CHAID + Fourier for any module."""
+    mk = module_key.lower()
+    try:
+        with _working_dir(work_dir):
+            req_files = [f"filtered_metrics_data_{mk}.csv",
+                         f"filtered_groups_data_{mk}.csv",
+                         f"filtered_sub_modules_data_{mk}.csv"]
+            for req in req_files:
+                if not os.path.exists(req):
+                    return False, {}, f"{req} not found — run Step 2 first."
+
+            def _load_norm(fname):
+                df = pd.read_csv(fname, low_memory=False)
+                df = pd.DataFrame({c: pd.to_numeric(df[c], errors="coerce")
+                                   for c in df.columns}).dropna(axis=1, how="all")
+                return (df - df.mean()) / df.std().replace(0, 1)
+
+            df_m  = _load_norm(f"filtered_metrics_data_{mk}.csv")
+            df_g  = _load_norm(f"filtered_groups_data_{mk}.csv")
+            df_sm = _load_norm(f"filtered_sub_modules_data_{mk}.csv")
+            mc = df_m.corr(); gc = df_g.corr(); sc = df_sm.corr()
+
+            corr_f  = f"M_G_SM_correlation_report_{mk}_{ANALYSIS_DATE}.txt"
+            trend_f = f"trends_and_repetitions_report_{mk}_{ANALYSIS_DATE}.txt"
+            inc_f   = f"inconsistencies_report_{mk}_{ANALYSIS_DATE}.txt"
+            chaid_f = f"chaid_risk_segmentation_report_{mk}_{ANALYSIS_DATE}.txt"
+
+            with open(corr_f, "w", encoding="utf-8") as f:
+                f.write("Metrics Correlation Matrix\n"); mc.to_csv(f)
+                f.write("\nGroups Correlation Matrix\n");   gc.to_csv(f)
+                f.write("\nSub_modules Correlation Matrix\n"); sc.to_csv(f)
+
+            trends      = _identify_trends(df_m)
+            repetitions = _assess_fourier(df_m)
+            with open(trend_f, "w", encoding="utf-8") as f:
+                f.write("Metrics Trends:\n")
+                for v, t in trends.items(): f.write(f"{v}: {t}\n")
+                f.write("\nRepetitions (Fourier Analysis):\n")
+                for v, r in repetitions.items(): f.write(f"{v}: {r}\n")
+
+            dep_inc, ind_inc = _detect_inconsistencies(mc, df_m)
+            with open(inc_f, "w", encoding="utf-8") as f:
+                f.write(f"Inconsistencies Report [{mk.upper()}]\n\nDependent:\n")
+                for (c1, c2), info in dep_inc.items():
+                    f.write(f"  {c1} | {c2} | Corr={info['correlation']:.2f} | Count={info['count']}\n")
+                if not dep_inc: f.write("  None found.\n")
+                f.write("\nIndependent:\n")
+                for (c1, c2), info in ind_inc.items():
+                    f.write(f"  {c1} | {c2} | Corr={info['correlation']:.2f} | Count={info['count']}\n")
+                if not ind_inc: f.write("  None found.\n")
+
+            chaid_df      = _bin_features(trends, repetitions, dep_inc, ind_inc, mc)
+            chaid_summary = _run_chaid(chaid_df, ["Trend", "Repetition", "Avg_Correlation", "Inconsistency_Level"])
+            with open(chaid_f, "w", encoding="utf-8") as f:
+                f.write(f"CHAID Risk Segmentation [{mk.upper()}]\n\n")
+                f.write(chaid_summary); f.write("\n\n")
+                f.write(chaid_df["Risk_Level"].value_counts().to_string())
+                high = chaid_df[chaid_df["Risk_Level"].isin(["Critical", "High"])]
+                f.write("\nHigh-Risk Metrics:\n")
+                if not high.empty:
+                    f.write(high[["Metric", "Risk_Level", "Trend"]].to_string(index=False))
+
+            for txt in [corr_f, trend_f, inc_f, chaid_f]:
+                convert_txt_to_pdf(txt, txt.replace(".txt", ".pdf"))
+
+        return True, {
+            "files": [corr_f, trend_f, inc_f, chaid_f],
+            "dep_inconsistencies": len(dep_inc), "ind_inconsistencies": len(ind_inc),
+        }, f"[{mk.upper()}] Correlation + Fourier + CHAID — {len(dep_inc)} dep / {len(ind_inc)} ind."
+
+    except Exception:
+        return False, {}, f"[{mk.upper()}] Step 4 failed:\n{traceback.format_exc()}"
+
+
+def run_module_step5_regression(
+    work_dir: str, json_data: dict, module_key: str
+) -> Tuple[bool, Dict, str]:
+    """Generic Step 5: Regression + Monte Carlo risk scenarios for any module."""
+    mk = module_key.lower()
+    try:
+        if not SKLEARN_AVAILABLE:
+            return False, {}, f"[{mk.upper()}] Step 5 skipped — scikit-learn not installed."
+
+        with _working_dir(work_dir):
+            src = f"module_values_{mk}_{ANALYSIS_DATE}.csv"
+            if not os.path.exists(src):
+                return False, {}, f"{src} not found — run Step 1 first."
+
+            data      = pd.read_csv(src)
+            module_id = json_data.get("module_id", mk.upper())
+            id_to_name: Dict[str, str] = {}
+            for sm in json_data.get("sub_modules", []):
+                id_to_name[sm["sub_module_id"]] = sm.get("sub_module_name", sm["sub_module_id"])
+                for g in sm.get("groups", []):
+                    id_to_name[g["group_id"]] = g.get("group_name", g["group_id"])
+                    for m in g.get("value", []):
+                        id_to_name[m["metric_id"]] = m.get("metric_name", m["metric_id"])
+
+            dep = module_id if module_id in data.columns else next(
+                (c for c in data.columns if len(c) == 8 and c.endswith("001")), None)
+            if dep is None:
+                return False, {}, f"Module-level column not found in {src}."
+
+            X    = data.drop(columns=[dep])
+            y    = data[dep]
+            X_sc = StandardScaler().fit_transform(X)
+            models = {
+                "Linear":     Pipeline([("sc", StandardScaler()), ("m", LinearRegression())]),
+                "Ridge":      Pipeline([("sc", StandardScaler()), ("m", Ridge())]),
+                "Lasso":      Pipeline([("sc", StandardScaler()), ("m", Lasso())]),
+                "ElasticNet": Pipeline([("sc", StandardScaler()), ("m", ElasticNet())]),
+            }
+            kf = KFold(n_splits=min(5, len(data)), shuffle=True, random_state=42)
+            cv_mses: List[float] = []
+            for mn, mod in models.items():
+                fold_mse = []
+                for tr, te in kf.split(X_sc):
+                    mod.fit(X_sc[tr], y.iloc[tr])
+                    fold_mse.append(mean_squared_error(y.iloc[te], mod.predict(X_sc[te])))
+                cv_mses.append(float(np.mean(fold_mse)))
+            avg_mse    = float(np.mean(cv_mses))
+            confidence = "High" if avg_mse < 0.01 else ("Moderate" if avg_mse < 0.1 else "Low")
+
+            scales         = np.linspace(0.1, 1.0, 10)
+            sim            = {f"Scenario_{i+1}": np.clip(np.random.normal(s, 0.1, len(data)), 0, 1)
+                              for i, s in enumerate(scales)}
+            sim_df         = pd.DataFrame(sim)
+            scenario_risks = {s: float(np.mean(sim_df[s])) for s in sim_df.columns}
+            top3           = sorted(scenario_risks.items(), key=lambda x: x[1], reverse=True)[:3]
+
+            lines = [
+                f"Module: {mk.upper()} | Avg CV MSE: {avg_mse:.6f} | Confidence: {confidence}",
+                f"Overall Risk: {sum(v * 0.1 for v in scenario_risks.values()):.4f}",
+                "\nRisk Scenarios (Highest First):",
+            ]
+            for s, r in sorted(scenario_risks.items(), key=lambda x: x[1], reverse=True):
+                lines.append(f"  {s}: {r:.4f}")
+            lines.append("\nFollow-up Actions:")
+            for s, risk in top3:
+                corrs    = np.array([np.corrcoef(X.iloc[:, i].values, sim_df[s])[0, 1]
+                                     for i in range(X.shape[1])])
+                top_mets = [X.columns[i] for i in np.argsort(np.abs(corrs))[-3:][::-1]]
+                lines.append(f"  High risk in {s} → {', '.join(id_to_name.get(m, m) for m in top_mets)}")
+
+            out_f = f"{mk.upper()}_Module_model_summary_{ANALYSIS_DATE}.txt"
+            pdf_f = f"{mk.upper()}_Module_model_summary_{ANALYSIS_DATE}.pdf"
+            with open(out_f, "w", encoding="utf-8") as f:
+                f.write("\n".join(lines))
+                f.write(f"\n-- End of {mk.upper()} Module Risk Analysis Summary --\n")
+            convert_txt_to_pdf(out_f, pdf_f)
+
+        return True, {
+            "files": [out_f, pdf_f], "avg_mse": round(avg_mse, 6), "confidence": confidence,
+        }, f"[{mk.upper()}] Regression complete. MSE={avg_mse:.6f}. Confidence={confidence}."
+
+    except Exception:
+        return False, {}, f"[{mk.upper()}] Step 5 failed:\n{traceback.format_exc()}"
+
+
+def run_module_step6_compile_report(
+    work_dir: str, module_key: str
+) -> Tuple[bool, Dict, str]:
+    """Generic Step 6: Combine all text reports into a master file for any module."""
+    mk = module_key.lower()
+    try:
+        report_files = [
+            f"low_performing_entities_report_{mk}_{ANALYSIS_DATE}.txt",
+            f"metrics_summary_{mk}_{ANALYSIS_DATE}.txt",
+            f"M_G_SM_correlation_report_{mk}_{ANALYSIS_DATE}.txt",
+            f"trends_and_repetitions_report_{mk}_{ANALYSIS_DATE}.txt",
+            f"inconsistencies_report_{mk}_{ANALYSIS_DATE}.txt",
+            f"chaid_risk_segmentation_report_{mk}_{ANALYSIS_DATE}.txt",
+            f"{mk.upper()}_Module_model_summary_{ANALYSIS_DATE}.txt",
+        ]
+        combined = []
+        with _working_dir(work_dir):
+            for rp in report_files:
+                if os.path.exists(rp):
+                    with open(rp, "r", encoding="utf-8") as f:
+                        combined.append(f"=== {rp} ===\n{f.read()}\n")
+            master_txt     = f"MASTER_CONSOLIDATED_REPORT_{mk.upper()}_{ANALYSIS_DATE}.txt"
+            master_content = "\n".join(combined) if combined else "No reports generated."
+            with open(master_txt, "w", encoding="utf-8") as f:
+                f.write(master_content)
+
+        return True, {
+            "files": [master_txt], "master_content": master_content,
+        }, f"[{mk.upper()}] Master report compiled from {len(combined)} source reports."
+
+    except Exception:
+        return False, {}, f"[{mk.upper()}] Step 6 failed:\n{traceback.format_exc()}"
+
+
+def run_module_step7_ai_report(
+    work_dir: str, module_key: str
+) -> Tuple[bool, Dict, str]:
+    """Generic Step 7: Claude AI executive summary for any module."""
+    import streamlit as st
+    mk = module_key.lower()
+    try:
+        master_path = os.path.join(work_dir, f"MASTER_CONSOLIDATED_REPORT_{mk.upper()}_{ANALYSIS_DATE}.txt")
+        if not os.path.exists(master_path):
+            return False, {}, "Master report not found — run Step 6 first."
+
+        out_txt = os.path.join(work_dir, f"FINAL_CLIENT_REPORT_{mk.upper()}_{ANALYSIS_DATE}.txt")
+        out_pdf = os.path.join(work_dir, f"FINAL_CLIENT_REPORT_{mk.upper()}_{ANALYSIS_DATE}.pdf")
+
+        with open(master_path, "r", encoding="utf-8") as fin:
+            content = fin.read()
+
+        try:
+            import anthropic, base64
+            from utils.master_pdf import generate_master_pdf_bytes
+            pdf_b64  = base64.b64encode(generate_master_pdf_bytes(content)).decode("utf-8")
+            client   = anthropic.Anthropic(api_key=st.secrets.get("ANTHROPIC_API_KEY", ""))
+            response = client.messages.create(
+                model="claude-opus-4-6", max_tokens=8192,
+                system=(f"You are an expert {mk.upper()} risk analyst. Analyse the consolidated "
+                        f"report and provide a structured executive summary, key risk findings, "
+                        f"and actionable recommendations."),
+                messages=[{"role": "user", "content": [
+                    {"type": "document", "source": {"type": "base64",
+                     "media_type": "application/pdf", "data": pdf_b64}},
+                    {"type": "text", "text": "Please analyse this report."}
+                ]}]
+            )
+            ai_text = "".join(b.text for b in response.content if b.type == "text")
+        except Exception as api_err:
+            ai_text = (f"AI report bypassed ({api_err})\n\n"
+                       f"--- Consolidated Report (first 4000 chars) ---\n{content[:4000]}")
+
+        with open(out_txt, "w", encoding="utf-8") as f:
+            f.write(ai_text)
+
+        try:
+            from utils.pipeline_flows import generate_ai_pdf
+            with open(out_pdf, "wb") as f:
+                f.write(generate_ai_pdf(ai_text, f"FINAL {mk.upper()} RECOMMENDED AI REPORT"))
+        except Exception:
+            pass
+
+        return True, {
+            "files": [os.path.basename(out_txt), os.path.basename(out_pdf)],
+        }, f"[{mk.upper()}] AI Final Report generated."
+
+    except Exception:
+        return False, {}, f"[{mk.upper()}] Step 7 failed:\n{traceback.format_exc()}"

@@ -174,7 +174,7 @@ def draw_cover_background(canvas, doc):
     # Bottom watermark
     canvas.setFont("Helvetica", 8)
     canvas.setFillColor(INK_GRAY)
-    canvas.drawString(2.2 * cm, 1.2 * cm, "RISK INTELL Platform — Enterprise Intelligence Consolidated Report")
+    canvas.drawString(2.2 * cm, 1.2 * cm, "METEOERAIT SOFTWARE — Enterprise Intelligence Consolidated Report")
     canvas.drawRightString(PAGE_W - MARGIN, 1.2 * cm, "Confidential")
     canvas.restoreState()
 
@@ -192,7 +192,7 @@ def draw_header_footer(canvas, doc):
     # Branded Logo / Title
     canvas.setFont("Helvetica-Bold", 14)
     canvas.setFillColor(WHITE)
-    canvas.drawString(MARGIN, PAGE_H - 1.2 * cm, "🛡  RISK INTELL Platform")
+    canvas.drawString(MARGIN, PAGE_H - 1.2 * cm, "🛡  METEOERAIT SOFTWARE")
     
     # Subtitle
     canvas.setFont("Helvetica", 8)
@@ -209,7 +209,7 @@ def draw_header_footer(canvas, doc):
     canvas.setFillColor(INK_GRAY)
     ts = datetime.now().strftime("%Y-%m-%d %H:%M")
     canvas.drawString(MARGIN, 0.38 * cm, f"Generated: {ts}  |  Master Consolidated Report  |  Confidential")
-    canvas.drawRightString(PAGE_W - MARGIN, 0.38 * cm, "© RISK INTELL")
+    canvas.drawRightString(PAGE_W - MARGIN, 0.38 * cm, "© METEOERAIT SOFTWARE")
     
     canvas.restoreState()
 
@@ -291,7 +291,7 @@ def corr_color_style(v):
 
 def parse_txt_content(content):
     """Split the consolidated report content by REPORT HEADER."""
-    # Dynamically replace ESGRC/ESGR to RISK INTELL while preserving 'esgrc module' case-insensitively
+    # Dynamically replace ESGRC/ESGR to METEOERAIT SOFTWARE while preserving 'esgrc module' case-insensitively
     placeholders = []
     def protect(match):
         placeholders.append(match.group(0))
@@ -300,10 +300,10 @@ def parse_txt_content(content):
     content_sub = re.sub(r"esgrc\s+module", protect, content, flags=re.IGNORECASE)
     content_sub = re.sub(r"esgrc_module", protect, content_sub, flags=re.IGNORECASE)
     
-    content_sub = re.sub(r"ESGRC Intelligence Platform", "RISK INTELL Platform", content_sub)
-    content_sub = re.sub(r"ESGRC Intelligence", "RISK INTELL", content_sub)
-    content_sub = re.sub(r"ESGRC", "RISK INTELL", content_sub)
-    content_sub = re.sub(r"ESGR", "RISK INTELL", content_sub)
+    content_sub = re.sub(r"ESGRC Intelligence Platform", "METEOERAIT SOFTWARE", content_sub)
+    content_sub = re.sub(r"ESGRC Intelligence", "METEOERAIT SOFTWARE", content_sub)
+    content_sub = re.sub(r"ESGRC", "METEOERAIT SOFTWARE", content_sub)
+    content_sub = re.sub(r"ESGR", "METEOERAIT SOFTWARE", content_sub)
     
     for idx, orig in enumerate(placeholders):
         content_sub = content_sub.replace(f"___PLACEHOLDER_{idx}___", orig)
@@ -654,8 +654,8 @@ def generate_master_pdf_bytes(txt_content: str) -> bytes:
         rightMargin=MARGIN,
         topMargin=3.2 * cm,
         bottomMargin=1.8 * cm,
-        title="RISK INTELL Pipeline Automation Report",
-        author="RISK INTELL Platform",
+        title="METEOERAIT SOFTWARE Pipeline Automation Report",
+        author="METEOERAIT SOFTWARE",
     )
     
     story = []
@@ -671,12 +671,12 @@ def generate_master_pdf_bytes(txt_content: str) -> bytes:
     cover_s["body_bold"].leftIndent = 1.0 * cm
     
     story.append(Spacer(1, 4.0 * cm))
-    story.append(Paragraph("RISK INTELL Platform", cover_s["title"]))
+    story.append(Paragraph("METEOERAIT SOFTWARE", cover_s["title"]))
     story.append(Paragraph("Consolidated Master Performance & Risk Analysis Report", cover_s["subtitle"]))
     story.append(Spacer(1, 1.2 * cm))
     
     overview_text = (
-        "This master report aggregates the outputs from the 9-script sequential RISK INTELL pipeline, "
+        "This master report aggregates the outputs from the 9-script sequential METEOERAIT SOFTWARE pipeline, "
         "covering performance modeling, Statistical Process Control (SPC), risk scenario forecasting "
         "via regression and PyTorch, Fourier trend repetitions, and segmentations (CHAID). It provides "
         "an enterprise-wide (L0) and module-specific (L1/L2) view of compliance and ESG performance."
@@ -688,7 +688,7 @@ def generate_master_pdf_bytes(txt_content: str) -> bytes:
     
     # Metadata card on cover
     metadata_grid = [
-        [Paragraph("Document Ref:", cover_s["meta_label"]), Paragraph("RISK-INTELL-2026-CONS", cover_s["meta_value"]),
+        [Paragraph("Document Ref:", cover_s["meta_label"]), Paragraph("meteoerait-software-2026-CONS", cover_s["meta_value"]),
          Paragraph("Date Prepared:", cover_s["meta_label"]), Paragraph(datetime.now().strftime("%B %d, %Y"), cover_s["meta_value"])],
         [Paragraph("Report Scope:", cover_s["meta_label"]), Paragraph("L0 Enterprise + L1 Modules", cover_s["meta_value"]),
          Paragraph("Classification:", cover_s["meta_label"]), Paragraph("CONFIDENTIAL", cover_s["meta_value"])]
@@ -1223,7 +1223,7 @@ def generate_master_pdf_bytes(txt_content: str) -> bytes:
     story.append(Paragraph("Report Disclaimer", s["section_h2"]))
     story.append(Paragraph(
         "This master consolidated report was automatically generated from the outputs of the "
-        "9-script sequential RISK INTELL pipeline using a weighted-average compliance model. "
+        "9-script sequential METEOERAIT SOFTWARE pipeline using a weighted-average compliance model. "
         "All calculations, limits, and segmentations are based on the uploaded data files. "
         "This report is confidential and intended for authorized personnel only.",
         s["disclaimer"]

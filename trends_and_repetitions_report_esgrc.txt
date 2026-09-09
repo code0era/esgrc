@@ -1,0 +1,171 @@
+Metrics Trends:
+ESU10102: Stable
+ESU10103: Stable
+ESU10104: Increasing
+ESU10106: Decreasing
+ESU10107: Decreasing
+ESU10109: Stable
+ESU10110: Increasing
+SSU10102: Increasing
+SSU10103: Increasing
+SSU10105: Decreasing
+SSU10106: Stable
+SSU10108: Increasing
+SSU10109: Increasing
+CSU10102: Stable
+CSU10103: Stable
+CSU10105: Decreasing
+CSU10106: Decreasing
+CSU10108: Stable
+CSU10109: Increasing
+GNT10102: Stable
+GNT10103: Stable
+GNT10105: Decreasing
+GNT10106: Increasing
+CGS10102: Decreasing
+CGS10103: Increasing
+CGS10105: Stable
+CGS10106: Increasing
+CGS10108: Decreasing
+CGS10109: Stable
+GRC10102: Increasing
+GRC10103: Decreasing
+GRC10104: Increasing
+GRC10106: Decreasing
+GRC10107: Stable
+GRC10109: Stable
+GRC10110: Increasing
+ERM10102: Stable
+ERM10103: Stable
+ERM10105: Decreasing
+ERM10106: Decreasing
+ERM10108: Decreasing
+ERM10109: Decreasing
+AUD10102: Decreasing
+AUD10103: Stable
+AUD10105: Decreasing
+AUD10106: Decreasing
+AUD10108: Stable
+AUD10109: Increasing
+POL10102: Stable
+POL10103: Increasing
+POL10105: Increasing
+POL10106: Increasing
+POL10108: Increasing
+POL10109: Stable
+REG10102: Decreasing
+REG10103: Decreasing
+REG10105: Increasing
+REG10106: Decreasing
+REG10108: Decreasing
+REG10109: Decreasing
+ETI10102: Decreasing
+ETI10103: Increasing
+ETI10105: Increasing
+ETI10106: Increasing
+ETI10108: Stable
+ETI10109: Decreasing
+CGV10102: Decreasing
+CGV10103: Increasing
+CGV10105: Increasing
+CGV10106: Stable
+CGV10108: Increasing
+CGV10109: Stable
+IGV10102: Decreasing
+IGV10103: Increasing
+IGV10105: Decreasing
+IGV10106: Increasing
+IGV10108: Decreasing
+IGV10109: Increasing
+CPI10102: Increasing
+CPI10103: Stable
+CPI10105: Stable
+CPI10106: Stable
+CPI10108: Decreasing
+CPI10109: Decreasing
+
+Repetitions (Fourier Analysis):
+ESU10102: No clear repetition (potential instability)
+ESU10103: Dominant period: 2.07 units (repetitive)
+ESU10104: Dominant period: 2.23 units (repetitive)
+ESU10106: Dominant period: 23.44 units (repetitive)
+ESU10107: No clear repetition (potential instability)
+ESU10109: Dominant period: 2.49 units (repetitive)
+ESU10110: No clear repetition (potential instability)
+SSU10102: Dominant period: 2.10 units (repetitive)
+SSU10103: Dominant period: 7.83 units (repetitive)
+SSU10105: Dominant period: 4.38 units (repetitive)
+SSU10106: Dominant period: 4.24 units (repetitive)
+SSU10108: Dominant period: 4.35 units (repetitive)
+SSU10109: Dominant period: 32.97 units (repetitive)
+CSU10102: Dominant period: 2.85 units (repetitive)
+CSU10103: No clear repetition (potential instability)
+CSU10105: Dominant period: 16.13 units (repetitive)
+CSU10106: Dominant period: 50.85 units (repetitive)
+CSU10108: Dominant period: 2.16 units (repetitive)
+CSU10109: Dominant period: 2.49 units (repetitive)
+GNT10102: Dominant period: 2.34 units (repetitive)
+GNT10103: No clear repetition (potential instability)
+GNT10105: Dominant period: 32.97 units (repetitive)
+GNT10106: Dominant period: 3.06 units (repetitive)
+CGS10102: Dominant period: 13.76 units (repetitive)
+CGS10103: No clear repetition (potential instability)
+CGS10105: No clear repetition (potential instability)
+CGS10106: No clear repetition (potential instability)
+CGS10108: No clear repetition (potential instability)
+CGS10109: Dominant period: 1000.00 units (repetitive)
+GRC10102: No clear repetition (potential instability)
+GRC10103: No clear repetition (potential instability)
+GRC10104: Dominant period: 34.88 units (repetitive)
+GRC10106: Dominant period: 3.36 units (repetitive)
+GRC10107: Dominant period: 4.14 units (repetitive)
+GRC10109: Dominant period: 3.24 units (repetitive)
+GRC10110: Dominant period: 6.49 units (repetitive)
+ERM10102: No clear repetition (potential instability)
+ERM10103: No clear repetition (potential instability)
+ERM10105: Dominant period: 2.68 units (repetitive)
+ERM10106: No clear repetition (potential instability)
+ERM10108: Dominant period: 2.06 units (repetitive)
+ERM10109: Dominant period: 3.52 units (repetitive)
+AUD10102: No clear repetition (potential instability)
+AUD10103: No clear repetition (potential instability)
+AUD10105: Dominant period: 3.30 units (repetitive)
+AUD10106: Dominant period: 12.10 units (repetitive)
+AUD10108: No clear repetition (potential instability)
+AUD10109: No clear repetition (potential instability)
+POL10102: No clear repetition (potential instability)
+POL10103: No clear repetition (potential instability)
+POL10105: Dominant period: 3.49 units (repetitive)
+POL10106: No clear repetition (potential instability)
+POL10108: No clear repetition (potential instability)
+POL10109: Dominant period: 2.04 units (repetitive)
+REG10102: Dominant period: 3.29 units (repetitive)
+REG10103: No clear repetition (potential instability)
+REG10105: Dominant period: 18.40 units (repetitive)
+REG10106: Dominant period: 5.66 units (repetitive)
+REG10108: No clear repetition (potential instability)
+REG10109: Dominant period: 3.49 units (repetitive)
+ETI10102: Dominant period: 3.51 units (repetitive)
+ETI10103: Dominant period: 2.76 units (repetitive)
+ETI10105: Dominant period: 9.68 units (repetitive)
+ETI10106: Dominant period: 2.38 units (repetitive)
+ETI10108: No clear repetition (potential instability)
+ETI10109: Dominant period: 5.73 units (repetitive)
+CGV10102: No clear repetition (potential instability)
+CGV10103: Dominant period: 2.57 units (repetitive)
+CGV10105: No clear repetition (potential instability)
+CGV10106: Dominant period: 3.68 units (repetitive)
+CGV10108: Dominant period: 4.96 units (repetitive)
+CGV10109: No clear repetition (potential instability)
+IGV10102: No clear repetition (potential instability)
+IGV10103: No clear repetition (potential instability)
+IGV10105: No clear repetition (potential instability)
+IGV10106: Dominant period: 214.29 units (repetitive)
+IGV10108: Dominant period: 47.62 units (repetitive)
+IGV10109: No clear repetition (potential instability)
+CPI10102: No clear repetition (potential instability)
+CPI10103: No clear repetition (potential instability)
+CPI10105: Dominant period: 3.61 units (repetitive)
+CPI10106: Dominant period: 2.30 units (repetitive)
+CPI10108: No clear repetition (potential instability)
+CPI10109: No clear repetition (potential instability)

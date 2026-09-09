@@ -1,4 +1,4 @@
-# 🛡️ RISK INTELL Platform (ESGRC)
+# 🛡️ METEOERAIT SOFTWARE Platform (ESGRC)
 
 An enterprise-grade ESG (Environmental, Social, Governance), Risk, and Compliance Management Platform built with Streamlit. It leverages powerful machine learning pipelines (SPC, FMEA, CHAID, Multiple Regression) and AI-driven summarization (Anthropic Claude 3.5) to deliver intelligent analytics, reporting, and interactive conversational insights on enterprise compliance data.
 
@@ -10,7 +10,7 @@ The mindmap below outlines the core components, tech stack, and modular structur
 
 ```mermaid
 mindmap
-  root((RISK INTELL<br/>Platform))
+  root((METEOERAIT SOFTWARE<br/>Platform))
     Frontend UI
       Streamlit App
       Interactive Dashboard
@@ -205,12 +205,12 @@ You can also run the application seamlessly using Docker.
 
 ```bash
 # Build the Docker image
-docker build -t risk-intell-app .
+docker build -t meteoerait-software-app .
 
 # Run the container (pass your secrets as environment variables)
 docker run -p 8501:8501 \
   -e ANTHROPIC_API_KEY="your-api-key-here" \
-  risk-intell-app
+  meteoerait-software-app
 ```
 
 ---

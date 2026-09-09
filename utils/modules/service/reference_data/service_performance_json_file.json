@@ -1,0 +1,2319 @@
+{
+  "module_name": "Service",
+  "module_id": "SRVC_001",
+  "sub_modules": [
+    {
+      "sub_module_name": "Service Strategy Management",
+      "sub_module_id": "SST10000",
+      "value": [],
+      "groups": [
+        {
+          "group_name": "Financial Metrics",
+          "group_id": "SST10101",
+          "value": [
+            {
+              "metric_name": "Revenue Growth Rate",
+              "metric_id": "SST10102",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Profit Margin",
+              "metric_id": "SST10103",
+              "value": "75%"
+            },
+            {
+              "metric_name": "Service Revenue Contribution",
+              "metric_id": "SST10104",
+              "value": "65%"
+            },
+            {
+              "metric_name": "Cost of Service Delivery",
+              "metric_id": "SST10105",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Service Portfolio Profitability",
+              "metric_id": "SST10106",
+              "value": "85%"
+            }
+          ]
+        },
+        {
+          "group_name": "Customer Metrics",
+          "group_id": "SST10107",
+          "value": [
+            {
+              "metric_name": "Customer Lifetime Value (CLV)",
+              "metric_id": "SST10108",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Net Promoter Score (NPS)",
+              "metric_id": "SST10109",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Customer Satisfaction (CSAT) with Service",
+              "metric_id": "SST10110",
+              "value": "74%"
+            },
+            {
+              "metric_name": "Customer Retention Rate",
+              "metric_id": "SST10111",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Churn Rate",
+              "metric_id": "SST10112",
+              "value": "85%"
+            }
+          ]
+        },
+        {
+          "group_name": "Market Metrics",
+          "group_id": "SST10113",
+          "value": [
+            {
+              "metric_name": "Market Share",
+              "metric_id": "SST10114",
+              "value": "84%"
+            },
+            {
+              "metric_name": "Competitive Benchmarking",
+              "metric_id": "SST10115",
+              "value": "68%"
+            }
+          ]
+        },
+        {
+          "group_name": "Service Performance Metrics",
+          "group_id": "SST10116",
+          "value": [
+            {
+              "metric_name": "Service Adoption Rate",
+              "metric_id": "SST10117",
+              "value": "74%"
+            },
+            {
+              "metric_name": "Time to Market for New Services",
+              "metric_id": "SST10118",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Service Utilization Rate",
+              "metric_id": "SST10119",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Service Diversification",
+              "metric_id": "SST10120",
+              "value": "74%"
+            },
+            {
+              "metric_name": "Service Quality Index (SQI)",
+              "metric_id": "SST10121",
+              "value": "76%"
+            }
+          ]
+        },
+        {
+          "group_name": "Innovation and Strategic Metrics",
+          "group_id": "SST10122",
+          "value": [
+            {
+              "metric_name": "Innovation Rate",
+              "metric_id": "SST10123",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Strategic Alignment",
+              "metric_id": "SST10124",
+              "value": "74%"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sub_module_name": "Service Capability Delivery",
+      "sub_module_id": "CPD10000",
+      "value": [],
+      "groups": [
+        {
+          "group_name": "Performance and Reliability Metrics",
+          "group_id": "CPD10101",
+          "value": [
+            {
+              "metric_name": "Service Deployment Time",
+              "metric_id": "CPD10102",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Service Activation Success Rate",
+              "metric_id": "CPD10103",
+              "value": "75%"
+            },
+            {
+              "metric_name": "Service Availability",
+              "metric_id": "CPD10104",
+              "value": "65%"
+            },
+            {
+              "metric_name": "Mean Time to Repair (MTTR)",
+              "metric_id": "CPD10105",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Mean Time Between Failures (MTBF)",
+              "metric_id": "CPD10106",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Service Capability Utilization Rate",
+              "metric_id": "CPD10107",
+              "value": "74%"
+            },
+            {
+              "metric_name": "Service Capability Downtime",
+              "metric_id": "CPD10108",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Service Fault Rate",
+              "metric_id": "CPD10109",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Service Capability Redundancy",
+              "metric_id": "CPD10110",
+              "value": "74%"
+            }
+          ]
+        },
+        {
+          "group_name": "Customer Satisfaction and Quality Metrics",
+          "group_id": "CPD10111",
+          "value": [
+            {
+              "metric_name": "Customer Satisfaction (CSAT) with Service",
+              "metric_id": "CPD10112",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Service Quality Index (SQI)",
+              "metric_id": "CPD10113",
+              "value": "74%"
+            },
+            {
+              "metric_name": "Customer Feedback on Service Delivery",
+              "metric_id": "CPD10114",
+              "value": "84%"
+            }
+          ]
+        },
+        {
+          "group_name": "Cost and Efficiency Metrics",
+          "group_id": "CPD10115",
+          "value": [
+            {
+              "metric_name": "Service Capability Deployment Cost",
+              "metric_id": "CPD10116",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Service Delivery Efficiency",
+              "metric_id": "CPD10117",
+              "value": "74%"
+            }
+          ]
+        },
+        {
+          "group_name": "Compliance and Accuracy Metrics",
+          "group_id": "CPD10118",
+          "value": [
+            {
+              "metric_name": "Service Configuration Accuracy",
+              "metric_id": "CPD10119",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Service Delivery Compliance Rate",
+              "metric_id": "CPD10120",
+              "value": "74%"
+            }
+          ]
+        },
+        {
+          "group_name": "Scalability and Improvement Metrics",
+          "group_id": "CPD10121",
+          "value": [
+            {
+              "metric_name": "Service Capability Scalability",
+              "metric_id": "CPD10122",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Service Improvement Rate",
+              "metric_id": "CPD10123",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Service Performance Metrics",
+              "metric_id": "CPD10124",
+              "value": "74%"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sub_module_name": "Service Specification Lifecycle",
+      "sub_module_id": "SPL10000",
+      "value": [],
+      "groups": [
+        {
+          "group_name": "Development and Documentation Metrics",
+          "group_id": "SPL10101",
+          "value": [
+            {
+              "metric_name": "Specification Development Time",
+              "metric_id": "SPL10102",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Specification Accuracy Rate",
+              "metric_id": "SPL10103",
+              "value": "75%"
+            },
+            {
+              "metric_name": "Specification Documentation Quality",
+              "metric_id": "SPL10104",
+              "value": "65%"
+            }
+          ]
+        },
+        {
+          "group_name": "Approval and Change Management Metrics",
+          "group_id": "SPL10105",
+          "value": [
+            {
+              "metric_name": "Specification Approval Time",
+              "metric_id": "SPL10106",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Specification Change Request Rate",
+              "metric_id": "SPL10107",
+              "value": "74%"
+            },
+            {
+              "metric_name": "Change Implementation Time",
+              "metric_id": "SPL10108",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Specification Version Control",
+              "metric_id": "SPL10109",
+              "value": "85%"
+            }
+          ]
+        },
+        {
+          "group_name": "Compliance and Governance Metrics",
+          "group_id": "SPL10110",
+          "value": [
+            {
+              "metric_name": "Compliance Rate",
+              "metric_id": "SPL10111",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Specification Review Frequency",
+              "metric_id": "SPL10112",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Specification Impact Analysis",
+              "metric_id": "SPL10113",
+              "value": "74%"
+            }
+          ]
+        },
+        {
+          "group_name": "Customer and Stakeholder Metrics",
+          "group_id": "SPL10114",
+          "value": [
+            {
+              "metric_name": "Customer Satisfaction (CSAT) with Specification",
+              "metric_id": "SPL10115",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Stakeholder Engagement",
+              "metric_id": "SPL10116",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Stakeholder Satisfaction Score",
+              "metric_id": "SPL10117",
+              "value": "74%"
+            }
+          ]
+        },
+        {
+          "group_name": "Efficiency and Cost Metrics",
+          "group_id": "SPL10118",
+          "value": [
+            {
+              "metric_name": "Specification Lifecycle Cost",
+              "metric_id": "SPL10119",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Specification Reusability",
+              "metric_id": "SPL10120",
+              "value": "74%"
+            },
+            {
+              "metric_name": "Specification Adoption Rate",
+              "metric_id": "SPL10121",
+              "value": "76%"
+            }
+          ]
+        },
+        {
+          "group_name": "Training and Innovation Metrics",
+          "group_id": "SPL10122",
+          "value": [
+            {
+              "metric_name": "Specification Training Hours",
+              "metric_id": "SPL10123",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Specification Innovation Rate",
+              "metric_id": "SPL10124",
+              "value": "74%"
+            },
+            {
+              "metric_name": "Specification Performance Metrics",
+              "metric_id": "SPL10125",
+              "value": "78%"
+            }
+          ]
+        },
+        {
+          "group_name": "Error and Issue Resolution Metrics",
+          "group_id": "SPL10126",
+          "value": [
+            {
+              "metric_name": "Specification Error Resolution Time",
+              "metric_id": "SPL10127",
+              "value": "78%"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sub_module_name": "Service Support Management",
+      "sub_module_id": "SUP10000",
+      "value": [],
+      "groups": [
+        {
+          "group_name": "Incident Management Metrics",
+          "group_id": "SUP10101",
+          "value": [
+            {
+              "metric_name": "Incident Response Time",
+              "metric_id": "SUP10102",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Incident Resolution Time",
+              "metric_id": "SUP10103",
+              "value": "75%"
+            },
+            {
+              "metric_name": "First Contact Resolution (FCR) Rate",
+              "metric_id": "SUP10104",
+              "value": "65%"
+            },
+            {
+              "metric_name": "Support Ticket Volume",
+              "metric_id": "SUP10105",
+              "value": "68%"
+            }
+          ]
+        },
+        {
+          "group_name": "Customer Satisfaction and Feedback Metrics",
+          "group_id": "SUP10106",
+          "value": [
+            {
+              "metric_name": "Customer Satisfaction (CSAT) with Support",
+              "metric_id": "SUP10107",
+              "value": "74%"
+            },
+            {
+              "metric_name": "Customer Feedback on Support",
+              "metric_id": "SUP10108",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Net Promoter Score (NPS)",
+              "metric_id": "SUP10109",
+              "value": "85%"
+            }
+          ]
+        },
+        {
+          "group_name": "Service Performance and Reliability Metrics",
+          "group_id": "SUP10110",
+          "value": [
+            {
+              "metric_name": "Service Availability",
+              "metric_id": "SUP10111",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Mean Time to Repair (MTTR)",
+              "metric_id": "SUP10112",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Mean Time Between Failures (MTBF)",
+              "metric_id": "SUP10113",
+              "value": "74%"
+            },
+            {
+              "metric_name": "Support System Uptime",
+              "metric_id": "SUP10114",
+              "value": "84%"
+            },
+            {
+              "metric_name": "Escalation Rate",
+              "metric_id": "SUP10115",
+              "value": "68%"
+            }
+          ]
+        },
+        {
+          "group_name": "Support Agent and Efficiency Metrics",
+          "group_id": "SUP10116",
+          "value": [
+            {
+              "metric_name": "Support Agent Productivity",
+              "metric_id": "SUP10117",
+              "value": "74%"
+            },
+            {
+              "metric_name": "Support Cost per Incident",
+              "metric_id": "SUP10118",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Support Knowledge Base Utilization",
+              "metric_id": "SUP10119",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Support Training Hours per Agent",
+              "metric_id": "SUP10120",
+              "value": "74%"
+            }
+          ]
+        },
+        {
+          "group_name": "Service Level and Quality Metrics",
+          "group_id": "SUP10121",
+          "value": [
+            {
+              "metric_name": "Service Level Agreement (SLA) Compliance",
+              "metric_id": "SUP10122",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Support Interaction Quality Score",
+              "metric_id": "SUP10123",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Support Channel Effectiveness",
+              "metric_id": "SUP10124",
+              "value": "74%"
+            }
+          ]
+        },
+        {
+          "group_name": "Improvement and Innovation Metrics",
+          "group_id": "SUP10125",
+          "value": [
+            {
+              "metric_name": "Service Improvement Rate",
+              "metric_id": "SUP10126",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Support Interaction Quality Score",
+              "metric_id": "SUP10127",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Support Channel Effectiveness",
+              "metric_id": "SUP10128",
+              "value": "74%"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sub_module_name": "Service Activation Management",
+      "sub_module_id": "ACT10000",
+      "value": [],
+      "groups": [
+        {
+          "group_name": "Activation Efficiency Metrics",
+          "group_id": "ACT10101",
+          "value": [
+            {
+              "metric_name": "Service Activation Time",
+              "metric_id": "ACT10102",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Activation Success Rate",
+              "metric_id": "ACT10103",
+              "value": "75%"
+            },
+            {
+              "metric_name": "First-Time Activation Rate",
+              "metric_id": "ACT10104",
+              "value": "65%"
+            },
+            {
+              "metric_name": "Activation Order Processing Time",
+              "metric_id": "ACT10105",
+              "value": "68%"
+            }
+          ]
+        },
+        {
+          "group_name": "Customer Satisfaction and Feedback Metrics",
+          "group_id": "ACT10106",
+          "value": [
+            {
+              "metric_name": "Customer Satisfaction (CSAT) with Activation",
+              "metric_id": "ACT10107",
+              "value": "74%"
+            },
+            {
+              "metric_name": "Customer Feedback on Activation",
+              "metric_id": "ACT10108",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Customer Retention Post-Activation",
+              "metric_id": "ACT10109",
+              "value": "85%"
+            }
+          ]
+        },
+        {
+          "group_name": "Service Performance and Reliability Metrics",
+          "group_id": "ACT10110",
+          "value": [
+            {
+              "metric_name": "Service Availability Post-Activation",
+              "metric_id": "ACT10111",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Service Performance Post-Activation",
+              "metric_id": "ACT10112",
+              "value": "85%"
+            }
+          ]
+        },
+        {
+          "group_name": "Cost and Efficiency Metrics",
+          "group_id": "ACT10113",
+          "value": [
+            {
+              "metric_name": "Activation Cost per Service",
+              "metric_id": "ACT10114",
+              "value": "84%"
+            },
+            {
+              "metric_name": "Service Activation Workflow Efficiency",
+              "metric_id": "ACT10115",
+              "value": "68%"
+            }
+          ]
+        },
+        {
+          "group_name": "Error and Issue Resolution Metrics",
+          "group_id": "ACT10116",
+          "value": [
+            {
+              "metric_name": "Service Activation Failure Rate",
+              "metric_id": "ACT10117",
+              "value": "74%"
+            },
+            {
+              "metric_name": "Activation Error Rate",
+              "metric_id": "ACT10118",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Time to Resolve Activation Issues",
+              "metric_id": "ACT10119",
+              "value": "85%"
+            }
+          ]
+        },
+        {
+          "group_name": "Scalability and Automation Metrics",
+          "group_id": "ACT10120",
+          "value": [
+            {
+              "metric_name": "Automated Activation Rate",
+              "metric_id": "ACT10121",
+              "value": "76%"
+            },
+            {
+              "metric_name": "Service Activation Scalability",
+              "metric_id": "ACT10122",
+              "value": "85%"
+            }
+          ]
+        },
+        {
+          "group_name": "Training and Innovation Metrics",
+          "group_id": "ACT10123",
+          "value": [
+            {
+              "metric_name": "Training Hours for Activation Staff",
+              "metric_id": "ACT10124",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Innovation in Activation Processes",
+              "metric_id": "ACT10125",
+              "value": "85%"
+            }
+          ]
+        },
+        {
+          "group_name": "Compliance Metrics",
+          "group_id": "ACT10126",
+          "value": [
+            {
+              "metric_name": "Service Activation Compliance Rate",
+              "metric_id": "ACT10127",
+              "value": "76%"
+            }
+          ]
+        },
+        {
+          "group_name": "Volume Metrics",
+          "group_id": "ACT10128",
+          "value": [
+            {
+              "metric_name": "Activation Order Volume",
+              "metric_id": "ACT10129",
+              "value": "85%"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sub_module_name": "Service Problem Management",
+      "sub_module_id": "PRB10000",
+      "value": [],
+      "groups": [
+        {
+          "group_name": "Problem Detection and Reporting Metrics",
+          "group_id": "PRB10101",
+          "value": [
+            {
+              "metric_name": "Problem Detection Rate",
+              "metric_id": "PRB10102",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Incident Escalation Rate",
+              "metric_id": "PRB10103",
+              "value": "75%"
+            },
+            {
+              "metric_name": "Mean Time to Detect (MTTD)",
+              "metric_id": "PRB10104",
+              "value": "65%"
+            }
+          ]
+        },
+        {
+          "group_name": "Resolution and Efficiency Metrics",
+          "group_id": "PRB10105",
+          "value": [
+            {
+              "metric_name": "Problem Resolution Time",
+              "metric_id": "PRB10106",
+              "value": "85%"
+            },
+            {
+              "metric_name": "First Contact Resolution (FCR) Rate",
+              "metric_id": "PRB10107",
+              "value": "74%"
+            },
+            {
+              "metric_name": "Root Cause Analysis (RCA) Completion Rate",
+              "metric_id": "PRB10108",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Mean Time to Restore (MTTR)",
+              "metric_id": "PRB10109",
+              "value": "85%"
+            }
+          ]
+        },
+        {
+          "group_name": "Customer Satisfaction and Feedback Metrics",
+          "group_id": "PRB10110",
+          "value": [
+            {
+              "metric_name": "Customer Satisfaction (CSAT) with Problem Management",
+              "metric_id": "PRB10111",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Customer Feedback on Problem Management",
+              "metric_id": "PRB10112",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Service Quality Index (SQI)",
+              "metric_id": "PRB10113",
+              "value": "74%"
+            }
+          ]
+        },
+        {
+          "group_name": "Problem Recurrence and Severity Metrics",
+          "group_id": "PRB10114",
+          "value": [
+            {
+              "metric_name": "Problem Recurrence Rate",
+              "metric_id": "PRB10115",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Problem Severity Levels",
+              "metric_id": "PRB10116",
+              "value": "85%"
+            }
+          ]
+        },
+        {
+          "group_name": "Cost and Resource Metrics",
+          "group_id": "PRB10117",
+          "value": [
+            {
+              "metric_name": "Problem Resolution Cost",
+              "metric_id": "PRB10118",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Agent Productivity in Problem Management",
+              "metric_id": "PRB10119",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Problem Backlog",
+              "metric_id": "PRB10120",
+              "value": "74%"
+            }
+          ]
+        },
+        {
+          "group_name": "Service Performance and Reliability Metrics",
+          "group_id": "PRB10121",
+          "value": [
+            {
+              "metric_name": "Service Availability",
+              "metric_id": "PRB10122",
+              "value": "68%"
+            }
+          ]
+        },
+        {
+          "group_name": "Improvement and Compliance Metrics",
+          "group_id": "PRB10123",
+          "value": [
+            {
+              "metric_name": "Service Improvement Rate",
+              "metric_id": "PRB10124",
+              "value": "74%"
+            },
+            {
+              "metric_name": "Knowledge Base Utilization",
+              "metric_id": "PRB10125",
+              "value": "64%"
+            },
+            {
+              "metric_name": "Compliance Rate with Problem Management",
+              "metric_id": "PRB10126",
+              "value": "70%"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sub_module_name": "Service Performance Management",
+      "sub_module_id": "PFR10000",
+      "value": [],
+      "groups": [
+        {
+          "group_name": "Availability and Reliability Metrics",
+          "group_id": "PFR10101",
+          "value": [
+            {
+              "metric_name": "Service Availability",
+              "metric_id": "PFR10102",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Mean Time to Repair (MTTR)",
+              "metric_id": "PFR10103",
+              "value": "75%"
+            },
+            {
+              "metric_name": "Mean Time Between Failures (MTBF)",
+              "metric_id": "PFR10104",
+              "value": "65%"
+            },
+            {
+              "metric_name": "Service Degradation Incidents",
+              "metric_id": "PFR10105",
+              "value": "68%"
+            }
+          ]
+        },
+        {
+          "group_name": "Network and Performance Metrics",
+          "group_id": "PFR10106",
+          "value": [
+            {
+              "metric_name": "Network Latency",
+              "metric_id": "PFR10107",
+              "value": "74%"
+            },
+            {
+              "metric_name": "Packet Loss Rate",
+              "metric_id": "PFR10108",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Throughput",
+              "metric_id": "PFR10109",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Capacity Utilization",
+              "metric_id": "PFR10110",
+              "value": "74%"
+            },
+            {
+              "metric_name": "Service Performance Monitoring Coverage",
+              "metric_id": "PFR10111",
+              "value": "68%"
+            }
+          ]
+        },
+        {
+          "group_name": "Quality and Incident Management Metrics",
+          "group_id": "PFR10112",
+          "value": [
+            {
+              "metric_name": "Service Quality Index (SQI)",
+              "metric_id": "PFR10113",
+              "value": "74%"
+            },
+            {
+              "metric_name": "Incident Response Time",
+              "metric_id": "PFR10114",
+              "value": "84%"
+            },
+            {
+              "metric_name": "Incident Resolution Time",
+              "metric_id": "PFR10115",
+              "value": "68%"
+            },
+            {
+              "metric_name": "First Contact Resolution (FCR) Rate",
+              "metric_id": "PFR10116",
+              "value": "85%"
+            }
+          ]
+        },
+        {
+          "group_name": "Customer Satisfaction and Feedback Metrics",
+          "group_id": "PFR10117",
+          "value": [
+            {
+              "metric_name": "Customer Satisfaction (CSAT) with Service",
+              "metric_id": "PFR10118",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Customer Complaints",
+              "metric_id": "PFR10119",
+              "value": "85%"
+            }
+          ]
+        },
+        {
+          "group_name": "Compliance and Improvement Metrics",
+          "group_id": "PFR10120",
+          "value": [
+            {
+              "metric_name": "Service Level Agreement (SLA) Compliance",
+              "metric_id": "PFR10121",
+              "value": "76%"
+            },
+            {
+              "metric_name": "Service Performance Improvement Rate",
+              "metric_id": "PFR10122",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Performance Benchmarking",
+              "metric_id": "PFR10123",
+              "value": "85%"
+            }
+          ]
+        },
+        {
+          "group_name": "Analytics and Utilization Metrics",
+          "group_id": "PFR10124",
+          "value": [
+            {
+              "metric_name": "Performance Analytics Utilization",
+              "metric_id": "PFR10125",
+              "value": "68%"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sub_module_name": "Service Guiding & Mediation",
+      "sub_module_id": "GMD10000",
+      "value": [],
+      "groups": [
+        {
+          "group_name": "Processing and Performance Metrics",
+          "group_id": "GMD10101",
+          "value": [
+            {
+              "metric_name": "Mediation Processing Time",
+              "metric_id": "GMD10102",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Data Throughput",
+              "metric_id": "GMD10103",
+              "value": "75%"
+            },
+            {
+              "metric_name": "Real-Time Processing Rate",
+              "metric_id": "GMD10104",
+              "value": "65%"
+            },
+            {
+              "metric_name": "Error Resolution Time",
+              "metric_id": "GMD10105",
+              "value": "68%"
+            }
+          ]
+        },
+        {
+          "group_name": "Data Quality and Integrity Metrics",
+          "group_id": "GMD10106",
+          "value": [
+            {
+              "metric_name": "Data Accuracy Rate",
+              "metric_id": "GMD10107",
+              "value": "74%"
+            },
+            {
+              "metric_name": "Data Consistency",
+              "metric_id": "GMD10108",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Error Detection Rate",
+              "metric_id": "GMD10109",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Data Validation Rate",
+              "metric_id": "GMD10110",
+              "value": "74%"
+            },
+            {
+              "metric_name": "Mediation Data Integrity",
+              "metric_id": "GMD10111",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Data Correlation Accuracy",
+              "metric_id": "GMD10112",
+              "value": "85%"
+            }
+          ]
+        },
+        {
+          "group_name": "Reliability and Scalability Metrics",
+          "group_id": "GMD10113",
+          "value": [
+            {
+              "metric_name": "System Uptime",
+              "metric_id": "GMD10114",
+              "value": "84%"
+            },
+            {
+              "metric_name": "Mediation System Scalability",
+              "metric_id": "GMD10115",
+              "value": "68%"
+            }
+          ]
+        },
+        {
+          "group_name": "Compliance and Cost Metrics",
+          "group_id": "GMD10116",
+          "value": [
+            {
+              "metric_name": "Mediation Compliance Rate",
+              "metric_id": "GMD10117",
+              "value": "74%"
+            },
+            {
+              "metric_name": "Cost per Mediation Record",
+              "metric_id": "GMD10118",
+              "value": "68%"
+            }
+          ]
+        },
+        {
+          "group_name": "Customer Satisfaction and Feedback Metrics",
+          "group_id": "GMD10119",
+          "value": [
+            {
+              "metric_name": "Customer Satisfaction (CSAT) with Mediation",
+              "metric_id": "GMD10120",
+              "value": "74%"
+            },
+            {
+              "metric_name": "Customer Feedback on Mediation",
+              "metric_id": "GMD10121",
+              "value": "76%"
+            }
+          ]
+        },
+        {
+          "group_name": "Success and Volume Metrics",
+          "group_id": "GMD10122",
+          "value": [
+            {
+              "metric_name": "Mediation Success Rate",
+              "metric_id": "GMD10123",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Mediation Volume",
+              "metric_id": "GMD10124",
+              "value": "74%"
+            }
+          ]
+        },
+        {
+          "group_name": "Automation Metrics",
+          "group_id": "GMD10125",
+          "value": [
+            {
+              "metric_name": "Automated Mediation Rate",
+              "metric_id": "GMD10126",
+              "value": "81%"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sub_module_name": "Service Capacity Management",
+      "sub_module_id": "SCM10000",
+      "value": [],
+      "groups": [
+        {
+          "group_name": "Utilization and Efficiency Metrics",
+          "group_id": "SCM10101",
+          "value": [
+            {
+              "metric_name": "Capacity Utilization Rate",
+              "metric_id": "SCM10102",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Resource Allocation Efficiency",
+              "metric_id": "SCM10103",
+              "value": "75%"
+            },
+            {
+              "metric_name": "Idle Capacity Rate",
+              "metric_id": "SCM10104",
+              "value": "65%"
+            },
+            {
+              "metric_name": "Infrastructure Utilization",
+              "metric_id": "SCM10105",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Capacity Utilization by Service",
+              "metric_id": "SCM10106",
+              "value": "85%"
+            }
+          ]
+        },
+        {
+          "group_name": "Forecasting and Planning Metrics",
+          "group_id": "SCM10107",
+          "value": [
+            {
+              "metric_name": "Service Demand Forecast Accuracy",
+              "metric_id": "SCM10108",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Capacity Planning Accuracy",
+              "metric_id": "SCM10109",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Capacity Monitoring Coverage",
+              "metric_id": "SCM10110",
+              "value": "74%"
+            },
+            {
+              "metric_name": "Capacity Utilization Trends",
+              "metric_id": "SCM10111",
+              "value": "68%"
+            }
+          ]
+        },
+        {
+          "group_name": "Performance at Peak Load Metrics",
+          "group_id": "SCM10112",
+          "value": [
+            {
+              "metric_name": "Peak Usage Time",
+              "metric_id": "SCM10113",
+              "value": "74%"
+            },
+            {
+              "metric_name": "Service Performance at Peak Load",
+              "metric_id": "SCM10114",
+              "value": "84%"
+            }
+          ]
+        },
+        {
+          "group_name": "Scalability and Expansion Metrics",
+          "group_id": "SCM10115",
+          "value": [
+            {
+              "metric_name": "Service Scalability",
+              "metric_id": "SCM10116",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Capacity Expansion Time",
+              "metric_id": "SCM10117",
+              "value": "74%"
+            }
+          ]
+        },
+        {
+          "group_name": "Cost Metrics",
+          "group_id": "SCM10118",
+          "value": [
+            {
+              "metric_name": "Cost per Capacity Unit",
+              "metric_id": "SCM10119",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Capacity Investment Return",
+              "metric_id": "SCM10120",
+              "value": "74%"
+            }
+          ]
+        },
+        {
+          "group_name": "Issue and Incident Metrics",
+          "group_id": "SCM10121",
+          "value": [
+            {
+              "metric_name": "Network Congestion Incidents",
+              "metric_id": "SCM10122",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Capacity Shortfall Rate",
+              "metric_id": "SCM10123",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Capacity Bottlenecks",
+              "metric_id": "SCM10124",
+              "value": "74%"
+            },
+            {
+              "metric_name": "Customer Impact due to Capacity Issues",
+              "metric_id": "SCM10125",
+              "value": "78%"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sub_module_name": "Service Catalog Lifecycle Management",
+      "sub_module_id": "CLC10000",
+      "value": [],
+      "groups": [
+        {
+          "group_name": "Accuracy and Consistency Metrics",
+          "group_id": "CLC10101",
+          "value": [
+            {
+              "metric_name": "Service Catalog Accuracy",
+              "metric_id": "CLC10102",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Service Catalog Consistency",
+              "metric_id": "CLC10103",
+              "value": "75%"
+            },
+            {
+              "metric_name": "Catalog Error Resolution Time",
+              "metric_id": "CLC10104",
+              "value": "65%"
+            }
+          ]
+        },
+        {
+          "group_name": "Update and Compliance Metrics",
+          "group_id": "CLC10105",
+          "value": [
+            {
+              "metric_name": "Catalog Update Frequency",
+              "metric_id": "CLC10106",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Service Catalog Compliance",
+              "metric_id": "CLC10107",
+              "value": "74%"
+            },
+            {
+              "metric_name": "Policy Update Frequency",
+              "metric_id": "CLC10108",
+              "value": "68%"
+            }
+          ]
+        },
+        {
+          "group_name": "Adoption and Utilization Metrics",
+          "group_id": "CLC10109",
+          "value": [
+            {
+              "metric_name": "Service Adoption Rate",
+              "metric_id": "CLC10110",
+              "value": "74%"
+            },
+            {
+              "metric_name": "Service Catalog Utilization Rate",
+              "metric_id": "CLC10111",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Service Onboarding Time",
+              "metric_id": "CLC10112",
+              "value": "85%"
+            }
+          ]
+        },
+        {
+          "group_name": "Lifecycle and Performance Metrics",
+          "group_id": "CLC10113",
+          "value": [
+            {
+              "metric_name": "Service Decommissioning Rate",
+              "metric_id": "CLC10114",
+              "value": "84%"
+            },
+            {
+              "metric_name": "Time to Market for New Services",
+              "metric_id": "CLC10115",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Service Lifecycle Management Cost",
+              "metric_id": "CLC10116",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Service Performance Metrics",
+              "metric_id": "CLC10117",
+              "value": "74%"
+            }
+          ]
+        },
+        {
+          "group_name": "Customer Satisfaction and Feedback Metrics",
+          "group_id": "CLC10118",
+          "value": [
+            {
+              "metric_name": "Customer Satisfaction (CSAT) with Service Catalog",
+              "metric_id": "CLC10119",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Customer Feedback on Service Catalog",
+              "metric_id": "CLC10120",
+              "value": "74%"
+            },
+            {
+              "metric_name": "Customer Retention Post-Activation",
+              "metric_id": "CLC10121",
+              "value": "76%"
+            }
+          ]
+        },
+        {
+          "group_name": "Accessibility and Training Metrics",
+          "group_id": "CLC10122",
+          "value": [
+            {
+              "metric_name": "Service Catalog Accessibility",
+              "metric_id": "CLC10123",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Service Catalog Training Hours",
+              "metric_id": "CLC10124",
+              "value": "74%"
+            },
+            {
+              "metric_name": "Innovation and Diversification Metrics",
+              "metric_id": "CLC10125",
+              "value": "76%"
+            },
+            {
+              "metric_name": "Service Catalog Innovation Rate",
+              "metric_id": "CLC10126",
+              "value": "78%"
+            },
+            {
+              "metric_name": "Service Portfolio Diversification",
+              "metric_id": "CLC10127",
+              "value": "58%"
+            },
+            {
+              "metric_name": "Usage Analytics and Insights Metrics",
+              "metric_id": "CLC10128",
+              "value": "81%"
+            },
+            {
+              "metric_name": "Service Usage Analytics",
+              "metric_id": "CLC10129",
+              "value": "92%"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sub_module_name": "Service Catalog Operational Readiness Management",
+      "sub_module_id": "ORC10000",
+      "value": [],
+      "groups": [
+        {
+          "group_name": "Readiness Verification and Testing Metrics",
+          "group_id": "ORC10101",
+          "value": [
+            {
+              "metric_name": "Service Readiness Verification Rate",
+              "metric_id": "ORC10102",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Operational Readiness Test Completion Rate",
+              "metric_id": "ORC10103",
+              "value": "75%"
+            },
+            {
+              "metric_name": "Readiness Issue Detection Rate",
+              "metric_id": "ORC10104",
+              "value": "65%"
+            },
+            {
+              "metric_name": "Service Monitoring Readiness",
+              "metric_id": "ORC10105",
+              "value": "68%"
+            }
+          ]
+        },
+        {
+          "group_name": "Launch and Deployment Metrics",
+          "group_id": "ORC10106",
+          "value": [
+            {
+              "metric_name": "Service Launch Success Rate",
+              "metric_id": "ORC10107",
+              "value": "74%"
+            },
+            {
+              "metric_name": "Service Deployment Readiness",
+              "metric_id": "ORC10108",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Service Transition Time",
+              "metric_id": "ORC10109",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Service Rollback Rate",
+              "metric_id": "ORC10110",
+              "value": "74%"
+            }
+          ]
+        },
+        {
+          "group_name": "Customer Satisfaction and Feedback Metrics",
+          "group_id": "ORC10111",
+          "value": [
+            {
+              "metric_name": "Customer Satisfaction (CSAT) with Service Readiness",
+              "metric_id": "ORC10112",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Readiness Feedback Loop Closure",
+              "metric_id": "ORC10113",
+              "value": "74%"
+            }
+          ]
+        },
+        {
+          "group_name": "Post-Launch Performance and Incident Metrics",
+          "group_id": "ORC10114",
+          "value": [
+            {
+              "metric_name": "Service Performance Post-Launch",
+              "metric_id": "ORC10115",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Incident Rate Post-Launch",
+              "metric_id": "ORC10116",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Operational Documentation Quality",
+              "metric_id": "ORC10117",
+              "value": "74%"
+            },
+            {
+              "metric_name": "Operational Readiness Compliance",
+              "metric_id": "ORC10118",
+              "value": "68%"
+            }
+          ]
+        },
+        {
+          "group_name": "Efficiency and Cost Metrics",
+          "group_id": "ORC10119",
+          "value": [
+            {
+              "metric_name": "Time to Operational Readiness",
+              "metric_id": "ORC10120",
+              "value": "74%"
+            },
+            {
+              "metric_name": "Service Onboarding Efficiency",
+              "metric_id": "ORC10121",
+              "value": "76%"
+            }
+          ]
+        },
+        {
+          "group_name": "Risk and Training Metrics",
+          "group_id": "ORC10122",
+          "value": [
+            {
+              "metric_name": "Operational Risk Assessment",
+              "metric_id": "ORC10123",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Readiness Training Hours",
+              "metric_id": "ORC10124",
+              "value": "74%"
+            }
+          ]
+        },
+        {
+          "group_name": "Criteria and Adherence Metrics",
+          "group_id": "ORC10125",
+          "value": [
+            {
+              "metric_name": "Readiness Criteria Adherence",
+              "metric_id": "ORC10126",
+              "value": "77%"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sub_module_name": "Service Catalog Content Management",
+      "sub_module_id": "SCC10000",
+      "value": [],
+      "groups": [
+        {
+          "group_name": "Quality and Accuracy Metrics",
+          "group_id": "SCC10101",
+          "value": [
+            {
+              "metric_name": "Content Accuracy Rate",
+              "metric_id": "SCC10102",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Content Completeness",
+              "metric_id": "SCC10103",
+              "value": "75%"
+            },
+            {
+              "metric_name": "Content Consistency",
+              "metric_id": "SCC10104",
+              "value": "65%"
+            }
+          ]
+        },
+        {
+          "group_name": "Update and Review Metrics",
+          "group_id": "SCC10105",
+          "value": [
+            {
+              "metric_name": "Content Update Frequency",
+              "metric_id": "SCC10106",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Content Approval Time",
+              "metric_id": "SCC10107",
+              "value": "74%"
+            },
+            {
+              "metric_name": "Content Review Frequency",
+              "metric_id": "SCC10108",
+              "value": "68%"
+            }
+          ]
+        },
+        {
+          "group_name": "Customer Satisfaction and Feedback Metrics",
+          "group_id": "SCC10109",
+          "value": [
+            {
+              "metric_name": "Customer Satisfaction (CSAT) with Catalog Content",
+              "metric_id": "SCC10110",
+              "value": "74%"
+            },
+            {
+              "metric_name": "Customer Feedback on Catalog Content",
+              "metric_id": "SCC10111",
+              "value": "68%"
+            }
+          ]
+        },
+        {
+          "group_name": "Accessibility and Engagement Metrics",
+          "group_id": "SCC10112",
+          "value": [
+            {
+              "metric_name": "Content Accessibility",
+              "metric_id": "SCC10113",
+              "value": "74%"
+            },
+            {
+              "metric_name": "Content Engagement Rate",
+              "metric_id": "SCC10114",
+              "value": "84%"
+            },
+            {
+              "metric_name": "Content Searchability",
+              "metric_id": "SCC10115",
+              "value": "68%"
+            }
+          ]
+        },
+        {
+          "group_name": "Error and Compliance Metrics",
+          "group_id": "SCC10116",
+          "value": [
+            {
+              "metric_name": "Content Error Resolution Time",
+              "metric_id": "SCC10117",
+              "value": "74%"
+            },
+            {
+              "metric_name": "Content Compliance Rate",
+              "metric_id": "SCC10118",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Content Redundancy Rate",
+              "metric_id": "SCC10119",
+              "value": "85%"
+            }
+          ]
+        },
+        {
+          "group_name": "Lifecycle and Cost Metrics",
+          "group_id": "SCC10120",
+          "value": [
+            {
+              "metric_name": "Content Lifecycle Management Cost",
+              "metric_id": "SCC10121",
+              "value": "76%"
+            },
+            {
+              "metric_name": "Content Publication Time",
+              "metric_id": "SCC10122",
+              "value": "68%"
+            }
+          ]
+        },
+        {
+          "group_name": "Innovation and Personalization Metrics",
+          "group_id": "SCC10123",
+          "value": [
+            {
+              "metric_name": "Content Innovation Rate",
+              "metric_id": "SCC10124",
+              "value": "74%"
+            },
+            {
+              "metric_name": "Content Personalization Effectiveness",
+              "metric_id": "SCC10125",
+              "value": "81%"
+            }
+          ]
+        },
+        {
+          "group_name": "Utilization and Usage Metrics",
+          "group_id": "SCC10126",
+          "value": [
+            {
+              "metric_name": "Content Utilization Rate",
+              "metric_id": "SCC10127",
+              "value": "76%"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sub_module_name": "Service Catalog Planning Management",
+      "sub_module_id": "SCP10000",
+      "value": [],
+      "groups": [
+        {
+          "group_name": "Accuracy and Efficiency Metrics",
+          "group_id": "SCP10101",
+          "value": [
+            {
+              "metric_name": "Service Planning Accuracy",
+              "metric_id": "SCP10102",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Service Planning Efficiency",
+              "metric_id": "SCP10103",
+              "value": "75%"
+            },
+            {
+              "metric_name": "Service Demand Forecast Accuracy",
+              "metric_id": "SCP10104",
+              "value": "65%"
+            },
+            {
+              "metric_name": "Time to Market for Planned Services",
+              "metric_id": "SCP10105",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Service Planning Cycle Time",
+              "metric_id": "SCP10106",
+              "value": "85%"
+            }
+          ]
+        },
+        {
+          "group_name": "Portfolio and Alignment Metrics",
+          "group_id": "SCP10107",
+          "value": [
+            {
+              "metric_name": "Service Portfolio Alignment",
+              "metric_id": "SCP10108",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Service Portfolio Diversification",
+              "metric_id": "SCP10109",
+              "value": "85%"
+            }
+          ]
+        },
+        {
+          "group_name": "Customer Satisfaction and Feedback Metrics",
+          "group_id": "SCP10110",
+          "value": [
+            {
+              "metric_name": "Customer Satisfaction (CSAT) with Planned Services",
+              "metric_id": "SCP10111",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Customer Feedback on Planned Services",
+              "metric_id": "SCP10112",
+              "value": "85%"
+            }
+          ]
+        },
+        {
+          "group_name": "Cost and Resource Metrics",
+          "group_id": "SCP10113",
+          "value": [
+            {
+              "metric_name": "Service Planning Cost",
+              "metric_id": "SCP10114",
+              "value": "84%"
+            },
+            {
+              "metric_name": "Resource Allocation for Planned Services",
+              "metric_id": "SCP10115",
+              "value": "68%"
+            }
+          ]
+        },
+        {
+          "group_name": "Innovation and Risk Management Metrics",
+          "group_id": "SCP10116",
+          "value": [
+            {
+              "metric_name": "Service Innovation Rate",
+              "metric_id": "SCP10117",
+              "value": "74%"
+            },
+            {
+              "metric_name": "Risk Management in Service Planning",
+              "metric_id": "SCP10118",
+              "value": "68%"
+            }
+          ]
+        },
+        {
+          "group_name": "Compliance and Documentation Metrics",
+          "group_id": "SCP10119",
+          "value": [
+            {
+              "metric_name": "Service Planning Compliance",
+              "metric_id": "SCP10120",
+              "value": "74%"
+            },
+            {
+              "metric_name": "Service Planning Documentation Quality",
+              "metric_id": "SCP10121",
+              "value": "76%"
+            },
+            {
+              "metric_name": "Service Planning Review Frequency",
+              "metric_id": "SCP10122",
+              "value": "68%"
+            }
+          ]
+        },
+        {
+          "group_name": "Stakeholder and Engagement Metrics",
+          "group_id": "SCP10123",
+          "value": [
+            {
+              "metric_name": "Stakeholder Engagement in Planning",
+              "metric_id": "SCP10124",
+              "value": "74%"
+            },
+            {
+              "metric_name": "Service Planning Integration",
+              "metric_id": "SCP10125",
+              "value": "65%"
+            }
+          ]
+        },
+        {
+          "group_name": "Performance and Outcome Metrics",
+          "group_id": "SCP10126",
+          "value": [
+            {
+              "metric_name": "Planned Service Performance Metrics",
+              "metric_id": "SCP10127",
+              "value": "76%"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sub_module_name": "Service Anomaly Lifecycle Management",
+      "sub_module_id": "ALM10000",
+      "value": [],
+      "groups": [
+        {
+          "group_name": "Detection and Identification Metrics",
+          "group_id": "ALM10101",
+          "value": [
+            {
+              "metric_name": "Anomaly Detection Rate",
+              "metric_id": "ALM10102",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Mean Time to Detect (MTTD)",
+              "metric_id": "ALM10103",
+              "value": "75%"
+            },
+            {
+              "metric_name": "Mean Time to Identify (MTTI)",
+              "metric_id": "ALM10104",
+              "value": "65%"
+            },
+            {
+              "metric_name": "Anomaly Reporting Accuracy",
+              "metric_id": "ALM10105",
+              "value": "68%"
+            }
+          ]
+        },
+        {
+          "group_name": "Resolution and Efficiency Metrics",
+          "group_id": "ALM10106",
+          "value": [
+            {
+              "metric_name": "Anomaly Resolution Time",
+              "metric_id": "ALM10107",
+              "value": "74%"
+            },
+            {
+              "metric_name": "Anomaly Response Time",
+              "metric_id": "ALM10108",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Anomaly Resolution Success Rate",
+              "metric_id": "ALM10109",
+              "value": "85%"
+            }
+          ]
+        },
+        {
+          "group_name": "Impact and Recurrence Metrics",
+          "group_id": "ALM10110",
+          "value": [
+            {
+              "metric_name": "Anomaly Impact Assessment",
+              "metric_id": "ALM10111",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Anomaly Frequency",
+              "metric_id": "ALM10112",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Anomaly Recurrence Rate",
+              "metric_id": "ALM10113",
+              "value": "74%"
+            },
+            {
+              "metric_name": "Customer Impact due to Anomalies",
+              "metric_id": "ALM10114",
+              "value": "84%"
+            }
+          ]
+        },
+        {
+          "group_name": "Prevention and Trend Analysis Metrics",
+          "group_id": "ALM10115",
+          "value": [
+            {
+              "metric_name": "Anomaly Prevention Rate",
+              "metric_id": "ALM10116",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Anomaly Trend Analysis",
+              "metric_id": "ALM10117",
+              "value": "74%"
+            }
+          ]
+        },
+        {
+          "group_name": "Cost and Resource Metrics",
+          "group_id": "ALM10118",
+          "value": [
+            {
+              "metric_name": "Anomaly Management Cost",
+              "metric_id": "ALM10119",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Anomaly Training Hours",
+              "metric_id": "ALM10120",
+              "value": "74%"
+            }
+          ]
+        },
+        {
+          "group_name": "Documentation and Feedback Metrics",
+          "group_id": "ALM10121",
+          "value": [
+            {
+              "metric_name": "Anomaly Documentation Quality",
+              "metric_id": "ALM10122",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Anomaly Feedback Loop Closure",
+              "metric_id": "ALM10123",
+              "value": "85%"
+            }
+          ]
+        },
+        {
+          "group_name": "Root Cause Analysis and Monitoring Metrics",
+          "group_id": "ALM10124",
+          "value": [
+            {
+              "metric_name": "Anomaly Root Cause Analysis (RCA) Effectiveness",
+              "metric_id": "ALM10125",
+              "value": "82%"
+            },
+            {
+              "metric_name": "Anomaly Monitoring Coverage",
+              "metric_id": "ALM10126",
+              "value": "66%"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sub_module_name": "Service Anomaly Management",
+      "sub_module_id": "SAN10000",
+      "value": [],
+      "groups": [
+        {
+          "group_name": "Detection and Identification Metrics",
+          "group_id": "SAN10101",
+          "value": [
+            {
+              "metric_name": "Anomaly Detection Rate",
+              "metric_id": "SAN10102",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Mean Time to Detect (MTTD)",
+              "metric_id": "SAN10103",
+              "value": "75%"
+            },
+            {
+              "metric_name": "Mean Time to Identify (MTTI)",
+              "metric_id": "SAN10104",
+              "value": "65%"
+            },
+            {
+              "metric_name": "Anomaly Reporting Accuracy",
+              "metric_id": "SAN10105",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Anomaly Detection Method Effectiveness",
+              "metric_id": "SAN10106",
+              "value": "85%"
+            }
+          ]
+        },
+        {
+          "group_name": "Resolution and Efficiency Metrics",
+          "group_id": "SAN10107",
+          "value": [
+            {
+              "metric_name": "Anomaly Resolution Time",
+              "metric_id": "SAN10108",
+              "value": "68%"
+            },
+            {
+              "metric_name": "First Contact Resolution (FCR) Rate",
+              "metric_id": "SAN10109",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Anomaly Resolution Success Rate",
+              "metric_id": "SAN10110",
+              "value": "74%"
+            },
+            {
+              "metric_name": "Anomaly Response Time",
+              "metric_id": "SAN10111",
+              "value": "68%"
+            }
+          ]
+        },
+        {
+          "group_name": "Impact and Recurrence Metrics",
+          "group_id": "SAN10112",
+          "value": [
+            {
+              "metric_name": "Customer Impact of Anomalies",
+              "metric_id": "SAN10113",
+              "value": "74%"
+            },
+            {
+              "metric_name": "Anomaly Recurrence Rate",
+              "metric_id": "SAN10114",
+              "value": "84%"
+            },
+            {
+              "metric_name": "Anomaly Escalation Rate",
+              "metric_id": "SAN10115",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Customer Feedback on Anomaly Management",
+              "metric_id": "SAN10116",
+              "value": "85%"
+            }
+          ]
+        },
+        {
+          "group_name": "Root Cause and Prevention Metrics",
+          "group_id": "SAN10117",
+          "value": [
+            {
+              "metric_name": "Root Cause Analysis (RCA) Effectiveness",
+              "metric_id": "SAN10118",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Anomaly Prevention Rate",
+              "metric_id": "SAN10119",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Anomaly Trend Analysis",
+              "metric_id": "SAN10120",
+              "value": "74%"
+            }
+          ]
+        },
+        {
+          "group_name": "Cost and Documentation Metrics",
+          "group_id": "SAN10121",
+          "value": [
+            {
+              "metric_name": "Anomaly Management Cost",
+              "metric_id": "SAN10122",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Anomaly Documentation Quality",
+              "metric_id": "SAN10123",
+              "value": "85%"
+            }
+          ]
+        },
+        {
+          "group_name": "Monitoring and Coverage Metrics",
+          "group_id": "SAN10124",
+          "value": [
+            {
+              "metric_name": "Anomaly Monitoring Coverage",
+              "metric_id": "SAN10125",
+              "value": "81%"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sub_module_name": "Service Specification Management",
+      "sub_module_id": "SSM10000",
+      "value": [],
+      "groups": [
+        {
+          "group_name": "Development and Documentation Metrics",
+          "group_id": "SSM10101",
+          "value": [
+            {
+              "metric_name": "Time to Develop Specifications",
+              "metric_id": "SSM10102",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Specification Documentation Quality",
+              "metric_id": "SSM10103",
+              "value": "75%"
+            },
+            {
+              "metric_name": "Specification Review Frequency",
+              "metric_id": "SSM10104",
+              "value": "65%"
+            },
+            {
+              "metric_name": "Training Hours on Specifications",
+              "metric_id": "SSM10105",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Version Control Effectiveness",
+              "metric_id": "SSM10106",
+              "value": "85%"
+            }
+          ]
+        },
+        {
+          "group_name": "Accuracy and Approval Metrics",
+          "group_id": "SSM10107",
+          "value": [
+            {
+              "metric_name": "Specification Accuracy Rate",
+              "metric_id": "SSM10108",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Specification Approval Time",
+              "metric_id": "SSM10109",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Change Request Rate",
+              "metric_id": "SSM10110",
+              "value": "74%"
+            },
+            {
+              "metric_name": "Change Implementation Time",
+              "metric_id": "SSM10111",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Specification Error Resolution Time",
+              "metric_id": "SSM10112",
+              "value": "85%"
+            }
+          ]
+        },
+        {
+          "group_name": "Compliance and Governance Metrics",
+          "group_id": "SSM10113",
+          "value": [
+            {
+              "metric_name": "Compliance Rate",
+              "metric_id": "SSM10114",
+              "value": "84%"
+            },
+            {
+              "metric_name": "Impact Analysis Accuracy",
+              "metric_id": "SSM10115",
+              "value": "68%"
+            }
+          ]
+        },
+        {
+          "group_name": "Customer and Stakeholder Metrics",
+          "group_id": "SSM10116",
+          "value": [
+            {
+              "metric_name": "Customer Satisfaction (CSAT) with Specifications",
+              "metric_id": "SSM10117",
+              "value": "74%"
+            },
+            {
+              "metric_name": "Stakeholder Engagement",
+              "metric_id": "SSM10118",
+              "value": "68%"
+            }
+          ]
+        },
+        {
+          "group_name": "Cost and Lifecycle Metrics",
+          "group_id": "SSM10119",
+          "value": [
+            {
+              "metric_name": "Specification Lifecycle Cost",
+              "metric_id": "SSM10120",
+              "value": "74%"
+            },
+            {
+              "metric_name": "Specification Reusability",
+              "metric_id": "SSM10121",
+              "value": "76%"
+            },
+            {
+              "metric_name": "Specification Adoption Rate",
+              "metric_id": "SSM10122",
+              "value": "68%"
+            }
+          ]
+        },
+        {
+          "group_name": "Innovation and Performance Metrics",
+          "group_id": "SSM10123",
+          "value": [
+            {
+              "metric_name": "Specification Innovation Rate",
+              "metric_id": "SSM10124",
+              "value": "74%"
+            },
+            {
+              "metric_name": "Performance Metrics of Specifications",
+              "metric_id": "SSM10125",
+              "value": "81%"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
