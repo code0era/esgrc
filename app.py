@@ -53,7 +53,7 @@ html, body, [class*="css"] { font-family: 'Inter', sans-serif !important; }
 [data-testid="stToolbar"]    { display: none !important; }
 header[data-testid="stHeader"] { 
     background: transparent !important; 
-    z-index: 120 !important;
+    z-index: 9999999 !important;
     pointer-events: none !important; /* Allow clicking through transparent parts */
 }
 footer, [data-testid="stFooter"] { display: none !important; }
@@ -66,7 +66,7 @@ footer, [data-testid="stFooter"] { display: none !important; }
     color: #FFFFFF !important;
     border: 1px solid #00E676 !important;
     transition: all 0.3s ease !important;
-    z-index: 120 !important;
+    z-index: 9999999 !important;
     pointer-events: auto !important; /* Re-enable clicking for the button */
     position: fixed !important;
     top: 110px !important;
@@ -111,6 +111,7 @@ h1, h2, h3, h4, h5, h6 {
 [data-testid="stSidebar"] {
     background: linear-gradient(135deg, #25282d 0%, #21151b 100%) !important;
     border-right: none !important;
+    z-index: 9999999 !important;
 }
 [data-testid="stSidebar"] * { color: #FFFFFF !important; }
 [data-testid="stSidebar"] .stButton > button {
