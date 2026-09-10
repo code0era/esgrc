@@ -2095,9 +2095,9 @@ def render_module_home(active_module: str):
         f'{cfg.get("subtitle", "")}'
         f'</div>'
         f'<div style="display:flex;justify-content:center;gap:1.2rem;align-items:center;">'
-        f'<button id="get-started-btn" style="background:{theme_color};color:white;border:none;padding:0.85rem 2.8rem;border-radius:30px;font-weight:700;font-size:1.15rem;cursor:pointer;transition:all 0.3s;box-shadow:0 6px 20px rgba(0,0,0,0.4);">'
+        f'<a id="get-started-btn" href="?tab=pipeline" target="_self" style="display:inline-flex;align-items:center;justify-content:center;background:{theme_color};color:white;text-decoration:none;border:none;padding:0.85rem 2.8rem;border-radius:30px;font-weight:700;font-size:1.15rem;cursor:pointer;transition:all 0.3s;box-shadow:0 6px 20px rgba(0,0,0,0.4);">'
         f'Launch {cfg.get("display", mk)} Pipeline →'
-        f'</button>'
+        f'</a>'
         f'</div>'
         f'<div id="hero-stats" style="margin-top:3.5rem;display:flex;justify-content:center;gap:1.2rem;flex-wrap:wrap;max-width:1100px;margin-left:auto;margin-right:auto;">'
         f'{stats_html}'
@@ -2150,9 +2150,9 @@ def render_module_home(active_module: str):
         f'</div>'
         f'</div>'
         f'<div>'
-        f'<button id="banner-pipeline-btn" style="background:#162130;color:white;border:none;padding:0.75rem 1.8rem;border-radius:8px;font-weight:700;font-size:0.95rem;cursor:pointer;transition:all 0.2s;">'
+        f'<a id="banner-pipeline-btn" href="?tab=pipeline" target="_self" style="display:inline-flex;align-items:center;justify-content:center;background:#162130;color:white;text-decoration:none;border:none;padding:0.75rem 1.8rem;border-radius:8px;font-weight:700;font-size:0.95rem;cursor:pointer;transition:all 0.2s;">'
         f'Open {cfg.get("display", mk)} Pipeline →'
-        f'</button>'
+        f'</a>'
         f'</div>'
         f'</div>'
     )
@@ -2160,24 +2160,34 @@ def render_module_home(active_module: str):
 
     components.html("""
     <script>
-    const doc = window.parent.document;
-    function bindTabButtons() {
-        ['get-started-btn', 'banner-pipeline-btn'].forEach(btnId => {
-            const btn = doc.getElementById(btnId);
-            if (btn && !btn.dataset.bound) {
-                btn.dataset.bound = "true";
-                btn.addEventListener('click', function() {
-                    const tabs = doc.querySelectorAll('button[data-baseweb="tab"]');
-                    if (tabs.length > 1) {
-                        tabs[1].click();
-                        window.parent.scrollTo({ top: 0, behavior: 'smooth' });
-                    }
-                });
-            }
-        });
+    try {
+        const doc = window.parent.document;
+        function bindTabButtons() {
+            ['get-started-btn', 'banner-pipeline-btn'].forEach(btnId => {
+                const btn = doc.getElementById(btnId);
+                if (btn && !btn.dataset.bound) {
+                    btn.dataset.bound = "true";
+                    btn.addEventListener('click', function(e) {
+                        const tabs = doc.querySelectorAll('button[data-baseweb="tab"]');
+                        if (tabs.length > 1) {
+                            for (let t of tabs) {
+                                if (t.innerText && t.innerText.includes('Get Started')) {
+                                    e.preventDefault();
+                                    t.click();
+                                    window.parent.scrollTo({ top: 0, behavior: 'smooth' });
+                                    return;
+                                }
+                            }
+                        }
+                    });
+                }
+            });
+        }
+        let checkExist = setInterval(bindTabButtons, 150);
+        setTimeout(() => clearInterval(checkExist), 4000);
+    } catch (err) {
+        // Cross-origin iframe sandbox mode (Streamlit Community Cloud): href="?tab=pipeline" fallback seamlessly handles navigation.
     }
-    let checkExist = setInterval(bindTabButtons, 100);
-    setTimeout(() => clearInterval(checkExist), 4000);
     </script>
     """, height=0, width=0)
 
@@ -2199,30 +2209,56 @@ def main():
 
     st.divider()
 
-    # ── Main Layout (No Chat Sidebar) ─────────────────────────────────────────
-    # Top Navigation Menu
-    nav_home, nav_get_started, nav_docs, nav_contact, nav_more = st.tabs([
-        "Home", "Get Started", "Docs", "Contact Us", "More"
-    ])
+    # ── Main Layout Navigation ────────────────────────────────────────────────
+    if "active_nav_tab" not in st.session_state:
+        st.session_state.active_nav_tab = "Home"
 
-    with nav_home:
+    # Handle direct query param navigation (from Hero and Banner Launch buttons)
+    tab_param = st.query_params.get("tab", "").lower()
+    if tab_param in ["pipeline", "get_started", "get-started"]:
+        st.session_state.active_nav_tab = "Get Started"
+        st.query_params.clear()
+    elif tab_param in ["home"]:
+        st.session_state.active_nav_tab = "Home"
+        st.query_params.clear()
+
+    # Determine tab arguments based on Streamlit version capabilities
+    import inspect
+    sig = inspect.signature(st.tabs)
+    tab_kwargs = {}
+    if "default" in sig.parameters:
+        tab_kwargs["default"] = st.session_state.active_nav_tab
+    if "key" in sig.parameters:
+        tab_kwargs["key"] = "main_nav_tabs"
+    if "on_change" in sig.parameters:
+        tab_kwargs["on_change"] = "rerun"
+
+    tabs_order = ["Home", "Get Started", "Docs", "Contact Us", "More"]
+    # Fallback for older Streamlit versions without 'default' parameter:
+    if "default" not in sig.parameters and st.session_state.active_nav_tab == "Get Started":
+        tabs_order = ["Get Started", "Home", "Docs", "Contact Us", "More"]
+
+    tab_containers = st.tabs(tabs_order, **tab_kwargs)
+    tab_dict = dict(zip(tabs_order, tab_containers))
+
+    with tab_dict["Home"]:
         active_mod = st.session_state.get("active_module", st.session_state.get("role", "ESGRC"))
         render_module_home(active_mod)
 
-    with nav_get_started:
+    with tab_dict["Get Started"]:
         # Legacy Standard Report Tab + Pipeline
         render_pipeline_tab()
 
-    with nav_docs:
+    with tab_dict["Docs"]:
         st.markdown("### Documentation")
         st.write("Welcome to the METEOERAIT SOFTWARE documentation. Guides and API references will be available here.")
 
-    with nav_contact:
+    with tab_dict["Contact Us"]:
         st.markdown("### Contact Us")
         st.write("Reach out to our enterprise support team or visit our main website for more assistance.")
         st.link_button("Visit meteoerait.com →", "https://meteoerait.com/")
 
-    with nav_more:
+    with tab_dict["More"]:
         st.markdown("### More")
         st.write("Settings and additional configurations.")
 
