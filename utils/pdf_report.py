@@ -168,7 +168,7 @@ def _draw_header(canvas, doc):
     # Subtitle
     canvas.setFont("Helvetica", 8)
     canvas.setFillColor(colors.HexColor("#BAE6FD"))
-    canvas.drawString(MARGIN, PAGE_H - 2.1 * cm, "Enterprise ESG · Risk · Compliance — Low-Performing Entity Report")
+    canvas.drawString(MARGIN, PAGE_H - 2.1 * cm, "Enterprise Risk · Compliance — Low-Performing Entity Report")
 
     # Page number (top right)
     canvas.setFont("Helvetica", 8)

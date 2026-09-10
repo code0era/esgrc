@@ -197,7 +197,7 @@ def draw_header_footer(canvas, doc):
     # Subtitle
     canvas.setFont("Helvetica", 8)
     canvas.setFillColor(colors.HexColor("#BAE6FD"))
-    canvas.drawString(MARGIN, PAGE_H - 1.8 * cm, "Enterprise ESG · Risk · Compliance — Pipeline Automation Consolidated Report")
+    canvas.drawString(MARGIN, PAGE_H - 1.8 * cm, "Enterprise Risk · Compliance — Pipeline Automation Consolidated Report")
     
     # Page Number (Page 2, 3, etc.)
     canvas.drawRightString(PAGE_W - MARGIN, PAGE_H - 1.5 * cm, f"Page {doc.page}")
