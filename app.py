@@ -818,62 +818,112 @@ def render_auth():
     }
     
     /* Style the Tab Headers to look good on dark */
-    button[data-baseweb="tab"] {
+    [data-testid="stAppViewBlockContainer"] div[data-testid="stTabs"] button[data-baseweb="tab"] {
         background: transparent !important;
-        color: rgba(255,255,255,0.6) !important;
+        color: rgba(255, 255, 255, 0.75) !important;
     }
-    button[data-baseweb="tab"][aria-selected="true"] {
+    [data-testid="stAppViewBlockContainer"] div[data-testid="stTabs"] button[data-baseweb="tab"][aria-selected="true"] {
         color: #FFFFFF !important;
     }
-    div[data-baseweb="tab-highlight"] {
+    [data-testid="stAppViewBlockContainer"] div[data-baseweb="tab-highlight"] {
         background-color: #CD6752 !important;
     }
-    div[data-baseweb="tab-list"] {
+    [data-testid="stAppViewBlockContainer"] div[data-baseweb="tab-list"] {
         border-bottom: 1px solid rgba(255,255,255,0.1) !important;
         gap: 1.5rem !important;
     }
     
-    /* ── Form Inputs ──────────────────────────────────────────────────────── */
+    /* ── Form Card ───────────────────────────────────────────────────────── */
+    [data-testid="stAppViewBlockContainer"] [data-testid="stForm"] {
+        background: rgba(255, 255, 255, 0.03) !important;
+        border: 1px solid rgba(255, 255, 255, 0.12) !important;
+        border-radius: 12px !important;
+        padding: 2rem !important;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4) !important;
+        backdrop-filter: blur(10px);
+    }
+    
+    /* ── Form Inputs & Selectboxes ────────────────────────────────────────── */
+    [data-testid="stTextInput"] input, 
     [data-testid="stTextInput"] > div > div > input {
-        background: rgba(255,255,255,0.05) !important;
-        border: 1px solid rgba(255,255,255,0.15) !important;
-        border-radius: 6px !important;
+        background: #FFFFFF !important;
+        border: 1.5px solid #CBD5E1 !important;
+        border-radius: 8px !important;
         padding: 0.75rem 1rem !important;
-        color: #FFFFFF !important;
+        color: #000000 !important;
+        -webkit-text-fill-color: #000000 !important;
         font-weight: 500 !important;
+        font-size: 1rem !important;
     }
-    [data-testid="stTextInput"] > div > div > input::placeholder {
-        color: rgba(255,255,255,0.3) !important;
+    [data-testid="stTextInput"] input::placeholder {
+        color: #64748B !important;
+        -webkit-text-fill-color: #64748B !important;
     }
-    [data-testid="stTextInput"] > div > div > input:focus {
-        border-color: rgba(255,255,255,0.4) !important;
-        box-shadow: 0 0 0 1px rgba(255,255,255,0.1) !important;
+    [data-testid="stTextInput"] input:focus {
+        border-color: #CD6752 !important;
+        box-shadow: 0 0 0 2px rgba(205, 103, 82, 0.25) !important;
     }
     [data-testid="stTextInput"] > div > div {
         border-color: transparent !important;
         background: transparent !important;
     }
-    /* Label styling */
-    [data-testid="stTextInput"] label {
-        color: rgba(255,255,255,0.8) !important;
+    [data-testid="stTextInput"] button svg {
+        fill: #334155 !important;
+    }
+
+    /* Selectbox styling */
+    [data-testid="stSelectbox"] div[data-baseweb="select"] > div {
+        background: #FFFFFF !important;
+        border: 1.5px solid #CBD5E1 !important;
+        border-radius: 8px !important;
+        color: #000000 !important;
+        -webkit-text-fill-color: #000000 !important;
+        font-size: 1rem !important;
+    }
+    [data-testid="stSelectbox"] div[data-baseweb="select"] span {
+        color: #000000 !important;
+        -webkit-text-fill-color: #000000 !important;
+    }
+    [data-testid="stSelectbox"] svg {
+        fill: #000000 !important;
+    }
+
+    /* All form labels & texts */
+    [data-testid="stForm"] label,
+    [data-testid="stTextInput"] label,
+    [data-testid="stSelectbox"] label,
+    [data-testid="stForm"] p,
+    [data-testid="stForm"] span:not([data-baseweb="select"] span) {
+        color: #FFFFFF !important;
         font-size: 0.95rem !important;
+        font-weight: 600 !important;
+    }
+
+    /* Disclaimer / Alert box */
+    [data-testid="stAlert"], [data-testid="stNotification"] {
+        background: rgba(15, 23, 42, 0.75) !important;
+        border: 1px solid #38BDF8 !important;
+        border-radius: 10px !important;
+    }
+    [data-testid="stAlert"] * {
+        color: #E0F2FE !important;
     }
 
     /* ── Submit Button ────────────────────────────────────────────────────── */
     [data-testid="stFormSubmitButton"] > button {
-        background: transparent !important;
-        color: white !important;
-        border: 1px solid rgba(255,255,255,0.3) !important;
-        border-radius: 4px !important;
-        font-weight: 600 !important;
-        font-size: 1.1rem !important;
+        background: #CD6752 !important;
+        color: #FFFFFF !important;
+        border: none !important;
+        border-radius: 8px !important;
+        font-weight: 700 !important;
+        font-size: 1.05rem !important;
         padding: 0.75rem !important;
         margin-top: 1.5rem !important;
         transition: all 0.2s ease !important;
+        box-shadow: 0 4px 14px rgba(205, 103, 82, 0.4) !important;
     }
     [data-testid="stFormSubmitButton"] > button:hover {
-        background: rgba(255,255,255,0.1) !important;
-        border-color: white !important;
+        background: #B85844 !important;
         transform: translateY(-1px) !important;
     }
 
@@ -1180,8 +1230,27 @@ def render_sidebar():
 <div style="padding:0.8rem 0 0.5rem;">
     <div style="font-size:0.9rem; opacity:0.75; text-transform:uppercase; letter-spacing:0.1em;">Signed in as</div>
     <div style="font-size:1.3rem; font-weight:700; margin-top:3px;">{st.session_state.username}</div>
-    <div style="font-size:1.1rem; color:#84BABF; font-weight:600; margin-top:4px;">Role: {st.session_state.role}</div>
+    <div style="font-size:0.95rem; color:#84BABF; font-weight:600; margin-top:2px;">Role: {st.session_state.role}</div>
 </div>""", unsafe_allow_html=True)
+
+        from utils.pipeline_flows import ALL_ROLES
+        current_active = st.session_state.get("active_module", st.session_state.get("role", "ESGRC")).upper()
+        if current_active not in ALL_ROLES:
+            current_active = "ESGRC"
+        
+        active_idx = ALL_ROLES.index(current_active) if current_active in ALL_ROLES else 0
+        
+        st.markdown('<div style="font-size:0.75rem; text-transform:uppercase; letter-spacing:0.08em; color:#BAE6FD; font-weight:700; margin-top:0.4rem; margin-bottom:0.2rem;">⚡ Active Module Focus</div>', unsafe_allow_html=True)
+        selected_mod = st.selectbox(
+            "Active Module Focus",
+            options=ALL_ROLES,
+            index=active_idx,
+            key="sidebar_module_selector",
+            label_visibility="collapsed"
+        )
+        if selected_mod != st.session_state.get("active_module"):
+            st.session_state.active_module = selected_mod
+            st.rerun()
 
         st.markdown("---")
         st.markdown('<div style="font-size:0.7rem; text-transform:uppercase; letter-spacing:0.1em; opacity:0.7; margin-bottom:0.6rem;">📁 Report History</div>', unsafe_allow_html=True)
@@ -1249,7 +1318,7 @@ def render_header():
         <div class="meteoerait-software-header-left">
             <div>
                 <div class="meteoerait-software-header-title"><img src="data:image/png;base64,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" style="width:24px; height:24px; vertical-align:middle; margin-right:8px;"> METEOERAIT SOFTWARE</div>
-                <div class="meteoerait-software-header-sub">Enterprise Risk &nbsp;·&nbsp; Compliance &nbsp;·&nbsp; Performance Analysis &nbsp;·&nbsp; AI Reporting</div>
+                <div class="meteoerait-software-header-sub">Enterprise Risk &nbsp;·&nbsp; Compliance &nbsp;·&nbsp; Performance Metrics &nbsp;·&nbsp; AI Analytics</div>
             </div>
         </div>
         """, unsafe_allow_html=True)
@@ -1974,10 +2043,10 @@ def _render_pipeline_results():
 
 
 def render_pipeline_tab():
-    """Full Pipeline Automation tab — routes by role to the correct module pipeline."""
+    """Full Pipeline Automation tab — routes by role/active module to the correct module pipeline."""
     from utils.pipeline_flows import render_esgrc_pipeline, render_apex_pipeline, render_module_pipeline, ALL_ROLES, MODULE_REGISTRY
 
-    role = st.session_state.get("role", "ESGRC").upper()
+    role = st.session_state.get("active_module", st.session_state.get("role", "ESGRC")).upper()
 
     if role == "APEX":
         render_apex_pipeline()
@@ -1990,6 +2059,127 @@ def render_pipeline_tab():
             # Fallback for unknown roles — show ESGRC
             st.warning(f"Unknown role '{role}'. Defaulting to ESGRC pipeline.")
             render_esgrc_pipeline()
+
+
+def render_module_home(active_module: str):
+    """Renders a dedicated, domain-focused Home Page for any active module (Apex, ESGRC, Customer, etc.)."""
+    from utils.home_config import MODULE_HOME_CONFIG
+    import streamlit.components.v1 as components
+    
+    mk = (active_module or "ESGRC").upper()
+    cfg = MODULE_HOME_CONFIG.get(mk, MODULE_HOME_CONFIG.get("ESGRC", {}))
+    
+    theme_color = cfg.get("theme_color", "#CD6752")
+    
+    # ── 1. HERO SECTION ──
+    stats_cards = []
+    for s in cfg.get("stats", []):
+        stats_cards.append(
+            f'<div style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:12px;padding:1.2rem 1.6rem;min-width:170px;flex:1;max-width:260px;backdrop-filter:blur(8px);text-align:center;">'
+            f'<div style="font-size:2.1rem;font-weight:800;color:#FFFFFF;letter-spacing:-0.5px;">{s["value"]}</div>'
+            f'<div style="font-size:0.9rem;font-weight:600;color:#F0EBE1;margin-top:4px;">{s["label"]}</div>'
+            f'<div style="font-size:0.75rem;color:#BAE6FD;margin-top:3px;">{s["sub"]}</div>'
+            f'</div>'
+        )
+    stats_html = "".join(stats_cards)
+    
+    hero_html = (
+        f'<div id="hero-container" style="border-radius:0px;padding:4.5rem 2.5rem 4rem;text-align:center;color:white;margin-top:0.5rem;margin-bottom:2.2rem;box-shadow:0 12px 35px rgba(0,0,0,0.45);position:relative;left:calc(50% - 50vw);width:100vw;max-width:100vw;background:linear-gradient(135deg,#1f2329 0%,#1c1615 100%);">'
+        f'<div style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.22);padding:0.4rem 1.4rem;border-radius:50px;font-size:0.85rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#BAE6FD;margin-bottom:1.2rem;">'
+        f'<span>{cfg.get("icon", "🛡️")}</span> {cfg.get("badge", "Module Command Center")}'
+        f'</div>'
+        f'<div id="hero-title" style="font-size:2.9rem;font-weight:900;margin-bottom:0.8rem;letter-spacing:-0.8px;line-height:1.2;">'
+        f'{cfg.get("title", "Analytics Command Center")}'
+        f'</div>'
+        f'<div id="hero-subtitle" style="font-size:1.18rem;opacity:0.9;max-width:840px;margin:0 auto 2.2rem auto;line-height:1.6;color:#E2E8F0;">'
+        f'{cfg.get("subtitle", "")}'
+        f'</div>'
+        f'<div style="display:flex;justify-content:center;gap:1.2rem;align-items:center;">'
+        f'<button id="get-started-btn" style="background:{theme_color};color:white;border:none;padding:0.85rem 2.8rem;border-radius:30px;font-weight:700;font-size:1.15rem;cursor:pointer;transition:all 0.3s;box-shadow:0 6px 20px rgba(0,0,0,0.4);">'
+        f'Launch {cfg.get("display", mk)} Pipeline →'
+        f'</button>'
+        f'</div>'
+        f'<div id="hero-stats" style="margin-top:3.5rem;display:flex;justify-content:center;gap:1.2rem;flex-wrap:wrap;max-width:1100px;margin-left:auto;margin-right:auto;">'
+        f'{stats_html}'
+        f'</div>'
+        f'</div>'
+    )
+    st.markdown(hero_html, unsafe_allow_html=True)
+    
+    # ── 2. DOMAIN FOCUS PILLARS SECTION ──
+    header_html = (
+        f'<div style="margin:1.5rem 0 1rem;">'
+        f'<div style="display:flex;align-items:center;justify-content:space-between;border-bottom:2px solid {theme_color};padding-bottom:0.6rem;margin-bottom:1.5rem;">'
+        f'<div style="font-size:1.25rem;font-weight:800;letter-spacing:0.04em;text-transform:uppercase;color:#162130;">'
+        f'{cfg.get("icon", "🛡️")} Core Analytical Focus Pillars — {cfg.get("display", mk)}'
+        f'</div>'
+        f'<div style="font-size:0.85rem;font-weight:600;color:#64748B;">'
+        f'Domain-Specific Machine Learning & Failure Analysis'
+        f'</div>'
+        f'</div>'
+        f'</div>'
+    )
+    st.markdown(header_html, unsafe_allow_html=True)
+    
+    col1, col2 = st.columns(2)
+    pillars = cfg.get("pillars", [])
+    for idx, p in enumerate(pillars):
+        target_col = col1 if idx % 2 == 0 else col2
+        with target_col:
+            card_html = (
+                f'<div style="background:white;border:1px solid #E2E8F0;border-radius:12px;padding:1.4rem 1.5rem;margin-bottom:1.2rem;box-shadow:0 4px 15px rgba(0,0,0,0.03);">'
+                f'<div style="display:flex;align-items:center;gap:12px;margin-bottom:0.55rem;">'
+                f'<span style="font-size:1.5rem;background:#F8F6F0;padding:6px 10px;border-radius:8px;">{p["icon"]}</span>'
+                f'<span style="font-size:1.05rem;font-weight:700;color:#1E293B;">{p["title"]}</span>'
+                f'</div>'
+                f'<div style="font-size:0.92rem;color:#475569;line-height:1.55;">'
+                f'{p["desc"]}'
+                f'</div>'
+                f'</div>'
+            )
+            st.markdown(card_html, unsafe_allow_html=True)
+
+    # ── 3. MODULE AUTOMATION ACTION BANNER ──
+    st.markdown("<br>", unsafe_allow_html=True)
+    action_html = (
+        f'<div style="background:linear-gradient(135deg,rgba(205,103,82,0.08) 0%,rgba(2,132,199,0.08) 100%);border:1px solid #E2E8F0;border-radius:12px;padding:1.4rem 1.8rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;">'
+        f'<div>'
+        f'<div style="font-size:1.15rem;font-weight:800;color:#0F172A;">Ready to run the automated 8-step pipeline for {cfg.get("display", mk)}?</div>'
+        f'<div style="font-size:0.88rem;color:#64748B;margin-top:3px;">'
+        f'Executes Multi-Layer Regression, SPC X-bar/R, CHAID tree segmentation, RPN risk modeling, and Claude AI executive analysis.'
+        f'</div>'
+        f'</div>'
+        f'<div>'
+        f'<button id="banner-pipeline-btn" style="background:#162130;color:white;border:none;padding:0.75rem 1.8rem;border-radius:8px;font-weight:700;font-size:0.95rem;cursor:pointer;transition:all 0.2s;">'
+        f'Open {cfg.get("display", mk)} Pipeline →'
+        f'</button>'
+        f'</div>'
+        f'</div>'
+    )
+    st.markdown(action_html, unsafe_allow_html=True)
+
+    components.html("""
+    <script>
+    const doc = window.parent.document;
+    function bindTabButtons() {
+        ['get-started-btn', 'banner-pipeline-btn'].forEach(btnId => {
+            const btn = doc.getElementById(btnId);
+            if (btn && !btn.dataset.bound) {
+                btn.dataset.bound = "true";
+                btn.addEventListener('click', function() {
+                    const tabs = doc.querySelectorAll('button[data-baseweb="tab"]');
+                    if (tabs.length > 1) {
+                        tabs[1].click();
+                        window.parent.scrollTo({ top: 0, behavior: 'smooth' });
+                    }
+                });
+            }
+        });
+    }
+    let checkExist = setInterval(bindTabButtons, 100);
+    setTimeout(() => clearInterval(checkExist), 4000);
+    </script>
+    """, height=0, width=0)
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -2016,57 +2206,8 @@ def main():
     ])
 
     with nav_home:
-        # Hero Landing Page
-        role = st.session_state.get("role", "ESGRC")
-        if role == "APEX":
-            hero_title = "Enterprise Risk Monitoring"
-            hero_subtitle = "Transform your business with intelligent risk analysis and predictive insights."
-        else:
-            hero_title = "ESGRC Analytics"
-            hero_subtitle = "Align supply chain reporting to your sustainability goals and close regulatory gaps."
-
-        st.markdown(f"""
-        <div id="hero-container" style="
-                    border-radius: 0px; padding: 5rem 3rem; text-align: center; color: white;
-                    margin-top: 1rem; margin-bottom: 2rem; box-shadow: 0 10px 30px rgba(28,22,21,0.4);
-                    position: relative; left: calc(50% - 50vw); width: 100vw; max-width: 100vw;">
-            <div id="hero-title" style="font-size: 3rem; font-weight: 800; margin-bottom: 0.5rem;">{hero_title}</div>
-            <div id="hero-subtitle" style="font-size: 1.2rem; opacity: 0.9; max-width: 800px; margin: 0 auto 2.5rem auto; line-height: 1.6;">
-                {hero_subtitle}
-            </div>
-            <div style="display: flex; justify-content: center; gap: 1rem;">
-                <button id="get-started-btn"
-                        style="background: #CD6752; color: white; border: none; padding: 0.8rem 2.5rem; border-radius: 30px; font-weight: 600; font-size: 1.2rem; cursor: pointer; transition: all 0.3s; box-shadow: 0 4px 15px rgba(205,103,82,0.4);">
-                    Get Started →
-                </button>
-            </div>
-            <div id="hero-stats" style="margin-top: 4rem; display: flex; justify-content: center; gap: 4rem; opacity: 0.8;">
-                <div><div style="font-size: 2.5rem; font-weight: 700;">+200%</div><div style="font-size: 1rem;">Performance Boost</div></div>
-                <div><div style="font-size: 2.5rem; font-weight: 700;">+40x</div><div style="font-size: 1rem;">Faster Analysis</div></div>
-                <div><div style="font-size: 2.5rem; font-weight: 700;">+345%</div><div style="font-size: 1rem;">ROI Increase</div></div>
-            </div>
-        </div>
-        """, unsafe_allow_html=True)
-        
-        import streamlit.components.v1 as components
-        components.html("""
-        <script>
-        const doc = window.parent.document;
-        let checkExist = setInterval(function() {
-            const btn = doc.getElementById('get-started-btn');
-            if (btn && !btn.dataset.bound) {
-                btn.dataset.bound = "true";
-                btn.addEventListener('click', function() {
-                    const tabs = doc.querySelectorAll('button[data-baseweb="tab"]');
-                    if (tabs.length > 1) {
-                        tabs[1].click();
-                    }
-                });
-                clearInterval(checkExist);
-            }
-        }, 100);
-        </script>
-        """, height=0, width=0)
+        active_mod = st.session_state.get("active_module", st.session_state.get("role", "ESGRC"))
+        render_module_home(active_mod)
 
     with nav_get_started:
         # Legacy Standard Report Tab + Pipeline
