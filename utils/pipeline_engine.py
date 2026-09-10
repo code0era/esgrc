@@ -379,6 +379,23 @@ def _identify_trends(df: pd.DataFrame) -> dict:
     return trends
 
 
+def _top_pairs(corr_df: pd.DataFrame, limit: int = 150):
+    """
+    The top N correlation pairs by absolute strength, for writing into a
+    report file. The full matrix is still used everywhere else (CHAID
+    binning, etc.) - this only limits what gets written to the report text.
+    Needed because writing the complete matrix scales with the square of
+    the metric count: a module with a few hundred metrics can produce a
+    report of several megabytes, which is slow to write and can exceed
+    what the AI model can read in one call. 150 pairs keeps the report
+    focused on the strongest relationships regardless of module size.
+    """
+    pairs = corr_df.where(~np.eye(len(corr_df), dtype=bool)).stack()
+    pairs = pairs[~pairs.index.map(frozenset).duplicated()]
+    top_index = pairs.abs().sort_values(ascending=False).head(limit).index
+    return pairs.loc[top_index]
+
+
 def _assess_fourier(df: pd.DataFrame) -> dict:
     if not SCIPY_AVAILABLE:
         return {c: "scipy not available" for c in df.columns}
@@ -555,8 +572,11 @@ def run_step1_low_performance_esgrc(
             enriched.to_csv(f"module_values_esgrc_{ANALYSIS_DATE}.csv", index=False)
 
             # ── Identify low performers ───────────────────────────────────────
+            # Ranks by the mean across the whole series, not a single row - a
+            # single row (e.g. iloc[0]) has no meaningful ordering when there's
+            # no date/period column making row 0 special.
             def _low(ids, df, top=10):
-                scores = {i: float(df[i].iloc[0]) for i in ids if i in df.columns}
+                scores = {i: float(df[i].mean()) for i in ids if i in df.columns and df[i].notna().any()}
                 return sorted(scores.items(), key=lambda x: x[1])[:top]
 
             lm  = _low(metric_ids, enriched)
@@ -723,12 +743,22 @@ def run_step4_correlation_chaid_esgrc(work_dir: str) -> Tuple[bool, Dict, str]:
 
             mc = df_m.corr(); gc = df_g.corr(); sc = df_sm.corr()
 
-            # Correlation report
+            # Correlation report - top pairs by strength only, not the full
+            # matrix. See _top_pairs' docstring for why: an untrimmed matrix
+            # scales with the square of the metric count and gets very large
+            # very fast on bigger modules. The full matrices (mc/gc/sc) are
+            # still used below for inconsistency detection and CHAID binning.
             corr_f = f"M_G_SM_correlation_report_esgrc_{ANALYSIS_DATE}.txt"
             with open(corr_f, "w", encoding="utf-8") as f:
-                f.write("Metrics Correlation Matrix\n"); mc.to_csv(f)
-                f.write("\nGroups Correlation Matrix\n"); gc.to_csv(f)
-                f.write("\nSub_modules Correlation Matrix\n"); sc.to_csv(f)
+                f.write(f"Metrics Correlation Matrix (top {min(150, mc.size)} pairs by strength)\n")
+                for (a, b), v in _top_pairs(mc).items():
+                    f.write(f"{a},{b},{v:.3f}\n")
+                f.write(f"\nGroups Correlation Matrix (top {min(150, gc.size)} pairs by strength)\n")
+                for (a, b), v in _top_pairs(gc).items():
+                    f.write(f"{a},{b},{v:.3f}\n")
+                f.write(f"\nSub_modules Correlation Matrix (top {min(150, sc.size)} pairs by strength)\n")
+                for (a, b), v in _top_pairs(sc).items():
+                    f.write(f"{a},{b},{v:.3f}\n")
 
             # Trends & Fourier
             trends      = _identify_trends(df_m)
@@ -809,6 +839,11 @@ def run_step5_regression_esgrc(work_dir: str, json_data: dict) -> Tuple[bool, Di
     try:
         if not SKLEARN_AVAILABLE:
             return False, {}, "Step 5 skipped — scikit-learn not installed."
+
+        # Fixed seed so the Monte Carlo scenario simulation below gives the
+        # same "top risk driver" result every time for the same input data,
+        # instead of a different answer on every run.
+        np.random.seed(42)
 
         with _working_dir(work_dir):
             if not os.path.exists(f"module_values_esgrc_{ANALYSIS_DATE}.csv"):
@@ -943,8 +978,9 @@ def run_step6_all_module_consolidation(
             mod_ids = [i for i in all_ids if mod_pat.match(str(i))]
             sm_ids  = [i for i in all_ids if sm_pat.match(str(i))]
 
+            # Ranks by the mean across the whole series, not a single row.
             def _low3(ids, df):
-                perf = {i: df[i].iloc[0] for i in ids if i in df.columns}
+                perf = {i: float(df[i].mean()) for i in ids if i in df.columns and df[i].notna().any()}
                 return sorted(perf.items(), key=lambda x: x[1])[:3]
 
             low_mods = _low3(mod_ids, combined)
@@ -982,7 +1018,7 @@ def run_step6_all_module_consolidation(
 
 def run_step7_spc_fmea_l0(work_dir: str) -> Tuple[bool, Dict, str]:
     """
-    Extended SPC analysis (Cpk, Sigma Level) at enterprise L0 level.
+    Extended SPC analysis at enterprise L0 level.
     Input  : all_module_values.csv
     Outputs: TXT summary, RPN PDF, SPC charts PDF.
     """
@@ -1001,18 +1037,21 @@ def run_step7_spc_fmea_l0(work_dir: str) -> Tuple[bool, Dict, str]:
                 lim    = _xmr_limits(df_m["value"])
                 df_sig = _detect_xmr(df_m, lim)
                 sigs   = int(df_sig["signal_x"].sum() + df_sig["signal_mr"].sum())
-                O      = max(1, sigs)
+                O      = max(1, min(10, sigs))
                 rpn    = 7 * O * 5
                 sigma  = lim["sigma"]
-                cpk    = round(1.0 if sigma == 0 else min(
-                    (lim["ucl_x"] - lim["xbar"]) / (3 * sigma),
-                    (lim["xbar"] - lim["lcl_x"]) / (3 * sigma),
-                ), 2)
+                # Cpk/Sigma Level intentionally not computed here: the only USL/LSL
+                # available are the same +/-3 sigma control limits already used for
+                # signal detection above, which makes Cpk mathematically equal to
+                # 1.0 for every metric, always, regardless of the real data - a
+                # fabricated-looking constant, not a real capability measure. No
+                # genuine specification-limit data exists anywhere in this system
+                # to compute Cpk honestly, so it's left out rather than faked.
                 rows.append({
                     "metric_id": mid, "mean": round(lim["xbar"], 2),
                     "sigma": round(sigma, 2), "UCL": round(lim["ucl_x"], 2),
                     "LCL": round(lim["lcl_x"], 2), "signals": sigs,
-                    "RPN": rpn, "Cpk": cpk, "Sigma_Level": round(3 * cpk, 2),
+                    "RPN": rpn,
                     "MRBar": round(lim["mrbar"], 2) if pd.notnull(lim["mrbar"]) else 0,
                     "UCL_MR": round(lim["ucl_mr"], 2) if pd.notnull(lim["ucl_mr"]) else 0,
                     "LCL_MR": 0.0,
@@ -1025,12 +1064,12 @@ def run_step7_spc_fmea_l0(work_dir: str) -> Tuple[bool, Dict, str]:
 
             txt_f = f"SPC_summary_L0_{ANALYSIS_DATE}.txt"
             pdf_f = f"SPC_summary_L0_{ANALYSIS_DATE}.pdf"
-            summary[["metric_id", "mean", "UCL", "LCL", "Sigma_Level", "RPN", "analysis_date"]].to_csv(
+            summary[["metric_id", "mean", "UCL", "LCL", "RPN", "analysis_date"]].to_csv(
                 txt_f, sep="\t", index=False)
             convert_txt_to_pdf(txt_f, pdf_f)
 
             rpn_txt_f = f"rpn_summary_L0_{ANALYSIS_DATE}.txt"
-            summary[["metric_id", "RPN", "signals", "Sigma_Level", "analysis_date"]].to_csv(
+            summary[["metric_id", "RPN", "signals", "analysis_date"]].to_csv(
                 rpn_txt_f, sep="\t", index=False)
             files_generated = [txt_f, pdf_f, rpn_txt_f]
             msg_suffix = "PDF charts skipped (matplotlib not installed)."
@@ -1044,7 +1083,7 @@ def run_step7_spc_fmea_l0(work_dir: str) -> Tuple[bool, Dict, str]:
 
         return True, {
             "files": files_generated, "metric_count": len(metric_ids),
-        }, f"L0 SPC/FMEA complete — {len(metric_ids)} enterprise-level metrics with Cpk & Sigma Level. Report PDF generated. {msg_suffix}"
+        }, f"L0 SPC/FMEA complete — {len(metric_ids)} enterprise-level metrics. Report PDF generated. {msg_suffix}"
 
     except Exception:
         return False, {}, f"Step 7 failed:\n{traceback.format_exc()}"
@@ -1151,6 +1190,11 @@ def run_step9_regression_l0(work_dir: str) -> Tuple[bool, Dict, str]:
     try:
         if not SKLEARN_AVAILABLE:
             return False, {}, "Step 9 skipped — scikit-learn not installed."
+
+        # Fixed seed so the Monte Carlo scenario simulation below gives the
+        # same "top risk driver" result every time for the same input data,
+        # instead of a different answer on every run.
+        np.random.seed(42)
 
         with _working_dir(work_dir):
             if not os.path.exists(f"all_module_values_{ANALYSIS_DATE}.csv"):
@@ -1371,7 +1415,7 @@ PIPELINE_STEPS = [
     {
         "id": "step7", "number": 7,
         "name": "SPC / FMEA L0  (Enterprise View)",
-        "description": "SPC + Cpk + Sigma Level analysis at enterprise L0 level",
+        "description": "SPC analysis at enterprise L0 level",
         "script": "SS_x_bar_r_chart_fmea_L0_6_0.py",
         "outputs": [f"SPC_summary_L0_{ANALYSIS_DATE}.txt",
                     f"RPN_summary_L0_{ANALYSIS_DATE}.pdf",
@@ -1617,12 +1661,17 @@ def run_module_step1_low_performance(
             csv_out = f"module_values_{mk}_{ANALYSIS_DATE}.csv"
             enriched.to_csv(csv_out, index=False)
 
+            # Ranks by the mean across the whole series, not a single row - a
+            # single row (e.g. iloc[0]) has no meaningful ordering when there's
+            # no date/period column making row 0 special.
             def _low(ids, df, top=10):
                 scores = {}
                 for i in ids:
                     if i in df.columns and len(df) > 0:
                         try:
-                            scores[i] = float(df[i].iloc[0])
+                            mean_val = float(df[i].mean())
+                            if pd.notna(mean_val):
+                                scores[i] = mean_val
                         except Exception:
                             pass
                 return sorted(scores.items(), key=lambda x: x[1])[:top]
@@ -1789,10 +1838,18 @@ def run_module_step4_correlation_chaid(
             inc_f   = f"inconsistencies_report_{mk}_{ANALYSIS_DATE}.txt"
             chaid_f = f"chaid_risk_segmentation_report_{mk}_{ANALYSIS_DATE}.txt"
 
+            # Top pairs by strength only, not the full matrix - see _top_pairs'
+            # docstring. Full matrices (mc/gc/sc) are still used below.
             with open(corr_f, "w", encoding="utf-8") as f:
-                f.write("Metrics Correlation Matrix\n"); mc.to_csv(f)
-                f.write("\nGroups Correlation Matrix\n");   gc.to_csv(f)
-                f.write("\nSub_modules Correlation Matrix\n"); sc.to_csv(f)
+                f.write(f"Metrics Correlation Matrix (top {min(150, mc.size)} pairs by strength)\n")
+                for (a, b), v in _top_pairs(mc).items():
+                    f.write(f"{a},{b},{v:.3f}\n")
+                f.write(f"\nGroups Correlation Matrix (top {min(150, gc.size)} pairs by strength)\n")
+                for (a, b), v in _top_pairs(gc).items():
+                    f.write(f"{a},{b},{v:.3f}\n")
+                f.write(f"\nSub_modules Correlation Matrix (top {min(150, sc.size)} pairs by strength)\n")
+                for (a, b), v in _top_pairs(sc).items():
+                    f.write(f"{a},{b},{v:.3f}\n")
 
             trends      = _identify_trends(df_m)
             repetitions = _assess_fourier(df_m)
@@ -1844,6 +1901,11 @@ def run_module_step5_regression(
     try:
         if not SKLEARN_AVAILABLE:
             return False, {}, f"[{mk.upper()}] Step 5 skipped — scikit-learn not installed."
+
+        # Fixed seed so the Monte Carlo scenario simulation below gives the
+        # same "top risk driver" result every time for the same input data,
+        # instead of a different answer on every run.
+        np.random.seed(42)
 
         with _working_dir(work_dir):
             src = f"module_values_{mk}_{ANALYSIS_DATE}.csv"
