@@ -18,8 +18,8 @@ jobs:
             URLS=("$CUSTOM_URL")
           else
             URLS=(
+              "https://meteoerait.streamlit.app"
               "https://esgrc.streamlit.app"
-              "https://code0era-esgrc.streamlit.app"
             )
           fi
 
