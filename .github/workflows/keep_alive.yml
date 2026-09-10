@@ -1,0 +1,27 @@
+name: Keep Streamlit App Awake
+
+on:
+  schedule:
+    # Runs every 4 hours to keep the Streamlit Community Cloud app awake
+    - cron: '0 */4 * * *'
+  workflow_dispatch: # Allows manual run from GitHub Actions tab anytime
+
+jobs:
+  keep_alive:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping Streamlit Cloud Application
+        run: |
+          # Use GitHub Secret if defined, otherwise fallback to standard repo URL
+          APP_URL="${{ secrets.STREAMLIT_APP_URL || 'https://esgrc.streamlit.app' }}"
+          echo "Pinging Streamlit App at: $APP_URL"
+          
+          # Send HTTP request with standard browser user-agent
+          HTTP_STATUS=$(curl -s -o /dev/null -w "%{http_code}" -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64)" "$APP_URL")
+          echo "HTTP Status Code: $HTTP_STATUS"
+          
+          if [ "$HTTP_STATUS" -ge 200 ] && [ "$HTTP_STATUS" -lt 400 ]; then
+            echo "✅ Streamlit app is awake and responsive!"
+          else
+            echo "⚠️ Server returned HTTP $HTTP_STATUS. App may be waking up or URL needs adjustment."
+          fi
