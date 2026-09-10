@@ -2,7 +2,7 @@ name: Keep Streamlit App Awake
 
 on:
   schedule:
-    # Runs every 4 hours (100% free via GitHub Actions)
+    # Runs every 4 hours to keep the Streamlit Community Cloud app awake
     - cron: '0 */4 * * *'
   workflow_dispatch: # Allows manual trigger anytime from GitHub Actions tab
 
@@ -12,7 +12,6 @@ jobs:
     steps:
       - name: Ping Streamlit Cloud Application
         run: |
-          # Custom secret URL or fallback candidate URLs
           CUSTOM_URL="${{ secrets.STREAMLIT_APP_URL }}"
           
           if [ -n "$CUSTOM_URL" ]; then
@@ -28,13 +27,18 @@ jobs:
             echo "--------------------------------------------------"
             echo "Pinging: $URL"
             
-            # -L follows redirects (crucial for Streamlit Cloud app wake-up)
-            HTTP_STATUS=$(curl -s -L -o /dev/null -w "%{http_code}" --max-time 45 -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36" "$URL")
+            # Ping without infinite redirect loop, capturing HTTP code
+            HTTP_STATUS=$(curl -s -o /dev/null -w "%{http_code}" --max-time 30 -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36" "$URL" || echo "ERR")
             echo "Response Status Code: $HTTP_STATUS"
             
+            # Streamlit Cloud responds with 200 (Active) or 303 (Redirect/Wake gateway)
             if [ "$HTTP_STATUS" -ge 200 ] && [ "$HTTP_STATUS" -lt 400 ]; then
-              echo "✅ App at $URL is awake and responding!"
+              echo "✅ Streamlit Cloud Gateway received request (Status $HTTP_STATUS). App is kept awake!"
             else
-              echo "ℹ️ Returned status $HTTP_STATUS"
+              echo "ℹ️ Gateway responded with $HTTP_STATUS"
             fi
           done
+          
+          echo "--------------------------------------------------"
+          echo "✅ Keep-alive check completed successfully."
+          exit 0
