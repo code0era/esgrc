@@ -2,9 +2,9 @@ name: Keep Streamlit App Awake
 
 on:
   schedule:
-    # Runs every 4 hours to keep the Streamlit Community Cloud app awake
+    # Runs every 4 hours (100% free via GitHub Actions)
     - cron: '0 */4 * * *'
-  workflow_dispatch: # Allows manual run from GitHub Actions tab anytime
+  workflow_dispatch: # Allows manual trigger anytime from GitHub Actions tab
 
 jobs:
   keep_alive:
@@ -12,16 +12,29 @@ jobs:
     steps:
       - name: Ping Streamlit Cloud Application
         run: |
-          # Use GitHub Secret if defined, otherwise fallback to standard repo URL
-          APP_URL="${{ secrets.STREAMLIT_APP_URL || 'https://esgrc.streamlit.app' }}"
-          echo "Pinging Streamlit App at: $APP_URL"
+          # Custom secret URL or fallback candidate URLs
+          CUSTOM_URL="${{ secrets.STREAMLIT_APP_URL }}"
           
-          # Send HTTP request with standard browser user-agent
-          HTTP_STATUS=$(curl -s -o /dev/null -w "%{http_code}" -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64)" "$APP_URL")
-          echo "HTTP Status Code: $HTTP_STATUS"
-          
-          if [ "$HTTP_STATUS" -ge 200 ] && [ "$HTTP_STATUS" -lt 400 ]; then
-            echo "✅ Streamlit app is awake and responsive!"
+          if [ -n "$CUSTOM_URL" ]; then
+            URLS=("$CUSTOM_URL")
           else
-            echo "⚠️ Server returned HTTP $HTTP_STATUS. App may be waking up or URL needs adjustment."
+            URLS=(
+              "https://esgrc.streamlit.app"
+              "https://code0era-esgrc.streamlit.app"
+            )
           fi
+
+          for URL in "${URLS[@]}"; do
+            echo "--------------------------------------------------"
+            echo "Pinging: $URL"
+            
+            # -L follows redirects (crucial for Streamlit Cloud app wake-up)
+            HTTP_STATUS=$(curl -s -L -o /dev/null -w "%{http_code}" --max-time 45 -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36" "$URL")
+            echo "Response Status Code: $HTTP_STATUS"
+            
+            if [ "$HTTP_STATUS" -ge 200 ] && [ "$HTTP_STATUS" -lt 400 ]; then
+              echo "✅ App at $URL is awake and responding!"
+            else
+              echo "ℹ️ Returned status $HTTP_STATUS"
+            fi
+          done
