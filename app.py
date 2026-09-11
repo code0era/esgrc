@@ -1017,7 +1017,7 @@ def render_auth():
 
 <div class="auth-title">METEOERAIT SOFTWARE</div>
 <div class="auth-subtitle">
-    Empower your enterprise with autonomous AI-driven ESG analytics, continuous risk compliance, and intelligent performance reporting.
+    Empower your enterprise with autonomous AI-driven analytics, continuous risk compliance, and intelligent performance reporting.
 </div>
 """, unsafe_allow_html=True)
 
