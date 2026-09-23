@@ -289,6 +289,12 @@ def corr_color_style(v):
 # PARSERS FOR THE SECTIONS
 # ─────────────────────────────────────────────────────────────────────────────
 
+
+def get_section_by_substring(sections, substring):
+    for k, v in sections.items():
+        if substring in k:
+            return v
+    return ""
 def parse_txt_content(content):
     """Split the consolidated report content by REPORT HEADER."""
     # Dynamically replace ESGRC/ESGR to METEOERAIT SOFTWARE while preserving 'esgrc module' case-insensitively
@@ -722,7 +728,7 @@ def generate_master_pdf_bytes(txt_content: str) -> bytes:
     story.append(Spacer(1, 0.2 * cm))
     
     # Render Performance Summary Statistics on first page of content
-    perf_text = sections.get("performance_report_2025.txt", "")
+    perf_text = get_section_by_substring(sections, "performance_report")
     if perf_text:
         perf_data = parse_performance_report(perf_text)
         story.append(Paragraph("Performance Summary Stats (2025)", s["section_h2"]))
@@ -759,7 +765,7 @@ def generate_master_pdf_bytes(txt_content: str) -> bytes:
             story.append(lst)
             story.append(Spacer(1, 0.4 * cm))
             
-    ms_text = sections.get("ESGRC_Module_model_summary.txt", "")
+    ms_text = get_section_by_substring(sections, "ESGRC_Module_model_summary")
     if ms_text:
         ms_data = parse_model_summary(ms_text)
         story.append(Paragraph("ESGRC Module Summary (Level 1)", s["section_h2"]))
@@ -799,7 +805,7 @@ def generate_master_pdf_bytes(txt_content: str) -> bytes:
             story.append(act_tbl)
             story.append(Spacer(1, 0.4 * cm))
             
-    l0_text = sections.get("L0_Risk_Analysis_Report_2025.txt", "")
+    l0_text = get_section_by_substring(sections, "L0_Risk_Analysis_Report")
     if l0_text:
         l0_data = parse_l0_risk_report(l0_text)
         story.append(Paragraph("Enterprise Risk Assessment (Level 0)", s["section_h2"]))
@@ -860,7 +866,7 @@ def generate_master_pdf_bytes(txt_content: str) -> bytes:
     ))
     story.append(Spacer(1, 0.2 * cm))
     
-    spcl0_text = sections.get("SPC_summary_L0_2026-07-05.txt", "")
+    spcl0_text = get_section_by_substring(sections, "SPC_summary_L0")
     if spcl0_text:
         spcl0_rows = parse_tsv_table(spcl0_text)
         if spcl0_rows:
@@ -885,7 +891,7 @@ def generate_master_pdf_bytes(txt_content: str) -> bytes:
             story.append(spc_tbl)
             story.append(Spacer(1, 0.5 * cm))
             
-    ms_spc_text = sections.get("metrics_summary_2026-07-05.txt", "")
+    ms_spc_text = get_section_by_substring(sections, "metrics_summary")
     if ms_spc_text:
         ms_spc_rows = parse_tsv_table(ms_spc_text)
         if ms_spc_rows and len(ms_spc_rows) > 1:
@@ -929,8 +935,8 @@ def generate_master_pdf_bytes(txt_content: str) -> bytes:
     ))
     story.append(Spacer(1, 0.2 * cm))
     
-    tr_l0_text = sections.get("trends_and_repetitions_report_L0.txt", "")
-    tr_met_text = sections.get("trends_and_repetitions_report_esgrc.txt", "")
+    tr_l0_text = get_section_by_substring(sections, "trends_and_repetitions_report_L0")
+    tr_met_text = get_section_by_substring(sections, "trends_and_repetitions_report_esgrc")
     
     if tr_l0_text:
         l0_tr_data = parse_trends_repetitions(tr_l0_text)
@@ -980,8 +986,8 @@ def generate_master_pdf_bytes(txt_content: str) -> bytes:
                 story.append(tr_tbl)
                 story.append(Spacer(1, 0.4 * cm))
                 
-    chaid_l0_text = sections.get("chaid_risk_segmentation_L0.txt", "")
-    chaid_met_text = sections.get("chaid_risk_segmentation_report_esgrc.txt", "")
+    chaid_l0_text = get_section_by_substring(sections, "chaid_risk_segmentation_L0")
+    chaid_met_text = get_section_by_substring(sections, "chaid_risk_segmentation_report_esgrc")
     
     if chaid_l0_text:
         ch_l0_data = parse_chaid_report(chaid_l0_text)
@@ -1064,7 +1070,7 @@ def generate_master_pdf_bytes(txt_content: str) -> bytes:
     ))
     story.append(Spacer(1, 0.2 * cm))
     
-    corr_l0_text = sections.get("correlation_analysis_L0.txt", "")
+    corr_l0_text = get_section_by_substring(sections, "correlation_analysis_L0")
     if corr_l0_text:
         story.append(Paragraph("Strongest L0 Module Correlations", s["section_h2"]))
         story.append(Paragraph(
@@ -1091,7 +1097,7 @@ def generate_master_pdf_bytes(txt_content: str) -> bytes:
             story.append(l0_corr_tbl)
             story.append(Spacer(1, 0.4 * cm))
             
-    corr_text = sections.get("M_G_SM_correlation_report_esgrc.txt", "")
+    corr_text = get_section_by_substring(sections, "M_G_SM_correlation_report_esgrc")
     if corr_text:
         matrices = parse_multi_table_correlation_report(corr_text)
         story.append(Paragraph("Top Volatility Correlations within ESGRC Module", s["section_h2"]))
@@ -1107,7 +1113,7 @@ def generate_master_pdf_bytes(txt_content: str) -> bytes:
                 story.append(corr_tbl)
                 story.append(Spacer(1, 0.3 * cm))
                 
-    inc_text = sections.get("inconsistencies_report_esgrc.txt", "")
+    inc_text = get_section_by_substring(sections, "inconsistencies_report_esgrc")
     if inc_text:
         inc_data = parse_inconsistencies(inc_text)
         story.append(Paragraph("Independent Compliance Inconsistencies (Top 12)", s["section_h2"]))
@@ -1138,7 +1144,7 @@ def generate_master_pdf_bytes(txt_content: str) -> bytes:
             story.append(inc_tbl)
             story.append(Spacer(1, 0.4 * cm))
             
-    inc_l0_text = sections.get("inconsistency_report_L0.txt", "")
+    inc_l0_text = get_section_by_substring(sections, "inconsistency_report_L0")
     if inc_l0_text:
         inc_l0_data = parse_inconsistencies(inc_l0_text)
         if inc_l0_data["independent"]:
@@ -1174,7 +1180,7 @@ def generate_master_pdf_bytes(txt_content: str) -> bytes:
     ))
     story.append(Spacer(1, 0.2 * cm))
     
-    lp_text = sections.get("low_performing_entities_report_esgrc.txt", "")
+    lp_text = get_section_by_substring(sections, "low_performing_entities_report_esgrc")
     if lp_text:
         lp_tables = parse_low_performers(lp_text)
         
