@@ -1494,6 +1494,7 @@ def run_step11_claude_analysis_2(work_dir: str) -> tuple:
         from utils.pipeline_engine import ANALYSIS_DATE, _working_dir
         import anthropic
         import streamlit as st
+        from utils.llm_prompts import APEX_SPC_RPN, MODEL_SPC_RPN, MAX_OUTPUT_TOKENS
         
         with _working_dir(work_dir):
             in_file = f"MASTER_CONSOLIDATED_STATISTICAL_REPORT_{ANALYSIS_DATE}.txt"
@@ -1505,17 +1506,18 @@ def run_step11_claude_analysis_2(work_dir: str) -> tuple:
             with open(in_file, 'r', encoding='utf-8') as f:
                 content = f.read()
                 
-            sys_prompt = "As an expert SPC and Risk Management Analyst, analyse the submitted details for SPC trends and DPMO calculations for Six Sigma, and RPN ranking for Risk assessment. Identify the outliers, and Operational control voilations and vulnerabilities for the metrics that are assessed and presented through the attached file. Generate a detailed report with recommendations and action items to control the risk associated with the high scoring RPN numbers, outliers and operational control violators as necessary to reduce the vulnerability and overall and assoicated business risk."
+            full_prompt = APEX_SPC_RPN.replace("{report_text}", content)
+            
+            import anthropic
             
             client = anthropic.Anthropic(api_key=st.secrets.get("ANTHROPIC_API_KEY", ""))
             response = client.messages.create(
-                model="claude-opus-4-6",
-                max_tokens=8192,
-                system=sys_prompt,
-                messages=[{"role": "user", "content": content}]
+                model=MODEL_SPC_RPN,
+                max_tokens=MAX_OUTPUT_TOKENS,
+                messages=[{"role": "user", "content": full_prompt}]
             )
             
-            AI_text = "".join(block.text for block in response.content if block.type == "text")
+            AI_text = "".join(block.text for block in response.content if getattr(block, "type", None) == "text")
             
             with open(out_file, "w", encoding="utf-8") as fout:
                 fout.write(AI_text)
@@ -1960,6 +1962,7 @@ def run_module_step7_ai_report(
 ) -> Tuple[bool, Dict, str]:
     """Generic Step 7: Claude AI executive summary for any module."""
     import streamlit as st
+    from utils.llm_prompts import ESGRC_MODULE_UNIFIED, MODEL_MODULE_UNIFIED, MAX_OUTPUT_TOKENS, HAIKU_UPGRADE_CHAR_THRESHOLD
     mk = module_key.lower()
     try:
         master_path = os.path.join(work_dir, f"MASTER_CONSOLIDATED_REPORT_{mk.upper()}_{ANALYSIS_DATE}.txt")
@@ -1973,22 +1976,20 @@ def run_module_step7_ai_report(
             content = fin.read()
 
         try:
-            import anthropic, base64
-            from utils.master_pdf import generate_master_pdf_bytes
-            pdf_b64  = base64.b64encode(generate_master_pdf_bytes(content)).decode("utf-8")
+            import anthropic
+            full_prompt = ESGRC_MODULE_UNIFIED.replace("{report_text}", content)
+            
+            # Auto-upgrade logic for large reports
+            model_to_use = MODEL_MODULE_UNIFIED
+            if len(content) > HAIKU_UPGRADE_CHAR_THRESHOLD:
+                model_to_use = "claude-sonnet-5"
+                
             client   = anthropic.Anthropic(api_key=st.secrets.get("ANTHROPIC_API_KEY", ""))
             response = client.messages.create(
-                model="claude-opus-4-6", max_tokens=8192,
-                system=(f"You are an expert {mk.upper()} risk analyst. Analyse the consolidated "
-                        f"report and provide a structured executive summary, key risk findings, "
-                        f"and actionable recommendations."),
-                messages=[{"role": "user", "content": [
-                    {"type": "document", "source": {"type": "base64",
-                     "media_type": "application/pdf", "data": pdf_b64}},
-                    {"type": "text", "text": "Please analyse this report."}
-                ]}]
+                model=model_to_use, max_tokens=MAX_OUTPUT_TOKENS,
+                messages=[{"role": "user", "content": full_prompt}]
             )
-            ai_text = "".join(b.text for b in response.content if b.type == "text")
+            ai_text = "".join(b.text for b in response.content if getattr(b, "type", None) == "text")
         except Exception as api_err:
             ai_text = (f"AI report bypassed ({api_err})\n\n"
                        f"--- Consolidated Report (first 4000 chars) ---\n{content[:4000]}")

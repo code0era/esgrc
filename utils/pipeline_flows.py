@@ -265,41 +265,23 @@ def render_esgrc_pipeline():
             with open(master_path, "r", encoding="utf-8") as fin:
                 content = fin.read()
                 
-            from utils.master_pdf import generate_master_pdf_bytes
-            import base64
-            
-            pdf_bytes_for_llm = generate_master_pdf_bytes(content)
-            pdf_base64 = base64.b64encode(pdf_bytes_for_llm).decode('utf-8')
-            
+            from utils.llm_prompts import ESGRC_MODULE_UNIFIED, MODEL_MODULE_UNIFIED, MAX_OUTPUT_TOKENS, HAIKU_UPGRADE_CHAR_THRESHOLD
             import anthropic
-            client = anthropic.Anthropic(api_key=st.secrets.get("ANTHROPIC_API_KEY", ""))
-            sys_prompt = "You are an expert ESGRC risk analyst. Analyze the attached consolidated report and provide a comprehensive structured executive summary, key risk findings, and actionable recommendations. Be detailed but clear."
             
+            full_prompt = ESGRC_MODULE_UNIFIED.replace("{report_text}", content)
+            
+            model_to_use = MODEL_MODULE_UNIFIED
+            if len(content) > HAIKU_UPGRADE_CHAR_THRESHOLD:
+                model_to_use = "claude-sonnet-5"
+                
+            client = anthropic.Anthropic(api_key=st.secrets.get("ANTHROPIC_API_KEY", ""))
             response = client.messages.create(
-                model="claude-opus-4-6",
-                max_tokens=8192,
-                system=sys_prompt,
-                messages=[
-                    {
-                        "role": "user", 
-                        "content": [
-                            {
-                                "type": "document",
-                                "source": {
-                                    "type": "base64",
-                                    "media_type": "application/pdf",
-                                    "data": pdf_base64
-                                }
-                            },
-                            {
-                                "type": "text",
-                                "text": "Please analyze this report."
-                            }
-                        ]
-                    }
-                ]
+                model=model_to_use,
+                max_tokens=MAX_OUTPUT_TOKENS,
+                messages=[{"role": "user", "content": full_prompt}]
             )
-            AI_text = "".join(block.text for block in response.content if block.type == "text")
+            
+            AI_text = "".join(block.text for block in response.content if getattr(block, "type", None) == "text")
             
             with open(os.path.join(work_dir, out_name), "w", encoding="utf-8") as fout:
                 fout.write(AI_text)
@@ -457,41 +439,19 @@ def render_apex_pipeline():
             with open(master_path, "r", encoding="utf-8") as fin:
                 content = fin.read()
                 
-            from utils.master_pdf import generate_master_pdf_bytes
-            import base64
-            
-            pdf_bytes_for_llm = generate_master_pdf_bytes(content)
-            pdf_base64 = base64.b64encode(pdf_bytes_for_llm).decode('utf-8')
-            
+            from utils.llm_prompts import APEX_GENERAL_RISK, MODEL_GENERAL_RISK, MAX_OUTPUT_TOKENS
             import anthropic
-            client = anthropic.Anthropic(api_key=st.secrets.get("ANTHROPIC_API_KEY", ""))
-            sys_prompt = "You are an expert Enterprise Risk analyst. Analyze the attached consolidated L0 enterprise report and provide a comprehensive structured executive summary, key enterprise risk findings, and actionable recommendations. Be detailed but clear."
             
+            full_prompt = APEX_GENERAL_RISK.replace("{report_text}", content)
+            
+            client = anthropic.Anthropic(api_key=st.secrets.get("ANTHROPIC_API_KEY", ""))
             response = client.messages.create(
-                model="claude-opus-4-6",
-                max_tokens=8192,
-                system=sys_prompt,
-                messages=[
-                    {
-                        "role": "user", 
-                        "content": [
-                            {
-                                "type": "document",
-                                "source": {
-                                    "type": "base64",
-                                    "media_type": "application/pdf",
-                                    "data": pdf_base64
-                                }
-                            },
-                            {
-                                "type": "text",
-                                "text": "Please analyze this report."
-                            }
-                        ]
-                    }
-                ]
+                model=MODEL_GENERAL_RISK,
+                max_tokens=MAX_OUTPUT_TOKENS,
+                messages=[{"role": "user", "content": full_prompt}]
             )
-            AI_text = "".join(block.text for block in response.content if block.type == "text")
+            
+            AI_text = "".join(block.text for block in response.content if getattr(block, "type", None) == "text")
             
             with open(os.path.join(work_dir, out_name), "w", encoding="utf-8") as fout:
                 fout.write(AI_text)
@@ -517,8 +477,8 @@ def render_apex_pipeline():
                 
             return True, {"files": [out_name, pdf_name]}, f"AI Report Generation Bypassed: {str(e)}"
         
-    render_pipeline_step(pipeline_key, 6, total_steps, "Final Output Generation",
-                         "Compiles predictive Risk Models and Master Data into final deliverables.",
+    render_pipeline_step(pipeline_key, 6, total_steps, "Claude Analysis 1 — Final Enterprise Report",
+                         "AI-generated executive summary, key risk findings and recommendations for the enterprise.",
                          render_inputs_apex_s6, run_step6_report)
 
     def render_inputs_apex_s7():
@@ -531,8 +491,8 @@ def render_apex_pipeline():
     def render_inputs_apex_s8():
         st.markdown("**Claude Analysis 2:** Analyzing SPC trends and DPMO calculations.")
         return True, {"work_dir": work_dir}
-    render_pipeline_step(pipeline_key, 8, total_steps, "Claude Analysis 2 (SPC Six Sigma and RPN)",
-                         "Generate a detailed report with recommendations and action items.",
+    render_pipeline_step(pipeline_key, 8, total_steps, "Claude Analysis 2 — SPC Six Sigma and RPN",
+                         "AI-generated analysis of SPC trends, DPMO, Six Sigma levels and RPN risk rankings.",
                          render_inputs_apex_s8, pe.run_step11_claude_analysis_2)
 
     render_download_section(pipeline_key, total_steps, work_dir)
