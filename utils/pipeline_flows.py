@@ -95,29 +95,52 @@ def render_download_section(pipeline_key: str, total_steps: int, work_dir: str):
             final_esgrc = os.path.join(work_dir, f"FINAL_CLIENT_REPORT_ESGRC_{pe.ANALYSIS_DATE}.txt")
             final_apex  = os.path.join(work_dir, f"FINAL_ENTERPRISE_REPORT_{pe.ANALYSIS_DATE}.txt")
             
-            for path, title in [(final_esgrc, "Final Recommended AI Report (ESGRC)"),
-                                (final_apex, "Final Recommended AI Report (Enterprise Risk)")]:
+            # Show APEX Step 8 SPC/RPN report path as well
+            final_stat  = os.path.join(work_dir, f"FINAL_STATISTICAL_CLIENT_REPORT_{pe.ANALYSIS_DATE}.txt")
+
+            # Dynamically find ALL final AI report TXT files in work_dir
+            import glob
+            final_reports = []
+            # ESGRC-specific
+            for p in [final_esgrc, final_apex, final_stat]:
+                if os.path.exists(p):
+                    final_reports.append((p, os.path.splitext(os.path.basename(p))[0].replace('_', ' ').title()))
+            # Generic modules: FINAL_CLIENT_REPORT_{MODULE}_{DATE}.txt
+            for p in sorted(glob.glob(os.path.join(work_dir, "FINAL_CLIENT_REPORT_*.txt"))):
+                if p not in [r[0] for r in final_reports]:
+                    lbl = os.path.splitext(os.path.basename(p))[0]
+                    final_reports.append((p, f"Final AI Report — {lbl.replace('FINAL_CLIENT_REPORT_', '').split('_')[0]}"))
+
+            for path, title in final_reports:
                 if os.path.exists(path):
                     with open(path, "r", encoding="utf-8") as f:
                         text_data = f.read()
                     
+                    if not text_data.strip():
+                        st.warning(f"⚠️ **{title}** — file is empty. Re-run the AI step.")
+                        continue
+
                     st.markdown(f"#### {title}")
-                    with st.expander(f"📖 Preview {title}", expanded=False):
-                        st.text_area(f"{title} Content", text_data, height=300, label_visibility="collapsed")
+                    with st.expander(f"📖 Preview {title}", expanded=True):
+                        # Render Claude's markdown output (not raw text)
+                        st.markdown(text_data)
                         
                     col1, col2, _ = st.columns([2, 2, 4])
                     with col1:
-                        st.download_button(f"⬇️ Download TXT", data=text_data, file_name=os.path.basename(path), mime="text/plain", key=f"dl_txt_{os.path.basename(path)}", use_container_width=True)
+                        st.download_button(
+                            f"⬇️ Download TXT", data=text_data,
+                            file_name=os.path.basename(path), mime="text/plain",
+                            key=f"dl_txt_{os.path.basename(path)}", use_container_width=True
+                        )
                     with col2:
                         try:
-                            pdf_data = None
-                            if "FINAL" in path:
-                                pdf_data = generate_ai_pdf(text_data, title)
-                            else:
-                                from utils.master_pdf import generate_master_pdf_bytes
-                                pdf_data = generate_master_pdf_bytes(text_data)
-                                
-                            st.download_button(f"⬇️ Download PDF", data=pdf_data, file_name=os.path.basename(path).replace(".txt", ".pdf"), mime="application/pdf", key=f"dl_pdf_{os.path.basename(path)}", use_container_width=True)
+                            pdf_data = generate_ai_pdf(text_data, title)
+                            st.download_button(
+                                f"⬇️ Download PDF", data=pdf_data,
+                                file_name=os.path.basename(path).replace(".txt", ".pdf"),
+                                mime="application/pdf",
+                                key=f"dl_pdf_{os.path.basename(path)}", use_container_width=True
+                            )
                         except Exception as e:
                             st.error(f"PDF Error: {e}")
                             
@@ -154,6 +177,7 @@ def render_esgrc_pipeline():
     pipeline_key = "esgrc_pipeline"
     init_pipeline_state(pipeline_key, total_steps)
     work_dir = _get_work_dir()
+    st.session_state[f"{pipeline_key}_work_dir"] = work_dir
     
     st.markdown("## ESGRC Analytical Pipeline")
     st.write("This pipeline executes the 7 foundational steps for ESGRC low-performance analysis, SPC charting, and reporting.")
@@ -253,7 +277,6 @@ def render_esgrc_pipeline():
         return True, {"work_dir": work_dir}
         
     def run_step7_report(work_dir):
-        from groq import Groq
         master_path = os.path.join(work_dir, f"MASTER_CONSOLIDATED_REPORT_{pe.ANALYSIS_DATE}.txt")
         if not os.path.exists(master_path):
             return False, {}, "Master Consolidated Report not found. Please re-run Step 6."
@@ -290,7 +313,7 @@ def render_esgrc_pipeline():
             with open(os.path.join(work_dir, pdf_name), "wb") as fpdf:
                 fpdf.write(pdf_bytes)
                 
-            return True, {"files": [out_name, pdf_name]}, "AI Report Generation complete (TXT & PDF generated)."
+            return True, {"files": [os.path.join(work_dir, out_name), os.path.join(work_dir, pdf_name)]}, "AI Report Generation complete (TXT and PDF generated)."
             
         except Exception as e:
             fallback_text = f"AI Report Generation failed due to API error: {str(e)}"
@@ -305,7 +328,10 @@ def render_esgrc_pipeline():
             except:
                 pass
                 
-            return True, {"files": [out_name, pdf_name]}, f"AI Report Generation Bypassed: {str(e)}"
+            return True, {"files": [
+                os.path.join(work_dir, out_name),
+                os.path.join(work_dir, pdf_name)
+            ]}, f"AI Report Generation Bypassed: {str(e)}"
         
     render_pipeline_step(pipeline_key, 7, total_steps, "Final Output Generation",
                          "Compiles predictive Risk Models and Master Data into final deliverables.",
@@ -323,6 +349,7 @@ def render_apex_pipeline():
     pipeline_key = "apex_pipeline"
     init_pipeline_state(pipeline_key, total_steps)
     work_dir = _get_work_dir()
+    st.session_state[f"{pipeline_key}_work_dir"] = work_dir
     
     st.markdown("## Enterprise Risk Pipeline")
     st.write("This pipeline executes the full 8-step enterprise-wide L0 consolidation analysis.")
@@ -427,7 +454,6 @@ def render_apex_pipeline():
         return True, {"work_dir": work_dir}
         
     def run_step6_report(work_dir):
-        from groq import Groq
         master_path = os.path.join(work_dir, f"MASTER_CONSOLIDATED_REPORT_{pe.ANALYSIS_DATE}.txt")
         if not os.path.exists(master_path):
             return False, {}, "Master Consolidated Report not found. Please re-run Step 5."
@@ -460,7 +486,7 @@ def render_apex_pipeline():
             with open(os.path.join(work_dir, pdf_name), "wb") as fpdf:
                 fpdf.write(pdf_bytes)
                 
-            return True, {"files": [out_name, pdf_name]}, "AI Report Generation complete (TXT & PDF generated)."
+            return True, {"files": [os.path.join(work_dir, out_name), os.path.join(work_dir, pdf_name)]}, "AI Report Generation complete (TXT and PDF generated)."
             
         except Exception as e:
             fallback_text = f"AI Report Generation failed due to API error: {str(e)}"
@@ -475,7 +501,10 @@ def render_apex_pipeline():
             except:
                 pass
                 
-            return True, {"files": [out_name, pdf_name]}, f"AI Report Generation Bypassed: {str(e)}"
+            return True, {"files": [
+                os.path.join(work_dir, out_name),
+                os.path.join(work_dir, pdf_name)
+            ]}, f"AI Report Generation Bypassed: {str(e)}"
         
     render_pipeline_step(pipeline_key, 6, total_steps, "Claude Analysis 1 — Final Enterprise Report",
                          "AI-generated executive summary, key risk findings and recommendations for the enterprise.",
@@ -550,6 +579,7 @@ def render_module_pipeline(module_key: str):
 
     init_pipeline_state(pipeline_key, total_steps)
     work_dir = _get_work_dir()
+    st.session_state[f"{pipeline_key}_work_dir"] = work_dir
 
     st.markdown(f"## {display_name} Analytical Pipeline")
     st.write(f"7-step pipeline for {display_name} low-performance analysis, SPC charting, and AI reporting.")

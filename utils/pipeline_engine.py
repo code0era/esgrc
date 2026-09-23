@@ -1492,38 +1492,58 @@ def run_step11_claude_analysis_2(work_dir: str) -> tuple:
     import traceback
     try:
         from utils.pipeline_engine import ANALYSIS_DATE, _working_dir
-        import anthropic
         import streamlit as st
         from utils.llm_prompts import APEX_SPC_RPN, MODEL_SPC_RPN, MAX_OUTPUT_TOKENS
-        
+
         with _working_dir(work_dir):
-            in_file = f"MASTER_CONSOLIDATED_STATISTICAL_REPORT_{ANALYSIS_DATE}.txt"
+            in_file  = f"MASTER_CONSOLIDATED_STATISTICAL_REPORT_{ANALYSIS_DATE}.txt"
             out_file = f"FINAL_STATISTICAL_CLIENT_REPORT_{ANALYSIS_DATE}.txt"
-            
+            out_pdf  = f"FINAL_STATISTICAL_CLIENT_REPORT_{ANALYSIS_DATE}.pdf"
+
             if not os.path.exists(in_file):
                 return False, {}, f"{in_file} not found. Run Step 7 first."
-                
+
             with open(in_file, 'r', encoding='utf-8') as f:
                 content = f.read()
-                
+
             full_prompt = APEX_SPC_RPN.replace("{report_text}", content)
-            
-            import anthropic
-            
-            client = anthropic.Anthropic(api_key=st.secrets.get("ANTHROPIC_API_KEY", ""))
-            response = client.messages.create(
-                model=MODEL_SPC_RPN,
-                max_tokens=MAX_OUTPUT_TOKENS,
-                messages=[{"role": "user", "content": full_prompt}]
-            )
-            
-            AI_text = "".join(block.text for block in response.content if getattr(block, "type", None) == "text")
-            
+
+            try:
+                import anthropic
+                client = anthropic.Anthropic(api_key=st.secrets.get("ANTHROPIC_API_KEY", ""))
+                response = client.messages.create(
+                    model=MODEL_SPC_RPN,
+                    max_tokens=MAX_OUTPUT_TOKENS,
+                    messages=[{"role": "user", "content": full_prompt}]
+                )
+                AI_text = "".join(
+                    block.text for block in response.content
+                    if getattr(block, "type", None) == "text"
+                )
+                if not AI_text.strip():
+                    AI_text = "AI analysis returned empty response. Please retry."
+            except Exception as api_err:
+                AI_text = (
+                    f"AI Analysis failed: {api_err}\n\n"
+                    f"--- Source Report (first 4000 chars) ---\n{content[:4000]}"
+                )
+
             with open(out_file, "w", encoding="utf-8") as fout:
                 fout.write(AI_text)
-                
-        return True, {"files": [out_file]}, f"Statistical Analysis complete. Report generated at {out_file}"
-    except Exception as e:
+
+            # Generate PDF
+            pdf_generated = False
+            try:
+                from utils.pipeline_flows import generate_ai_pdf
+                with open(out_pdf, "wb") as fp:
+                    fp.write(generate_ai_pdf(AI_text, "APEX SPC-RPN AI RISK ASSESSMENT"))
+                pdf_generated = True
+            except Exception:
+                pass
+
+        files = [out_file] + ([out_pdf] if pdf_generated and os.path.exists(os.path.join(work_dir, out_pdf)) else [])
+        return True, {"files": files}, f"Statistical Analysis complete. Report generated at {out_file}"
+    except Exception:
         return False, {}, f"Statistical Analysis failed: {traceback.format_exc()}"
 
 
@@ -2004,8 +2024,12 @@ def run_module_step7_ai_report(
         except Exception:
             pass
 
+        # Return full absolute paths so pipeline_ui can read them directly
+        files = [out_txt]
+        if os.path.exists(out_pdf):
+            files.append(out_pdf)
         return True, {
-            "files": [os.path.basename(out_txt), os.path.basename(out_pdf)],
+            "files": files,
         }, f"[{mk.upper()}] AI Final Report generated."
 
     except Exception:
