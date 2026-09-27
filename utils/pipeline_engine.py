@@ -2002,11 +2002,6 @@ def run_module_step7_ai_report(
     """Generic Step 7: Claude AI executive summary for any module."""
     import streamlit as st
     
-    lock_key = f"is_running_module_step7_{module_key}"
-    if st.session_state.get(lock_key, False):
-        return False, {}, "A report is already generating in the background. Wait for it to finish."
-    st.session_state[lock_key] = True
-    
     try:
         from utils.llm_prompts import ESGRC_MODULE_UNIFIED, MODEL_MODULE_UNIFIED, MAX_OUTPUT_TOKENS, HAIKU_UPGRADE_CHAR_THRESHOLD
         mk = module_key.lower()
@@ -2139,6 +2134,3 @@ def run_module_step7_ai_report(
 
     except Exception:
         return False, {}, f"[{mk.upper()}] Step 7 failed:\n{traceback.format_exc()}"
-        
-    finally:
-        st.session_state[lock_key] = False

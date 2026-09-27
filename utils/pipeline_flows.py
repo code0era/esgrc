@@ -678,10 +678,6 @@ def render_apex_pipeline():
         return True, {"work_dir": work_dir}
         
     def run_step6_report(work_dir):
-        if st.session_state.get("is_running_step6", False):
-            return False, {}, "A report is already generating in the background. Wait for it to finish."
-        st.session_state["is_running_step6"] = True
-
         try:
             master_path = os.path.join(work_dir, f"MASTER_CONSOLIDATED_REPORT_{pe.ANALYSIS_DATE}.txt")
             if not os.path.exists(master_path):
@@ -804,10 +800,6 @@ def render_apex_pipeline():
                 os.path.join(work_dir, out_name),
                 os.path.join(work_dir, pdf_name)
             ]}, f"AI Report Generation Bypassed: {str(e)}"
-            
-        finally:
-            st.session_state["is_running_step6"] = False
-        
     render_pipeline_step(pipeline_key, 6, total_steps, "Claude Analysis 1 — Final Enterprise Report",
                          "AI-generated executive summary, key risk findings and recommendations for the enterprise.",
                          render_inputs_apex_s6, run_step6_report)
