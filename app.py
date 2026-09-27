@@ -1559,6 +1559,77 @@ def render_report():
     ctx   = st.session_state.report_context
     score = ctx.get("overall_score", 0.0)
 
+    # Check if this is a new progressive pipeline report
+    if "Pipeline" in ctx.get("run_name", ""):
+        st.markdown(f'<div class="sec-header"><span>📊</span><span class="sec-header-text">Loaded Pipeline Report: {ctx.get("module_name")}</span></div>', unsafe_allow_html=True)
+        st.markdown(f"<div style='margin-bottom: 2rem; color: #64748B;'>Run: {ctx.get('run_name')}</div>", unsafe_allow_html=True)
+        
+        st.markdown("#### ✨ AI Executive Summary")
+        st.info(ctx.get("ai_summary", "No AI Summary available."))
+        
+        st.markdown("<br>", unsafe_allow_html=True)
+        st.markdown("#### 📄 Master Consolidated Report")
+        
+        col_dl, col_chat = st.columns([1, 1])
+        with col_dl:
+            from datetime import datetime
+            st.download_button(
+                label="📥 Download Master Report (.txt)",
+                data=st.session_state.report_content,
+                file_name=f"MASTER_REPORT_{ctx.get('module_name')}_{datetime.now().strftime('%Y%m%d')}.txt",
+                mime="text/plain",
+                use_container_width=True
+            )
+        
+        # Render the chat UI
+        st.markdown("<br><hr>", unsafe_allow_html=True)
+        st.markdown("### 💬 Chat with your Data")
+        
+        messages = st.session_state.get("chat_messages", [])
+        for msg in messages:
+            with st.chat_message(msg["role"]):
+                st.markdown(msg["content"])
+                
+        if prompt := st.chat_input("Ask a question about this pipeline report..."):
+            with st.chat_message("user"):
+                st.markdown(prompt)
+            messages.append({"role": "user", "content": prompt})
+            st.session_state.chat_messages = messages
+            if st.session_state.report_id:
+                from utils.db import append_chat_message
+                append_chat_message(st.session_state.report_id, "user", prompt)
+                
+            with st.chat_message("assistant"):
+                try:
+                    import anthropic
+                    client = anthropic.Anthropic(api_key=st.secrets["ANTHROPIC_API_KEY"])
+                    
+                    sys_prompt = "You are a helpful AI assistant analyzing a risk report. The user is asking questions about the report."
+                    if st.session_state.report_content:
+                        sys_prompt += f"\n\nHere is the master report content:\n{st.session_state.report_content[:50000]}"
+                        
+                    claude_msgs = [{"role": m["role"], "content": m["content"]} for m in messages]
+                    
+                    with st.spinner("Analyzing..."):
+                        resp = client.messages.create(
+                            model="claude-3-5-sonnet-20240620",
+                            max_tokens=500,
+                            system=sys_prompt,
+                            messages=claude_msgs
+                        )
+                    
+                    full_response = resp.content[0].text
+                    st.markdown(full_response)
+                    
+                    messages.append({"role": "assistant", "content": full_response})
+                    st.session_state.chat_messages = messages
+                    if st.session_state.report_id:
+                        append_chat_message(st.session_state.report_id, "assistant", full_response)
+                except Exception as e:
+                    st.error(f"Chat error: {e}")
+                    
+        return
+
     st.markdown('<div class="sec-header"><span>📋</span><span class="sec-header-text">Step 4 — Performance Report</span></div>', unsafe_allow_html=True)
 
     # Score hero
