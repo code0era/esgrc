@@ -44,7 +44,7 @@ st.set_page_config(
 # ─────────────────────────────────────────────────────────────────────────────
 st.markdown("""
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Sora:wght@400;600;620;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Sora:wght@400;600;700;800&display=swap');
 
 :root {
   --gov-coral: #c9634e;
@@ -56,7 +56,7 @@ st.markdown("""
 .brand-lockup:hover, .brand-lockup:focus, .brand-lockup:active { text-decoration: none !important; }
 .brand-lockup-mark { display: block; width: 37px; height: 37px; flex: none; }
 .brand-lockup-type { display: flex; flex-direction: column; min-width: 0; text-decoration: none !important; }
-.brand-lockup-name { white-space: nowrap; font-family: 'Sora', var(--gov-sans) !important; font-size: 22px; font-weight: 600; letter-spacing: -.065em; text-decoration: none !important; color: white !important;}
+.brand-lockup-name { white-space: nowrap; font-family: 'Sora', var(--gov-sans) !important; font-size: 22px; font-weight: 700; letter-spacing: -.065em; text-decoration: none !important; color: white !important;}
 .brand-lockup-accent { position: relative; color: var(--gov-coral) !important; text-decoration: none !important; font-weight: 600; }
 .brand-lockup-accent:after { content: ""; position: absolute; left: 1px; right: -1px; bottom: -4px; height: 5px; border-top: 2px solid currentColor; border-radius: 50%; transform: rotate(-4deg); opacity: .72; }
 .brand-lockup-tagline { margin-top: 7px; color: var(--gov-coral) !important; font-family: 'Sora', var(--gov-sans) !important; font-size: 7px; font-weight: 600; letter-spacing: .12em; white-space: nowrap; text-decoration: none !important;}
