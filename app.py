@@ -46,6 +46,16 @@ st.markdown("""
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 
+:root {
+  --gov-coral: #c9634e;
+}
+.brand-lockup { display: flex; align-items: center; gap: 8px; text-decoration: none; color: white; cursor: pointer; }
+.brand-lockup-mark { width: 36px; height: 36px; }
+.brand-lockup-type { display: flex; flex-direction: column; justify-content: center; line-height: 1; }
+.brand-lockup-name { font-size: 22px; font-weight: 700; letter-spacing: -0.5px; margin-bottom: 2px;}
+.brand-lockup-accent { color: var(--gov-coral); }
+.brand-lockup-tagline { font-size: 10px; color: var(--gov-coral); letter-spacing: 0.5px; text-transform: uppercase; font-weight: 600;}
+
 html, body, [class*="css"] { font-family: 'Inter', sans-serif !important; }
 
 /* ── Hide default Streamlit top bar decoration & footer ───────────────── */
@@ -1002,8 +1012,7 @@ def render_auth():
     
 <div class="auth-nav">
     <div class="auth-nav-left">
-        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2NCIgaGVpZ2h0PSI2NCIgdmlld0JveD0iMCAwIDU4IDU4IiBmaWxsPSJub25lIj4KICA8cmVjdCB3aWR0aD0iNTgiIGhlaWdodD0iNTgiIHJ4PSIxMiIgZmlsbD0iIzIxMTUxYiIvPgogIDxwYXRoIGQ9Ik04IDQxLjVWMTYuNUM4IDE0LjAxIDEwLjAxIDEyIDEyLjUgMTJoNC44YzEuNiAwIDMuMDkuODggMy44NSAyLjI5TDI5IDI5LjJsNy44NS0xNC45MUE0LjM2IDQuMzYgMCAwIDEgNDAuNyAxMmg0LjhjMi40OSAwIDQuNSAyLjAxIDQuNSA0LjV2MjUiIHN0cm9rZT0iI2Y0ZWRlMyIgc3Ryb2tlLXdpZHRoPSI0LjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgogIDxwYXRoIGQ9Ik04IDQxLjVjOC4xLTUuNzcgMTQuOTUtNS43NyAyMSAwIDYuMDUgNS43NyAxMi45IDUuNzcgMjEgMCIgc3Ryb2tlPSIjYzk2MzRlIiBzdHJva2Utd2lkdGg9IjQuNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CiAgPGNpcmNsZSBjeD0iMjkiIGN5PSIyOS4yIiByPSIzLjIiIGZpbGw9IiNjOTYzNGUiLz4KICA8Y2lyY2xlIGN4PSIyOSIgY3k9IjI5LjIiIHI9IjcuMiIgc3Ryb2tlPSIjYzk2MzRlIiBzdHJva2Utd2lkdGg9IjEuMiIgb3BhY2l0eT0iLjI4Ii8+Cjwvc3ZnPg==">
-        <span>METEOERAIT SOFTWARE</span>
+        <a aria-label="Meteoerait home" href="/" class="governance-brand"><span class="brand-lockup"><svg class="brand-lockup-mark" viewBox="0 0 58 58" fill="none" aria-hidden="true"><path d="M8 41.5V16.5C8 14.01 10.01 12 12.5 12h4.8c1.6 0 3.09.88 3.85 2.29L29 29.2l7.85-14.91A4.36 4.36 0 0 1 40.7 12h4.8c2.49 0 4.5 2.01 4.5 4.5v25" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M8 41.5c8.1-5.77 14.95-5.77 21 0 6.05 5.77 12.9 5.77 21 0" stroke="var(--gov-coral)" stroke-width="4.5" stroke-linecap="round"></path><circle cx="29" cy="29.2" r="3.2" fill="var(--gov-coral)"></circle><circle cx="29" cy="29.2" r="7.2" stroke="var(--gov-coral)" stroke-width="1.2" opacity=".28"></circle></svg><span class="brand-lockup-type"><span class="brand-lockup-name">Meteoer<span class="brand-lockup-accent">ai</span>t</span><span class="brand-lockup-tagline">eriskmonitor / control</span></span></span></a>
     </div>
     <div class="auth-nav-right">
         <a href="https://meteoerait.com/what-changes" target="_blank">What changes</a>
@@ -1317,7 +1326,7 @@ def render_header():
         st.markdown(f"""
         <div class="meteoerait-software-header-left">
             <div>
-                <div class="meteoerait-software-header-title"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2NCIgaGVpZ2h0PSI2NCIgdmlld0JveD0iMCAwIDU4IDU4IiBmaWxsPSJub25lIj4KICA8cmVjdCB3aWR0aD0iNTgiIGhlaWdodD0iNTgiIHJ4PSIxMiIgZmlsbD0iIzIxMTUxYiIvPgogIDxwYXRoIGQ9Ik04IDQxLjVWMTYuNUM4IDE0LjAxIDEwLjAxIDEyIDEyLjUgMTJoNC44YzEuNiAwIDMuMDkuODggMy44NSAyLjI5TDI5IDI5LjJsNy44NS0xNC45MUE0LjM2IDQuMzYgMCAwIDEgNDAuNyAxMmg0LjhjMi40OSAwIDQuNSAyLjAxIDQuNSA0LjV2MjUiIHN0cm9rZT0iI2Y0ZWRlMyIgc3Ryb2tlLXdpZHRoPSI0LjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgogIDxwYXRoIGQ9Ik04IDQxLjVjOC4xLTUuNzcgMTQuOTUtNS43NyAyMSAwIDYuMDUgNS43NyAxMi45IDUuNzcgMjEgMCIgc3Ryb2tlPSIjYzk2MzRlIiBzdHJva2Utd2lkdGg9IjQuNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CiAgPGNpcmNsZSBjeD0iMjkiIGN5PSIyOS4yIiByPSIzLjIiIGZpbGw9IiNjOTYzNGUiLz4KICA8Y2lyY2xlIGN4PSIyOSIgY3k9IjI5LjIiIHI9IjcuMiIgc3Ryb2tlPSIjYzk2MzRlIiBzdHJva2Utd2lkdGg9IjEuMiIgb3BhY2l0eT0iLjI4Ii8+Cjwvc3ZnPg==" style="width:24px; height:24px; vertical-align:middle; margin-right:8px;"> METEOERAIT SOFTWARE</div>
+                <a aria-label="Meteoerait home" href="/" class="governance-brand" style="margin-bottom: 10px; display: block;"><span class="brand-lockup"><svg class="brand-lockup-mark" viewBox="0 0 58 58" fill="none" aria-hidden="true"><path d="M8 41.5V16.5C8 14.01 10.01 12 12.5 12h4.8c1.6 0 3.09.88 3.85 2.29L29 29.2l7.85-14.91A4.36 4.36 0 0 1 40.7 12h4.8c2.49 0 4.5 2.01 4.5 4.5v25" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M8 41.5c8.1-5.77 14.95-5.77 21 0 6.05 5.77 12.9 5.77 21 0" stroke="var(--gov-coral)" stroke-width="4.5" stroke-linecap="round"></path><circle cx="29" cy="29.2" r="3.2" fill="var(--gov-coral)"></circle><circle cx="29" cy="29.2" r="7.2" stroke="var(--gov-coral)" stroke-width="1.2" opacity=".28"></circle></svg><span class="brand-lockup-type"><span class="brand-lockup-name">Meteoer<span class="brand-lockup-accent">ai</span>t</span><span class="brand-lockup-tagline">eriskmonitor / control</span></span></span></a>
                 <div class="meteoerait-software-header-sub">Enterprise Risk &nbsp;·&nbsp; Compliance &nbsp;·&nbsp; Performance Metrics &nbsp;·&nbsp; AI Analytics</div>
             </div>
         </div>
@@ -1374,7 +1383,9 @@ def render_footer():
     st.markdown("""
 <div class="meteoerait-software-footer">
     <div class="footer-top">
-        <div class="footer-brand"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2NCIgaGVpZ2h0PSI2NCIgdmlld0JveD0iMCAwIDU4IDU4IiBmaWxsPSJub25lIj4KICA8cmVjdCB3aWR0aD0iNTgiIGhlaWdodD0iNTgiIHJ4PSIxMiIgZmlsbD0iIzIxMTUxYiIvPgogIDxwYXRoIGQ9Ik04IDQxLjVWMTYuNUM4IDE0LjAxIDEwLjAxIDEyIDEyLjUgMTJoNC44YzEuNiAwIDMuMDkuODggMy44NSAyLjI5TDI5IDI5LjJsNy44NS0xNC45MUE0LjM2IDQuMzYgMCAwIDEgNDAuNyAxMmg0LjhjMi40OSAwIDQuNSAyLjAxIDQuNSA0LjV2MjUiIHN0cm9rZT0iI2Y0ZWRlMyIgc3Ryb2tlLXdpZHRoPSI0LjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgogIDxwYXRoIGQ9Ik04IDQxLjVjOC4xLTUuNzcgMTQuOTUtNS43NyAyMSAwIDYuMDUgNS43NyAxMi45IDUuNzcgMjEgMCIgc3Ryb2tlPSIjYzk2MzRlIiBzdHJva2Utd2lkdGg9IjQuNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CiAgPGNpcmNsZSBjeD0iMjkiIGN5PSIyOS4yIiByPSIzLjIiIGZpbGw9IiNjOTYzNGUiLz4KICA8Y2lyY2xlIGN4PSIyOSIgY3k9IjI5LjIiIHI9IjcuMiIgc3Ryb2tlPSIjYzk2MzRlIiBzdHJva2Utd2lkdGg9IjEuMiIgb3BhY2l0eT0iLjI4Ii8+Cjwvc3ZnPg==" style="width:24px; height:24px; vertical-align:middle; margin-right:8px;"> meteoerait</div>
+        <div class="footer-brand">
+            <a aria-label="Meteoerait home" href="/" class="governance-brand"><span class="brand-lockup"><svg class="brand-lockup-mark" viewBox="0 0 58 58" fill="none" aria-hidden="true"><path d="M8 41.5V16.5C8 14.01 10.01 12 12.5 12h4.8c1.6 0 3.09.88 3.85 2.29L29 29.2l7.85-14.91A4.36 4.36 0 0 1 40.7 12h4.8c2.49 0 4.5 2.01 4.5 4.5v25" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M8 41.5c8.1-5.77 14.95-5.77 21 0 6.05 5.77 12.9 5.77 21 0" stroke="var(--gov-coral)" stroke-width="4.5" stroke-linecap="round"></path><circle cx="29" cy="29.2" r="3.2" fill="var(--gov-coral)"></circle><circle cx="29" cy="29.2" r="7.2" stroke="var(--gov-coral)" stroke-width="1.2" opacity=".28"></circle></svg><span class="brand-lockup-type"><span class="brand-lockup-name">Meteoer<span class="brand-lockup-accent">ai</span>t</span><span class="brand-lockup-tagline">eriskmonitor / control</span></span></span></a>
+        </div>
         <div class="footer-center-text">
             We help you record risk.<br>
             <span style="color:white; font-weight:600;">Meteoerait helps you control the record.</span>
