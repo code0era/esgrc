@@ -130,9 +130,9 @@ h1, h2, h3, h4, h5, h6 {
 [data-testid="stSidebar"] {
     background: linear-gradient(135deg, #25282d 0%, #21151b 100%) !important;
     border-right: none !important;
-    z-index: 9999999 !important;
 }
 [data-testid="stSidebar"] * { color: #FFFFFF !important; }
+[data-testid="stSidebar"] div[data-baseweb="select"] * { color: #1C1615 !important; -webkit-text-fill-color: #1C1615 !important; }
 [data-testid="stSidebar"] .stButton > button {
     background: rgba(255,255,255,0.15) !important;
     color: white !important;
