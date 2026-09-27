@@ -59,7 +59,7 @@ st.markdown("""
 .brand-lockup-name { white-space: nowrap; font-family: 'Sora', var(--gov-sans) !important; font-size: 22px; font-weight: 600; letter-spacing: -.065em; text-decoration: none !important; color: white !important;}
 .brand-lockup-accent { position: relative; color: var(--gov-coral) !important; text-decoration: none !important; font-weight: 600; }
 .brand-lockup-accent:after { content: ""; position: absolute; left: 1px; right: -1px; bottom: -4px; height: 5px; border-top: 2px solid currentColor; border-radius: 50%; transform: rotate(-4deg); opacity: .72; }
-.brand-lockup-tagline { margin-top: 7px; color: var(--gov-coral) !important; font-family: 'Sora', var(--gov-sans) !important; font-size: 7px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; white-space: nowrap; text-decoration: none !important;}
+.brand-lockup-tagline { margin-top: 7px; color: var(--gov-coral) !important; font-family: 'Sora', var(--gov-sans) !important; font-size: 7px; font-weight: 600; letter-spacing: .12em; white-space: nowrap; text-decoration: none !important;}
 
 html, body, [class*="css"] { font-family: 'Inter', sans-serif !important; }
 
