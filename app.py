@@ -1273,48 +1273,57 @@ def render_sidebar():
         if not reports:
             st.markdown('<p style="opacity:0.6; font-size:0.82rem; text-align:center; padding:1rem 0;">No reports yet</p>', unsafe_allow_html=True)
         else:
+            from collections import defaultdict
+            grouped = defaultdict(list)
             for rep in reports:
-                rid    = str(rep["_id"])
-                fn     = rep.get("csv_filename", "report")[:22]
-                score  = rep.get("overall_score", 0.0)
-                created= rep.get("created_at", datetime.now())
-                ds     = created.strftime("%b %d, %H:%M") if isinstance(created, datetime) else "—"
-                active = st.session_state.report_id == rid
-                bg = "rgba(255,255,255,0.22)" if active else "rgba(255,255,255,0.1)"
-                sc = "🟢" if score >= 85 else ("🟡" if score >= 75 else "🔴")
+                created = rep.get("created_at", datetime.now())
+                ds = created.strftime("%d %b %Y, %I:%M %p") if isinstance(created, datetime) else "Unknown"
+                run_name = rep.get("run_name") or f"Run: {ds}"
+                grouped[run_name].append(rep)
 
-                st.markdown(f"""
+            for run_name, run_reps in grouped.items():
+                with st.expander(f"📁 {run_name}", expanded=False):
+                    for rep in run_reps:
+                        rid    = str(rep["_id"])
+                        mod_name = rep.get("module_name", "Report")
+                        score  = rep.get("overall_score", 0.0)
+                        created= rep.get("created_at", datetime.now())
+                        ds     = created.strftime("%b %d, %H:%M") if isinstance(created, datetime) else "—"
+                        active = st.session_state.report_id == rid
+                        bg = "rgba(255,255,255,0.22)" if active else "rgba(255,255,255,0.1)"
+                        sc = "🟢" if score >= 85 else ("🟡" if score >= 75 else "🔴")
+
+                        st.markdown(f"""
 <div style="background:{bg}; border:1px solid rgba(255,255,255,0.2); border-radius:10px;
      padding:0.55rem 0.75rem; margin-bottom:0.4rem;">
-  <div style="font-size:0.8rem; font-weight:600;">{fn}</div>
-  <div style="font-size:0.7rem; opacity:0.72; margin-top:2px;">{ds}</div>
+  <div style="font-size:0.8rem; font-weight:600;">{mod_name}</div>
   <div style="font-size:0.75rem; margin-top:3px;">{sc} <b>{score:.1f}</b></div>
 </div>""", unsafe_allow_html=True)
 
-                bc, dc = st.columns([3, 1])
-                with bc:
-                    if st.button("Load", key=f"ld_{rid}", use_container_width=True):
-                        full = get_report(rid)
-                        if full:
-                            st.session_state.report_id       = rid
-                            st.session_state.report_content  = full.get("report_content", "")
-                            st.session_state.report_context  = full.get("context_data", {})
-                            st.session_state.report_generated= True
-                            st.session_state.chat_messages   = [
-                                {"role": m["role"], "content": m["content"]}
-                                for m in full.get("chat_history", [])
-                            ]
-                            st.rerun()
-                with dc:
-                    if st.button("🗑", key=f"dl_{rid}", help="Delete"):
-                        if delete_report(rid, st.session_state.user_id):
-                            if st.session_state.report_id == rid:
-                                st.session_state.report_id       = None
-                                st.session_state.report_content  = ""
-                                st.session_state.report_generated= False
-                                st.session_state.chat_messages   = []
-                                st.session_state.report_context  = None
-                            st.rerun()
+                        bc, dc = st.columns([3, 1])
+                        with bc:
+                            if st.button("Load", key=f"ld_{rid}", use_container_width=True):
+                                full = get_report(rid)
+                                if full:
+                                    st.session_state.report_id       = rid
+                                    st.session_state.report_content  = full.get("report_content", "")
+                                    st.session_state.report_context  = full.get("context_data", {})
+                                    st.session_state.report_generated= True
+                                    st.session_state.chat_messages   = [
+                                        {"role": m["role"], "content": m["content"]}
+                                        for m in full.get("chat_history", [])
+                                    ]
+                                    st.rerun()
+                        with dc:
+                            if st.button("🗑", key=f"dl_{rid}", help="Delete"):
+                                if delete_report(rid, st.session_state.user_id):
+                                    if st.session_state.report_id == rid:
+                                        st.session_state.report_id       = None
+                                        st.session_state.report_content  = ""
+                                        st.session_state.report_generated= False
+                                        st.session_state.chat_messages   = []
+                                        st.session_state.report_context  = None
+                                    st.rerun()
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -1483,6 +1492,12 @@ def render_summary_and_generate():
             st.session_state.report_id       = None
             st.session_state.chat_messages   = []
             st.session_state.report_context  = None
+            
+            import uuid
+            from datetime import datetime
+            st.session_state.run_id = str(uuid.uuid4())
+            st.session_state.run_name = datetime.utcnow().strftime("Pipeline Run: %d %b %Y, %I:%M %p")
+            
             st.rerun()
     with col_desc:
         st.markdown('<div style="color:#64748B; font-size:0.82rem; padding-top:0.65rem;">Runs the full METEOERAIT SOFTWARE weighted-average pipeline and identifies the lowest-performing metrics, groups, and sub-modules.</div>', unsafe_allow_html=True)
@@ -1536,6 +1551,9 @@ def render_generating():
         st.session_state.report_generated = True
         st.session_state.is_generating    = False
         st.session_state.chat_open        = True
+
+        context["run_id"] = st.session_state.get("run_id")
+        context["run_name"] = st.session_state.get("run_name")
 
         rep_id = save_report(
             user_id        = st.session_state.user_id,

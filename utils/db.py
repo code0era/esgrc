@@ -291,13 +291,14 @@ def sqlite_get_user_reports(user_id: str, limit: int = 20) -> List[Dict]:
     conn.row_factory = sqlite3.Row
     c = conn.cursor()
     c.execute(
-        "SELECT id, user_id, csv_filename, json_filename, module_name, overall_score, created_at FROM reports WHERE user_id = ? ORDER BY created_at DESC LIMIT ?",
+        "SELECT id, user_id, csv_filename, json_filename, module_name, overall_score, created_at, context_data FROM reports WHERE user_id = ? ORDER BY created_at DESC LIMIT ?",
         (user_id, limit)
     )
     rows = c.fetchall()
     conn.close()
     reports = []
     for row in rows:
+        context = json.loads(row["context_data"]) if row["context_data"] else {}
         reports.append({
             "_id": row["id"],
             "user_id": row["user_id"],
@@ -305,6 +306,8 @@ def sqlite_get_user_reports(user_id: str, limit: int = 20) -> List[Dict]:
             "json_filename": row["json_filename"],
             "module_name": row["module_name"],
             "overall_score": row["overall_score"],
+            "run_id": context.get("run_id"),
+            "run_name": context.get("run_name"),
             "created_at": datetime.fromisoformat(row["created_at"]) if row["created_at"] else datetime.utcnow()
         })
     return reports
@@ -446,6 +449,8 @@ def save_report(
             "report_content": report_content,
             "module_name": context.get("module_name", ""),
             "overall_score": context.get("overall_score", 0.0),
+            "run_id": context.get("run_id"),
+            "run_name": context.get("run_name"),
             "context_data": context,
             "chat_history": [],
             "created_at": datetime.utcnow(),
