@@ -49,12 +49,15 @@ st.markdown("""
 :root {
   --gov-coral: #c9634e;
 }
-.brand-lockup { display: flex; align-items: center; gap: 8px; text-decoration: none; color: white; cursor: pointer; }
+.governance-brand { text-decoration: none !important; border: none !important; outline: none !important; }
+.governance-brand:hover, .governance-brand:focus, .governance-brand:active { text-decoration: none !important; }
+.brand-lockup { display: flex; align-items: center; gap: 8px; text-decoration: none !important; color: white !important; cursor: pointer; }
+.brand-lockup:hover, .brand-lockup:focus, .brand-lockup:active { text-decoration: none !important; }
 .brand-lockup-mark { width: 36px; height: 36px; }
-.brand-lockup-type { display: flex; flex-direction: column; justify-content: center; line-height: 1; }
-.brand-lockup-name { font-size: 22px; font-weight: 700; letter-spacing: -0.5px; margin-bottom: 2px;}
-.brand-lockup-accent { color: var(--gov-coral); }
-.brand-lockup-tagline { font-size: 10px; color: var(--gov-coral); letter-spacing: 0.5px; text-transform: uppercase; font-weight: 600;}
+.brand-lockup-type { display: flex; flex-direction: column; justify-content: center; line-height: 1; text-decoration: none !important; }
+.brand-lockup-name { font-size: 22px; font-weight: 700; letter-spacing: -0.5px; margin-bottom: 2px; text-decoration: none !important; color: white !important;}
+.brand-lockup-accent { color: var(--gov-coral) !important; text-decoration: none !important; }
+.brand-lockup-tagline { font-size: 10px; color: var(--gov-coral) !important; letter-spacing: 0.5px; text-transform: uppercase; font-weight: 600; text-decoration: none !important;}
 
 html, body, [class*="css"] { font-family: 'Inter', sans-serif !important; }
 
