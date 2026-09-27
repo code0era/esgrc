@@ -1568,18 +1568,44 @@ def render_report():
         st.info(ctx.get("ai_summary", "No AI Summary available."))
         
         st.markdown("<br>", unsafe_allow_html=True)
-        st.markdown("#### 📄 Master Consolidated Report")
         
-        col_dl, col_chat = st.columns([1, 1])
-        with col_dl:
-            from datetime import datetime
-            st.download_button(
-                label="📥 Download Master Report (.txt)",
-                data=st.session_state.report_content,
-                file_name=f"MASTER_REPORT_{ctx.get('module_name')}_{datetime.now().strftime('%Y%m%d')}.txt",
-                mime="text/plain",
-                use_container_width=True
-            )
+        pipeline_files = ctx.get("pipeline_files", {})
+        if pipeline_files:
+            st.markdown("#### 📄 Generated Pipeline Files")
+            import base64
+            
+            # Show download buttons in a grid
+            cols = st.columns(2)
+            idx = 0
+            for fname, b64_data in pipeline_files.items():
+                raw_bytes = base64.b64decode(b64_data)
+                
+                mime_type = "text/plain"
+                if fname.lower().endswith(".pdf"): mime_type = "application/pdf"
+                elif fname.lower().endswith(".csv"): mime_type = "text/csv"
+                
+                with cols[idx % 2]:
+                    st.download_button(
+                        label=f"📥 Download {fname}",
+                        data=raw_bytes,
+                        file_name=fname,
+                        mime=mime_type,
+                        use_container_width=True,
+                        key=f"dl_{fname}"
+                    )
+                idx += 1
+        else:
+            st.markdown("#### 📄 Master Consolidated Report")
+            col_dl, col_chat = st.columns([1, 1])
+            with col_dl:
+                from datetime import datetime
+                st.download_button(
+                    label="📥 Download Master Report (.txt)",
+                    data=st.session_state.report_content,
+                    file_name=f"MASTER_REPORT_{ctx.get('module_name')}_{datetime.now().strftime('%Y%m%d')}.txt",
+                    mime="text/plain",
+                    use_container_width=True
+                )
         
         # Render the chat UI
         st.markdown("<br><hr>", unsafe_allow_html=True)

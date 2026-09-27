@@ -755,6 +755,15 @@ def render_apex_pipeline():
                 from utils.db import save_report
                 from datetime import datetime
                 import uuid
+                import base64
+                
+                pipeline_files = {}
+                for fname in os.listdir(work_dir):
+                    fpath = os.path.join(work_dir, fname)
+                    if os.path.isfile(fpath):
+                        with open(fpath, "rb") as f:
+                            pipeline_files[fname] = base64.b64encode(f.read()).decode("utf-8")
+                            
                 # Ensure the sidebar can pull this up with the correct module name
                 save_context = {
                     "module_name": "APEX",
@@ -762,7 +771,8 @@ def render_apex_pipeline():
                     "overall_score": 0.0,
                     "ai_summary": AI_text,
                     "run_id": str(uuid.uuid4()),
-                    "run_name": f"APEX Pipeline: {datetime.now().strftime('%d %b, %H:%M')}"
+                    "run_name": f"APEX Pipeline: {datetime.now().strftime('%d %b, %H:%M')}",
+                    "pipeline_files": pipeline_files
                 }
                 if "user_id" in st.session_state:
                     save_report(

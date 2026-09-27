@@ -2097,6 +2097,15 @@ def run_module_step7_ai_report(
             from utils.db import save_report
             from datetime import datetime
             import uuid
+            import base64
+            
+            pipeline_files = {}
+            for fname in os.listdir(work_dir):
+                fpath = os.path.join(work_dir, fname)
+                if os.path.isfile(fpath):
+                    with open(fpath, "rb") as f:
+                        pipeline_files[fname] = base64.b64encode(f.read()).decode("utf-8")
+                        
             # Ensure the sidebar can pull this up with the correct module name
             save_context = {
                 "module_name": mk.upper(),
@@ -2104,7 +2113,8 @@ def run_module_step7_ai_report(
                 "overall_score": 0.0,  # Pipeline generates multiple scores, set dummy for sidebar sorting
                 "ai_summary": ai_text,
                 "run_id": str(uuid.uuid4()),
-                "run_name": f"{mk.upper()} Pipeline: {datetime.now().strftime('%d %b, %H:%M')}"
+                "run_name": f"{mk.upper()} Pipeline: {datetime.now().strftime('%d %b, %H:%M')}",
+                "pipeline_files": pipeline_files
             }
             # Save the master consolidated text as the report content
             if "user_id" in st.session_state:
