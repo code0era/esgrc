@@ -2092,6 +2092,32 @@ def run_module_step7_ai_report(
                 f.write(generate_ai_pdf(ai_text, f"FINAL {mk.upper()} RECOMMENDED AI REPORT"))
         except Exception:
             pass
+            
+        try:
+            from utils.db import save_report
+            from datetime import datetime
+            import uuid
+            # Ensure the sidebar can pull this up with the correct module name
+            save_context = {
+                "module_name": mk.upper(),
+                "module_id": mk.upper(),
+                "overall_score": 0.0,  # Pipeline generates multiple scores, set dummy for sidebar sorting
+                "ai_summary": ai_text,
+                "run_id": str(uuid.uuid4()),
+                "run_name": f"{mk.upper()} Pipeline: {datetime.now().strftime('%d %b, %H:%M')}"
+            }
+            # Save the master consolidated text as the report content
+            if "user_id" in st.session_state:
+                save_report(
+                    user_id=st.session_state.user_id,
+                    csv_filename=f"pipeline_run_{mk}.csv",
+                    json_filename=f"pipeline_run_{mk}.json",
+                    report_content=content,
+                    context=save_context
+                )
+        except Exception as e:
+            # Don't fail the step just because DB save failed
+            print(f"Failed to save pipeline report to DB: {e}")
 
         # Return full absolute paths so pipeline_ui can read them directly
         files = [out_txt]

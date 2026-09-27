@@ -751,6 +751,30 @@ def render_apex_pipeline():
             with open(os.path.join(work_dir, pdf_name), "wb") as fpdf:
                 fpdf.write(pdf_bytes)
                 
+            try:
+                from utils.db import save_report
+                from datetime import datetime
+                import uuid
+                # Ensure the sidebar can pull this up with the correct module name
+                save_context = {
+                    "module_name": "APEX",
+                    "module_id": "APEX",
+                    "overall_score": 0.0,
+                    "ai_summary": AI_text,
+                    "run_id": str(uuid.uuid4()),
+                    "run_name": f"APEX Pipeline: {datetime.now().strftime('%d %b, %H:%M')}"
+                }
+                if "user_id" in st.session_state:
+                    save_report(
+                        user_id=st.session_state.user_id,
+                        csv_filename="pipeline_run_apex.csv",
+                        json_filename="pipeline_run_apex.json",
+                        report_content=content,
+                        context=save_context
+                    )
+            except Exception as e:
+                print(f"Failed to save APEX pipeline report to DB: {e}")
+                
             return True, {"files": [os.path.join(work_dir, out_name), os.path.join(work_dir, pdf_name)]}, "AI Report Generation complete (TXT and PDF generated)."
             
         except Exception as e:

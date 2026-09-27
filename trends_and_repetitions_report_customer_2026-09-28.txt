@@ -1,0 +1,699 @@
+Metrics Trends:
+CSR10101: Decreasing
+CSR10102: Stable
+CSR10103: Decreasing
+CSR10104: Increasing
+CSR10105: Decreasing
+CSR10106: Increasing
+CSR10107: Stable
+CSR10108: Increasing
+CSR10109: Stable
+CSR10110: Stable
+CSR10111: Increasing
+CSR10112: Increasing
+CSR10113: Stable
+CSR10114: Increasing
+CSR10115: Decreasing
+CEM10101: Decreasing
+CEM10102: Stable
+CEM10103: Decreasing
+CEM10104: Increasing
+CEM10105: Increasing
+CEM10106: Decreasing
+CEM10107: Increasing
+CEM10108: Stable
+CEM10109: Stable
+CEM10110: Decreasing
+CEM10111: Increasing
+CEM10112: Stable
+CEM10113: Decreasing
+CEM10114: Increasing
+ORH10101: Stable
+ORH10102: Decreasing
+ORH10103: Stable
+ORH10104: Decreasing
+ORH10105: Decreasing
+ORH10106: Increasing
+ORH10107: Increasing
+ORH10108: Increasing
+ORH10109: Decreasing
+ORH10110: Stable
+ORH10111: Decreasing
+ORH10112: Stable
+ORH10113: Decreasing
+ORH10114: Increasing
+ORH10115: Stable
+CRM10101: Decreasing
+CRM10102: Increasing
+CRM10103: Increasing
+CRM10104: Stable
+CRM10105: Decreasing
+CRM10106: Stable
+CRM10107: Stable
+CRM10108: Stable
+CRM10109: Decreasing
+CRM10110: Decreasing
+CRM10111: Stable
+CRM10112: Stable
+CRM10113: Increasing
+CRM10114: Increasing
+CRM10115: Stable
+CRM10116: Stable
+CRM10117: Decreasing
+CRM10118: Stable
+CRM10119: Decreasing
+ITM10101: Decreasing
+ITM10102: Stable
+ITM10103: Decreasing
+ITM10104: Increasing
+ITM10105: Stable
+ITM10106: Increasing
+ITM10107: Stable
+ITM10108: Stable
+ITM10109: Increasing
+ITM10110: Increasing
+ITM10111: Decreasing
+ITM10112: Stable
+ITM10113: Increasing
+ITM10114: Increasing
+ITM10115: Stable
+ITM10116: Increasing
+ITM10117: Increasing
+ITM10118: Increasing
+ITM10119: Stable
+CIM10101: Increasing
+CIM10102: Increasing
+CIM10103: Stable
+CIM10104: Stable
+CIM10105: Decreasing
+CIM10106: Stable
+CIM10107: Stable
+CIM10108: Stable
+CIM10109: Increasing
+CIM10110: Decreasing
+CIM10111: Increasing
+CIM10112: Decreasing
+CIM10113: Stable
+CIM10114: Stable
+CIM10115: Increasing
+CIM10116: Stable
+CIM10117: Stable
+CIM10118: Decreasing
+CIM10119: Increasing
+CPM10101: Stable
+CPM10102: Increasing
+CPM10103: Stable
+CPM10104: Decreasing
+CPM10105: Decreasing
+CPM10106: Increasing
+CPM10107: Increasing
+CPM10108: Stable
+CPM10109: Increasing
+CPM10110: Stable
+CPM10111: Decreasing
+CPM10112: Increasing
+CPM10113: Decreasing
+CPM10114: Decreasing
+CPM10115: Decreasing
+CPM10116: Increasing
+CPM10117: Increasing
+CPM10118: Increasing
+CPM10119: Stable
+QSL10101: Stable
+QSL10102: Decreasing
+QSL10103: Stable
+QSL10104: Stable
+QSL10105: Stable
+QSL10106: Increasing
+QSL10107: Stable
+QSL10108: Stable
+QSL10109: Stable
+QSL10110: Stable
+QSL10111: Stable
+QSL10112: Stable
+QSL10113: Decreasing
+QSL10114: Increasing
+QSL10115: Decreasing
+QSL10116: Stable
+QSL10117: Stable
+QSL10118: Stable
+QSL10119: Decreasing
+BIM10101: Decreasing
+BIM10102: Increasing
+BIM10103: Decreasing
+BIM10104: Stable
+BIM10105: Stable
+BIM10106: Increasing
+BIM10107: Decreasing
+BIM10108: Decreasing
+BIM10109: Decreasing
+BIM10110: Decreasing
+BIM10111: Stable
+BIM10112: Stable
+BIM10113: Decreasing
+BIM10114: Stable
+BIM10115: Increasing
+BIM10116: Increasing
+BIM10117: Decreasing
+BIM10118: Increasing
+BIM10119: Stable
+BPR10101: Increasing
+BPR10102: Increasing
+BPR10103: Stable
+BPR10104: Stable
+BPR10105: Decreasing
+BPR10106: Increasing
+BPR10107: Increasing
+BPR10108: Increasing
+BPR10109: Increasing
+BPR10110: Increasing
+BPR10111: Decreasing
+BPR10112: Increasing
+BPR10113: Stable
+BPR10114: Stable
+BPR10115: Increasing
+BPR10116: Decreasing
+BPR10117: Stable
+BPR10118: Increasing
+BPR10119: Increasing
+BIH10101: Decreasing
+BIH10102: Stable
+BIH10103: Stable
+BIH10104: Stable
+BIH10105: Decreasing
+BIH10106: Decreasing
+BIH10107: Decreasing
+BIH10108: Increasing
+BIH10109: Decreasing
+BIH10110: Decreasing
+BIH10111: Stable
+BIH10112: Increasing
+BIH10113: Stable
+BIH10114: Stable
+BIH10115: Stable
+BIH10116: Stable
+BIH10117: Stable
+BIH10118: Stable
+BIH10119: Increasing
+BEV10101: Increasing
+BEV10102: Stable
+BEV10103: Decreasing
+BEV10104: Stable
+BEV10105: Decreasing
+BEV10106: Stable
+BEV10107: Stable
+BEV10108: Stable
+BEV10109: Stable
+BEV10110: Stable
+BEV10111: Decreasing
+BEV10112: Increasing
+BEV10113: Increasing
+BEV10114: Stable
+BEV10115: Increasing
+BEV10116: Stable
+BEV10117: Stable
+BEV10118: Decreasing
+BEV10119: Increasing
+CHG10101: Decreasing
+CHG10102: Stable
+CHG10103: Stable
+CHG10104: Stable
+CHG10105: Decreasing
+CHG10106: Increasing
+CHG10107: Stable
+CHG10108: Decreasing
+CHG10109: Decreasing
+CHG10110: Stable
+CHG10111: Decreasing
+CHG10112: Decreasing
+CHG10113: Stable
+CHG10114: Decreasing
+CHG10115: Stable
+CHG10116: Stable
+CHG10117: Increasing
+CHG10118: Stable
+CHG10119: Stable
+CBC10101: Increasing
+CBC10102: Stable
+CBC10103: Decreasing
+CBC10104: Increasing
+CBC10105: Stable
+CBC10106: Increasing
+CBC10107: Increasing
+CBC10108: Increasing
+CBC10109: Decreasing
+CBC10110: Decreasing
+CBC10111: Increasing
+CBC10112: Stable
+CBC10113: Decreasing
+CBC10114: Stable
+CBC10115: Stable
+CBC10116: Decreasing
+CBC10117: Decreasing
+CBC10118: Decreasing
+CBC10119: Decreasing
+RTN10101: Decreasing
+RTN10102: Stable
+RTN10103: Increasing
+RTN10104: Increasing
+RTN10105: Decreasing
+RTN10106: Decreasing
+RTN10107: Increasing
+RTN10108: Decreasing
+RTN10109: Increasing
+RTN10110: Stable
+RTN10111: Stable
+RTN10112: Increasing
+RTN10113: Decreasing
+RTN10114: Decreasing
+RTN10115: Stable
+RTN10116: Stable
+RTN10117: Increasing
+RTN10118: Decreasing
+RTN10119: Decreasing
+CII10101: Decreasing
+CII10102: Decreasing
+CII10103: Decreasing
+CII10104: Stable
+CII10105: Decreasing
+CII10106: Stable
+CII10107: Stable
+CII10108: Stable
+CII10109: Stable
+CII10110: Stable
+CII10111: Increasing
+CII10112: Stable
+CII10113: Decreasing
+CII10114: Decreasing
+CII10115: Decreasing
+CII10116: Stable
+CII10117: Increasing
+CII10118: Increasing
+CII10119: Increasing
+CCM10101: Decreasing
+CCM10102: Decreasing
+CCM10103: Stable
+CCM10104: Decreasing
+CCM10105: Stable
+CCM10106: Stable
+CCM10107: Increasing
+CCM10108: Increasing
+CCM10109: Increasing
+CCM10110: Increasing
+CCM10111: Increasing
+CCM10112: Stable
+CCM10113: Decreasing
+CCM10114: Decreasing
+CCM10115: Increasing
+CCM10116: Stable
+CCM10117: Stable
+CCM10118: Stable
+CCM10119: Increasing
+CSP10101: Increasing
+CSP10102: Stable
+CSP10103: Increasing
+CSP10104: Increasing
+CSP10105: Stable
+CSP10106: Increasing
+CSP10107: Decreasing
+CSP10108: Increasing
+CSP10109: Increasing
+CSP10110: Stable
+CSP10111: Decreasing
+CSP10112: Increasing
+CSP10113: Stable
+CSP10114: Increasing
+CSP10115: Decreasing
+CSP10116: Stable
+CSP10117: Stable
+CSP10118: Decreasing
+CSP10119: Increasing
+CFS10101: Increasing
+CFS10102: Increasing
+CFS10103: Decreasing
+CFS10104: Stable
+CFS10105: Stable
+CFS10106: Stable
+CFS10107: Stable
+CFS10108: Stable
+CFS10109: Decreasing
+CFS10110: Stable
+CFS10111: Decreasing
+CFS10112: Stable
+CFS10113: Decreasing
+CFS10114: Stable
+CFS10115: Stable
+CFS10116: Increasing
+CFS10117: Stable
+CFS10118: Decreasing
+CFS10119: Decreasing
+
+Repetitions (Fourier Analysis):
+CSR10101: No clear repetition (potential instability)
+CSR10102: Dominant period: 2.04 units (repetitive)
+CSR10103: No clear repetition (potential instability)
+CSR10104: No clear repetition (potential instability)
+CSR10105: No clear repetition (potential instability)
+CSR10106: Dominant period: 2.13 units (repetitive)
+CSR10107: No clear repetition (potential instability)
+CSR10108: No clear repetition (potential instability)
+CSR10109: No clear repetition (potential instability)
+CSR10110: No clear repetition (potential instability)
+CSR10111: No clear repetition (potential instability)
+CSR10112: Dominant period: 9.15 units (repetitive)
+CSR10113: No clear repetition (potential instability)
+CSR10114: Dominant period: 13.22 units (repetitive)
+CSR10115: Dominant period: 3.70 units (repetitive)
+CEM10101: Dominant period: 5.17 units (repetitive)
+CEM10102: Dominant period: 272.91 units (repetitive)
+CEM10103: Dominant period: 3.72 units (repetitive)
+CEM10104: Dominant period: 2.03 units (repetitive)
+CEM10105: No clear repetition (potential instability)
+CEM10106: No clear repetition (potential instability)
+CEM10107: Dominant period: 18.19 units (repetitive)
+CEM10108: Dominant period: 4.15 units (repetitive)
+CEM10109: No clear repetition (potential instability)
+CEM10110: Dominant period: 13.71 units (repetitive)
+CEM10111: Dominant period: 5.06 units (repetitive)
+CEM10112: Dominant period: 44.81 units (repetitive)
+CEM10113: Dominant period: 5.73 units (repetitive)
+CEM10114: No clear repetition (potential instability)
+ORH10101: Dominant period: 2.14 units (repetitive)
+ORH10102: Dominant period: 8.18 units (repetitive)
+ORH10103: No clear repetition (potential instability)
+ORH10104: Dominant period: 2.19 units (repetitive)
+ORH10105: Dominant period: 2.43 units (repetitive)
+ORH10106: Dominant period: 6.11 units (repetitive)
+ORH10107: No clear repetition (potential instability)
+ORH10108: No clear repetition (potential instability)
+ORH10109: No clear repetition (potential instability)
+ORH10110: Dominant period: 2.14 units (repetitive)
+ORH10111: No clear repetition (potential instability)
+ORH10112: No clear repetition (potential instability)
+ORH10113: Dominant period: 2.91 units (repetitive)
+ORH10114: Dominant period: 2.07 units (repetitive)
+ORH10115: No clear repetition (potential instability)
+CRM10101: Dominant period: 2.47 units (repetitive)
+CRM10102: No clear repetition (potential instability)
+CRM10103: No clear repetition (potential instability)
+CRM10104: Dominant period: 9.56 units (repetitive)
+CRM10105: No clear repetition (potential instability)
+CRM10106: Dominant period: 9.88 units (repetitive)
+CRM10107: Dominant period: 8.53 units (repetitive)
+CRM10108: Dominant period: 5.78 units (repetitive)
+CRM10109: Dominant period: 13.05 units (repetitive)
+CRM10110: No clear repetition (potential instability)
+CRM10111: Dominant period: 13.52 units (repetitive)
+CRM10112: No clear repetition (potential instability)
+CRM10113: Dominant period: 52.67 units (repetitive)
+CRM10114: No clear repetition (potential instability)
+CRM10115: No clear repetition (potential instability)
+CRM10116: Dominant period: 158.00 units (repetitive)
+CRM10117: Dominant period: 16.05 units (repetitive)
+CRM10118: Dominant period: 2.63 units (repetitive)
+CRM10119: No clear repetition (potential instability)
+ITM10101: Dominant period: 5.04 units (repetitive)
+ITM10102: No clear repetition (potential instability)
+ITM10103: No clear repetition (potential instability)
+ITM10104: No clear repetition (potential instability)
+ITM10105: Dominant period: 24.81 units (repetitive)
+ITM10106: Dominant period: 3.43 units (repetitive)
+ITM10107: No clear repetition (potential instability)
+ITM10108: Dominant period: 2.67 units (repetitive)
+ITM10109: No clear repetition (potential instability)
+ITM10110: No clear repetition (potential instability)
+ITM10111: No clear repetition (potential instability)
+ITM10112: Dominant period: 3.44 units (repetitive)
+ITM10113: No clear repetition (potential instability)
+ITM10114: Dominant period: 46.91 units (repetitive)
+ITM10115: No clear repetition (potential instability)
+ITM10116: No clear repetition (potential instability)
+ITM10117: Dominant period: 4.36 units (repetitive)
+ITM10118: Dominant period: 2.70 units (repetitive)
+ITM10119: No clear repetition (potential instability)
+CIM10101: No clear repetition (potential instability)
+CIM10102: No clear repetition (potential instability)
+CIM10103: Dominant period: 2.53 units (repetitive)
+CIM10104: No clear repetition (potential instability)
+CIM10105: Dominant period: 3.34 units (repetitive)
+CIM10106: Dominant period: 5.89 units (repetitive)
+CIM10107: No clear repetition (potential instability)
+CIM10108: No clear repetition (potential instability)
+CIM10109: No clear repetition (potential instability)
+CIM10110: No clear repetition (potential instability)
+CIM10111: Dominant period: 6.39 units (repetitive)
+CIM10112: Dominant period: 13.58 units (repetitive)
+CIM10113: No clear repetition (potential instability)
+CIM10114: Dominant period: 61.27 units (repetitive)
+CIM10115: No clear repetition (potential instability)
+CIM10116: No clear repetition (potential instability)
+CIM10117: No clear repetition (potential instability)
+CIM10118: Dominant period: 3.53 units (repetitive)
+CIM10119: No clear repetition (potential instability)
+CPM10101: Dominant period: 3.22 units (repetitive)
+CPM10102: No clear repetition (potential instability)
+CPM10103: No clear repetition (potential instability)
+CPM10104: Dominant period: 3.99 units (repetitive)
+CPM10105: Dominant period: 9.50 units (repetitive)
+CPM10106: No clear repetition (potential instability)
+CPM10107: No clear repetition (potential instability)
+CPM10108: Dominant period: 4.80 units (repetitive)
+CPM10109: Dominant period: 15.80 units (repetitive)
+CPM10110: No clear repetition (potential instability)
+CPM10111: Dominant period: 2.04 units (repetitive)
+CPM10112: Dominant period: 4.45 units (repetitive)
+CPM10113: Dominant period: 2.27 units (repetitive)
+CPM10114: Dominant period: 6.55 units (repetitive)
+CPM10115: Dominant period: 3.56 units (repetitive)
+CPM10116: No clear repetition (potential instability)
+CPM10117: Dominant period: 7.52 units (repetitive)
+CPM10118: No clear repetition (potential instability)
+CPM10119: Dominant period: 3.29 units (repetitive)
+QSL10101: No clear repetition (potential instability)
+QSL10102: Dominant period: 4.19 units (repetitive)
+QSL10103: Dominant period: 19.00 units (repetitive)
+QSL10104: Dominant period: 9.56 units (repetitive)
+QSL10105: Dominant period: 11.00 units (repetitive)
+QSL10106: No clear repetition (potential instability)
+QSL10107: Dominant period: 6.28 units (repetitive)
+QSL10108: No clear repetition (potential instability)
+QSL10109: No clear repetition (potential instability)
+QSL10110: No clear repetition (potential instability)
+QSL10111: No clear repetition (potential instability)
+QSL10112: Dominant period: 4.44 units (repetitive)
+QSL10113: Dominant period: 4.15 units (repetitive)
+QSL10114: Dominant period: 12.10 units (repetitive)
+QSL10115: Dominant period: 3.19 units (repetitive)
+QSL10116: No clear repetition (potential instability)
+QSL10117: Dominant period: 272.91 units (repetitive)
+QSL10118: Dominant period: 2.25 units (repetitive)
+QSL10119: No clear repetition (potential instability)
+BIM10101: Dominant period: 14.03 units (repetitive)
+BIM10102: No clear repetition (potential instability)
+BIM10103: Dominant period: 5.33 units (repetitive)
+BIM10104: Dominant period: 6.90 units (repetitive)
+BIM10105: No clear repetition (potential instability)
+BIM10106: No clear repetition (potential instability)
+BIM10107: Dominant period: 187.62 units (repetitive)
+BIM10108: No clear repetition (potential instability)
+BIM10109: Dominant period: 8.27 units (repetitive)
+BIM10110: Dominant period: 4.87 units (repetitive)
+BIM10111: No clear repetition (potential instability)
+BIM10112: No clear repetition (potential instability)
+BIM10113: Dominant period: 2.63 units (repetitive)
+BIM10114: No clear repetition (potential instability)
+BIM10115: Dominant period: 2.35 units (repetitive)
+BIM10116: No clear repetition (potential instability)
+BIM10117: Dominant period: 4.32 units (repetitive)
+BIM10118: No clear repetition (potential instability)
+BIM10119: Dominant period: 2.43 units (repetitive)
+BPR10101: No clear repetition (potential instability)
+BPR10102: No clear repetition (potential instability)
+BPR10103: Dominant period: 24.81 units (repetitive)
+BPR10104: Dominant period: 3.34 units (repetitive)
+BPR10105: Dominant period: 2.04 units (repetitive)
+BPR10106: Dominant period: 2.01 units (repetitive)
+BPR10107: Dominant period: 176.59 units (repetitive)
+BPR10108: No clear repetition (potential instability)
+BPR10109: Dominant period: 4.00 units (repetitive)
+BPR10110: Dominant period: 26.80 units (repetitive)
+BPR10111: Dominant period: 31.27 units (repetitive)
+BPR10112: Dominant period: 2.71 units (repetitive)
+BPR10113: No clear repetition (potential instability)
+BPR10114: Dominant period: 8.11 units (repetitive)
+BPR10115: No clear repetition (potential instability)
+BPR10116: Dominant period: 5.06 units (repetitive)
+BPR10117: Dominant period: 6.79 units (repetitive)
+BPR10118: Dominant period: 6.36 units (repetitive)
+BPR10119: No clear repetition (potential instability)
+BIH10101: No clear repetition (potential instability)
+BIH10102: Dominant period: 24.02 units (repetitive)
+BIH10103: No clear repetition (potential instability)
+BIH10104: No clear repetition (potential instability)
+BIH10105: Dominant period: 14.23 units (repetitive)
+BIH10106: Dominant period: 2.55 units (repetitive)
+BIH10107: No clear repetition (potential instability)
+BIH10108: No clear repetition (potential instability)
+BIH10109: Dominant period: 3.36 units (repetitive)
+BIH10110: Dominant period: 2.98 units (repetitive)
+BIH10111: Dominant period: 5.05 units (repetitive)
+BIH10112: Dominant period: 2.24 units (repetitive)
+BIH10113: No clear repetition (potential instability)
+BIH10114: No clear repetition (potential instability)
+BIH10115: No clear repetition (potential instability)
+BIH10116: Dominant period: 2.82 units (repetitive)
+BIH10117: Dominant period: 19.88 units (repetitive)
+BIH10118: Dominant period: 2.54 units (repetitive)
+BIH10119: Dominant period: 6.11 units (repetitive)
+BEV10101: No clear repetition (potential instability)
+BEV10102: Dominant period: 3.86 units (repetitive)
+BEV10103: Dominant period: 16.14 units (repetitive)
+BEV10104: No clear repetition (potential instability)
+BEV10105: No clear repetition (potential instability)
+BEV10106: Dominant period: 272.91 units (repetitive)
+BEV10107: No clear repetition (potential instability)
+BEV10108: Dominant period: 2.35 units (repetitive)
+BEV10109: Dominant period: 11.08 units (repetitive)
+BEV10110: Dominant period: 46.91 units (repetitive)
+BEV10111: No clear repetition (potential instability)
+BEV10112: No clear repetition (potential instability)
+BEV10113: No clear repetition (potential instability)
+BEV10114: Dominant period: 428.86 units (repetitive)
+BEV10115: Dominant period: 24.41 units (repetitive)
+BEV10116: Dominant period: 3.30 units (repetitive)
+BEV10117: No clear repetition (potential instability)
+BEV10118: Dominant period: 2.22 units (repetitive)
+BEV10119: No clear repetition (potential instability)
+CHG10101: No clear repetition (potential instability)
+CHG10102: No clear repetition (potential instability)
+CHG10103: Dominant period: 2.14 units (repetitive)
+CHG10104: Dominant period: 93.81 units (repetitive)
+CHG10105: No clear repetition (potential instability)
+CHG10106: No clear repetition (potential instability)
+CHG10107: Dominant period: 2.55 units (repetitive)
+CHG10108: No clear repetition (potential instability)
+CHG10109: No clear repetition (potential instability)
+CHG10110: No clear repetition (potential instability)
+CHG10111: No clear repetition (potential instability)
+CHG10112: Dominant period: 2.31 units (repetitive)
+CHG10113: No clear repetition (potential instability)
+CHG10114: No clear repetition (potential instability)
+CHG10115: Dominant period: 9.56 units (repetitive)
+CHG10116: No clear repetition (potential instability)
+CHG10117: No clear repetition (potential instability)
+CHG10118: Dominant period: 5.70 units (repetitive)
+CHG10119: No clear repetition (potential instability)
+CBC10101: Dominant period: 44.81 units (repetitive)
+CBC10102: Dominant period: 2.51 units (repetitive)
+CBC10103: Dominant period: 3.91 units (repetitive)
+CBC10104: No clear repetition (potential instability)
+CBC10105: Dominant period: 6.61 units (repetitive)
+CBC10106: Dominant period: 6.78 units (repetitive)
+CBC10107: Dominant period: 6.10 units (repetitive)
+CBC10108: No clear repetition (potential instability)
+CBC10109: No clear repetition (potential instability)
+CBC10110: No clear repetition (potential instability)
+CBC10111: Dominant period: 9.59 units (repetitive)
+CBC10112: Dominant period: 3.47 units (repetitive)
+CBC10113: Dominant period: 12.35 units (repetitive)
+CBC10114: Dominant period: 4.36 units (repetitive)
+CBC10115: Dominant period: 3.67 units (repetitive)
+CBC10116: Dominant period: 3.32 units (repetitive)
+CBC10117: Dominant period: 2.72 units (repetitive)
+CBC10118: No clear repetition (potential instability)
+CBC10119: No clear repetition (potential instability)
+RTN10101: No clear repetition (potential instability)
+RTN10102: Dominant period: 90.97 units (repetitive)
+RTN10103: No clear repetition (potential instability)
+RTN10104: Dominant period: 5.29 units (repetitive)
+RTN10105: Dominant period: 16.40 units (repetitive)
+RTN10106: Dominant period: 4.98 units (repetitive)
+RTN10107: No clear repetition (potential instability)
+RTN10108: No clear repetition (potential instability)
+RTN10109: No clear repetition (potential instability)
+RTN10110: Dominant period: 158.00 units (repetitive)
+RTN10111: No clear repetition (potential instability)
+RTN10112: No clear repetition (potential instability)
+RTN10113: Dominant period: 21.60 units (repetitive)
+RTN10114: No clear repetition (potential instability)
+RTN10115: Dominant period: 4.34 units (repetitive)
+RTN10116: Dominant period: 37.52 units (repetitive)
+RTN10117: Dominant period: 5.27 units (repetitive)
+RTN10118: No clear repetition (potential instability)
+RTN10119: No clear repetition (potential instability)
+CII10101: Dominant period: 7.16 units (repetitive)
+CII10102: No clear repetition (potential instability)
+CII10103: No clear repetition (potential instability)
+CII10104: Dominant period: 2.91 units (repetitive)
+CII10105: Dominant period: 38.00 units (repetitive)
+CII10106: No clear repetition (potential instability)
+CII10107: Dominant period: 10.42 units (repetitive)
+CII10108: No clear repetition (potential instability)
+CII10109: No clear repetition (potential instability)
+CII10110: No clear repetition (potential instability)
+CII10111: Dominant period: 3.33 units (repetitive)
+CII10112: Dominant period: 12.40 units (repetitive)
+CII10113: No clear repetition (potential instability)
+CII10114: No clear repetition (potential instability)
+CII10115: Dominant period: 3.24 units (repetitive)
+CII10116: Dominant period: 3.06 units (repetitive)
+CII10117: Dominant period: 11.82 units (repetitive)
+CII10118: No clear repetition (potential instability)
+CII10119: No clear repetition (potential instability)
+CCM10101: No clear repetition (potential instability)
+CCM10102: No clear repetition (potential instability)
+CCM10103: No clear repetition (potential instability)
+CCM10104: Dominant period: 2.48 units (repetitive)
+CCM10105: No clear repetition (potential instability)
+CCM10106: No clear repetition (potential instability)
+CCM10107: Dominant period: 3.52 units (repetitive)
+CCM10108: Dominant period: 5.63 units (repetitive)
+CCM10109: No clear repetition (potential instability)
+CCM10110: No clear repetition (potential instability)
+CCM10111: Dominant period: 6.58 units (repetitive)
+CCM10112: Dominant period: 3.02 units (repetitive)
+CCM10113: Dominant period: 10.72 units (repetitive)
+CCM10114: Dominant period: 4.00 units (repetitive)
+CCM10115: Dominant period: 9.62 units (repetitive)
+CCM10116: No clear repetition (potential instability)
+CCM10117: No clear repetition (potential instability)
+CCM10118: No clear repetition (potential instability)
+CCM10119: No clear repetition (potential instability)
+CSP10101: No clear repetition (potential instability)
+CSP10102: Dominant period: 7.74 units (repetitive)
+CSP10103: No clear repetition (potential instability)
+CSP10104: Dominant period: 2.36 units (repetitive)
+CSP10105: Dominant period: 2.02 units (repetitive)
+CSP10106: Dominant period: 2.41 units (repetitive)
+CSP10107: Dominant period: 5.24 units (repetitive)
+CSP10108: Dominant period: 5.87 units (repetitive)
+CSP10109: Dominant period: 25.88 units (repetitive)
+CSP10110: Dominant period: 4.44 units (repetitive)
+CSP10111: No clear repetition (potential instability)
+CSP10112: Dominant period: 7.32 units (repetitive)
+CSP10113: No clear repetition (potential instability)
+CSP10114: No clear repetition (potential instability)
+CSP10115: No clear repetition (potential instability)
+CSP10116: Dominant period: 8.73 units (repetitive)
+CSP10117: Dominant period: 10.80 units (repetitive)
+CSP10118: No clear repetition (potential instability)
+CSP10119: No clear repetition (potential instability)
+CFS10101: No clear repetition (potential instability)
+CFS10102: Dominant period: 2.19 units (repetitive)
+CFS10103: Dominant period: 3.52 units (repetitive)
+CFS10104: No clear repetition (potential instability)
+CFS10105: Dominant period: 3.09 units (repetitive)
+CFS10106: Dominant period: 5.21 units (repetitive)
+CFS10107: No clear repetition (potential instability)
+CFS10108: Dominant period: 7.15 units (repetitive)
+CFS10109: No clear repetition (potential instability)
+CFS10110: Dominant period: 230.92 units (repetitive)
+CFS10111: No clear repetition (potential instability)
+CFS10112: Dominant period: 2.16 units (repetitive)
+CFS10113: No clear repetition (potential instability)
+CFS10114: Dominant period: 16.23 units (repetitive)
+CFS10115: Dominant period: 4.67 units (repetitive)
+CFS10116: Dominant period: 37.52 units (repetitive)
+CFS10117: Dominant period: 2.56 units (repetitive)
+CFS10118: No clear repetition (potential instability)
+CFS10119: No clear repetition (potential instability)
