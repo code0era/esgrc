@@ -656,10 +656,10 @@ You help users understand ESG frameworks, risk compliance management, audit prep
 Encourage them to upload their metrics CSV and config JSON files in the panel on the left to generate their interactive performance report.
 
 IMPORTANT FORMATTING RULES:
-- Keep responses extremely short, direct, and concise (under 120 words). No preamble or fluff.
-- Do NOT use # headings or markdown symbols like ** or * in your response.
+- Provide clear recommendations in distinct sections.
+- Emphasize the most important points that align with the main objective of this app (improving ESG performance and compliance).
 - Write in plain, clear, professional prose.
-- Use plain numbered lists (1. 2. 3.) or simple bullet points with a dash (-) only.
+- You may use simple bullet points or numbered lists.
 - Be direct, professional, and helpful.
 """
     low_m  = "\n".join(f"  • {m['name']} ({m['id']}): {m['score']}" for m in ctx.get("low_metrics", []))
@@ -684,10 +684,10 @@ Full Report:
 {str(ctx.get("report_text", ""))[:80000] + ("..." if len(str(ctx.get("report_text", ""))) > 80000 else "")}
 
 IMPORTANT FORMATTING RULES:
-- Keep responses extremely short, direct, and concise (under 120 words). No preamble or fluff.
-- Do NOT use # headings or markdown symbols like ** or * in your response.
+- Provide clear recommendations in distinct sections.
+- Emphasize the most important points that align with the main objective of this app (improving ESG performance and compliance).
 - Write in plain, clear, professional prose.
-- Use plain numbered lists (1. 2. 3.) or simple bullet points with a dash (-) only.
+- You may use simple bullet points or numbered lists.
 - Be direct, professional, and helpful.
 """
 

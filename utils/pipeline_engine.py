@@ -1509,17 +1509,36 @@ def run_step11_claude_analysis_2(work_dir: str) -> tuple:
             full_prompt = APEX_SPC_RPN.replace("{report_text}", content)
 
             try:
-                import anthropic
-                client = anthropic.Anthropic(api_key=st.secrets.get("ANTHROPIC_API_KEY", ""))
-                response = client.messages.create(
-                    model=MODEL_SPC_RPN,
-                    max_tokens=MAX_OUTPUT_TOKENS,
-                    messages=[{"role": "user", "content": full_prompt}]
-                )
-                AI_text = "".join(
-                    block.text for block in response.content
-                    if getattr(block, "type", None) == "text"
-                )
+                import requests
+                import json
+                
+                headers = {
+                    "x-api-key": st.secrets.get("ANTHROPIC_API_KEY", ""),
+                    "anthropic-version": "2023-06-01",
+                    "content-type": "application/json"
+                }
+                data = {
+                    "model": MODEL_SPC_RPN,
+                    "max_tokens": MAX_OUTPUT_TOKENS,
+                    "messages": [{"role": "user", "content": full_prompt}],
+                    "stream": True
+                }
+                
+                response = requests.post("https://api.anthropic.com/v1/messages", headers=headers, json=data, stream=True)
+                if response.status_code != 200:
+                    raise Exception(f"API Error {response.status_code}: {response.text}")
+                    
+                AI_text = ""
+                for line in response.iter_lines():
+                    if line:
+                        decoded = line.decode('utf-8')
+                        if decoded.startswith("data: "):
+                            try:
+                                event_data = json.loads(decoded[6:])
+                                if event_data.get("type") == "content_block_delta" and event_data.get("delta", {}).get("type") == "text_delta":
+                                    AI_text += event_data["delta"]["text"]
+                            except json.JSONDecodeError:
+                                pass
                 if not AI_text.strip():
                     AI_text = "AI analysis returned empty response. Please retry."
             except Exception as api_err:
@@ -1982,9 +2001,16 @@ def run_module_step7_ai_report(
 ) -> Tuple[bool, Dict, str]:
     """Generic Step 7: Claude AI executive summary for any module."""
     import streamlit as st
-    from utils.llm_prompts import ESGRC_MODULE_UNIFIED, MODEL_MODULE_UNIFIED, MAX_OUTPUT_TOKENS, HAIKU_UPGRADE_CHAR_THRESHOLD
-    mk = module_key.lower()
+    
+    lock_key = f"is_running_module_step7_{module_key}"
+    if st.session_state.get(lock_key, False):
+        return False, {}, "A report is already generating in the background. Wait for it to finish."
+    st.session_state[lock_key] = True
+    
     try:
+        from utils.llm_prompts import ESGRC_MODULE_UNIFIED, MODEL_MODULE_UNIFIED, MAX_OUTPUT_TOKENS, HAIKU_UPGRADE_CHAR_THRESHOLD
+        mk = module_key.lower()
+        
         master_path = os.path.join(work_dir, f"MASTER_CONSOLIDATED_REPORT_{mk.upper()}_{ANALYSIS_DATE}.txt")
         if not os.path.exists(master_path):
             return False, {}, "Master report not found — run Step 6 first."
@@ -1994,6 +2020,10 @@ def run_module_step7_ai_report(
 
         with open(master_path, "r", encoding="utf-8") as fin:
             content = fin.read()
+            
+        # Truncate to safely fit within Anthropic's 1 Million token limit (~3.8M chars)
+        if len(content) > 3800000:
+            content = content[:3800000] + "\n\n[...REPORT TRUNCATED DUE TO 1 MILLION TOKEN API LIMIT...]"
 
         try:
             import anthropic
@@ -2004,12 +2034,51 @@ def run_module_step7_ai_report(
             if len(content) > HAIKU_UPGRADE_CHAR_THRESHOLD:
                 model_to_use = "claude-sonnet-5"
                 
-            client   = anthropic.Anthropic(api_key=st.secrets.get("ANTHROPIC_API_KEY", ""))
-            response = client.messages.create(
-                model=model_to_use, max_tokens=MAX_OUTPUT_TOKENS,
-                messages=[{"role": "user", "content": full_prompt}]
-            )
-            ai_text = "".join(b.text for b in response.content if getattr(b, "type", None) == "text")
+            import requests
+            import json
+            
+            headers = {
+                "x-api-key": st.secrets.get("ANTHROPIC_API_KEY", ""),
+                "anthropic-version": "2023-06-01",
+                "anthropic-beta": "prompt-caching-2024-07-31",
+                "content-type": "application/json"
+            }
+            
+            actual_max_tokens = 64000 if "haiku" in model_to_use.lower() else MAX_OUTPUT_TOKENS
+            
+            data = {
+                "model": model_to_use,
+                "max_tokens": actual_max_tokens,
+                "messages": [
+                    {
+                        "role": "user",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": full_prompt,
+                                "cache_control": {"type": "ephemeral"}
+                            }
+                        ]
+                    }
+                ],
+                "stream": True
+            }
+            
+            response = requests.post("https://api.anthropic.com/v1/messages", headers=headers, json=data, stream=True)
+            if response.status_code != 200:
+                raise Exception(f"API Error {response.status_code}: {response.text}")
+                
+            ai_text = ""
+            for line in response.iter_lines():
+                if line:
+                    decoded = line.decode('utf-8')
+                    if decoded.startswith("data: "):
+                        try:
+                            event_data = json.loads(decoded[6:])
+                            if event_data.get("type") == "content_block_delta" and event_data.get("delta", {}).get("type") == "text_delta":
+                                ai_text += event_data["delta"]["text"]
+                        except json.JSONDecodeError:
+                            pass
         except Exception as api_err:
             ai_text = (f"AI report bypassed ({api_err})\n\n"
                        f"--- Consolidated Report (first 4000 chars) ---\n{content[:4000]}")
@@ -2034,3 +2103,6 @@ def run_module_step7_ai_report(
 
     except Exception:
         return False, {}, f"[{mk.upper()}] Step 7 failed:\n{traceback.format_exc()}"
+        
+    finally:
+        st.session_state[lock_key] = False

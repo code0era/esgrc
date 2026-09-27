@@ -7,42 +7,244 @@ import utils.pipeline_engine as pe
 from utils.pipeline_ui import init_pipeline_state, render_pipeline_step
 
 def generate_ai_pdf(text, title):
+    """Convert AI-generated markdown text to a fully-styled, non-truncating PDF."""
     from reportlab.lib.pagesizes import A4
-    from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer
+    from reportlab.platypus import (
+        SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle,
+        HRFlowable, PageBreak, KeepTogether
+    )
     from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
-    from reportlab.lib.colors import HexColor
-    import io
-    
+    from reportlab.lib.colors import HexColor, white, black
+    from reportlab.lib.units import cm
+    from reportlab.lib import colors
+    import io, re
+
+    PAGE_W, PAGE_H = A4
+    MARGIN = 1.8 * cm
+
+    # ── Colour tokens ───────────────────────────────────────────────────
+    SKY_DARK  = HexColor("#0284C7")
+    SKY_MID   = HexColor("#0EA5E9")
+    SKY_LIGHT = HexColor("#BAE6FD")
+    SKY_PALE  = HexColor("#F0F9FF")
+    INK_DARK  = HexColor("#0C4A6E")
+    INK_GRAY  = HexColor("#475569")
+    RED_CLR   = HexColor("#EF4444")
+    AMBER_CLR = HexColor("#F59E0B")
+    GREEN_CLR = HexColor("#10B981")
+
+    # ── Styles ──────────────────────────────────────────────────────────
+    title_style = ParagraphStyle("AITitle",    fontName="Helvetica-Bold",   fontSize=20, textColor=INK_DARK,  spaceAfter=10, leading=26)
+    h1_style    = ParagraphStyle("AIH1",       fontName="Helvetica-Bold",   fontSize=14, textColor=INK_DARK,  spaceBefore=18, spaceAfter=8,  leading=20)
+    h2_style    = ParagraphStyle("AIH2",       fontName="Helvetica-Bold",   fontSize=12, textColor=SKY_DARK,  spaceBefore=14, spaceAfter=6,  leading=16)
+    h3_style    = ParagraphStyle("AIH3",       fontName="Helvetica-BoldOblique", fontSize=10.5, textColor=HexColor("#0369A1"), spaceBefore=10, spaceAfter=4, leading=14)
+    body_style  = ParagraphStyle("AIBody",     fontName="Helvetica",        fontSize=9.5, textColor=INK_DARK, spaceAfter=5,  leading=14)
+    bullet_style= ParagraphStyle("AIBullet",   fontName="Helvetica",        fontSize=9.5, textColor=INK_DARK, spaceAfter=3,  leading=13, leftIndent=14, firstLineIndent=0)
+    mono_style  = ParagraphStyle("AIMono",     fontName="Courier",          fontSize=8,   textColor=HexColor("#1E293B"), spaceAfter=3, leading=11, leftIndent=8)
+    tbl_hdr_sty = ParagraphStyle("AITblHdr",   fontName="Helvetica-Bold",   fontSize=8.5, textColor=white, alignment=1)
+    tbl_cel_sty = ParagraphStyle("AITblCell",  fontName="Helvetica",        fontSize=8.5, textColor=INK_DARK, leading=11)
+    label_style = ParagraphStyle("AILabel",    fontName="Helvetica",        fontSize=8,   textColor=INK_GRAY)
+    value_style = ParagraphStyle("AIValue",    fontName="Helvetica-Bold",   fontSize=9,   textColor=INK_DARK)
+
+    # ── Header / Footer callbacks ────────────────────────────────────────
+    def draw_header_footer(canvas, doc):
+        canvas.saveState()
+        # Header bar
+        canvas.setFillColor(SKY_DARK)
+        canvas.rect(0, PAGE_H - 2.2*cm, PAGE_W, 2.2*cm, fill=1, stroke=0)
+        canvas.setFillColor(SKY_MID)
+        canvas.rect(0, PAGE_H - 2.32*cm, PAGE_W, 0.12*cm, fill=1, stroke=0)
+        canvas.setFont("Helvetica-Bold", 12)
+        canvas.setFillColor(white)
+        canvas.drawString(MARGIN, PAGE_H - 1.1*cm, "🛡  METEOERAIT SOFTWARE")
+        canvas.setFont("Helvetica", 8)
+        canvas.setFillColor(SKY_LIGHT)
+        canvas.drawString(MARGIN, PAGE_H - 1.75*cm, "AI Enterprise Risk & Compliance Analysis Report  |  CONFIDENTIAL")
+        # Footer bar
+        canvas.setFillColor(SKY_PALE)
+        canvas.rect(0, 0, PAGE_W, 1.3*cm, fill=1, stroke=0)
+        canvas.setStrokeColor(SKY_LIGHT)
+        canvas.setLineWidth(0.5)
+        canvas.line(0, 1.3*cm, PAGE_W, 1.3*cm)
+        canvas.setFont("Helvetica", 7.5)
+        canvas.setFillColor(INK_GRAY)
+        canvas.drawString(MARGIN, 0.45*cm, "METEOERAIT SOFTWARE — Confidential & Proprietary")
+        canvas.drawRightString(PAGE_W - MARGIN, 0.45*cm, f"Page {doc.page}")
+        canvas.restoreState()
+
+    def draw_cover(canvas, doc):
+        canvas.saveState()
+        canvas.setFillColor(SKY_DARK)
+        canvas.rect(0, 0, 1.8*cm, PAGE_H, fill=1, stroke=0)
+        canvas.setFillColor(SKY_MID)
+        canvas.rect(1.8*cm, 0, 0.22*cm, PAGE_H, fill=1, stroke=0)
+        canvas.setFont("Helvetica", 8)
+        canvas.setFillColor(INK_GRAY)
+        canvas.drawString(2.5*cm, 0.9*cm, "METEOERAIT SOFTWARE — Enterprise Intelligence AI Report")
+        canvas.drawRightString(PAGE_W - MARGIN, 0.9*cm, "CONFIDENTIAL")
+        canvas.restoreState()
+
+    # ── Markdown table parser ────────────────────────────────────────────
+    def parse_md_table(lines):
+        """Parse markdown table lines into list-of-lists (str)."""
+        rows = []
+        for ln in lines:
+            ln = ln.strip()
+            if ln.startswith("|"):
+                cells = [c.strip() for c in ln.strip("|").split("|")]
+                if all(re.match(r"^[-: ]+$", c) for c in cells):
+                    continue  # separator row
+                rows.append(cells)
+        return rows
+
+    def build_md_table(md_rows, usable_w):
+        if not md_rows:
+            return None
+        n_cols = max(len(r) for r in md_rows)
+        col_w = usable_w / n_cols
+
+        header = md_rows[0]
+        data_rows = md_rows[1:]
+
+        tbl_data = [[Paragraph(str(c), tbl_hdr_sty) for c in header]]
+        for row in data_rows:
+            padded = list(row) + [""] * (n_cols - len(row))
+            tbl_data.append([Paragraph(str(c), tbl_cel_sty) for c in padded])
+
+        style_cmds = [
+            ("BACKGROUND",  (0,0), (-1,0),  SKY_DARK),
+            ("BACKGROUND",  (0,1), (-1,-1), SKY_PALE),
+            ("ROWBACKGROUNDS", (0,1), (-1,-1), [white, SKY_PALE]),
+            ("BOX",         (0,0), (-1,-1), 0.4, SKY_LIGHT),
+            ("INNERGRID",   (0,0), (-1,-1), 0.3, SKY_LIGHT),
+            ("PADDING",     (0,0), (-1,-1), 5),
+            ("VALIGN",      (0,0), (-1,-1), "TOP"),
+        ]
+        t = Table(tbl_data, colWidths=[col_w]*n_cols, repeatRows=1)
+        t.setStyle(TableStyle(style_cmds))
+        return t
+
+    # ── Build story ──────────────────────────────────────────────────────
     buf = io.BytesIO()
-    doc = SimpleDocTemplate(buf, pagesize=A4, rightMargin=40, leftMargin=40, topMargin=40, bottomMargin=40)
-    styles = getSampleStyleSheet()
-    
-    title_style = ParagraphStyle('Title', parent=styles['Heading1'], textColor=HexColor("#0C4A6E"), spaceAfter=20)
-    h1_style = ParagraphStyle('H1', parent=styles['Heading2'], textColor=HexColor("#0284C7"), spaceBefore=15, spaceAfter=10)
-    body_style = ParagraphStyle('Body', parent=styles['Normal'], spaceAfter=10, leading=14)
-    
-    story = [Paragraph(title, title_style)]
-    
-    for line in text.split('\n'):
-        line = line.strip()
-        if not line:
+    usable_w = PAGE_W - 2 * MARGIN
+
+    doc = SimpleDocTemplate(
+        buf, pagesize=A4,
+        leftMargin=MARGIN, rightMargin=MARGIN,
+        topMargin=3.0*cm, bottomMargin=1.8*cm,
+        title=title, author="METEOERAIT SOFTWARE",
+    )
+
+    story = []
+
+    # Cover page
+    from datetime import datetime
+    story.append(Spacer(1, 3.5*cm))
+    story.append(Paragraph("METEOERAIT SOFTWARE", ParagraphStyle("CoverBrand", fontName="Helvetica-Bold", fontSize=26, textColor=INK_DARK, leftIndent=1.2*cm)))
+    story.append(Spacer(1, 0.4*cm))
+    story.append(Paragraph(title, ParagraphStyle("CoverTitle", fontName="Helvetica", fontSize=15, textColor=INK_GRAY, leftIndent=1.2*cm, leading=20)))
+    story.append(Spacer(1, 0.8*cm))
+    story.append(HRFlowable(width=usable_w, thickness=2, color=SKY_MID, spaceAfter=14))
+
+    meta = [
+        [Paragraph("Generated:", label_style), Paragraph(datetime.now().strftime("%B %d, %Y  %H:%M"), value_style),
+         Paragraph("Classification:", label_style), Paragraph("CONFIDENTIAL", value_style)],
+        [Paragraph("Report Type:", label_style), Paragraph("AI Enterprise Risk Assessment", value_style),
+         Paragraph("Engine:", label_style), Paragraph("Claude AI (Anthropic)", value_style)],
+    ]
+    mt = Table(meta, colWidths=[3*cm, 5*cm, 3*cm, 5.5*cm])
+    mt.setStyle(TableStyle([
+        ("BACKGROUND", (0,0), (-1,-1), SKY_PALE),
+        ("BOX", (0,0), (-1,-1), 0.5, SKY_LIGHT),
+        ("PADDING", (0,0), (-1,-1), 6),
+        ("LEFTPADDING", (0,0), (-1,-1), 10),
+        ("VALIGN", (0,0), (-1,-1), "MIDDLE"),
+    ]))
+    story.append(mt)
+    story.append(PageBreak())
+
+    # ── Parse the AI text into story elements ────────────────────────────
+    lines = text.split("\n")
+    i = 0
+    while i < len(lines):
+        raw = lines[i]
+        stripped = raw.strip()
+
+        # Blank line
+        if not stripped:
+            story.append(Spacer(1, 0.15*cm))
+            i += 1
             continue
-            
-        # Basic markdown parsing for the PDF
-        clean_line = line.replace('**', '')
-        if line.startswith('### '):
-            story.append(Paragraph(clean_line[4:], h1_style))
-        elif line.startswith('## '):
-            story.append(Paragraph(clean_line[3:], h1_style))
-        elif line.startswith('# '):
-            story.append(Paragraph(clean_line[2:], h1_style))
-        elif line.startswith('- ') or line.startswith('* '):
-            story.append(Paragraph("• " + clean_line[2:], body_style))
-        else:
-            story.append(Paragraph(clean_line, body_style))
-            
-    doc.build(story)
+
+        # Headings
+        if stripped.startswith("#### "):
+            story.append(Paragraph(stripped[5:].replace("**",""), h3_style))
+            i += 1; continue
+        if stripped.startswith("### "):
+            story.append(Paragraph(stripped[4:].replace("**",""), h3_style))
+            i += 1; continue
+        if stripped.startswith("## "):
+            story.append(HRFlowable(width=usable_w, thickness=1, color=SKY_LIGHT, spaceAfter=4))
+            story.append(Paragraph(stripped[3:].replace("**",""), h2_style))
+            i += 1; continue
+        if stripped.startswith("# "):
+            story.append(PageBreak())
+            story.append(Paragraph(stripped[2:].replace("**",""), h1_style))
+            story.append(HRFlowable(width=usable_w, thickness=1.5, color=SKY_MID, spaceAfter=6))
+            i += 1; continue
+
+        # Markdown table — collect all consecutive table lines
+        if stripped.startswith("|"):
+            table_lines = []
+            while i < len(lines) and lines[i].strip().startswith("|"):
+                table_lines.append(lines[i])
+                i += 1
+            md_rows = parse_md_table(table_lines)
+            tbl = build_md_table(md_rows, usable_w)
+            if tbl:
+                story.append(Spacer(1, 0.2*cm))
+                story.append(tbl)
+                story.append(Spacer(1, 0.3*cm))
+            continue
+
+        # Horizontal rule
+        if stripped.startswith("---") and len(set(stripped)) == 1:
+            story.append(HRFlowable(width=usable_w, thickness=0.5, color=SKY_LIGHT, spaceAfter=6))
+            i += 1; continue
+
+        # Bullet / list items
+        if stripped.startswith("- ") or stripped.startswith("* ") or re.match(r"^\d+\.\s", stripped):
+            clean = re.sub(r"\*\*(.*?)\*\*", r"<b>\1</b>", stripped)
+            clean = re.sub(r"_(.*?)_", r"<i>\1</i>", clean)
+            clean = re.sub(r"`(.*?)`", r"<font face='Courier'>\1</font>", clean)
+            prefix = "• " if not re.match(r"^\d+\.\s", stripped) else ""
+            body = clean[2:] if (stripped.startswith("- ") or stripped.startswith("* ")) else clean
+            try:
+                story.append(Paragraph(prefix + body, bullet_style))
+            except Exception:
+                import html
+                plain_body = stripped[2:] if (stripped.startswith("- ") or stripped.startswith("* ")) else stripped
+                story.append(Paragraph(prefix + html.escape(plain_body), bullet_style))
+            i += 1; continue
+
+        # Normal paragraph — inline markup
+        clean = re.sub(r"\*\*(.*?)\*\*", r"<b>\1</b>", stripped)
+        clean = re.sub(r"_(.*?)_",       r"<i>\1</i>", clean)
+        clean = re.sub(r"`(.*?)`",       r"<font face='Courier'>\1</font>", clean)
+        try:
+            story.append(Paragraph(clean, body_style))
+        except Exception:
+            import html
+            story.append(Paragraph(html.escape(stripped), body_style))
+        i += 1
+
+    # ── Build doc ────────────────────────────────────────────────────────
+    def _first_page(c, d):  draw_cover(c, d)
+    def _later_pages(c, d): draw_header_footer(c, d)
+
+    doc.build(story, onFirstPage=_first_page, onLaterPages=_later_pages)
     return buf.getvalue()
+
 
 def generate_offline_report(content, is_apex=False):
     lines = content.split('\n')
@@ -297,14 +499,36 @@ def render_esgrc_pipeline():
             if len(content) > HAIKU_UPGRADE_CHAR_THRESHOLD:
                 model_to_use = "claude-sonnet-5"
                 
-            client = anthropic.Anthropic(api_key=st.secrets.get("ANTHROPIC_API_KEY", ""))
-            response = client.messages.create(
-                model=model_to_use,
-                max_tokens=MAX_OUTPUT_TOKENS,
-                messages=[{"role": "user", "content": full_prompt}]
-            )
+            import requests
+            import json
             
-            AI_text = "".join(block.text for block in response.content if getattr(block, "type", None) == "text")
+            headers = {
+                "x-api-key": st.secrets.get("ANTHROPIC_API_KEY", ""),
+                "anthropic-version": "2023-06-01",
+                "content-type": "application/json"
+            }
+            data = {
+                "model": model_to_use,
+                "max_tokens": MAX_OUTPUT_TOKENS,
+                "messages": [{"role": "user", "content": full_prompt}],
+                "stream": True
+            }
+            
+            response = requests.post("https://api.anthropic.com/v1/messages", headers=headers, json=data, stream=True)
+            if response.status_code != 200:
+                raise Exception(f"API Error {response.status_code}: {response.text}")
+                
+            AI_text = ""
+            for line in response.iter_lines():
+                if line:
+                    decoded = line.decode('utf-8')
+                    if decoded.startswith("data: "):
+                        try:
+                            event_data = json.loads(decoded[6:])
+                            if event_data.get("type") == "content_block_delta" and event_data.get("delta", {}).get("type") == "text_delta":
+                                AI_text += event_data["delta"]["text"]
+                        except json.JSONDecodeError:
+                            pass
             
             with open(os.path.join(work_dir, out_name), "w", encoding="utf-8") as fout:
                 fout.write(AI_text)
@@ -345,14 +569,14 @@ def render_esgrc_pipeline():
 # ─────────────────────────────────────────────────────────────────────────────
 
 def render_apex_pipeline():
-    total_steps = 8
+    total_steps = 6
     pipeline_key = "apex_pipeline"
     init_pipeline_state(pipeline_key, total_steps)
     work_dir = _get_work_dir()
     st.session_state[f"{pipeline_key}_work_dir"] = work_dir
     
     st.markdown("## Enterprise Risk Pipeline")
-    st.write("This pipeline executes the full 8-step enterprise-wide L0 consolidation analysis.")
+    st.write("This pipeline executes the full 6-step enterprise-wide L0 consolidation analysis.")
     
     # --- Step 1 ---
     def render_inputs_apex_s1():
@@ -454,30 +678,71 @@ def render_apex_pipeline():
         return True, {"work_dir": work_dir}
         
     def run_step6_report(work_dir):
-        master_path = os.path.join(work_dir, f"MASTER_CONSOLIDATED_REPORT_{pe.ANALYSIS_DATE}.txt")
-        if not os.path.exists(master_path):
-            return False, {}, "Master Consolidated Report not found. Please re-run Step 5."
-            
-        out_name = f"FINAL_ENTERPRISE_REPORT_{pe.ANALYSIS_DATE}.txt"
-        pdf_name = f"FINAL_ENTERPRISE_REPORT_{pe.ANALYSIS_DATE}.pdf"
-        
+        if st.session_state.get("is_running_step6", False):
+            return False, {}, "A report is already generating in the background. Wait for it to finish."
+        st.session_state["is_running_step6"] = True
+
         try:
+            master_path = os.path.join(work_dir, f"MASTER_CONSOLIDATED_REPORT_{pe.ANALYSIS_DATE}.txt")
+            if not os.path.exists(master_path):
+                return False, {}, "Master Consolidated Report not found. Please re-run Step 5."
+                
+            out_name = f"FINAL_ENTERPRISE_REPORT_{pe.ANALYSIS_DATE}.txt"
+            pdf_name = f"FINAL_ENTERPRISE_REPORT_{pe.ANALYSIS_DATE}.pdf"
+            
             with open(master_path, "r", encoding="utf-8") as fin:
                 content = fin.read()
                 
+            # Truncate to safely fit within Anthropic's 1 Million token limit (~3.8M chars)
+            if len(content) > 3800000:
+                content = content[:3800000] + "\n\n[...REPORT TRUNCATED DUE TO 1 MILLION TOKEN API LIMIT...]"
+                
             from utils.llm_prompts import APEX_GENERAL_RISK, MODEL_GENERAL_RISK, MAX_OUTPUT_TOKENS
             import anthropic
+            import requests
+            import json
             
             full_prompt = APEX_GENERAL_RISK.replace("{report_text}", content)
             
-            client = anthropic.Anthropic(api_key=st.secrets.get("ANTHROPIC_API_KEY", ""))
-            response = client.messages.create(
-                model=MODEL_GENERAL_RISK,
-                max_tokens=MAX_OUTPUT_TOKENS,
-                messages=[{"role": "user", "content": full_prompt}]
-            )
+            headers = {
+                "x-api-key": st.secrets.get("ANTHROPIC_API_KEY", ""),
+                "anthropic-version": "2023-06-01",
+                "anthropic-beta": "prompt-caching-2024-07-31",
+                "content-type": "application/json"
+            }
+            data = {
+                "model": MODEL_GENERAL_RISK,
+                "max_tokens": MAX_OUTPUT_TOKENS,
+                "messages": [
+                    {
+                        "role": "user",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": full_prompt,
+                                "cache_control": {"type": "ephemeral"}
+                            }
+                        ]
+                    }
+                ],
+                "stream": True
+            }
             
-            AI_text = "".join(block.text for block in response.content if getattr(block, "type", None) == "text")
+            response = requests.post("https://api.anthropic.com/v1/messages", headers=headers, json=data, stream=True)
+            if response.status_code != 200:
+                raise Exception(f"API Error {response.status_code}: {response.text}")
+                
+            AI_text = ""
+            for line in response.iter_lines():
+                if line:
+                    decoded = line.decode('utf-8')
+                    if decoded.startswith("data: "):
+                        try:
+                            event_data = json.loads(decoded[6:])
+                            if event_data.get("type") == "content_block_delta" and event_data.get("delta", {}).get("type") == "text_delta":
+                                AI_text += event_data["delta"]["text"]
+                        except json.JSONDecodeError:
+                            pass
             
             with open(os.path.join(work_dir, out_name), "w", encoding="utf-8") as fout:
                 fout.write(AI_text)
@@ -505,24 +770,13 @@ def render_apex_pipeline():
                 os.path.join(work_dir, out_name),
                 os.path.join(work_dir, pdf_name)
             ]}, f"AI Report Generation Bypassed: {str(e)}"
+            
+        finally:
+            st.session_state["is_running_step6"] = False
         
     render_pipeline_step(pipeline_key, 6, total_steps, "Claude Analysis 1 — Final Enterprise Report",
                          "AI-generated executive summary, key risk findings and recommendations for the enterprise.",
                          render_inputs_apex_s6, run_step6_report)
-
-    def render_inputs_apex_s7():
-        st.markdown("**Combiner:** Merging SPC and RPN statistical reports.")
-        return True, {"work_dir": work_dir}
-    render_pipeline_step(pipeline_key, 7, total_steps, "Combine SPC, Six Sigma and RPN reports",
-                         "Consolidated input file for LLM interpretation of the statistical reports.",
-                         render_inputs_apex_s7, pe.run_step10_combine_spc_rpn)
-
-    def render_inputs_apex_s8():
-        st.markdown("**Claude Analysis 2:** Analyzing SPC trends and DPMO calculations.")
-        return True, {"work_dir": work_dir}
-    render_pipeline_step(pipeline_key, 8, total_steps, "Claude Analysis 2 — SPC Six Sigma and RPN",
-                         "AI-generated analysis of SPC trends, DPMO, Six Sigma levels and RPN risk rankings.",
-                         render_inputs_apex_s8, pe.run_step11_claude_analysis_2)
 
     render_download_section(pipeline_key, total_steps, work_dir)
 

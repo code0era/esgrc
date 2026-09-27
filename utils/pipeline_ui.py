@@ -20,64 +20,6 @@ def complete_step(pipeline_key: str, step_num: int, outputs: dict):
     st.rerun()
 
 
-def _display_step_outputs(pipeline_key: str, step_num: int, outputs: dict):
-    """Read and render every output file produced by a step directly in the UI."""
-    work_dir = st.session_state.get(f"{pipeline_key}_work_dir", "")
-
-    files = outputs.get("files", [])
-    if not files:
-        return
-
-    for filepath in files:
-        if not filepath:
-            continue
-
-        # Resolve full path
-        if not os.path.isabs(filepath):
-            full_path = os.path.join(work_dir, filepath) if work_dir else filepath
-        else:
-            full_path = filepath
-
-        fname = os.path.basename(full_path)
-
-        if not os.path.exists(full_path):
-            st.warning(f"⚠️ File not found: `{fname}`")
-            continue
-
-        # ── TXT: show content inline as markdown ──────────────────────────────
-        if fname.endswith(".txt"):
-            with open(full_path, "r", encoding="utf-8", errors="replace") as rf:
-                content = rf.read()
-            if content.strip():
-                st.markdown(f"---\n**📄 {fname}**")
-                st.markdown(content)
-            else:
-                st.warning(f"⚠️ `{fname}` is empty.")
-
-        # ── PDF: offer download button ────────────────────────────────────────
-        elif fname.endswith(".pdf"):
-            with open(full_path, "rb") as pf:
-                pdf_bytes = pf.read()
-            st.download_button(
-                label=f"⬇️ Download {fname}",
-                data=pdf_bytes,
-                file_name=fname,
-                mime="application/pdf",
-                key=f"dl_{pipeline_key}_{step_num}_{fname}"
-            )
-
-        # ── CSV: show first 100 rows as dataframe ────────────────────────────
-        elif fname.endswith(".csv"):
-            import pandas as pd
-            try:
-                df = pd.read_csv(full_path, nrows=100)
-                st.markdown(f"**📊 {fname}** (first 100 rows)")
-                st.dataframe(df, use_container_width=True)
-            except Exception:
-                st.markdown(f"- `{fname}`")
-
-        else:
-            st.markdown(f"- `{fname}`")
 
 
 def render_pipeline_step(
@@ -108,13 +50,57 @@ def render_pipeline_step(
             st.success("Analysis complete.")
 
             if "msg" in outputs:
-                st.info(outputs["msg"])
+                st.info(outputs[f"msg"])
 
-            # ── Render all output files inline ────────────────────────────────
-            _display_step_outputs(pipeline_key, step_num, outputs)
+            # ── Download buttons + Re-run in a single row ──────────────────
+            files = outputs.get("files", [])
+            work_dir = st.session_state.get(f"{pipeline_key}_work_dir", "")
 
-            if st.button(f"Re-run Step {step_num}", key=f"rerun_{pipeline_key}_{step_num}"):
-                reset_pipeline_from(pipeline_key, step_num, total_steps)
+            # Collect downloadable files (PDF and CSV only)
+            downloadable = []
+            for fpath in files:
+                if not fpath:
+                    continue
+                full_path = fpath if os.path.isabs(fpath) else (
+                    os.path.join(work_dir, fpath) if work_dir else fpath
+                )
+                if os.path.exists(full_path):
+                    fname = os.path.basename(full_path)
+                    if fname.lower().endswith(".pdf"):
+                        downloadable.append((full_path, fname, "application/pdf", "📄"))
+                    elif fname.lower().endswith(".csv"):
+                        downloadable.append((full_path, fname, "text/csv", "📊"))
+                    elif fname.lower().endswith(".txt"):
+                        downloadable.append((full_path, fname, "text/plain", "📝"))
+
+            # Lay out: [Re-run] [Download A] [Download B] …
+            n_cols = 1 + len(downloadable)
+            cols = st.columns([2] + [1.5] * len(downloadable))
+
+            with cols[0]:
+                if st.button(f"Re-run Step {step_num}", key=f"rerun_{pipeline_key}_{step_num}"):
+                    reset_pipeline_from(pipeline_key, step_num, total_steps)
+
+            for idx, (full_path, fname, mime, icon) in enumerate(downloadable):
+                with cols[idx + 1]:
+                    try:
+                        mode = "rb" if mime == "application/pdf" else "r"
+                        encoding = None if mime == "application/pdf" else "utf-8"
+                        with open(full_path, mode, **({"encoding": encoding} if encoding else {})) as df:
+                            file_bytes = df.read()
+                        if isinstance(file_bytes, str):
+                            file_bytes = file_bytes.encode("utf-8")
+                        st.download_button(
+                            label=f"{icon} {fname}",
+                            data=file_bytes,
+                            file_name=fname,
+                            mime=mime,
+                            key=f"dl_{pipeline_key}_{step_num}_{fname}",
+                            use_container_width=True,
+                        )
+                    except Exception:
+                        pass
+
 
     elif state == "pending":
         st.markdown(f"<p style='color:#64748B;'>{description}</p>", unsafe_allow_html=True)

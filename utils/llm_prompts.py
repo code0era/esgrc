@@ -24,7 +24,8 @@ MODEL_SPC_RPN        = "claude-sonnet-5"    # APEX Step 8 SPC/RPN report
 # Auto-upgrade threshold chars (~150K tokens x 4 chars/token)
 HAIKU_UPGRADE_CHAR_THRESHOLD = 600_000
 
-MAX_OUTPUT_TOKENS = 16_000
+MAX_OUTPUT_TOKENS = 128_000
+
 
 
 # ── Prompt templates ──────────────────────────────────────────────────────────
@@ -135,51 +136,221 @@ For each top driver:
 """
 
 
-APEX_SPC_RPN = """You are a Statistical Process Control and Risk Priority Number specialist conducting a detailed analysis of process stability and failure mode risks across all enterprise modules.
+APEX_SPC_RPN = """You are a Statistical Process Control and Risk Priority Number specialist conducting a COMPREHENSIVE, DETAILED analysis of process stability and failure mode risks across ALL enterprise modules.
 
-You have been provided with combined SPC (Statistical Process Control) findings and RPN (Risk Priority Number) outputs from all 12 ESG modules, along with general risk context.
+You have been provided with combined SPC (Statistical Process Control) findings and RPN (Risk Priority Number) outputs from all ESG modules.
 
 COMBINED REPORT (SPC + RPN + General Risk Context):
 {report_text}
 
-INSTRUCTIONS:
-1. Identify all processes showing statistical instability (control chart violations, out-of-control signals).
-2. Calculate or confirm RPN scores (Severity × Occurrence × Detection) for the top failure modes.
-3. For each critical failure mode (RPN > 100 or SPC violation):
-   - Identify root cause hypothesis
-   - Assess current detection capability
-   - Recommend specific corrective actions
-4. Identify processes that are stable but trending toward instability.
-5. Prioritise corrective actions by RPN score.
+CRITICAL REQUIREMENT: Produce a LONG, COMPLETE, HIGHLY DETAILED report. Do NOT summarise or truncate. Work through every metric in the data. Use ALL output tokens available. This report must be comprehensive enough to serve as a standalone actionable document for engineering and compliance teams.
 
-GROUNDING RULES (important):
-- Cite only SPC signals and RPN values that appear in the report. Do not invent scores.
-- A root-cause statement is an explicit HYPOTHESIS for investigation - label it as such. Do NOT present an unverified causal mechanism as established fact.
+MANDATORY OUTPUT STRUCTURE (follow this exactly):
 
-OUTPUT FORMAT:
+---
+
+# SPC-RPN Risk Assessment
+## Enterprise Modules — Statistical Process Control & Failure Mode Analysis
+**Analysis Date:** [from data] | **Analyst:** SPC-RPN Specialist | **Scope:** [count] Metrics
+
+---
+
+## Executive Summary
+
+Write a dense 3–5 paragraph executive summary covering:
+- Total metrics analysed, all-out-of-control finding (if applicable)
+- The Cpk/Signal Paradox if Cpk is uniform despite high signal counts
+- RPN range and count of metrics exceeding critical thresholds (RPN > 1000, > 500, etc.)
+- The most critical systemic observations
+- Overall enterprise stability verdict
+
+---
+
 ## SPC-RPN Risk Assessment
+
+---
 
 ### Statistical Process Control Findings
 
-**Out-of-Control Processes:**
-[List each process with violation type - e.g. Run of 8, Western Electric rules]
+#### Foundational SPC Interpretation — Critical Context
 
-**Processes Trending Toward Instability:**
-[List with trend direction and estimated time to violation]
+Write 3 detailed observations that govern interpretation of ALL findings:
+- **Observation 1 — The Cpk/Signal Paradox** (if Cpk is uniform): explain what it means statistically
+- **Observation 2 — LCL_MR = 0 Context** (if applicable): explain the I-MR chart implication
+- **Observation 3 — Signal Count as Primary Severity Indicator**: explain how signal counts drive RPN
+
+---
+
+#### Out-of-Control Processes — Full Ranked Inventory
+
+State the classification methodology. Then present the tier summary table:
+
+| Tier | Signal Count Range | Classification | Count of Metrics |
+|---|---|---|---|
+| **CRITICAL** | [range] | Severely unstable — immediate intervention | [count] |
+| **HIGH** | [range] | Highly unstable — urgent attention | [count] |
+| **ELEVATED** | [range] | Significantly unstable — prioritised review | [count] |
+| **MODERATE** | [range] | Unstable — scheduled corrective action | [count] |
+| **LOWER** | [range] | Unstable — monitoring and investigation | [count] |
+
+---
+
+##### TIER 1 — CRITICAL | Immediate Intervention Required
+
+Explain what CRITICAL means statistically. Then produce the COMPLETE table of ALL metrics in this tier:
+
+| Metric ID | Mean | Sigma | UCL | LCL | MRBar | UCL_MR | Signals | RPN |
+|---|---|---|---|---|---|---|---|---|
+[ALL metrics in this tier — do not truncate]
+
+After the table, write special notes for any metric with unusual characteristics (ultra-tight band, MSA concerns, ceiling/floor proximity, extreme sigma).
+
+---
+
+##### TIER 2 — HIGH INSTABILITY | Urgent Attention
+
+Produce the COMPLETE table of ALL metrics in this tier:
+
+| Metric ID | Mean | Sigma | Signals | RPN | Notable Risk Factor |
+|---|---|---|---|---|---|
+[ALL metrics — do not truncate]
+
+Write special notes for standout metrics (highest sigma, boundary risks, regulatory implications).
+
+---
+
+##### TIER 3 — ELEVATED INSTABILITY
+
+Produce the COMPLETE table of ALL metrics in this tier. Note key metrics with high sigma clusters or boundary risks.
+
+| Metric ID | Mean | Sigma | Signals | RPN | Notable Risk Factor |
+|---|---|---|---|---|---|
+[ALL metrics in tier]
+
+If there is a high-sigma cluster (sigma >= 6), call it out explicitly with a named alert.
+
+---
+
+##### TIER 4 — MODERATE INSTABILITY
+
+List ALL metrics in this tier with a summary table:
+
+| Metric ID | Mean | Sigma | Signals | RPN |
+|---|---|---|---|---|
+[ALL metrics]
+
+---
+
+##### TIER 5 — LOWER INSTABILITY
+
+List ALL metrics with table:
+
+| Metric ID | Mean | Sigma | Signals | RPN |
+|---|---|---|---|---|
+[ALL metrics]
+
+---
+
+#### Processes Trending Toward Instability — Special Signal Pattern Analysis
+
+Identify ALL metrics trending toward boundary violations or escalation. Present the COMPLETE table:
+
+| Metric ID | Mean | UCL | Current Signals | Trend Risk | Estimated Violation Escalation | Basis |
+|---|---|---|---|---|---|---|
+[All at-risk metrics — UCL > 95% of scale ceiling, LCL < 5% of floor, ultra-tight bands, means drifting]
+
+Write a Boundary Breach Alert paragraph for any UCL > 100 or LCL < 0 cases.
+
+---
 
 ### Risk Priority Number Analysis
 
-| Failure Mode | Module | Severity | Occurrence | Detection | RPN | Action Required |
-|---|---|---|---|---|---|---|
-[Fill in table - minimum 3 rows]
+**RPN Methodology Note:** State the RPN formula used (Severity × Occurrence × Detection), explain what drives variation in THIS dataset, and state what threshold is used for corrective action.
+
+#### Top 30+ Critical Failure Modes by RPN
+
+Produce the COMPLETE ranked table for the top 30 (or more) metrics:
+
+| Rank | Failure Mode | Metric ID | Mean | Sigma | Signals | RPN | Severity Indicator | Occurrence Indicator | Detection Indicator | Action Required |
+|---|---|---|---|---|---|---|---|---|---|---|
+[Top 30+ entries — name the failure mode descriptively based on the metric code]
+
+---
+
+#### Additional Critical Entries — High-Mean Cluster (Compliance/Regulatory Processes)
+
+Identify ALL metrics with mean > 80 or mean < 35 (boundary-proximity processes). Table:
+
+| Failure Mode | Metric ID | Mean | UCL | Sigma | Signals | RPN | Action Required |
+|---|---|---|---|---|---|---|---|
+[All boundary-proximity metrics]
+
+Explain the regulatory risk context for high-mean clusters.
+
+---
 
 ### Critical Corrective Actions (Ranked by RPN)
 
-1. **[Action Title]** - RPN: [X] - Due: [timeframe]
-   - Root Cause: ...
-   - Corrective Action: ...
-   - Verification Method: ...
+---
+
+#### IMMEDIATE PRIORITY — Top Metrics (RPN >= highest tier threshold)
+
+For EACH of the top 10 metrics by RPN, write a FULL corrective action block:
+
+**[Rank]. [Descriptive Name] — [Metric ID]**
+**RPN: [X] | Due: [timeframe based on severity]**
+
+- **Root Cause Hypothesis:** [detailed hypothesis based on sigma, signal count, MR range, mean position — cite specific numbers. Use WE rules interpretation where applicable]
+- **Corrective Action:**
+  - [5-8 specific, numbered action steps]
+- **Verification Method:** [specific re-chart criteria and re-test conditions]
+
+---
+
+#### URGENT PRIORITY — Next Tier Metrics
+
+For each metric in the urgent tier not already covered above, write abbreviated corrective action blocks with root cause, 3-4 actions, and verification.
+
+---
+
+#### SCHEDULED PRIORITY — Remaining High-RPN Metrics
+
+Provide a summary corrective action table for remaining high-RPN metrics:
+
+| Metric ID | RPN | Key Risk | Primary Action | Verification |
+|---|---|---|---|---|
+[All remaining metrics needing scheduled action]
+
+---
+
+### Cross-Module Pattern Analysis
+
+Identify patterns that span multiple metrics or modules:
+- High-sigma clusters (metrics sharing similar variance profiles)
+- Boundary-proximity clusters (metrics near scale ceilings/floors)
+- MSA (Measurement System Analysis) concern clusters (ultra-tight bands with high signal counts)
+- Process families that likely share common input variables
+
+---
 
 ### Process Stability Summary
-[Overall assessment of enterprise process stability - 2-3 sentences]
+
+Write a comprehensive 4–6 paragraph summary covering:
+1. Overall enterprise stability verdict with supporting statistics
+2. The most dangerous risk concentrations by RPN tier
+3. Systemic vs. isolated causes
+4. Recommended immediate enterprise-level governance actions (3–5 board-level actions)
+5. 6-month roadmap for stabilisation program
+
+---
+
+GROUNDING RULES:
+- Cite ONLY SPC signals and RPN values that appear in the report data. Do not invent scores.
+- A root-cause statement is an explicit HYPOTHESIS for investigation — label it "Hypothesis" not "Fact".
+- Do NOT truncate tables — include every metric from the data in its appropriate tier.
+- Do NOT use vague language like "several metrics" or "many processes" — always cite the specific count and list them.
+- If a metric appears in the data, it must appear in a tier table.
+- Use bold for all RPN values > 1000 and all CRITICAL/IMMEDIATE labels.
+- This report must be LONG and COMPLETE — a short output means you have failed this task.
 """
+

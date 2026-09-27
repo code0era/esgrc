@@ -296,7 +296,12 @@ def get_section_by_substring(sections, substring):
             return v
     return ""
 def parse_txt_content(content):
-    """Split the consolidated report content by REPORT HEADER."""
+    """Split the consolidated report content by section separators.
+
+    Handles two formats produced by the two combiner functions:
+      1. run_final_report_combiner  → ``={60} REPORT HEADER: filename ={60}``
+      2. combine_text_reports       → ``={40} --- SOURCE: filename --- ={40}``
+    """
     # Dynamically replace ESGRC/ESGR to METEOERAIT SOFTWARE while preserving 'esgrc module' case-insensitively
     placeholders = []
     def protect(match):
@@ -316,10 +321,32 @@ def parse_txt_content(content):
         
     content = content_sub
 
-    parts = re.split(r"={5,}\s*REPORT HEADER: (.*?)\s*={5,}", content)
     sections = {}
-    for i in range(1, len(parts), 2):
-        sections[parts[i].strip()] = parts[i+1].strip()
+
+    # ── Format 1: run_final_report_combiner (={60} REPORT HEADER: … ={60}) ──
+    parts = re.split(r"={5,}\s*REPORT HEADER: (.*?)\s*={5,}", content)
+    if len(parts) > 1:
+        for i in range(1, len(parts), 2):
+            sections[parts[i].strip()] = parts[i + 1].strip()
+
+    # ── Format 2: combine_text_reports (={40} --- SOURCE: filename --- ={40}) ──
+    if not sections:
+        # Pattern: newline + ={40} + newline + --- SOURCE: file --- + newline + ={40}
+        parts2 = re.split(
+            r"={5,}\s*\n---\s*SOURCE:\s*(.*?)\s*---\s*\n={5,}",
+            content,
+        )
+        if len(parts2) > 1:
+            for i in range(1, len(parts2), 2):
+                sections[parts2[i].strip()] = parts2[i + 1].strip()
+
+    # ── Format 2b: single-line variant without surrounding ={} fences ──
+    if not sections:
+        parts3 = re.split(r"---\s*SOURCE:\s*(.*?)\s*---", content)
+        if len(parts3) > 1:
+            for i in range(1, len(parts3), 2):
+                sections[parts3[i].strip()] = parts3[i + 1].strip()
+
     return sections
 
 def parse_model_summary(text):
