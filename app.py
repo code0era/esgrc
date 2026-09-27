@@ -1525,22 +1525,6 @@ def render_generating():
             st.session_state.csv_bytes,
         )
         
-        prog.progress(95, text="Generating AI summary…")
-        status.info("⚙️ Generating AI summary…")
-        
-        try:
-            client = anthropic.Anthropic(api_key=st.secrets["ANTHROPIC_API_KEY"])
-            system = build_system_prompt(context)
-            resp = client.messages.create(
-                model="claude-sonnet-5",
-                max_tokens=250,
-                system=system,
-                messages=[{"role": "user", "content": "Please provide a comprehensive  executive summary (under 2 pages ) of the report's findings, highlighting the most critical areas needing attention based on the low-performing metrics, groups, and sub-modules."}]
-            )
-            context["ai_summary"] = resp.content[0].text
-        except Exception as e:
-            context["ai_summary"] = f"Failed to generate AI summary: {e}"
-
         prog.progress(100, text="✅ Done!")
         status.success("✅ Report generated and saved.")
         time.sleep(0.4)
@@ -1619,6 +1603,39 @@ def render_report():
 
     st.markdown("#### 📊 Low-Performing Sub-Modules")
     make_table(ctx.get("low_sub_modules", []), ["Sub-Module ID", "Sub-Module Name", "Score"])
+
+    st.markdown("<br>", unsafe_allow_html=True)
+
+    # ── AI Executive Summary ──────────────────────────────────────────────
+    st.markdown("#### ✨ AI Executive Summary")
+    if "ai_summary" not in ctx or not ctx["ai_summary"]:
+        if st.button("Generate AI Executive Summary", type="primary", use_container_width=True):
+            with st.spinner("Generating AI summary using Anthropic (this uses your API credits)..."):
+                try:
+                    import anthropic
+                    from utils.esgrc_engine import build_system_prompt
+                    import utils.db as db
+                    client = anthropic.Anthropic(api_key=st.secrets["ANTHROPIC_API_KEY"])
+                    system = build_system_prompt(ctx)
+                    resp = client.messages.create(
+                        model="claude-3-5-sonnet-20240620",
+                        max_tokens=250,
+                        system=system,
+                        messages=[{"role": "user", "content": "Please provide a comprehensive executive summary (under 2 pages) of the report's findings, highlighting the most critical areas needing attention based on the low-performing metrics, groups, and sub-modules."}]
+                    )
+                    ai_text = resp.content[0].text
+                    
+                    # Update local state
+                    ctx["ai_summary"] = ai_text
+                    st.session_state.report_context = ctx
+                    
+                    # Persist to DB
+                    db.update_report_ai_summary(st.session_state.report_id, ai_text)
+                    st.rerun()
+                except Exception as e:
+                    st.error(f"Failed to generate AI summary: {e}")
+    else:
+        st.info(ctx["ai_summary"])
 
     st.markdown("<br>", unsafe_allow_html=True)
 

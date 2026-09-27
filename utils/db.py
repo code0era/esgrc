@@ -493,6 +493,24 @@ def get_report(report_id: str) -> Optional[Dict]:
         return sqlite_get_report(report_id)
 
 
+def update_report_ai_summary(report_id: str, ai_summary: str) -> bool:
+    """Update the ai_summary inside a report's context_data in MongoDB."""
+    if should_use_sqlite() or not is_valid_object_id(report_id):
+        # Fallback to SQLite not implemented for this update
+        return False
+        
+    try:
+        db = get_db()
+        result = db.reports.update_one(
+            {"_id": ObjectId(report_id)},
+            {"$set": {"context_data.ai_summary": ai_summary, "updated_at": datetime.utcnow()}}
+        )
+        return result.modified_count > 0
+    except Exception:
+        mark_sqlite_mode()
+        return False
+
+
 def delete_report(report_id: str, user_id: str) -> bool:
     """Delete a report (only if it belongs to the requesting user)."""
     if should_use_sqlite() or not is_valid_object_id(report_id):
