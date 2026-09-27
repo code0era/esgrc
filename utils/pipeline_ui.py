@@ -118,6 +118,17 @@ def render_pipeline_step(
                             complete_step(pipeline_key, step_num, results)
                         else:
                             st.error(msg)
+            elif step_num == total_steps:
+                # The last step is the AI step, make it manual
+                btn_label = f"✨ Generate AI Executive Summary (Step {step_num})"
+                if st.button(btn_label, type="primary", use_container_width=True, key=f"run_{pipeline_key}_{step_num}"):
+                    with st.spinner(f"Generating AI Summary (This uses API credits)..."):
+                        success, results, msg = run_func(**kwargs)
+                        if success:
+                            results["msg"] = msg
+                            complete_step(pipeline_key, step_num, results)
+                        else:
+                            st.error(msg)
             else:
                 # Auto-run subsequent steps without button click
                 with st.spinner(f"Automating Step {step_num}..."):
