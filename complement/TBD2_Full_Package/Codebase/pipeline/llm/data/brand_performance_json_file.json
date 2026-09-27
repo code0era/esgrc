@@ -1,0 +1,171 @@
+{
+  "module_id": "BRDM_001",
+  "module_name": "Enterprise Brand Management",
+  "sub_modules": [
+    {
+      "sub_module_id": "BGL10000",
+      "sub_module_name": "Brand Guidelines",
+	  "value":[],
+	  "groups": [
+        {
+          "group_id": "BGL10101",
+          "group_name": "Design Team",
+          "value": [
+            {
+              "metric_id": "BGL10102",
+              "metric_name": "Consistency Score",
+              "weight": 1
+            },
+            {
+              "metric_id": "BGL10103",
+              "metric_name": "Guideline Compliance Rate",
+              "weight": 1
+            }
+          ]
+        },
+        {
+          "group_id": "BGL10104",
+          "group_name": "Brand Managers",
+          "value": [
+            {
+              "metric_id": "BGL10105",
+              "metric_name": "Compliance Review Frequency",
+              "weight": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sub_module_id": "DAM10000",
+      "sub_module_name": "Digital Asset Management",
+	  "value":[],
+	  "groups": [
+        {
+          "group_id": "DAM10101",
+          "group_name": "Content Team",
+          "value": [
+            {
+              "metric_id": "DAM10102",
+              "metric_name": "Asset Utilization Rate",
+              "weight": 1
+            },
+            {
+              "metric_id": "DAM10103",
+              "metric_name": "Download Frequency",
+              "weight": 1
+            }
+          ]
+        },
+        {
+          "group_id": "DAM10104",
+          "group_name": "Brand Managers",
+          "value": [
+            {
+              "metric_id": "DAM10105",
+              "metric_name": "Asset Approval Time",
+              "weight": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sub_module_id": "BTP10000",
+      "sub_module_name": "Brand Templating",
+	  "value":[],
+	  "groups": [
+        {
+          "group_id": "BTP10101",
+          "group_name": "Marketing Team",
+          "value": [
+            {
+              "metric_id": "BTP10102",
+              "metric_name": "Template Usage Rate",
+              "weight": 1
+            },
+            {
+              "metric_id": "BTP10103",
+              "metric_name": "Template Customization Time",
+              "weight": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sub_module_id": "BAL10000",
+      "sub_module_name": "Brand Analytics",
+	  "value":[],
+	  "groups": [
+        {
+          "group_id": "BAL10101",
+          "group_name": "Analytics Team",
+          "value": [
+            {
+              "metric_id": "BAL10102",
+              "metric_name": "Brand Awareness Score",
+              "weight": 1
+            },
+            {
+              "metric_id": "BAL10103",
+              "metric_name": "Brand Equity Index",
+              "weight": 1
+            },
+            {
+              "metric_id": "BAL10104",
+              "metric_name": "Engagement Rate",
+              "weight": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sub_module_id": "BCB10000",
+      "sub_module_name": "Brand Collaboration",
+	  "value":[],
+	  "groups": [
+        {
+          "group_id": "BCB10101",
+          "group_name": "Cross-Functional Teams",
+          "value": [
+            {
+              "metric_id": "BCB10102",
+              "metric_name": "Collaboration Efficiency",
+              "weight": 1
+            },
+            {
+              "metric_id": "BCB10103",
+              "metric_name": "Inter-Departmental Feedback Rate",
+              "weight": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sub_module_id": "BLC10000",
+      "sub_module_name": "Brand Localization",
+	  "value":[],	  
+	  "groups": [
+        {
+          "group_id": "BLC10101",
+          "group_name": "Localization Team",
+          "value": [
+            {
+              "metric_id": "BLC10102",
+              "metric_name": "Localization Accuracy",
+              "weight": 1
+            },
+            {
+              "metric_id": "BLC10103",
+              "metric_name": "Localization Turnaround Time",
+              "weight": 1
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

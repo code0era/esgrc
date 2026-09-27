@@ -1,0 +1,539 @@
+TBD2
+AI-Powered Enterprise Risk Intelligence Platform
+MVP Engineering Project Plan
+10–12 Week Sprint Plan · 5–6 Person Team · $2,000/mo. Budget
+April 2026 · v1.0 · CONFIDENTIAL
+
+# Part I - Executive Summary & Decision Log
+## Purpose of This Document
+This project plan operationalises the TBD2 Architecture Recommendation into an executable 10–12-week sprint programme for a 5–6-person team. It covers four integrated deliverables: (1) a sprint-by-sprint task breakdown per person per week, (2) a dependency and milestone map, (3) a Notion/Linear-ready epic/task registry with owner, priority, effort and status, and (4) a narrative plan with full architectural decision rationale.
+Every decision in this plan is grounded in three hard constraints from the source document: a $2,000/month total budget, a bootstrapped team without dedicated DevOps, and an MVP window that cannot slip without losing the first enterprise client.
+## Three P0 Decisions - Must Resolve Before Line One of Code
+⛔ These three decisions are blocking. No backend schema, no pipeline skeleton, no API contract can be finalised until all three are confirmed. Target: Week 1 Day 1.
+
+| Decision | Options | Deadline | Unblocks |
+| --- | --- | --- | --- |
+| P0-1: Exact list of 12 module names (Q3) | Even placeholder names suffice - module_001 through module_012. Real names by Day 1. | Day 1 AM | DB schema, pipeline wrappers, all Sprint 1 backend work |
+| P0-2: Deployment target - Cloud SaaS (Railway/Render) vs on-premise | Architecture recommendation: Railway/Render. On-premise requires K8s knowledge the team does not have. | Day 1 AM | Docker Compose vs K8s, secrets strategy, environment config |
+| P0-3: Primary LLM provider - Anthropic (recommended) vs OpenAI | Anthropic recommended: Claude Haiku (Tier 1, ~$5/mo./client) + Sonnet (Tier 2, ~$10/mo.). OpenAI equally viable if team has existing tooling. | Day 1 AM | Model Router class, prompt engineering, API key management, cost model |
+
+## P1 Pre-Freeze Decisions - Must Resolve by Day 3
+🟡 These decisions must be resolved before the Week 1 Day 3 API contract freeze. After the freeze, the frontend engineer builds against MSW mocks and cannot be re-blocked.
+
+| Decision | Recommendation | What It Unblocks |
+| --- | --- | --- |
+| Heatmap: tab within Module Dashboard or separate route? | Tab/toggle within Module Dashboard. Saves one route, reuses module endpoint, reduces API surface. Implement as a client-side state toggle. | API contract - determines if a separate heatmap endpoint is needed |
+| Alert Severity Schema: numeric levels 1–4 or named ENUM? | Named ENUM: INFO \| LOW \| MEDIUM \| HIGH \| CRITICAL. Map to integers for API wire format. Store in alerts table. Define all five levels with colours before schema freeze. | DB schema alerts table, all alert-related API endpoints, frontend alert display |
+| Rollback Last Domain: flag-based vs snapshot-based | Flag-based (is_current on pipeline_runs). NOT a DB rollback. Rollback = flip is_current on the previous successful run. Schema decision only - UI can follow in Sprint 3. | pipeline_runs table schema, the is_current flag column, rollback API stub |
+| SSE endpoints: Add to API contract now | Add GET /pipelines/{id}/stream and GET /copilot/stream to the contract on Day 3. Shape: event-stream with progress%, status, message fields. | Frontend pipeline monitor, Co-Pilot streaming, real-time progress display |
+
+## Architectural Decision Log - Why Each Call Was Made
+### React + Vite over Next.js
+SSR benefits are entirely wasted behind an authentication wall. Every page in TBD2 is login-gated - the browser never indexes content and CDN edge rendering is irrelevant. Next.js also adds a Node.js server tier that complicates the Railway deployment and requires managing server-side state the team does not need. Vite delivers the fastest HMR in the ecosystem. The IIT frontend engineer will be productive from Day 1 without learning Next.js data-fetching patterns.
+Alternatives rejected: Next.js, Remix, Angular.
+Evidence: Remix/Angular: overkill or too heavy. Next.js: wasted SSR overhead confirmed by Vercel's own benchmarks on auth-gated SaaS.
+
+### FastAPI over Django REST Framework
+The 12 parallel LLM module calls require native async/await - Django's synchronous ORM would add latency to every LLM-relayed request. FastAPI's auto-generated OpenAPI docs are critical for the Day 3 contract freeze. Pydantic type safety catches schema drift early. Production-validated at Netflix and Uber at orders of magnitude greater scale. DRF's admin panel advantage is negated by the custom RBAC and audit logging that must be built anyway.
+Alternatives rejected: Django REST, Flask, Node/Express.
+Evidence: Flask: too low-level for production RBAC. Node: wrong language for a Python ML pipeline team. DRF: sync ORM latency unacceptable for LLM calls.
+
+### Celery + Redis chord pattern over alternatives
+The chord primitive maps exactly onto the 12-parallel-module → 1-enterprise barrier pattern. No custom coordination code is needed - Celery handles fan-out, fan-in, error propagation, and retry logic natively. Redis doubles as the Celery broker and the application cache, reducing infrastructure components from two to one. The PoC is already in Python and the backend developer almost certainly knows Celery.
+Alternatives rejected: ARQ, Dramatiq, RQ, AWS SQS+Lambda, Kafka.
+Evidence: ARQ lacks native chord/barrier primitive. Kafka is justified at Series A for real-time streaming but massively over-engineered for batch pipeline orchestration. SQS+Lambda: serverless cold starts incompatible with bounded LLM call windows.
+
+### Custom ModelRouter + LangChain (Co-Pilot only)
+Using LangChain as the primary pipeline orchestrator would create two orchestration layers (LangChain on top of Celery), adding abstraction overhead with no benefit. The custom ModelRouter is ~100 lines of Python, fully owned, provider-agnostic via environment variable routing. LangChain is selectively used for the Ask AI Co-Pilot chains and context injection, where its strengths (prompt template management, output parsers, chain composition) are genuinely valuable.
+Alternatives rejected: LangChain for everything, LlamaIndex, Haystack, DSPy.
+Evidence: LlamaIndex: correct for RAG over Knowledge Base PDFs - defer to V1.1. Haystack: smaller community, steeper learning. DSPy: prompt optimisation relevant at Series A, not MVP.
+
+### PostgreSQL + Supabase over MongoDB
+ACID transactions are essential for the audit trail (append-only, immutable) and RBAC (role assignment integrity). PostgreSQL LTREE handles the 5-tier hierarchy (enterprise → module → submodule → group → metric) via adjacency list with recursive CTEs, without a graph database. JSONB stores LLM output structured data with full query support. Row-level security (RLS) is enabled from Day 1 for V2.0 multi-tenancy at zero marginal cost. Supabase removes DevOps overhead at MVP.
+Alternatives rejected: MongoDB, MySQL, CockroachDB, PlanetScale.
+Evidence: MongoDB: weak ACID for audit trail, painful joins for cross-module analytics. MySQL: lacks ltree and weak JSONB. CockroachDB: distributed SQL for global multi-region - relevant at Series A.
+
+### Cloudflare R2 over AWS S3
+Zero egress fees vs S3's $0.09/GB egress. When enterprise clients download large PDF/PPT report exports, R2 saves approximately $50+/month at scale. S3-compatible API means boto3 works unchanged - zero migration cost. Free tier: 10GB + 10M Class A operations/month covers all MVP export volume. The saving compounds with each additional enterprise client.
+Alternatives rejected: AWS S3, Backblaze B2, MinIO, Supabase Storage.
+Evidence: S3: egress fees add up at scale. Backblaze B2: cheaper per GB but less polished DX. MinIO: operational overhead not justified when R2 free tier covers MVP.
+
+### Railway over AWS/K8s for hosting
+A 4-person team without a dedicated DevOps engineer cannot safely operate Kubernetes at MVP. Railway deploys Docker containers from GitHub with zero K8s config, includes managed PostgreSQL and Redis, and auto-scales. The time saved vs setting up ECS/RDS/VPC is 2–3 weeks of engineering - equivalent to one full sprint. Migrate to AWS at Series A when compliance requirements (SOC 2, HIPAA BAA) and a DevOps hire justify the overhead.
+Alternatives rejected: AWS ECS/RDS, GCP, Hetzner, Fly.io, Docker Swarm.
+Evidence: AWS: 2–3-week setup overhead, compliance overkill at MVP. Hetzner: cheapest compute but requires full self-management, high operational risk. Fly.io: viable if APAC clients are Day 1 priority.
+
+### SSE over WebSockets for real-time
+The Pipeline Monitor requires live progress updates (server → client only). Co-Pilot streaming responses are also unidirectional (server → client). Server-Sent Events are the correct choice for one-directional push. WebSockets add bidirectional complexity (connection management, reconnection logic, heart beating) that provides zero benefit for these use cases. FastAPI supports SSE natively - zero additional infrastructure.
+Alternatives rejected: WebSockets, polling, long-polling.
+Evidence: WebSockets: bidirectional complexity with no benefit at MVP. Polling every 2s: unnecessary DB/Redis load. Long-polling: worse DX than SSE for streaming responses.
+
+# Part II - Complete Module Registry & Atomic Task Breakdown
+Every component from all 18 sections is listed below. Each item is broken to the smallest meaningful unit of work - individual endpoint, schema table, UI component, background task, or config item.
+Priority definitions: P0 = must resolve before code; P1 = Week 1 schema-freeze dependency; P2 = MVP required; P3 = post-MVP / V1.1.
+
+## DB Layer - Schema Tables & Migrations
+| Task ID | Description | Priority | Owner | Effort | Depends On |
+| --- | --- | --- | --- | --- | --- |
+| DB-01 | nodes (adjacency list - enterprise/module/submodule/group/metric) | P1 | BE Dev | 1d | P0-1 module list confirmed |
+| DB-02 | users table (id, email, hashed_password, created_at) | P1 | BE Dev | 2h | Auth provider chosen |
+| DB-03 | users_roles (user_id, role ENUM, enterprise_id, granted_by, granted_at) | P1 | BE Dev | 2h | DB-02 |
+| DB-04 | pipeline_runs (id, enterprise_id, status, is_current, triggered_by, created_at, completed_at) | P1 | BE Dev | 3h | DB-01, P1 rollback decision |
+| DB-05 | llm_outputs (id, run_id, tier ENUM, module_id, prompt_hash, response_json, confidence_score, created_at) | P1 | BE Dev | 3h | DB-04 |
+| DB-06 | prompts (id, module_id NULLABLE, tier, content, version, is_active, created_by, created_at) | P1 | BE Dev | 2h | DB-01 |
+| DB-07 | alerts (id, enterprise_id, run_id, metric_id, severity ENUM, message, acknowledged_at, created_at) | P1 | BE Dev | 3h | P1 severity schema decision |
+| DB-08 | audit_events (id, user_id, action, entity_type, entity_id, old_value_json, new_value_json, ip_address, user_agent, created_at) | P1 | BE Dev | 3h | DB-02 |
+| DB-09 | metric_data (id, node_id, period_id, value, unit, created_at) | P1 | BE Dev | 2h | DB-01 |
+| DB-10 | r2_documents (id, module_id, filename, r2_key, uploaded_by, created_at) | P2 | BE Dev | 1h | DB-01 |
+| DB-11 | pipeline_metrics (id, run_id, data_volume_bytes, duration_ms, created_at) | P3 | BE Dev | 1h | DB-04 |
+| DB-12 | Enable PostgreSQL RLS on all tables, add tenant_id placeholder columns | P1 | BE Dev | 3h | All tables created |
+| DB-13 | LTREE extension + recursive CTE helper views for 5-tier traversal | P2 | BE Dev | 4h | DB-01 |
+| DB-14 | Alembic migration framework setup + initial migration scripts | P1 | BE Dev | 3h | DB-01 through DB-10 |
+| DB-15 | Composite indexes: (node_id, period_id), (run_id, tier), (user_id, action_type, created_at) | P2 | BE Dev | 2h | DB-14 |
+| DB-16 | Revoke DELETE/UPDATE on audit_events from app role (SOC 2 prep) | P2 | BE Dev | 30m | DB-08 |
+| DB-17 | Report ID format column in llm_outputs: {VL}-{enterprise_id}-{seq}-{hash_short} | P1 | BE Dev | 1h | DB-05 |
+
+## Backend Layer - FastAPI Endpoints & Services
+| Task ID | Description | Priority | Owner | Effort | Depends On |
+| --- | --- | --- | --- | --- | --- |
+| BE-01 | FastAPI project scaffold: folder structure, config, env vars, Dockerfile | P1 | BE Dev | 4h | P0-2 infra decision |
+| BE-02 | Auth: POST /auth/login, POST /auth/logout, POST /auth/refresh (JWT) | P1 | BE Dev | 1d | DB-02, Auth provider |
+| BE-03 | Auth: GET /auth/me (current user with role) | P1 | BE Dev | 2h | BE-02 |
+| BE-04 | RBAC middleware: require_role() FastAPI dependency injection | P1 | BE Dev | 4h | DB-03, BE-02 |
+| BE-05 | GET /enterprises/{id} - enterprise profile + top-level score | P1 | BE Dev | 3h | DB-01, BE-04 |
+| BE-06 | GET /enterprises/{id}/modules - list of 12 modules with scores | P1 | BE Dev | 3h | DB-01 |
+| BE-07 | GET /modules/{id} - module detail: score, submodules, metrics, ai_output, confidence | P1 | BE Dev | 4h | DB-05 |
+| BE-08 | GET /modules/{id}/heatmap - heatmap data (reuses module endpoint, tab toggle) | P1 | BE Dev | 2h | BE-07, P1 heatmap decision |
+| BE-09 | POST /pipelines/run - trigger full pipeline for enterprise | P2 | BE Dev | 1d | DB-04, CE-01 |
+| BE-10 | GET /pipelines/{id} - run status + module completion % | P2 | BE Dev | 3h | DB-04 |
+| BE-11 | GET /pipelines/{id}/stream - SSE endpoint for live progress | P2 | BE Dev | 4h | BE-10, Celery SSE events |
+| BE-12 | POST /pipelines/emergency-stop - SUPER_ADMIN only, revoke Celery tasks | P2 | BE Dev | 4h | BE-09, DB-08 |
+| BE-13 | POST /pipelines/{id}/rollback - flip is_current flag on previous run | P2 | BE Dev | 3h | DB-04, P1 rollback decision |
+| BE-14 | POST /pipelines/recalc-submodule - targeted recalc (stub → real Sprint 4) | P2 | BE Dev | 2h | DB-04 |
+| BE-15 | GET /alerts - list alerts with severity filter, pagination | P2 | BE Dev | 3h | DB-07 |
+| BE-16 | PATCH /alerts/{id}/acknowledge - mark alert acknowledged | P2 | BE Dev | 1h | DB-07 |
+| BE-17 | GET /reports/{id} - report detail with LLM output, confidence, ID | P2 | BE Dev | 3h | DB-05, DB-17 |
+| BE-18 | GET /reports/{id}/export - generate PDF/PPT, upload to R2, return URL | P2 | BE Dev | 2d | DB-05, INF-05 |
+| BE-19 | GET /admin/users - list users with roles (ADMIN+ only) | P2 | BE Dev | 2h | DB-02, DB-03 |
+| BE-20 | POST /admin/users/{id}/role - assign/change role (ADMIN+ only) | P2 | BE Dev | 2h | DB-03, DB-08 |
+| BE-21 | GET /admin/prompts - list prompt templates | P2 | BE Dev | 2h | DB-06 |
+| BE-22 | PATCH /admin/prompts/{id} - update prompt template (creates new version) | P2 | BE Dev | 3h | DB-06 |
+| BE-23 | GET /admin/audit-log - paginated audit log with filters (ADMIN+ only) | P2 | BE Dev | 3h | DB-08 |
+| BE-24 | POST /copilot/query - Co-Pilot question, returns SSE stream | P2 | BE Dev | 1d | LLM-05 |
+| BE-25 | GET /copilot/stream - SSE stream for Co-Pilot response | P2 | BE Dev | 3h | BE-24 |
+| BE-26 | POST /documents/upload - upload to R2, store metadata in DB | P3 | BE Dev | 4h | DB-10, INF-05 |
+| BE-27 | GET /settings/sso - return SSO config (stub, V1.1 implementation) | P3 | BE Dev | 1h | DB-02 |
+| BE-28 | slowapi rate limiting middleware on all endpoints | P2 | BE Dev | 2h | BE-01 |
+| BE-29 | Sentry SDK integration + structured logging (structlog) | P2 | BE Dev | 2h | BE-01 |
+| BE-30 | OpenAPI contract: lock schema after Day 3 freeze, CI validation | P1 | BE Dev | 3h | All P1 endpoints |
+
+## Celery / Task Queue Layer
+| Task ID | Description | Priority | Owner | Effort | Depends On |
+| --- | --- | --- | --- | --- | --- |
+| CE-01 | Celery app init: broker=Redis, result_backend=Redis, task discovery | P1 | BE Dev | 2h | INF-02 Redis |
+| CE-02 | Module task template: async LLM call, emit task_progress custom state | P1 | BE Dev | 4h | CE-01, LLM-01 |
+| CE-03 | Celery chord: group of 12 module tasks + enterprise synthesis callback | P1 | BE Dev | 1d | CE-02 |
+| CE-04 | Chord error handler: catch module failure, update pipeline_runs.status, surface in monitor | P2 | BE Dev | 4h | CE-03 |
+| CE-05 | Celery Beat: scheduled pipeline runs (cron config per enterprise) | P2 | BE Dev | 4h | CE-01 |
+| CE-06 | Task retry logic: exponential backoff on LLM API rate limits | P2 | BE Dev | 3h | CE-02 |
+| CE-07 | SSE progress bridge: Celery task_progress → Redis pub/sub → SSE stream | P2 | BE Dev | 4h | CE-03, BE-11 |
+| CE-08 | Emergency stop: Celery revoke(terminate=True) + audit log entry | P2 | BE Dev | 3h | CE-03, BE-12 |
+| CE-09 | Flower monitoring dashboard: deploy as internal-only Docker service | P2 | DevOps | 2h | CE-01 |
+| CE-10 | Targeted recalc task: recalc_submodule(submodule_id, run_id) | P3 | BE Dev | 4h | CE-03 |
+
+## LLM / AI Layer - ModelRouter, Prompts, Co-Pilot, Observability
+| Task ID | Description | Priority | Owner | Effort | Depends On |
+| --- | --- | --- | --- | --- | --- |
+| LLM-01 | ModelRouter class: reads LLM_PROVIDER env var, routes to Anthropic/OpenAI SDK (~100 lines) | P1 | ML/AI | 4h | P0-3 provider decision |
+| LLM-02 | LLMClient wrapper: retry logic, rate-limit handling, timeout, error normalisation | P1 | ML/AI | 4h | LLM-01 |
+| LLM-03 | PromptTemplate loader: reads from DB prompts table, caches in Redis (300s TTL) | P1 | ML/AI | 3h | DB-06, LLM-02 |
+| LLM-04 | Tier 1 module task: Haiku model call, structured JSON extraction, confidence heuristic | P2 | ML/AI | 2d | LLM-02, LLM-03, CE-02 |
+| LLM-05 | Tier 2 enterprise synthesis: Sonnet call, aggregates 12 module outputs, board-level narrative | P2 | ML/AI | 2d | LLM-04, CE-03 |
+| LLM-06 | LangChain Co-Pilot chain: context injection (enterprise + module context), streaming output | P2 | ML/AI | 2d | LLM-02, BE-24 |
+| LLM-07 | Response caching: key = hash(module_id + data_fingerprint), TTL=None, invalidate on data change | P2 | ML/AI | 4h | LLM-04, INF-02 |
+| LLM-08 | Confidence heuristic (MVP bridge): weighted average of metric variance scores per module | P2 | ML/AI | 1d | LLM-04 |
+| LLM-09 | Prompt compression: send statistical summaries (mean, std dev, SPC status) not raw arrays | P2 | ML/AI | 4h | LLM-04 |
+| LLM-10 | Langfuse integration: trace every LLM call with prompt, response, latency, tokens, cost | P2 | ML/AI | 3h | LLM-02 |
+| LLM-11 | Budget alerting: 80% spend cap alert via Slack/email; hard stop at 100% | P2 | ML/AI | 2h | LLM-02 |
+| LLM-12 | ResponseParser per module: validate JSON schema compliance, extract fields | P2 | ML/AI | 1d | LLM-04 |
+| LLM-13 | Confidence scoring methodology (real statistical model, Q6): replace heuristic | P3 | ML/AI | 1w | LLM-08 |
+| LLM-14 | RAG: LlamaIndex chunking + embeddings over Module Knowledge Base PDFs (V1.1) | P3 | ML/AI | 1w | DB-10 |
+
+## Frontend Layer - React + Vite Components & Pages
+| Task ID | Description | Priority | Owner | Effort | Depends On |
+| --- | --- | --- | --- | --- | --- |
+| FE-01 | Vite + React scaffold: Tailwind CSS + Aegis Quantum token config in tailwind.config.js (Day 1, non-negotiable) | P1 | FE Dev | 2h | P0 decisions |
+| FE-02 | Zustand store setup: global state slices (auth, pipeline status, copilot panel, active module) | P1 | FE Dev | 2h | FE-01 |
+| FE-03 | MSW (Mock Service Worker): mock all frozen API endpoints from Day 3 | P1 | FE Dev | 4h | API contract freeze |
+| FE-04 | React Router setup: protected routes, role-based route guards | P1 | FE Dev | 3h | FE-01, FE-02 |
+| FE-05 | Auth screens: Login, Forgot Password (shadcn/ui form + Zustand auth slice) | P1 | FE Dev | 1d | FE-01, FE-04 |
+| FE-06 | Navigation: sidebar with role-based nav items (SUPER_ADMIN admin link enforcement) | P1 | FE Dev | 1d | FE-04, FE-05 |
+| FE-07 | Enterprise Dashboard: overall risk score gauge, 12 module summary cards, sparklines (Recharts) | P2 | FE Dev | 2d | FE-03, FE-06 |
+| FE-08 | Module Dashboard: drill-down view, submodule accordion, metric table, AI output panel | P2 | FE Dev | 2d | FE-07 |
+| FE-09 | Heatmap tab: toggle within Module Dashboard (client-side state, reuses module data) | P2 | FE Dev | 1d | FE-08 |
+| FE-10 | Pipeline Monitor: live progress bar (SSE consumer), module completion grid, status chips | P2 | FE Dev | 2d | FE-07, BE-11 |
+| FE-11 | SPC control charts: Recharts with UCL/LCL lines, violation highlights | P2 | FE Dev | 2d | FE-08 |
+| FE-12 | Ask AI Co-Pilot panel: sliding panel, streaming response (SSE), history | P2 | FE Dev | 2d | FE-07, BE-25 |
+| FE-13 | Alert centre: list with severity badges, filter, acknowledge action | P2 | FE Dev | 1d | FE-07 |
+| FE-14 | Report view: report ID display, LLM output sections, confidence indicator, export button | P2 | FE Dev | 1d | FE-08 |
+| FE-15 | PDF/PPT export: trigger export endpoint, show progress, download link | P2 | FE Dev | 1d | FE-14, BE-18 |
+| FE-16 | Admin: User Management page (list users, assign roles) | P2 | FE Dev | 1d | FE-06 |
+| FE-17 | Admin: Prompt Template editor (textarea + version history list) | P2 | FE Dev | 1d | FE-16 |
+| FE-18 | Admin: Audit Log viewer (paginated table, filter by user/action/date) | P2 | FE Dev | 1d | FE-16 |
+| FE-19 | Settings: SSO placeholder (disabled 'Connect SSO' button, 'Available on Enterprise plan') | P3 | FE Dev | 30m | FE-06 |
+| FE-20 | Emergency Override modal stub (button visible, modal: 'Contact Super Admin') | P2 | FE Dev | 1h | FE-10 |
+| FE-21 | Rollback Last Domain button: confirm modal → calls BE-13 | P3 | FE Dev | 2h | BE-13 |
+| FE-22 | Force Recalc stub: button visible, notification: 'Recalculation queued' | P3 | FE Dev | 1h | FE-10 |
+| FE-23 | Processing Rate metric: static/simulated value with 'sample data' label | P3 | FE Dev | 1h | FE-10 |
+| FE-24 | Deploy New Watcher stub: button labelled 'Available in Enterprise tier' | P3 | FE Dev | 30m | FE-10 |
+| FE-25 | Vitest + React Testing Library setup; component tests for auth, dashboard, pipeline monitor | P2 | FE Dev | 1d | FE-05 to FE-12 |
+| FE-26 | Playwright E2E: login flow, dashboard load, pipeline trigger, PDF export (3–5 tests only) | P2 | FE Dev | 1d | FE-15 |
+| FE-27 | Sentry React SDK integration + performance monitoring | P2 | FE Dev | 1h | FE-01 |
+
+## Infrastructure & DevOps Layer
+| Task ID | Description | Priority | Owner | Effort | Depends On |
+| --- | --- | --- | --- | --- | --- |
+| INF-01 | GitHub repo setup: branch strategy (main/develop/feature), CODEOWNERS, protected main | P1 | DevOps | 1h | Team onboarded |
+| INF-02 | Docker Compose: FastAPI, Celery worker, Celery Beat, Redis, PostgreSQL, Nginx services | P1 | DevOps | 4h | BE-01 |
+| INF-03 | Railway/Render project setup: environments (staging, production), service links | P1 | DevOps | 3h | P0-2 infra decision |
+| INF-04 | Supabase project: PostgreSQL provisioning, RLS enabled, connection strings in env | P1 | DevOps | 2h | INF-03 |
+| INF-05 | Cloudflare R2 bucket: boto3 config, CORS policy for presigned URLs, env vars | P2 | DevOps | 2h | INF-03 |
+| INF-06 | Upstash Redis: provision free tier, configure as Celery broker + app cache | P1 | DevOps | 1h | INF-03 |
+| INF-07 | Nginx config: SSL termination (Let's Encrypt), reverse proxy to FastAPI, static files | P2 | DevOps | 3h | INF-02 |
+| INF-08 | GitHub Actions: CI pipeline - lint (ruff, eslint), pytest, Vitest, OpenAPI contract check | P2 | DevOps | 4h | INF-01 |
+| INF-09 | GitHub Actions: CD pipeline - build Docker, push, deploy to Railway on merge to main | P2 | DevOps | 3h | INF-08, INF-03 |
+| INF-10 | Secrets management: Railway/Render env vars for DB_URL, REDIS_URL, ANTHROPIC_API_KEY, R2 creds | P1 | DevOps | 2h | INF-03 |
+| INF-11 | Sentry project setup: DSN in env vars, error alerts to Slack | P2 | DevOps | 1h | INF-03 |
+| INF-12 | Langfuse: self-hosted Docker service OR cloud free tier; connect to LLM calls | P2 | DevOps | 2h | INF-02, LLM-10 |
+| INF-13 | Uptime Robot: health check monitors for API and frontend, Slack alerts | P2 | DevOps | 1h | INF-03 |
+| INF-14 | Flower: internal-only Celery monitoring dashboard, accessible via VPN/basic auth | P2 | DevOps | 1h | CE-09 |
+| INF-15 | Domain + DNS: custom domain, SSL cert auto-renew, www redirect | P2 | DevOps | 1h | INF-07 |
+| INF-16 | Staging environment: mirror of production, seeded with test data, client demo ready | P2 | DevOps | 4h | INF-09 |
+| INF-17 | Load test: k6 script against staging - 10 concurrent pipeline runs, confirm <5s response | P3 | DevOps | 4h | INF-16 |
+
+## Engineering Gaps from Section 15 - Resolution Status
+| Gap Element | MVP Action | Sprint | Resolution & Owner |
+| --- | --- | --- | --- |
+| EMERGENCY OVERRIDE | Stub modal | Sprint 3 | Stub button with modal in Sprint 1. Full kill-switch (Celery revoke + audit) in Sprint 3 (CE-08). FE-20 + BE-12. |
+| Rollback Last Domain | Design Now | Sprint 1 (schema) | is_current flag on pipeline_runs. Decision required before Day 3 schema freeze. UI action Sprint 3. DB-04 + BE-13 + FE-21. |
+| Alert Severity Schema | Design Now | Sprint 1 (schema) | INFO/LOW/MED/HIGH/CRITICAL ENUM. Required before schema freeze. DB-07 + all alert endpoints + FE-13. |
+| FORCE RECALC | Stub | Sprint 4 (full) | Button visible in Sprint 1 (FE-22). Notification stub. Full recalc_submodule Celery task Sprint 4. CE-10 + BE-14. |
+| Deploy New Watcher | Defer (V1.1) | Post-MVP | Dynamic metric registration is too complex for MVP. Stub as 'Enterprise tier' in FE-24. Defer to V1.1. |
+| Module Knowledge Base | Stub (R2 only) | Sprint 5–6 or V1.1 | R2 upload + DB metadata Sprint 2. RAG (LlamaIndex) deferred to V1.1. FE stub shows file links. DB-10 + INF-05. |
+| Report ID Format | Design Now | Sprint 1 (schema) | Format: VL-{enterprise_id}-{seq}-{hash_short}. Column in llm_outputs from Day 1. DB-17 + BE-17. |
+| Heatmap Navigation | Design Now | Sprint 2 | Tab toggle within Module Dashboard (client-side, reuses module endpoint). Decision required before Day 3 contract freeze. FE-09. |
+| Processing Rate Metric | Stub simulated | Sprint 4 (real) | Static '12.4 GB/s' with 'sample data' label in Sprint 2. Real instrumentation Sprint 4. FE-23 + DB-11. |
+| SSO Placeholder | Stub | Sprint 2 | One disabled 'Connect SSO' button + IDP URL field. 30 min of work. FE-19 + BE-27. Real SAML V1.1. |
+
+# Part III - Sprint-by-Sprint Plan (Weeks 1–12)
+The plan is structured around three phases: Foundation (Weeks 1–3), Core Build (Weeks 4–7), and Integration & Polish (Weeks 8–12). Each sprint is two weeks. The single most important constraint is the Week 1 Day 3 API contract freeze - all team tracks converge on that milestone before diverging into parallel execution.
+
+Team: Frontend Dev (FE), Backend Dev (BE), ML/AI Engineer (ML), DevOps Engineer (DO), PM. A sixth person (junior FE or intern) can be slotted into FE support from Week 4.
+
+## Sprint 1 - Weeks 1–2: Foundation & Schema Freeze
+Goal: All P0 decisions resolved Day 1. API contract frozen Day 3. DB schema frozen end of Week 1. All team members unblocked and building against mocks/stubs by Day 4.
+
+| Day/Period | Person | Tasks | Deliverable / Gate |
+| --- | --- | --- | --- |
+| Day 1 | All + PM | P0 decision meeting: confirm 12 modules, infra target, LLM provider. PM documents decisions. | P0 decisions logged. Zero ambiguity. |
+| Day 1 | BE Dev | BE-01: FastAPI scaffold. INF-01: GitHub repo + branch strategy. | Repo live. FastAPI runs locally. |
+| Day 1 | DevOps | INF-03: Railway/Render setup. INF-04: Supabase provision. INF-06: Upstash Redis. | All services provisioned. Connection strings in env. |
+| Day 1 | FE Dev | FE-01: Vite + React scaffold. FE-02: Zustand stores. Aegis Quantum tokens in tailwind.config.js. | Frontend builds and runs. Design tokens active. |
+| Day 1 | ML/AI | LLM-01: ModelRouter class. LLM-02: LLMClient wrapper. | ModelRouter routes to Anthropic/OpenAI via env var. |
+| Days 1–3 | BE Dev | DB-01 to DB-10: Full schema design + Alembic migrations. DB-12: RLS. DB-13: LTREE. | Schema frozen end of Day 3. |
+| Day 3 | PM + All | API Contract Freeze meeting: review all endpoints, SSE streams, shapes. Resolve P1 decisions (heatmap, severity, rollback). | Frozen OpenAPI spec committed to repo. MSW mocks generated. |
+| Day 3 | FE Dev | FE-03: MSW mock setup for all frozen endpoints. FE-04: React Router. | Frontend can build without backend. Unblocked. |
+| Day 3+ | BE Dev | BE-02 to BE-07: Auth + core read endpoints. BE-04: RBAC middleware. | Auth works. Core GET endpoints return mock data. |
+| Day 3+ | ML/AI | LLM-03: PromptTemplate loader. LLM-08: Confidence heuristic. | LLM calls work end-to-end against Anthropic API. |
+| Week 1 end | DevOps | INF-02: Docker Compose. INF-10: Secrets management. INF-08: CI pipeline. | docker-compose up runs full stack locally. |
+| Week 2 | BE Dev | BE-09 to BE-14: Pipeline endpoints. CE-01 to CE-04: Celery chord. | Full pipeline run triggers and completes. |
+| Week 2 | FE Dev | FE-05: Auth screens. FE-06: Navigation. FE-07: Enterprise Dashboard v1. | Login works. Dashboard renders mock data. |
+| Week 2 | ML/AI | LLM-04: Tier 1 module tasks (Haiku). CE-02: Module task template. | 12 module LLM calls run in parallel chord. |
+| Week 2 | DevOps | INF-09: CD pipeline. INF-07: Nginx. INF-11: Sentry setup. | Auto-deploy to Railway staging on merge to main. |
+
+Sprint 1 Gate: Pipeline runs end-to-end (even with placeholder data). Auth works. Frontend builds against frozen contract mocks. Schema is immutable from Day 3 onwards.
+
+## Sprint 2 - Weeks 3–4: Core Features
+Goal: Module Dashboard functional, Co-Pilot first pass, LLM pipeline integrated, alert system live, PDF export working.
+
+| Week | Person | Tasks | Deliverable |
+| --- | --- | --- | --- |
+| Week 3 | FE Dev | FE-08: Module Dashboard. FE-09: Heatmap tab. FE-10: Pipeline Monitor v1 (polling first, SSE Week 4). | Module drill-down renders. Heatmap toggle works. |
+| Week 3 | BE Dev | BE-15 to BE-18: Alert endpoints. BE-21 to BE-23: Admin endpoints. BE-29: Logging. | Alert API live. Admin reads functional. |
+| Week 3 | ML/AI | LLM-05: Tier 2 enterprise synthesis (Sonnet). LLM-07: Response caching. LLM-09: Prompt compression. | Full 2-tier pipeline: 12 modules + 1 enterprise synthesis. |
+| Week 3 | DevOps | INF-12: Langfuse setup. INF-13: Uptime Robot. INF-15: Domain + SSL. | LLM traces visible in Langfuse. Domain live with SSL. |
+| Week 4 | FE Dev | FE-11: SPC charts. FE-12: Co-Pilot panel. FE-13: Alert centre. FE-14: Report view. | SPC charts render. Co-Pilot panel opens and queries. |
+| Week 4 | BE Dev | BE-24 to BE-25: Co-Pilot endpoints. BE-11: SSE pipeline stream. CE-07: SSE bridge. | Co-Pilot responds. Pipeline Monitor shows live progress. |
+| Week 4 | ML/AI | LLM-06: LangChain Co-Pilot chain. LLM-10: Langfuse integration. LLM-11: Budget alerts. | Co-Pilot chain works with context. Costs tracked per call. |
+| Week 4 | DevOps | INF-16: Staging env. INF-05: R2 bucket. DB-14 to DB-16: Migrations + indexes. | Staging environment client-demo ready. |
+
+Sprint 2 Gate: End-to-end pipeline with real LLM calls. Module dashboard functional. Co-Pilot answers questions. Alerts fire. Staging client-demo ready.
+
+## Sprint 3 - Weeks 5–6: Admin, Exports, Safety Features
+Goal: Admin module complete, PDF/PPT export shipped, emergency override and safety controls wired up, all Engineering Gap stubs resolved.
+
+| Week | Person | Tasks | Deliverable |
+| --- | --- | --- | --- |
+| Week 5 | FE Dev | FE-15: Export flow. FE-16 to FE-18: Admin screens (users, prompts, audit log). FE-19 to FE-24: All Engineering Gap stubs. | Admin module complete. All gap stubs wired. |
+| Week 5 | BE Dev | BE-12: Emergency stop. BE-13: Rollback. BE-18: PDF/PPT export to R2. BE-19 to BE-23: Admin CRUD. | Emergency stop kills pipeline. Rollback flips is_current. Export downloads. |
+| Week 5 | ML/AI | LLM-12: ResponseParser per module. LLM-08 refinement: confidence heuristic tuning with real data. | Per-module JSON validation live. Confidence scores calibrated. |
+| Week 5 | DevOps | CE-08 wiring. CE-09: Flower dashboard. Celery monitoring health checks. | Flower visible internally. Celery health alerting. |
+| Week 6 | FE Dev | FE-25: Vitest component tests. FE-26: Playwright E2E (3–5 critical flows). FE-27: Sentry. | Test coverage >60% on core components. E2E green. |
+| Week 6 | BE Dev | BE-28: slowapi rate limiting. BE-30: OpenAPI contract lock in CI. pytest coverage >70%. | Rate limiting enforced. CI blocks breaking API changes. |
+| Week 6 | ML/AI | LLM-11: Budget cap enforcement. Cross-module LLM output correlation QA. | Budget hard-stop confirmed working. LLM output QA pass. |
+| Week 6 | DevOps | CE-05: Celery Beat scheduled runs. INF-08 expansion: coverage gates in CI. | Scheduled pipelines run on cron. CI coverage gates active. |
+
+Sprint 3 Gate: Admin module fully functional. Emergency override and rollback wired. All Engineering Gaps resolved (stub or real). Test coverage gates enforced in CI.
+
+## Sprint 4 - Weeks 7–8: Hardening, Performance & First Client Prep
+Goal: Performance validated under realistic load, confidence scoring real (if Q6 resolved), full observability stack live, client demo rehearsed and signed off.
+
+| Week | Person | Tasks | Deliverable |
+| --- | --- | --- | --- |
+| Week 7 | FE Dev | Performance profiling: bundle size, lazy-loading routes, Recharts virtualisation for 1,200 metrics. | Dashboard load <2s on staging. Recharts handles full metric set. |
+| Week 7 | BE Dev | DB-15: Query index validation. Slow query logging. Response time profiling on all P2 endpoints. | All endpoints <300ms p95 on staging load. |
+| Week 7 | ML/AI | LLM-13: Real confidence scoring model (if Q6 resolved by Week 3 target). Otherwise, heuristic refinement. | Confidence scores statistically meaningful. Documented methodology. |
+| Week 7 | DevOps | INF-17: k6 load test - 10 concurrent pipeline runs. Validate Redis + Celery under load. | Load test report. No memory leaks. Celery chord stable under concurrent runs. |
+| Week 8 | FE Dev | UX polish pass: empty states, error boundaries, loading skeletons, mobile-responsive layout. | UX matches Aegis Quantum designs. No unstyled states. |
+| Week 8 | BE Dev | Security audit: SQL injection review, JWT expiry enforcement, CORS policy tightening. | Security checklist signed off. No critical findings. |
+| Week 8 | ML/AI | CE-10: Force Recalc full implementation (targeted Celery task). DB-11: Pipeline metrics (real GB/s). | Force Recalc works end-to-end. Real processing rate metric. |
+| Week 8 | PM + All | Client demo rehearsal: full pipeline run, Co-Pilot Q&A, PDF export, alert demo. Sign-off. | Demo sign-off from PM + founding team. |
+
+Sprint 4 Gate: Platform performs under load. Security review complete. Client demo rehearsed and signed off. MVP definition of done achieved.
+
+## Sprints 5–6 - Weeks 9–12: Buffer, Launch & V1.1 Prep
+Weeks 9–10 are a planned buffer for Sprint 1–4 overflow, client feedback integration, and production launch. Weeks 11–12 begin V1.1 scoping (RAG, SAML, TimescaleDB, real module watcher) if the MVP launched on time.
+
+Buffer philosophy: A 10–12-week window is specified precisely because 8-week estimates in a 4-person team with LLM integration work routinely slip by 20–30%. The buffer is not slack - it is risk absorption for LLM API rate limit surprises, Celery chord edge cases, and Supabase RLS policy debugging, all of which have non-trivial discovery time.
+
+| Period | Owner | Activity |
+| --- | --- | --- |
+| Weeks 9–10 | All | Sprint overflow / bug backlog from client demo feedback |
+| Weeks 9–10 | BE Dev | BE-26: Document upload to R2 (Module Knowledge Base, store only - no RAG yet) |
+| Weeks 9–10 | ML/AI | LLM response quality review with real client data. Prompt tuning. |
+| Weeks 9–10 | DevOps | Production launch checklist: database backup schedule, monitoring alerts tuned, disaster recovery runbook. |
+| Weeks 11–12 | PM + All | V1.1 scoping: RAG (LlamaIndex), SAML SSO, TimescaleDB migration, Deploy New Watcher feature design. |
+| Weeks 11–12 | ML/AI | LLM-14: Begin RAG spike - LlamaIndex chunking prototype against sample PDFs. |
+| Weeks 11–12 | DevOps | AWS migration planning: IAM setup, VPC design, RDS provisioning for Series A compliance requirements. |
+
+Part IV - Gantt-Style Dependency & Milestone Map
+The map below shows the five parallel engineering tracks across 12 weeks, with blocking dependencies, milestones, and the critical path. Critical path items are marked ★.
+
+| Track | Task/Milestone | W1 | W2 | W3 | W4 | W5 | W6 | W7 | W8 | W9 | W10 | W11 | W12 | Blocking Dep |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| ★ PM / ALL | P0 Decision Meeting | ✓ |  |  |  |  |  |  |  |  |  |  |  | Blocks everything |
+| ★ PM / ALL | API Contract Freeze (Day 3) | ✓ |  |  |  |  |  |  |  |  |  |  |  | Blocks FE from Day 4 |
+| ★ INFRA | Railway + Supabase + Redis | ✓ |  |  |  |  |  |  |  |  |  |  |  | Blocks all deployment |
+| ★ INFRA | Docker Compose + CI/CD | ✓ | ✓ |  |  |  |  |  |  |  |  |  |  | Blocks staging deploy |
+| DB | Schema Migrations (P1) | ✓ |  |  |  |  |  |  |  |  |  |  |  | Blocks all BE+FE |
+| ★ BE | Auth + RBAC + Core GETs |  | ✓ |  |  |  |  |  |  |  |  |  |  | Blocks FE auth |
+| ★ BE | Pipeline Run + SSE Endpoints |  | ✓ | ✓ |  |  |  |  |  |  |  |  |  | Blocks FE monitor |
+| BE | Admin + Alert + Report Endpoints |  |  | ✓ | ✓ |  |  |  |  |  |  |  |  | Blocks admin FE |
+| BE | Export + Safety Controls |  |  |  |  | ✓ | ✓ |  |  |  |  |  |  | Blocks export FE |
+| ★ LLM | ModelRouter + LLMClient | ✓ |  |  |  |  |  |  |  |  |  |  |  | Blocks all LLM tasks |
+| ★ LLM | Tier 1 Module Tasks (12x chord) |  | ✓ | ✓ |  |  |  |  |  |  |  |  |  | Blocks Tier 2 |
+| ★ LLM | Tier 2 Enterprise Synthesis |  |  | ✓ |  |  |  |  |  |  |  |  |  | Blocks report generation |
+| LLM | Co-Pilot LangChain Chain |  |  |  | ✓ |  |  |  |  |  |  |  |  | Blocks Co-Pilot FE |
+| LLM | Confidence Scoring (real model) |  |  |  |  |  |  | ✓ | ✓ |  |  |  |  | Q6 must resolve by Wk 3 |
+| ★ FE | Scaffold + Zustand + MSW Mocks | ✓ |  |  |  |  |  |  |  |  |  |  |  | Enables parallel FE work |
+| ★ FE | Auth + Navigation + Ent. Dashboard |  | ✓ |  |  |  |  |  |  |  |  |  |  | First visible page |
+| FE | Module Dashboard + Heatmap + SPC |  |  | ✓ | ✓ |  |  |  |  |  |  |  |  |  |
+| FE | Pipeline Monitor (SSE) |  |  |  | ✓ |  |  |  |  |  |  |  |  | Needs BE-11 |
+| FE | Co-Pilot Panel |  |  |  | ✓ |  |  |  |  |  |  |  |  | Needs BE-25 |
+| FE | Admin Screens + All Gap Stubs |  |  |  |  | ✓ | ✓ |  |  |  |  |  |  |  |
+| FE | Tests + Polish + E2E |  |  |  |  |  | ✓ | ✓ |  |  |  |  |  |  |
+| QA / ALL | Client Demo Rehearsal + Sign-off |  |  |  |  |  |  |  | ✓ |  |  |  |  |  |
+| LAUNCH | Production Launch |  |  |  |  |  |  |  |  | ✓ |  |  |  | All P2 complete |
+| V1.1 PREP | RAG + SAML + Watcher Scoping |  |  |  |  |  |  |  |  |  |  | ✓ | ✓ | Post-launch |
+
+★ = Critical path item. A slip on any ★ item delays the MVP launch date. All other tracks have some float.
+
+## Critical Path Analysis
+The critical path is: P0 Decisions (Day 1) → Schema Migrations (Day 1–3) → API Contract Freeze (Day 3) → Celery Chord + Module LLM Tasks (Week 2–3) → Tier 2 Enterprise Synthesis (Week 3) → Pipeline Monitor SSE (Week 4) → Client Demo Sign-off (Week 8) → Production Launch (Week 9).
+Any slip on the Day 3 contract freeze propagates directly to the frontend engineer's entire sprint. The most likely slip point is P0-1 (module list) - if the client cannot confirm 12 module names by Day 1, use placeholder names (module_001 through module_012) and proceed. This is explicitly permitted by the architecture document's Q3 resolution strategy.
+The second highest-risk item is LLM-13 (real confidence scoring model, Q6). The architecture document recommends bridging with a heuristic through Week 3. If Q6 is not resolved by Week 3, the heuristic becomes the MVP delivery and the real model becomes a V1.1 item. This is an acceptable trade - the API contract field (confidence: float) remains stable regardless.
+
+# Part V - Notion/Linear-Ready Epic & Task Registry
+The following table is formatted for direct import into Linear or Notion. Each row maps to one task/issue. Fields: Epic, Task ID, Title, Owner, Priority, Effort (days), Sprint, Status.
+
+| Epic | Task ID | Title | Owner | Priority | Effort | Sprint | Status |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Foundation | INF-01 | GitHub repo + branch strategy | DevOps | P1 | 0.1d | S1 | Todo |
+| Foundation | INF-02 | Docker Compose full stack | DevOps | P1 | 0.5d | S1 | Todo |
+| Foundation | INF-03 | Railway/Render project setup | DevOps | P1 | 0.4d | S1 | Todo |
+| Foundation | INF-04 | Supabase PostgreSQL provisioning | DevOps | P1 | 0.25d | S1 | Todo |
+| Foundation | INF-06 | Upstash Redis provisioning | DevOps | P1 | 0.1d | S1 | Todo |
+| Foundation | INF-10 | Secrets management (env vars) | DevOps | P1 | 0.25d | S1 | Todo |
+| Foundation | BE-01 | FastAPI scaffold + Dockerfile | BE Dev | P1 | 0.5d | S1 | Todo |
+| Foundation | FE-01 | Vite+React scaffold + Tailwind tokens | FE Dev | P1 | 0.25d | S1 | Todo |
+| Foundation | FE-02 | Zustand store setup | FE Dev | P1 | 0.25d | S1 | Todo |
+| Foundation | LLM-01 | ModelRouter class | ML/AI | P1 | 0.5d | S1 | Todo |
+| Foundation | LLM-02 | LLMClient wrapper + retry logic | ML/AI | P1 | 0.5d | S1 | Todo |
+| DB Schema | DB-01 | nodes adjacency list table | BE Dev | P1 | 1d | S1 | Todo |
+| DB Schema | DB-02 | users table | BE Dev | P1 | 0.25d | S1 | Todo |
+| DB Schema | DB-03 | users_roles table | BE Dev | P1 | 0.25d | S1 | Todo |
+| DB Schema | DB-04 | pipeline_runs table (is_current flag) | BE Dev | P1 | 0.4d | S1 | Todo |
+| DB Schema | DB-05 | llm_outputs table | BE Dev | P1 | 0.4d | S1 | Todo |
+| DB Schema | DB-06 | prompts table | BE Dev | P1 | 0.25d | S1 | Todo |
+| DB Schema | DB-07 | alerts table (severity ENUM) | BE Dev | P1 | 0.4d | S1 | Todo |
+| DB Schema | DB-08 | audit_events append-only table | BE Dev | P1 | 0.4d | S1 | Todo |
+| DB Schema | DB-12 | RLS enabled on all tables | BE Dev | P1 | 0.4d | S1 | Todo |
+| DB Schema | DB-14 | Alembic migrations setup | BE Dev | P1 | 0.4d | S1 | Todo |
+| DB Schema | DB-17 | Report ID format column in llm_outputs | BE Dev | P1 | 0.1d | S1 | Todo |
+| Auth & RBAC | BE-02 | POST /auth/login + /logout + /refresh | BE Dev | P1 | 1d | S1 | Todo |
+| Auth & RBAC | BE-04 | require_role() RBAC middleware | BE Dev | P1 | 0.5d | S1 | Todo |
+| Auth & RBAC | FE-04 | React Router + protected routes | FE Dev | P1 | 0.4d | S1 | Todo |
+| Auth & RBAC | FE-05 | Login + Forgot Password screens | FE Dev | P1 | 1d | S1 | Todo |
+| Auth & RBAC | FE-06 | Navigation + role-based nav guards | FE Dev | P1 | 1d | S1 | Todo |
+| API Contract | FE-03 | MSW mock setup (all frozen endpoints) | FE Dev | P1 | 0.5d | S1 | Todo |
+| API Contract | BE-30 | OpenAPI contract lock + CI validation | BE Dev | P1 | 0.4d | S1 | Todo |
+| Pipeline | CE-01 | Celery app init (broker=Redis) | BE Dev | P1 | 0.25d | S1 | Todo |
+| Pipeline | CE-02 | Module task template + task_progress state | BE Dev | P1 | 0.5d | S1 | Todo |
+| Pipeline | CE-03 | Celery chord: 12 tasks + enterprise callback | BE Dev | P1 | 1d | S1 | Todo |
+| Pipeline | LLM-03 | PromptTemplate loader (DB + Redis cache) | ML/AI | P1 | 0.4d | S1 | Todo |
+| Pipeline | LLM-04 | Tier 1 module tasks (Haiku, JSON extraction) | ML/AI | P2 | 2d | S1 | Todo |
+| Pipeline | LLM-08 | Confidence heuristic (MVP bridge) | ML/AI | P2 | 1d | S1 | Todo |
+| Pipeline | BE-09 | POST /pipelines/run | BE Dev | P2 | 1d | S2 | Todo |
+| Pipeline | BE-11 | GET /pipelines/{id}/stream (SSE) | BE Dev | P2 | 0.5d | S2 | Todo |
+| Pipeline | CE-07 | SSE progress bridge (Celery → Redis → SSE) | BE Dev | P2 | 0.5d | S2 | Todo |
+| Pipeline | LLM-05 | Tier 2 enterprise synthesis (Sonnet) | ML/AI | P2 | 2d | S2 | Todo |
+| Pipeline | LLM-07 | LLM response caching (module+data hash) | ML/AI | P2 | 0.5d | S2 | Todo |
+| Pipeline | LLM-09 | Prompt compression (stats not raw arrays) | ML/AI | P2 | 0.5d | S2 | Todo |
+| Dashboard | FE-07 | Enterprise Dashboard (score, 12 modules, sparklines) | FE Dev | P2 | 2d | S2 | Todo |
+| Dashboard | FE-08 | Module Dashboard (drill-down, submodules, AI output) | FE Dev | P2 | 2d | S2 | Todo |
+| Dashboard | FE-09 | Heatmap tab toggle (within module) | FE Dev | P2 | 1d | S2 | Todo |
+| Dashboard | FE-10 | Pipeline Monitor (SSE consumer, live progress) | FE Dev | P2 | 2d | S2 | Todo |
+| Dashboard | FE-11 | SPC control charts (Recharts, UCL/LCL) | FE Dev | P2 | 2d | S2 | Todo |
+| Dashboard | BE-05 | GET /enterprises/{id} | BE Dev | P1 | 0.4d | S1 | Todo |
+| Dashboard | BE-06 | GET /enterprises/{id}/modules | BE Dev | P1 | 0.4d | S1 | Todo |
+| Dashboard | BE-07 | GET /modules/{id} | BE Dev | P1 | 0.5d | S1 | Todo |
+| Co-Pilot | LLM-06 | LangChain Co-Pilot chain + streaming | ML/AI | P2 | 2d | S2 | Todo |
+| Co-Pilot | BE-24 | POST /copilot/query | BE Dev | P2 | 1d | S2 | Todo |
+| Co-Pilot | BE-25 | GET /copilot/stream (SSE) | BE Dev | P2 | 0.4d | S2 | Todo |
+| Co-Pilot | FE-12 | Co-Pilot panel (sliding, streaming, history) | FE Dev | P2 | 2d | S2 | Todo |
+| Alerts | BE-15 | GET /alerts | BE Dev | P2 | 0.4d | S2 | Todo |
+| Alerts | BE-16 | PATCH /alerts/{id}/acknowledge | BE Dev | P2 | 0.1d | S2 | Todo |
+| Alerts | FE-13 | Alert centre (severity badges, filter, ack) | FE Dev | P2 | 1d | S2 | Todo |
+| Alerts | LLM-11 | Budget cap alerts + hard stop | ML/AI | P2 | 0.25d | S2 | Todo |
+| Reports | BE-17 | GET /reports/{id} | BE Dev | P2 | 0.4d | S2 | Todo |
+| Reports | BE-18 | GET /reports/{id}/export (PDF/PPT → R2) | BE Dev | P2 | 2d | S3 | Todo |
+| Reports | FE-14 | Report view (ID, LLM output, confidence) | FE Dev | P2 | 1d | S2 | Todo |
+| Reports | FE-15 | PDF/PPT export flow + download | FE Dev | P2 | 1d | S3 | Todo |
+| Admin | FE-16 | Admin: User management | FE Dev | P2 | 1d | S3 | Todo |
+| Admin | FE-17 | Admin: Prompt template editor | FE Dev | P2 | 1d | S3 | Todo |
+| Admin | FE-18 | Admin: Audit log viewer | FE Dev | P2 | 1d | S3 | Todo |
+| Admin | BE-19 | GET /admin/users | BE Dev | P2 | 0.25d | S3 | Todo |
+| Admin | BE-20 | POST /admin/users/{id}/role | BE Dev | P2 | 0.25d | S3 | Todo |
+| Admin | BE-21 | GET /admin/prompts | BE Dev | P2 | 0.25d | S3 | Todo |
+| Admin | BE-22 | PATCH /admin/prompts/{id} | BE Dev | P2 | 0.4d | S3 | Todo |
+| Admin | BE-23 | GET /admin/audit-log | BE Dev | P2 | 0.4d | S3 | Todo |
+| Safety | BE-12 | POST /pipelines/emergency-stop | BE Dev | P2 | 0.5d | S3 | Todo |
+| Safety | BE-13 | POST /pipelines/{id}/rollback | BE Dev | P2 | 0.4d | S3 | Todo |
+| Safety | FE-20 | Emergency Override stub modal | FE Dev | P2 | 0.1d | S1 | Todo |
+| Safety | CE-08 | Emergency stop: Celery revoke + audit | BE Dev | P2 | 0.4d | S3 | Todo |
+| Stubs (Eng Gaps) | FE-19 | SSO stub (disabled button) | FE Dev | P3 | 0.1d | S2 | Todo |
+| Stubs (Eng Gaps) | FE-21 | Rollback button + confirm modal | FE Dev | P3 | 0.25d | S3 | Todo |
+| Stubs (Eng Gaps) | FE-22 | Force Recalc notification stub | FE Dev | P3 | 0.1d | S2 | Todo |
+| Stubs (Eng Gaps) | FE-23 | Processing Rate (simulated + label) | FE Dev | P3 | 0.1d | S3 | Todo |
+| Stubs (Eng Gaps) | FE-24 | Deploy Watcher stub ('Enterprise tier') | FE Dev | P3 | 0.1d | S2 | Todo |
+| Observability | INF-11 | Sentry project setup | DevOps | P2 | 0.1d | S1 | Todo |
+| Observability | INF-12 | Langfuse self-hosted setup | DevOps | P2 | 0.25d | S2 | Todo |
+| Observability | LLM-10 | Langfuse integration (trace every LLM call) | ML/AI | P2 | 0.4d | S2 | Todo |
+| Observability | FE-27 | Sentry React SDK | FE Dev | P2 | 0.1d | S2 | Todo |
+| Observability | BE-29 | structlog + Sentry SDK backend | BE Dev | P2 | 0.25d | S1 | Todo |
+| Observability | INF-13 | Uptime Robot health monitors | DevOps | P2 | 0.1d | S2 | Todo |
+| Testing | FE-25 | Vitest + React Testing Library setup | FE Dev | P2 | 1d | S3 | Todo |
+| Testing | FE-26 | Playwright E2E (3–5 flows) | FE Dev | P2 | 1d | S3 | Todo |
+| Testing | BE-28 | slowapi rate limiting | BE Dev | P2 | 0.25d | S3 | Todo |
+
+# Part VI - Risk Register & Open Questions
+## Risk Register
+| Risk | Impact | Likelihood | Mitigation |
+| --- | --- | --- | --- |
+| P0-1 not resolved Day 1 (module list) | Schema freeze slips. Sprint 1 backend blocked. Entire critical path slips by the delay duration. | MED | Use placeholder names module_001–012 immediately. Do not wait for real names. Real names are a naming migration, not a schema change. |
+| Celery chord edge case: one module task hangs | Enterprise synthesis never fires. Pipeline appears stuck. Client-facing 'running forever' state. | MED | CE-04: chord error handler with timeout (max 120s per module task). Celery soft_time_limit raises exception, hard_time_limit kills task. Always surfaces in Pipeline Monitor. |
+| Anthropic API rate limits during demo | 12 concurrent module calls may hit rate limits during a live demo pipeline run. | MED | CE-06: exponential backoff with jitter. LLM-07: cache module outputs so demo re-runs hit cache. Request rate limit increase from Anthropic before client demo. |
+| Q6 (confidence scoring) unresolved by Week 3 | Real confidence model cannot be built. Heuristic is shipped as MVP. | MED | LLM-08: document the heuristic methodology. API contract field (confidence: float) is stable. Q6 becomes V1.1 item. Communicate proactively to client. |
+| Supabase RLS policy debugging time | RLS policies are notoriously tricky. Debugging can consume 1–2 days of unexpected time. | MED | DB-12: enable RLS early (Sprint 1), not at end. Write RLS policies before building RBAC logic. Use Supabase Studio to test policies interactively. |
+| PDF/PPT export library complexity | Generating pixel-perfect client-grade reports is often harder than estimated. | HIGH | BE-18: spike in Week 2 with WeasyPrint (PDF) + python-pptx. If quality is insufficient, deliver R2 link to raw LLM output JSON as fallback for MVP demo. Polish for V1.1. |
+| LangChain Co-Pilot hallucination on real client data | Co-Pilot provides inaccurate analysis. Client trust damaged in demo. | MED | LLM-06: ground all Co-Pilot responses in retrieved context (enterprise + module data). Add explicit 'Based on your data:' framing. Enable Langfuse tracing to debug hallucinations. |
+| Frontend engineer blocked before API is live | If mocks are incomplete or contract drifts, FE engineer loses productivity. | LOW | FE-03: MSW mocks must be generated from the frozen OpenAPI spec (not hand-written). BE-30: CI validates contract. Any contract drift fails the build immediately. |
+| Redis memory exhaustion under Celery + cache load | Celery task results + LLM response cache + session data fills Upstash free tier (256MB). | LOW | LLM-07: cache only module outputs (not raw LLM responses). Set Celery result_expires=3600. Monitor Redis memory in Upstash dashboard. Upgrade to paid tier ($10/mo) immediately if approaching limit. |
+| Team of 5–6 without dedicated QA | Integration bugs discovered late. Demo instability. | MED | FE-25 + FE-26: automated tests before Sprint 3 ends. BE-30: contract validation in CI. INF-16: staging environment required before any client demo. Manual QA sessions end of each sprint. |
+
+## Open Questions the Team Must Resolve (Not Papered Over)
+| Question | Problem Statement | Deadline | Architectural Resolution | Owner |
+| --- | --- | --- | --- | --- |
+| Q3: 12 module names | What are the exact names of the 12 enterprise risk modules? | Week 1 Day 1 | P0 - blocks schema and pipeline. Use placeholders immediately but get real names ASAP. The schema uses a node_type ENUM and name column - only the name column needs updating. | PM + Client |
+| Q6: Confidence scoring | What is the statistical methodology for the module confidence score? Weighted variance? Percentile ranking? Expert-calibrated threshold? | Week 3 | MVP heuristic bridges the gap (weighted average of metric variance scores). Real model is V1.1 unless Q6 resolves by Week 3. API contract field is stable either way. | ML/AI + PM |
+| Q3b: Heatmap data definition | What dimensions does the heatmap visualise? Module vs submodule? Time vs severity? The implementation (tab toggle) is decided but the data shape needs confirmation. | Week 1 Day 3 | Must be resolved at API contract freeze. Heatmap endpoint reuses GET /modules/{id} data. FE renders it as a 2D grid. Define axes before Day 3. | PM + FE Dev |
+| Export quality bar | Is PDF export a 'nice formatted report' or a 'pixel-perfect board presentation'? The engineering effort differs by 3–5x. | Week 2 | Recommend: WeasyPrint from HTML template for MVP (2–3 days). Pixel-perfect python-pptx deck is Sprint 5–6 or V1.1. Align with client on bar before BE-18 starts. | PM + Client |
+| Multi-tenancy timeline | When is the first second enterprise client expected? RLS is enabled from Day 1 but V2.0 multi-tenancy work has not been scoped. | Week 4 | If second client is expected within 3 months of MVP, begin V2.0 multi-tenancy scoping in Weeks 11–12. The schema (tenant_id columns + RLS policies) is the critical path item, not the application code. | PM + Founders |
+| Celery worker count | How many Celery workers are needed to run 12 module tasks in parallel without queue saturation? | Week 2 | Start with 4 concurrent workers on Railway (concurrency=4). The chord group spawns 12 tasks - with 4 workers, 3 batches of 4 tasks. Total chord time ≈ 3x single task time. Add workers if latency is unacceptable. Monitor via Flower. | BE Dev + DevOps |
+
+# Part VII - Budget Model & LLM Cost Control
+## Monthly Infrastructure Budget at MVP
+Total budget: $2,000/month. MVP infrastructure cost: ~$75–165/month. LLM API cost (1 enterprise client): ~$27/month. Total MVP burn rate: ~$100–200/month - leaving $1,800+ as headroom for growth.
+
+| Component | MVP Cost/mo | 10-Client Scale | Notes |
+| --- | --- | --- | --- |
+| Railway / Render (hosting) | $40–60 | $150–300 | FastAPI + Celery worker + Beat + Nginx |
+| Supabase (PostgreSQL) | $0–25 | $25–100 | Free tier covers MVP; Pro at $25/mo for 8GB DB |
+| Upstash Redis | $0–10 | $20–50 | Free: 10K commands/day; doubles as Celery broker |
+| Cloudflare R2 (object storage) | $0–5 | $5–20 | Free 10GB; PDF/PPT exports |
+| LLM API (1 enterprise client) | $27 | $270 (10 clients) | Haiku Tier 1 ~$5 + Sonnet Tier 2 ~$10 + Co-Pilot ~$12 |
+| GitHub (private repos + Actions) | $0 | $0–4 | Free for teams; 2K Actions minutes/mo free |
+| Sentry (error monitoring) | $0 | $26 | Free 5K errors/mo; Team plan at scale |
+| Langfuse (LLM observability) | $0 | $0–30 | Self-hosted Docker = free; cloud tier optional |
+| Domain + SSL | $10–15 | $10–15 | Annual domain; Let's Encrypt SSL (free) |
+| Uptime Robot | $0 | $0–7 | Free 50 monitors; Pro for SMS alerts |
+| TOTAL | ~$77–142/mo | ~$480–812/mo (10 clients) | Well within $2,000/month ceiling |
+
+## LLM Cost Control - Four Mechanisms
+- Response caching (LLM-07): Cache key = hash(module_id + data_fingerprint). If metric inputs unchanged, return cached output. Estimated 40–60% call reduction in steady state.
+- Tiered model selection (LLM-01): Haiku for all Tier 1 module calls (~$0.005/call). Sonnet only for Tier 2 enterprise synthesis (~$0.11/call) and Co-Pilot (~$0.06/call). Never use Sonnet for structured JSON extraction.
+- Prompt compression (LLM-09): Send statistical summaries (mean, std dev, SPC violation status) not raw time-series arrays. Reduces token count 30–50% per Tier 1 call.
+- Budget enforcement (LLM-11): 80% monthly spend triggers Slack/email alert. 100% triggers hard stop via API account limit. Monitor via Langfuse cost dashboard.
+
+## LLM Cost Projection - Scale Model
+| Scale | T1 Calls/mo | T2 Calls/mo | CoPilot Calls | T1 Cost | T2 Cost | CoPilot Cost | TOTAL LLM |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| 1 client (MVP) | 1,080 | 90 | 200 | ~$5.40 | ~$9.90 | ~$12.00 | ~$27/mo |
+| 5 clients | 5,400 | 450 | 1,000 | ~$27 | ~$49.50 | ~$60 | ~$136/mo |
+| 10 clients (Series A) | 10,800 | 900 | 2,000 | ~$54 | ~$99 | ~$120 | ~$273/mo |
+| 50 clients | 54,000 | 4,500 | 10,000 | ~$270 | ~$495 | ~$600 | ~$1,365/mo |
+
+The LLM cost model stays well within the $2,000/month ceiling through 50 clients. At 50 clients, LLM costs (~$1,365/month) plus infrastructure (~$400–800/month) bring total burn to approximately $1,800–2,200/month - the natural trigger point for a hosting architecture review and Series A infrastructure migration.
+
+# Part VIII - Narrative Project Plan
+## Phase 0 - Pre-Code (Week 1, Days 1–3): The Three Hard Gates
+The architecture document identifies three decisions that must be resolved before a single line of application code is written. This is not procedural caution - it is the recognition that downstream ambiguity in these three areas creates rework measured in weeks, not hours.
+The first gate is the module list (Q3). The 5-tier data hierarchy - enterprise → module → submodule → group → metric - is encoded in the database schema from Day 1. Every foreign key relationship, every API endpoint shape, every LLM prompt template references the module structure. If this is undefined, the schema cannot be written. The resolution is explicit in the document: use placeholders’ module_001 through module_012 immediately and populate real names via a trivial migration when confirmed. This is the correct call and the team must act on it, not wait.
+The second gate is the deployment target. The document recommends Railway over AWS for the bootstrapped team size. The decision here is not primarily about cost - it is about cognitive load. A team of four or five engineers managing a Kubernetes cluster in Sprint 1 is a team that ships infrastructure, not product. Railway's docker-compose-native deployment means the entire platform can be live in staging by end of Week 1, leaving all engineering bandwidth for feature work.
+The third gate is the LLM provider. Anthropic is recommended for Claude's structured JSON instruction-following, which is critical for the module-level response parsing (LLM-12: ResponseParser). The ModelRouter class means this decision is not permanent - switching providers later is a one-line environment variable change. But the LLM API wrapper, prompt templates, and cost model must all be built against one provider from Day 1.
+Day 3 is the API contract freeze. After this point, the frontend engineer builds against MSW mock endpoints and cannot be blocked by backend decisions. The pre-freeze checklist is non-negotiable: 12 module names (even placeholders), heatmap tab-vs-route decision, alert severity ENUM definition, SSE endpoint shapes, and deployment target confirmation. The PM owns this meeting and its output document.
+## Phase 1 - Foundation (Weeks 1–2): Everything Runs, Nothing Is Pretty
+The goal of Weeks 1 and 2 is not a working product - it is a working skeleton with every architectural connection proven. By end of Week 2, the following must be demonstrably true: a POST to /pipelines/run triggers a Celery chord that fans out 12 module tasks in parallel, each of which calls the LLM API, and then fans back in to a single enterprise synthesis call. The pipeline status is persisted to PostgreSQL and visible via SSE stream. Auth works. The frontend renders the enterprise dashboard against MSW mocks. All services run from a single docker-compose up command.
+This skeleton proof is the most risk-reducing work in the entire project. It validates the Celery chord pattern against real LLM API latency, confirms the SSE bridge works between Celery and FastAPI, and proves the Docker Compose service graph has no hidden port conflicts or networking issues. Discovering any of these problems in Week 5 instead of Week 2 costs a sprint.
+The ML/AI engineer's Week 1–2 priority is the ModelRouter and Tier 1 module tasks. This is the highest-uncertainty work - LLM API call patterns, rate limit behaviour, and JSON schema compliance all need to be validated against real data before the Tier 2 synthesis can be built. The confidence heuristic (LLM-08) is built as a deliberate bridge: it allows the full pipeline to run and return meaningful scores while Q6 (the real statistical model) is being resolved.
+
+## Phase 2 - Core Build (Weeks 3–7): Parallel Tracks Diverge
+With the API contract frozen and the pipeline skeleton validated, Weeks 3–7 are the highest-velocity period. Each engineer works their track with minimal cross-team blocking.
+The frontend engineer builds the Module Dashboard, SPC charts, Co-Pilot panel, Alert Centre, and Report view against MSW mocks. The Recharts virtualisation for 1,200 metrics requires a deliberate performance decision: render only visible metrics in the viewport. This is standard practice with Recharts windowing - a 2–3-hour implementation that prevents a catastrophic dashboard render performance issue.
+The backend engineer builds the admin endpoints, alert system, export pipeline, and safety controls. The PDF export (BE-18) is the highest-effort backend item outside the pipeline itself. The recommendation is to spike WeasyPrint (HTML-to-PDF) in Week 2 before committing to it for Sprint 3. An HTML-based report template that can be rendered to PDF is 80% of the client's quality expectation at 20% of the bespoke python-pptx effort.
+The ML/AI engineer's Weeks 3–4 work - enterprise synthesis, response caching, prompt compression, and Co-Pilot chain - directly impacts the demo's most impressive capabilities. The LangChain Co-Pilot chain (LLM-06) is the only place in the stack where LangChain is used as a primary orchestrator, and this is intentional. The Co-Pilot is an interactive conversational chain with context injection, which is exactly the use case LangChain's abstractions are built for. The custom Celery pipeline has none of this.
+The most dangerous dependency in this phase is Q6 (confidence scoring). The architecture document sets Week 3 as the target for resolving the real statistical methodology. If the ML/AI engineer and PM have not converged on a methodology by Week 3, the heuristic becomes the MVP deliverable and should be documented as such. Shipping a confidence score with a clear methodology note ('Weighted variance of metric scores within module') is more credible than shipping a placeholder or delaying the demo.
+## Phase 3 - Integration & Polish (Weeks 7–9): Seams and Safety
+The integration phase is where the parallel tracks are reconnected and the gaps between them are found. The most common gap in a parallel-track build is the seam between the frontend SSE consumer and the backend SSE emitter: the event format, reconnection handling, and error state rendering are all easy to specify in isolation and hard to get right when connected. Budget two days of integration time for the SSE pipeline monitor in Week 7.
+Security review (Week 8, BE Dev) is not optional. Three specific checks must pass before the client demo: SQL injection review across all parameterised queries, JWT expiry enforcement and refresh flow under token blacklisting, and CORS policy verification that the production frontend origin is the only allowed origin. None of these require a security audit firm - they require one focused engineering day with a checklist.
+The client demo rehearsal (end of Week 8) is the most important meeting before launch. The founding team runs through the exact demo script with a fully seeded staging database. Every UI state the client will see - including the Co-Pilot answering a real question, the pipeline monitor completing a real run, the alert firing, and the PDF downloading - must work in rehearsal. Any issue found in rehearsal is fixed before launch.
+## Phase 4 - Buffer & Launch (Weeks 9–12): Ship It
+Weeks 9–10 are a planned buffer. The 10–12-week window is deliberately wider than the 8-week estimate in the source document, because LLM integration work - particularly Celery chord edge cases, LLM API rate limit behaviour under parallel load, and Supabase RLS policy debugging - has historically proven to consume 20–30% more time than estimated. The buffer absorbs this without slipping the client delivery date.
+Production launch (Week 9) follows a checklist: database backup schedule confirmed, Sentry alerts tuned, Uptime Robot monitors active, Langfuse cost dashboard live, Railway auto-scaling rules validated. The first enterprise client is onboarded with white-glove support - the PM and one engineer are available for the first pipeline run.
+Weeks 11–12 begin V1.1 scoping. The highest-priority V1.1 items are: RAG over Module Knowledge Base PDFs (LlamaIndex spike), real SAML SSO (Auth0 or Supabase paid SSO), TimescaleDB extension for growing metric volumes, and the Deploy New Watcher feature (dynamic metric registration). The AWS migration planning also begins in Week 11 - the IAM setup, VPC design, and RDS provisioning must be scoped 6–8 weeks before they are needed, not the week a compliance requirement land.
+
+## Closing Observation: What This Plan Does Not Assume
+This plan does not assume the team will execute perfectly. It assumes the schema freeze will unblock parallel work (Sprint 1 risk: P0-1 resolution). It assumes the LLM chord will have at least one production bug before Sprint 2 ends (mitigated by CE-04 error handling and Flower monitoring). It assumes the confidence scoring question will not be resolved in Week 1 (bridged by LLM-08 heuristic). It assumes the PDF export will require two rounds of iteration before client quality is met (scoped as a spike before committing to WeasyPrint).
+The architecture brief is technically sound. The cost model is honest. The engineering gap analysis is unusually thorough - most architecture documents do not surface UI elements that have no corresponding functional requirements. This plan operationalises that brief into executable work while preserving the reasoning behind every call. The team's job is to execute the sprint plan, hit the Day 3 gate, validate the chord pattern in Week 2, and ship a credible MVP to the first enterprise client within the budget ceiling.
+
+TBD2  ·  MVP Engineering Project Plan  ·  April 2026  ·  CONFIDENTIAL

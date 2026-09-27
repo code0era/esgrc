@@ -1,0 +1,58 @@
+# Local-dev override for running the pipeline end-to-end WITHOUT Cloudflare/R2.
+#
+#   docker compose -p tbd2 -f docker-compose.yml -f docker-compose.local.yml up -d \
+#       esgrc_api celery_worker celery_beat minio createbuckets
+#
+# Provides a local MinIO as the S3-compatible object store (no account/card), maps
+# esgrc_api to :8080, and drops the root-owned /tmp/tbd2 bind-mount so the non-root
+# worker can create per-step work dirs. Requires .env with a real ANTHROPIC_API_KEY
+# and these storage values:
+#   CLOUDFLARE_R2_BUCKET=tbd2-esgrc
+#   CLOUDFLARE_R2_ENDPOINT=http://minio:9000
+#   CLOUDFLARE_R2_ACCESS_KEY=minioadmin
+#   CLOUDFLARE_R2_SECRET_KEY=minioadmin123
+#   S3_ADDRESSING_STYLE=path
+#   DEMO_MODE=false        # true = fake the analytics scripts (real storage + real LLM)
+services:
+  esgrc_api:
+    ports: !override
+      - "8080:8000"
+    depends_on:
+      minio:
+        condition: service_started
+
+  celery_worker:
+    # Per-step work dirs are scratch (real outputs go to object storage); use the
+    # container's own writable /tmp instead of the root-owned host bind-mount.
+    volumes: !override []
+    depends_on:
+      minio:
+        condition: service_started
+
+  minio:
+    image: minio/minio:latest
+    restart: unless-stopped
+    command: server /data --console-address ":9001"
+    environment:
+      MINIO_ROOT_USER: minioadmin
+      MINIO_ROOT_PASSWORD: minioadmin123
+    ports:
+      - "9000:9000"   # S3 API
+      - "9001:9001"   # web console → http://localhost:9001 (minioadmin / minioadmin123)
+    volumes:
+      - minio_data:/data
+
+  createbuckets:
+    image: minio/mc:latest
+    depends_on:
+      minio:
+        condition: service_started
+    entrypoint: >
+      /bin/sh -c "
+      until /usr/bin/mc alias set local http://minio:9000 minioadmin minioadmin123; do echo 'waiting for minio...'; sleep 1; done;
+      /usr/bin/mc mb --ignore-existing local/tbd2-esgrc;
+      echo 'BUCKET READY: tbd2-esgrc';
+      "
+
+volumes:
+  minio_data:

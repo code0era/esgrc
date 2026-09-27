@@ -1,0 +1,1122 @@
+{
+  "module_name": "Market_and_Sales",
+  "module_id": "MKTS_001",
+  "sub_modules": [
+    {
+      "sub_module_name": "Market Strategy and Policy",
+      "sub_module_id": "MSP10000",
+      "value": [],
+      "groups": [
+        {
+          "group_name": "Market Strategy and Policy Metrics",
+          "group_id": "MSP10001",
+          "value": [
+            {
+              "metric_name": "Market Share",
+              "metric_id": "MSP10101",
+              "value": 0.65
+            },
+            {
+              "metric_name": "Customer Acquisition Cost (CAC)",
+              "metric_id": "MSP10102",
+              "value": 0.85
+            },
+            {
+              "metric_name": "Customer Retention Rate",
+              "metric_id": "MSP10103",
+              "value": 0.75
+            },
+            {
+              "metric_name": "Customer Lifetime Value (CLV)",
+              "metric_id": "MSP10104",
+              "value": 0.65
+            },
+            {
+              "metric_name": "Sales Growth",
+              "metric_id": "MSP10105",
+              "value": 0.68
+            },
+            {
+              "metric_name": "Market Penetration",
+              "metric_id": "MSP10106",
+              "value": 0.85
+            },
+            {
+              "metric_name": "Brand Awareness",
+              "metric_id": "MSP10107",
+              "value": 0.71
+            },
+            {
+              "metric_name": "Campaign Effectiveness",
+              "metric_id": "MSP10108",
+              "value": 0.68
+            },
+            {
+              "metric_name": "Return on Marketing Investment (ROMI)",
+              "metric_id": "MSP10109",
+              "value": 0.85
+            },
+            {
+              "metric_name": "Customer Satisfaction",
+              "metric_id": "MSP10110",
+              "value": 0.74
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sub_module_name": "Sales Strategy and Planning",
+      "sub_module_id": "SSP10000",
+      "value": [],
+      "groups": [
+        {
+          "group_name": "Sales Strategy and Planning Metrics",
+          "group_id": "SSP10001",
+          "value": [
+            {
+              "metric_name": "Sales Target Achievement",
+              "metric_id": "SSP10101",
+              "value": 0.65
+            },
+            {
+              "metric_name": "Sales Pipeline Value",
+              "metric_id": "SSP10102",
+              "value": 0.85
+            },
+            {
+              "metric_name": "Conversion Rate",
+              "metric_id": "SSP10103",
+              "value": 0.75
+            },
+            {
+              "metric_name": "Average Deal Size",
+              "metric_id": "SSP10104",
+              "value": 0.65
+            },
+            {
+              "metric_name": "Sales Cycle Length",
+              "metric_id": "SSP10105",
+              "value": 0.68
+            },
+            {
+              "metric_name": "Customer Acquisition Cost (CAC)",
+              "metric_id": "SSP10106",
+              "value": 0.85
+            },
+            {
+              "metric_name": "Customer Retention Rate",
+              "metric_id": "SSP10107",
+              "value": 0.71
+            },
+            {
+              "metric_name": "Sales Growth",
+              "metric_id": "SSP10108",
+              "value": 0.68
+            },
+            {
+              "metric_name": "Market Penetration",
+              "metric_id": "SSP10109",
+              "value": 0.85
+            },
+            {
+              "metric_name": "Sales Forecast Accuracy",
+              "metric_id": "SSP10110",
+              "value": 0.74
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sub_module_name": "Channel Management",
+      "sub_module_id": "CHM10000",
+      "value": [],
+      "groups": [
+        {
+          "group_name": "Channel Management Metrics",
+          "group_id": "CHM10001",
+          "value": [
+            {
+              "metric_name": "Channel Revenue",
+              "metric_id": "CHM10101",
+              "value": 0.65
+            },
+            {
+              "metric_name": "Channel Profitability",
+              "metric_id": "CHM10102",
+              "value": 0.85
+            },
+            {
+              "metric_name": "Channel Cost Efficiency",
+              "metric_id": "CHM10103",
+              "value": 0.75
+            },
+            {
+              "metric_name": "Channel Penetration",
+              "metric_id": "CHM10104",
+              "value": 0.65
+            },
+            {
+              "metric_name": "Channel Growth Rate",
+              "metric_id": "CHM10105",
+              "value": 0.68
+            },
+            {
+              "metric_name": "Customer Acquisition by Channel",
+              "metric_id": "CHM10106",
+              "value": 0.85
+            },
+            {
+              "metric_name": "Customer Retention by Channel",
+              "metric_id": "CHM10107",
+              "value": 0.71
+            },
+            {
+              "metric_name": "Sales Conversion Rate by Channel",
+              "metric_id": "CHM10108",
+              "value": 0.68
+            },
+            {
+              "metric_name": "Average Deal Size by Channel",
+              "metric_id": "CHM10109",
+              "value": 0.85
+            },
+            {
+              "metric_name": "Channel Satisfaction",
+              "metric_id": "CHM10110",
+              "value": 0.74
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sub_module_name": "Sales Forecasting",
+      "sub_module_id": "SFO10000",
+      "value": [],
+      "groups": [
+        {
+          "group_name": "Sales Forecasting Metrics",
+          "group_id": "SFO10001",
+          "value": [
+            {
+              "metric_name": "Forecast Accuracy",
+              "metric_id": "SFO10101",
+              "value": 0.65
+            },
+            {
+              "metric_name": "Forecasting Horizon",
+              "metric_id": "SFO10102",
+              "value": 0.85
+            },
+            {
+              "metric_name": "Sales Forecast Variance",
+              "metric_id": "SFO10103",
+              "value": 0.75
+            },
+            {
+              "metric_name": "Lead Time",
+              "metric_id": "SFO10104",
+              "value": 0.65
+            },
+            {
+              "metric_name": "Sales Pipeline Coverage",
+              "metric_id": "SFO10105",
+              "value": 0.68
+            },
+            {
+              "metric_name": "Conversion Rate by Stage",
+              "metric_id": "SFO10106",
+              "value": 0.85
+            },
+            {
+              "metric_name": "Average Deal Size Forecast",
+              "metric_id": "SFO10107",
+              "value": 0.71
+            },
+            {
+              "metric_name": "Sales Growth Forecast",
+              "metric_id": "SFO10108",
+              "value": 0.68
+            },
+            {
+              "metric_name": "Seasonal Adjustments",
+              "metric_id": "SFO10109",
+              "value": 0.85
+            },
+            {
+              "metric_name": "Sales Forecasting Methodology",
+              "metric_id": "SFO10110",
+              "value": 0.74
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sub_module_name": "Brand Management",
+      "sub_module_id": "BRM10000",
+      "value": [],
+      "groups": [
+        {
+          "group_name": "Brand Management Metrics",
+          "group_id": "BRM10001",
+          "value": [
+            {
+              "metric_name": "Brand Awareness",
+              "metric_id": "BRM10101",
+              "value": 0.65
+            },
+            {
+              "metric_name": "Brand Perception",
+              "metric_id": "BRM10102",
+              "value": 0.85
+            },
+            {
+              "metric_name": "Brand Equity",
+              "metric_id": "BRM10103",
+              "value": 0.75
+            },
+            {
+              "metric_name": "Net Promoter Score (NPS)",
+              "metric_id": "BRM10104",
+              "value": 0.65
+            },
+            {
+              "metric_name": "Customer Satisfaction (CSAT)",
+              "metric_id": "BRM10105",
+              "value": 0.68
+            },
+            {
+              "metric_name": "Market Share",
+              "metric_id": "BRM10106",
+              "value": 0.85
+            },
+            {
+              "metric_name": "Brand Loyalty",
+              "metric_id": "BRM10107",
+              "value": 0.71
+            },
+            {
+              "metric_name": "Advertising Recall",
+              "metric_id": "BRM10108",
+              "value": 0.68
+            },
+            {
+              "metric_name": "Social Media Engagement",
+              "metric_id": "BRM10109",
+              "value": 0.85
+            },
+            {
+              "metric_name": "Brand Sentiment",
+              "metric_id": "BRM10110",
+              "value": 0.74
+            },
+            {
+              "metric_name": "Customer Retention Rate",
+              "metric_id": "BRM10111",
+              "value": 1.74
+            },
+            {
+              "metric_name": "Brand Advocacy",
+              "metric_id": "BRM10112",
+              "value": 2.74
+            },
+            {
+              "metric_name": "Brand Differentiation",
+              "metric_id": "BRM10113",
+              "value": 3.74
+            },
+            {
+              "metric_name": "Brand Preference",
+              "metric_id": "BRM10114",
+              "value": 4.74
+            },
+            {
+              "metric_name": "Brand Consistency",
+              "metric_id": "BRM10115",
+              "value": 5.74
+            },
+            {
+              "metric_name": "Brand Relevance",
+              "metric_id": "BRM10116",
+              "value": 6.74
+            },
+            {
+              "metric_name": "Customer Acquisition Cost (CAC)",
+              "metric_id": "BRM10117",
+              "value": 7.74
+            },
+            {
+              "metric_name": "Return on Brand Investment (ROBI)",
+              "metric_id": "BRM10118",
+              "value": 8.74
+            },
+            {
+              "metric_name": "Brand Extension Success",
+              "metric_id": "BRM10119",
+              "value": 9.74
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sub_module_name": "Market Research",
+      "sub_module_id": "MKR10000",
+      "value": [],
+      "groups": [
+        {
+          "group_name": "Market Research Metrics",
+          "group_id": "MKR10001",
+          "value": [
+            {
+              "metric_name": "Market Size and Growth",
+              "metric_id": "MKR10101",
+              "value": 0.65
+            },
+            {
+              "metric_name": "Market Share by Segment",
+              "metric_id": "MKR10102",
+              "value": 0.85
+            },
+            {
+              "metric_name": "Customer Demographics",
+              "metric_id": "MKR10103",
+              "value": 0.75
+            },
+            {
+              "metric_name": "Customer Preferences and Behavior",
+              "metric_id": "MKR10104",
+              "value": 0.65
+            },
+            {
+              "metric_name": "Competitive Analysis",
+              "metric_id": "MKR10105",
+              "value": 0.68
+            },
+            {
+              "metric_name": "Customer Satisfaction (CSAT)",
+              "metric_id": "MKR10106",
+              "value": 0.85
+            },
+            {
+              "metric_name": "Net Promoter Score (NPS)",
+              "metric_id": "MKR10107",
+              "value": 0.71
+            },
+            {
+              "metric_name": "Brand Perception",
+              "metric_id": "MKR10108",
+              "value": 0.68
+            },
+            {
+              "metric_name": "Product Performance",
+              "metric_id": "MKR10109",
+              "value": 0.85
+            },
+            {
+              "metric_name": "Market Trends and Insights",
+              "metric_id": "MKR10110",
+              "value": 0.74
+            },
+            {
+              "metric_name": "Consumer Awareness and Perception",
+              "metric_id": "MKR10111",
+              "value": 0.65
+            },
+            {
+              "metric_name": "Usage and Attitude Studies",
+              "metric_id": "MKR10112",
+              "value": 0.85
+            },
+            {
+              "metric_name": "Price Sensitivity",
+              "metric_id": "MKR10113",
+              "value": 0.75
+            },
+            {
+              "metric_name": "Market Potential",
+              "metric_id": "MKR10114",
+              "value": 0.65
+            },
+            {
+              "metric_name": "Regulatory Impact",
+              "metric_id": "MKR10115",
+              "value": 0.68
+            },
+            {
+              "metric_name": "Channel Effectiveness",
+              "metric_id": "MKR10116",
+              "value": 0.85
+            },
+            {
+              "metric_name": "Customer Churn Rate",
+              "metric_id": "MKR10117",
+              "value": 0.71
+            },
+            {
+              "metric_name": "Customer Lifetime Value (CLV)",
+              "metric_id": "MKR10118",
+              "value": 0.68
+            },
+            {
+              "metric_name": "Return on Market Research Investment (ROMRI)",
+              "metric_id": "MKR10119",
+              "value": 0.85
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sub_module_name": "Sales Development",
+      "sub_module_id": "SDV10000",
+      "value": [],
+      "groups": [
+        {
+          "group_name": "Sales Development Metrics",
+          "group_id": "SDV10001",
+          "value": [
+            {
+              "metric_name": "Sales Growth Rate",
+              "metric_id": "SDV10101",
+              "value": 0.65
+            },
+            {
+              "metric_name": "Lead Generation Rate",
+              "metric_id": "SDV10102",
+              "value": 0.85
+            },
+            {
+              "metric_name": "Lead Conversion Rate",
+              "metric_id": "SDV10103",
+              "value": 0.75
+            },
+            {
+              "metric_name": "Sales Qualified Leads (SQLs)",
+              "metric_id": "SDV10104",
+              "value": 0.65
+            },
+            {
+              "metric_name": "Customer Acquisition Cost (CAC)",
+              "metric_id": "SDV10105",
+              "value": 0.68
+            },
+            {
+              "metric_name": "Time to Close (Sales Cycle Length)",
+              "metric_id": "SDV10106",
+              "value": 0.85
+            },
+            {
+              "metric_name": "Sales Team Productivity",
+              "metric_id": "SDV10107",
+              "value": 0.71
+            },
+            {
+              "metric_name": "Pipeline Velocity",
+              "metric_id": "SDV10108",
+              "value": 0.68
+            },
+            {
+              "metric_name": "Average Revenue per User (ARPU)",
+              "metric_id": "SDV10109",
+              "value": 0.85
+            },
+            {
+              "metric_name": "Win Rate",
+              "metric_id": "SDV10110",
+              "value": 0.74
+            },
+            {
+              "metric_name": "Sales Opportunity Volume",
+              "metric_id": "SDV10111",
+              "value": 0.65
+            },
+            {
+              "metric_name": "New Account Acquisition",
+              "metric_id": "SDV10112",
+              "value": 0.85
+            },
+            {
+              "metric_name": "Sales Training Effectiveness",
+              "metric_id": "SDV10113",
+              "value": 0.75
+            },
+            {
+              "metric_name": "Upsell and Cross-Sell Rates",
+              "metric_id": "SDV10114",
+              "value": 0.65
+            },
+            {
+              "metric_name": "Customer Retention Rate",
+              "metric_id": "SDV10115",
+              "value": 0.68
+            },
+            {
+              "metric_name": "Churn Rate",
+              "metric_id": "SDV10116",
+              "value": 0.85
+            },
+            {
+              "metric_name": "Sales Forecast Accuracy",
+              "metric_id": "SDV10117",
+              "value": 0.71
+            },
+            {
+              "metric_name": "Market Penetration Rate",
+              "metric_id": "SDV10118",
+              "value": 0.68
+            },
+            {
+              "metric_name": "Revenue Growth from New Products",
+              "metric_id": "SDV10119",
+              "value": 0.85
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sub_module_name": "Market Sales Support & Readiness",
+      "sub_module_id": "MSR10000",
+      "value": [],
+      "groups": [
+        {
+          "group_name": "Market Sales Support & Readiness Metrics",
+          "group_id": "MSR10001",
+          "value": [
+            {
+              "metric_name": "Sales Readiness Index",
+              "metric_id": "MSR10101",
+              "value": 0.65
+            },
+            {
+              "metric_name": "Training Completion Rate",
+              "metric_id": "MSR10102",
+              "value": 0.85
+            },
+            {
+              "metric_name": "Time to Competency",
+              "metric_id": "MSR10103",
+              "value": 0.75
+            },
+            {
+              "metric_name": "Sales Enablement Content Utilization",
+              "metric_id": "MSR10104",
+              "value": 0.65
+            },
+            {
+              "metric_name": "Sales Tool Adoption Rate",
+              "metric_id": "MSR10105",
+              "value": 0.68
+            },
+            {
+              "metric_name": "Lead Response Time",
+              "metric_id": "MSR10106",
+              "value": 0.85
+            },
+            {
+              "metric_name": "Customer Support Response Time",
+              "metric_id": "MSR10107",
+              "value": 0.71
+            },
+            {
+              "metric_name": "Sales Support Ticket Resolution Time",
+              "metric_id": "MSR10108",
+              "value": 0.68
+            },
+            {
+              "metric_name": "Sales Support Satisfaction",
+              "metric_id": "MSR10109",
+              "value": 0.85
+            },
+            {
+              "metric_name": "Sales Support Ticket Volume",
+              "metric_id": "MSR10110",
+              "value": 0.74
+            },
+            {
+              "metric_name": "Market Readiness Score",
+              "metric_id": "MSR10111",
+              "value": 0.65
+            },
+            {
+              "metric_name": "Content Effectiveness",
+              "metric_id": "MSR10112",
+              "value": 0.85
+            },
+            {
+              "metric_name": "Onboarding Time for Sales Reps",
+              "metric_id": "MSR10113",
+              "value": 0.75
+            },
+            {
+              "metric_name": "Sales Certification Rate",
+              "metric_id": "MSR10114",
+              "value": 0.65
+            },
+            {
+              "metric_name": "Sales Training Effectiveness",
+              "metric_id": "MSR10115",
+              "value": 0.68
+            },
+            {
+              "metric_name": "Knowledge Base Usage",
+              "metric_id": "MSR10116",
+              "value": 0.85
+            },
+            {
+              "metric_name": "Sales Collateral Production Time",
+              "metric_id": "MSR10117",
+              "value": 0.71
+            },
+            {
+              "metric_name": "Sales Support Team Productivity",
+              "metric_id": "MSR10118",
+              "value": 0.68
+            },
+            {
+              "metric_name": "Market Feedback Loop Efficiency",
+              "metric_id": "MSR10119",
+              "value": 0.85
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sub_module_name": "Loyalty Program Management",
+      "sub_module_id": "LYP10000",
+      "value": [],
+      "groups": [
+        {
+          "group_name": "Loyalty Program Management Metrics",
+          "group_id": "LYP10001",
+          "value": [
+            {
+              "metric_name": "Customer Retention Rate",
+              "metric_id": "LYP10101",
+              "value": 0.65
+            },
+            {
+              "metric_name": "Loyalty Program Enrollment Rate",
+              "metric_id": "LYP10102",
+              "value": 0.85
+            },
+            {
+              "metric_name": "Reward Redemption Rate",
+              "metric_id": "LYP10103",
+              "value": 0.75
+            },
+            {
+              "metric_name": "Customer Lifetime Value (CLV)",
+              "metric_id": "LYP10104",
+              "value": 0.65
+            },
+            {
+              "metric_name": "Repeat Purchase Rate",
+              "metric_id": "LYP10105",
+              "value": 0.68
+            },
+            {
+              "metric_name": "Net Promoter Score (NPS)",
+              "metric_id": "LYP10106",
+              "value": 0.85
+            },
+            {
+              "metric_name": "Customer Satisfaction (CSAT)",
+              "metric_id": "LYP10107",
+              "value": 0.71
+            },
+            {
+              "metric_name": "Loyalty Program Activity Rate",
+              "metric_id": "LYP10108",
+              "value": 0.68
+            },
+            {
+              "metric_name": "Average Transaction Value",
+              "metric_id": "LYP10109",
+              "value": 0.85
+            },
+            {
+              "metric_name": "Churn Rate",
+              "metric_id": "LYP10110",
+              "value": 0.74
+            },
+            {
+              "metric_name": "Engagement Rate",
+              "metric_id": "LYP10111",
+              "value": 0.65
+            },
+            {
+              "metric_name": "Referral Rate",
+              "metric_id": "LYP10112",
+              "value": 0.85
+            },
+            {
+              "metric_name": "Customer Feedback Score",
+              "metric_id": "LYP10113",
+              "value": 0.75
+            },
+            {
+              "metric_name": "Cost per Acquisition (CPA)",
+              "metric_id": "LYP10114",
+              "value": 0.65
+            },
+            {
+              "metric_name": "ROI of Loyalty Program",
+              "metric_id": "LYP10115",
+              "value": 0.68
+            },
+            {
+              "metric_name": "Loyalty Program Fraud Rate",
+              "metric_id": "LYP10116",
+              "value": 0.85
+            },
+            {
+              "metric_name": "Loyalty Program Tier Upgrades",
+              "metric_id": "LYP10117",
+              "value": 0.71
+            },
+            {
+              "metric_name": "Inactive Member Rate",
+              "metric_id": "LYP10118",
+              "value": 0.68
+            },
+            {
+              "metric_name": "Loyalty Points Expiration Rate",
+              "metric_id": "LYP10119",
+              "value": 0.85
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sub_module_name": "Marketing Campaign Management",
+      "sub_module_id": "CPG10000",
+      "value": [],
+      "groups": [
+        {
+          "group_name": "Marketing Campaign Management Metrics",
+          "group_id": "CPG10001",
+          "value": [
+            {
+              "metric_name": "Campaign Reach",
+              "metric_id": "CPG10101",
+              "value": 0.65
+            },
+            {
+              "metric_name": "Impressions",
+              "metric_id": "CPG10102",
+              "value": 0.85
+            },
+            {
+              "metric_name": "Click-Through Rate (CTR)",
+              "metric_id": "CPG10103",
+              "value": 0.75
+            },
+            {
+              "metric_name": "Conversion Rate",
+              "metric_id": "CPG10104",
+              "value": 0.65
+            },
+            {
+              "metric_name": "Lead Generation Rate",
+              "metric_id": "CPG10105",
+              "value": 0.68
+            },
+            {
+              "metric_name": "Cost Per Lead (CPL)",
+              "metric_id": "CPG10106",
+              "value": 0.85
+            },
+            {
+              "metric_name": "Return on Marketing Investment (ROMI)",
+              "metric_id": "CPG10107",
+              "value": 0.71
+            },
+            {
+              "metric_name": "Sales Revenue",
+              "metric_id": "CPG10108",
+              "value": 0.68
+            },
+            {
+              "metric_name": "Customer Acquisition Cost (CAC)",
+              "metric_id": "CPG10109",
+              "value": 0.85
+            },
+            {
+              "metric_name": "Customer Retention Rate",
+              "metric_id": "CPG10110",
+              "value": 0.74
+            },
+            {
+              "metric_name": "Engagement Rate",
+              "metric_id": "CPG10111",
+              "value": 0.65
+            },
+            {
+              "metric_name": "Bounce Rate",
+              "metric_id": "CPG10112",
+              "value": 0.85
+            },
+            {
+              "metric_name": "Campaign ROI",
+              "metric_id": "CPG10113",
+              "value": 0.75
+            },
+            {
+              "metric_name": "Customer Satisfaction (CSAT)",
+              "metric_id": "CPG10114",
+              "value": 0.65
+            },
+            {
+              "metric_name": "Net Promoter Score (NPS)",
+              "metric_id": "CPG10115",
+              "value": 0.68
+            },
+            {
+              "metric_name": "Brand Awareness Increase",
+              "metric_id": "CPG10116",
+              "value": 0.85
+            },
+            {
+              "metric_name": "Social Media Mentions",
+              "metric_id": "CPG10117",
+              "value": 0.71
+            },
+            {
+              "metric_name": "Email Open Rate",
+              "metric_id": "CPG10118",
+              "value": 0.68
+            },
+            {
+              "metric_name": "Email Click-Through Rate",
+              "metric_id": "CPG10119",
+              "value": 0.85
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sub_module_name": "Marketing Communications",
+      "sub_module_id": "MKC10000",
+      "value": [],
+      "groups": [
+        {
+          "group_name": "Marketing Communications Metrics",
+          "group_id": "MKC10001",
+          "value": [
+            {
+              "metric_name": "Message Reach",
+              "metric_id": "MKC10101",
+              "value": 0.65
+            },
+            {
+              "metric_name": "Engagement Rate",
+              "metric_id": "MKC10102",
+              "value": 0.85
+            },
+            {
+              "metric_name": "Click-Through Rate (CTR)",
+              "metric_id": "MKC10103",
+              "value": 0.75
+            },
+            {
+              "metric_name": "Conversion Rate",
+              "metric_id": "MKC10104",
+              "value": 0.65
+            },
+            {
+              "metric_name": "Impressions",
+              "metric_id": "MKC10105",
+              "value": 0.68
+            },
+            {
+              "metric_name": "Open Rate",
+              "metric_id": "MKC10106",
+              "value": 0.85
+            },
+            {
+              "metric_name": "Bounce Rate",
+              "metric_id": "MKC10107",
+              "value": 0.71
+            },
+            {
+              "metric_name": "Social Media Mentions",
+              "metric_id": "MKC10108",
+              "value": 0.68
+            },
+            {
+              "metric_name": "Share of Voice",
+              "metric_id": "MKC10109",
+              "value": 0.85
+            },
+            {
+              "metric_name": "Sentiment Analysis",
+              "metric_id": "MKC10110",
+              "value": 0.74
+            },
+            {
+              "metric_name": "Brand Awareness Increase",
+              "metric_id": "MKC10111",
+              "value": 0.65
+            },
+            {
+              "metric_name": "Lead Generation Rate",
+              "metric_id": "MKC10112",
+              "value": 0.85
+            },
+            {
+              "metric_name": "Cost Per Click (CPC)",
+              "metric_id": "MKC10113",
+              "value": 0.75
+            },
+            {
+              "metric_name": "Customer Feedback Score",
+              "metric_id": "MKC10114",
+              "value": 0.65
+            },
+            {
+              "metric_name": "Net Promoter Score (NPS)",
+              "metric_id": "MKC10115",
+              "value": 0.68
+            },
+            {
+              "metric_name": "Return on Marketing Investment (ROMI)",
+              "metric_id": "MKC10116",
+              "value": 0.85
+            },
+            {
+              "metric_name": "Customer Retention Rate",
+              "metric_id": "MKC10117",
+              "value": 0.71
+            },
+            {
+              "metric_name": "Time on Page",
+              "metric_id": "MKC10118",
+              "value": 0.68
+            },
+            {
+              "metric_name": "Content Share Rate",
+              "metric_id": "MKC10119",
+              "value": 0.85
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sub_module_name": "Advertising",
+      "sub_module_id": "ADS10000",
+      "value": [],
+      "groups": [
+        {
+          "group_name": "Advertising Metrics",
+          "group_id": "ADS10001",
+          "value": [
+            {
+              "metric_name": "Reach",
+              "metric_id": "ADS10101",
+              "value": 0.75
+            },
+            {
+              "metric_name": "Impressions",
+              "metric_id": "ADS10102",
+              "value": 0.65
+            },
+            {
+              "metric_name": "Click-Through Rate (CTR)",
+              "metric_id": "ADS10103",
+              "value": 0.68
+            },
+            {
+              "metric_name": "Conversion Rate",
+              "metric_id": "ADS10104",
+              "value": 0.85
+            },
+            {
+              "metric_name": "Cost Per Click (CPC)",
+              "metric_id": "ADS10105",
+              "value": 0.71
+            },
+            {
+              "metric_name": "Cost Per Thousand Impressions (CPM)",
+              "metric_id": "ADS10106",
+              "value": 0.68
+            },
+            {
+              "metric_name": "Return on Advertising Spend (ROAS)",
+              "metric_id": "ADS10107",
+              "value": 0.85
+            },
+            {
+              "metric_name": "Ad Engagement Rate",
+              "metric_id": "ADS10108",
+              "value": 0.68
+            },
+            {
+              "metric_name": "Ad Frequency",
+              "metric_id": "ADS10109",
+              "value": 0.85
+            },
+            {
+              "metric_name": "Bounce Rate",
+              "metric_id": "ADS10110",
+              "value": 0.74
+            },
+            {
+              "metric_name": "Conversion Value",
+              "metric_id": "ADS10111",
+              "value": 0.75
+            },
+            {
+              "metric_name": "Ad Recall",
+              "metric_id": "ADS10112",
+              "value": 0.75
+            },
+            {
+              "metric_name": "Customer Acquisition Cost (CAC)",
+              "metric_id": "ADS10113",
+              "value": 0.65
+            },
+            {
+              "metric_name": "Lead Generation Rate",
+              "metric_id": "ADS10114",
+              "value": 0.68
+            },
+            {
+              "metric_name": "Ad Sentiment Analysis",
+              "metric_id": "ADS10115",
+              "value": 0.85
+            },
+            {
+              "metric_name": "Ad Share of Voice",
+              "metric_id": "ADS10116",
+              "value": 0.71
+            },
+            {
+              "metric_name": "Social Media Mentions",
+              "metric_id": "ADS10117",
+              "value": 0.68
+            },
+            {
+              "metric_name": "Video View Rate",
+              "metric_id": "ADS10118",
+              "value": 0.85
+            },
+            {
+              "metric_name": "Ad Viewability Rate",
+              "metric_id": "ADS10119",
+              "value": 0.74
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

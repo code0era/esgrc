@@ -1,0 +1,26 @@
+# Dependencies to run the Repo-01 analytics scripts directly (Praveen's modules).
+# These exact versions are VERIFIED to run all 10 scripts end-to-end (2026-07-05).
+# Works on Python 3.10 - 3.13.
+#
+# ── INSTALL: run these THREE commands ──────────────────────────────────────────
+#   python -m pip install --upgrade pip
+#   pip install -r requirements-analytics.txt
+#   pip install torch --index-url https://download.pytorch.org/whl/cpu
+# ───────────────────────────────────────────────────────────────────────────────
+# Notes / common failures:
+#   - torch is NOT in this file: its CPU wheel needs a special index URL, so it is
+#     the separate 3rd command above. If you skip it you'll get "No module named torch".
+#   - CHAID is pinned to 5.4.3 because it ships a prebuilt wheel. Do NOT downgrade to
+#     5.4.0/5.4.1 - those are source-only and fail to install on modern pip (no C build).
+#   - graphviz (python pkg) only needs the system Graphviz binary if you render CHAID
+#     tree images; the scripts skip that gracefully, so a plain install is fine.
+
+numpy==2.2.6
+pandas==2.3.3
+scipy==1.15.3
+scikit-learn==1.7.2
+matplotlib==3.10.9
+statsmodels==0.14.6
+flask==3.1.3
+CHAID==5.4.3
+graphviz==0.21

@@ -1,0 +1,1086 @@
+{
+  "module_name": "Resource",
+  "module_id": "RSRC_001",
+  "sub_modules": [
+    {
+      "sub_module_name": "Resource Strategy Management",
+      "sub_module_id": "RST10000",
+      "value": [],
+      "groups": [
+        {
+          "group_name": "Resource Strategy Management Metrics",
+          "group_id": "RST10001",
+          "value": [
+            {
+              "metric_name": "Resource Utilization Rate",
+              "metric_id": "RST10101",
+              "value": "65%"
+            },
+            {
+              "metric_name": "Resource Allocation Efficiency",
+              "metric_id": "RST10102",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Resource Availability",
+              "metric_id": "RST10103",
+              "value": "75%"
+            },
+            {
+              "metric_name": "Resource Capacity Planning Accuracy",
+              "metric_id": "RST10104",
+              "value": "65%"
+            },
+            {
+              "metric_name": "Resource Deployment Time",
+              "metric_id": "RST10105",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Resource Performance Metrics",
+              "metric_id": "RST10106",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Resource Investment Return",
+              "metric_id": "RST10107",
+              "value": "71%"
+            },
+            {
+              "metric_name": "Resource Cost Management",
+              "metric_id": "RST10108",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Resource Downtime",
+              "metric_id": "RST10109",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Resource Scalability",
+              "metric_id": "RST10110",
+              "value": "75%"
+            },
+            {
+              "metric_name": "Resource Utilization by Project",
+              "metric_id": "RST10111",
+              "value": "65%"
+            },
+            {
+              "metric_name": "Resource Efficiency Index",
+              "metric_id": "RST10112",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Resource Lifecycle Management Cost",
+              "metric_id": "RST10113",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Resource Training Hours",
+              "metric_id": "RST10114",
+              "value": "71%"
+            },
+            {
+              "metric_name": "Resource Strategy Compliance Rate",
+              "metric_id": "RST10115",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Resource Innovation Rate",
+              "metric_id": "RST10116",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Resource Allocation Accuracy",
+              "metric_id": "RST10117",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Resource Redundancy Rate",
+              "metric_id": "RST10118",
+              "value": "71%"
+            },
+            {
+              "metric_name": "Resource Feedback Loop Closure",
+              "metric_id": "RST10119",
+              "value": "68%"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sub_module_name": "Resource Capability Delivery",
+      "sub_module_id": "RCD10000",
+      "value": [],
+      "groups": [
+        {
+          "group_name": "Resource Capability Delivery Metrics",
+          "group_id": "RCD10001",
+          "value": [
+            {
+              "metric_name": "Resource Deployment Time",
+              "metric_id": "RCD10101",
+              "value": "65%"
+            },
+            {
+              "metric_name": "Deployment Success Rate",
+              "metric_id": "RCD10102",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Resource Utilization Rate",
+              "metric_id": "RCD10103",
+              "value": "75%"
+            },
+            {
+              "metric_name": "Resource Performance Metrics",
+              "metric_id": "RCD10104",
+              "value": "65%"
+            },
+            {
+              "metric_name": "Mean Time to Activate (MTTA)",
+              "metric_id": "RCD10105",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Resource Scalability",
+              "metric_id": "RCD10106",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Deployment Cost per Resource",
+              "metric_id": "RCD10107",
+              "value": "71%"
+            },
+            {
+              "metric_name": "Resource Configuration Accuracy",
+              "metric_id": "RCD10108",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Deployment Compliance Rate",
+              "metric_id": "RCD10109",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Customer Satisfaction (CSAT) with Resource Delivery",
+              "metric_id": "RCD10110",
+              "value": "75%"
+            },
+            {
+              "metric_name": "Resource Activation Success Rate",
+              "metric_id": "RCD10111",
+              "value": "65%"
+            },
+            {
+              "metric_name": "Time to Resolve Deployment Issues",
+              "metric_id": "RCD10112",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Resource Availability Post-Deployment",
+              "metric_id": "RCD10113",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Resource Redundancy",
+              "metric_id": "RCD10114",
+              "value": "71%"
+            },
+            {
+              "metric_name": "Deployment Workflow Efficiency",
+              "metric_id": "RCD10115",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Resource Integration Time",
+              "metric_id": "RCD10116",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Deployment Error Rate",
+              "metric_id": "RCD10117",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Resource Monitoring Post-Deployment",
+              "metric_id": "RCD10118",
+              "value": "71%"
+            },
+            {
+              "metric_name": "Customer Feedback on Resource Deployment",
+              "metric_id": "RCD10119",
+              "value": "68%"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sub_module_name": "Resource Specification Lifecycle Management",
+      "sub_module_id": "RSL10000",
+      "value": [],
+      "groups": [
+        {
+          "group_name": "Resource Specification Lifecycle Management Metrics",
+          "group_id": "RSL10001",
+          "value": [
+            {
+              "metric_name": "Resource Deployment Time",
+              "metric_id": "RSL10101",
+              "value": "65%"
+            },
+            {
+              "metric_name": "Deployment Success Rate",
+              "metric_id": "RSL10102",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Resource Utilization Rate",
+              "metric_id": "RSL10103",
+              "value": "75%"
+            },
+            {
+              "metric_name": "Resource Performance Metrics",
+              "metric_id": "RSL10104",
+              "value": "65%"
+            },
+            {
+              "metric_name": "Mean Time to Activate (MTTA)",
+              "metric_id": "RSL10105",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Resource Scalability",
+              "metric_id": "RSL10106",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Deployment Cost per Resource",
+              "metric_id": "RSL10107",
+              "value": "71%"
+            },
+            {
+              "metric_name": "Resource Configuration Accuracy",
+              "metric_id": "RSL10108",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Deployment Compliance Rate",
+              "metric_id": "RSL10109",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Customer Satisfaction (CSAT) with Resource Delivery",
+              "metric_id": "RSL10110",
+              "value": "75%"
+            },
+            {
+              "metric_name": "Resource Activation Success Rate",
+              "metric_id": "RSL10111",
+              "value": "65%"
+            },
+            {
+              "metric_name": "Time to Resolve Deployment Issues",
+              "metric_id": "RSL10112",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Resource Availability Post-Deployment",
+              "metric_id": "RSL10113",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Resource Redundancy",
+              "metric_id": "RSL10114",
+              "value": "71%"
+            },
+            {
+              "metric_name": "Deployment Workflow Efficiency",
+              "metric_id": "RSL10115",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Resource Integration Time",
+              "metric_id": "RSL10116",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Deployment Error Rate",
+              "metric_id": "RSL10117",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Resource Monitoring Post-Deployment",
+              "metric_id": "RSL10118",
+              "value": "71%"
+            },
+            {
+              "metric_name": "Customer Feedback on Resource Deployment",
+              "metric_id": "RSL10119",
+              "value": "68%"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sub_module_name": "Resource Support Management",
+      "sub_module_id": "RSU10000",
+      "value": [],
+      "groups": [
+        {
+          "group_name": "Resource Support Management Metrics",
+          "group_id": "RSU10001",
+          "value": [
+            {
+              "metric_name": "Support Ticket Volume",
+              "metric_id": "RSU10101",
+              "value": "65%"
+            },
+            {
+              "metric_name": "Incident Response Time",
+              "metric_id": "RSU10102",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Incident Resolution Time",
+              "metric_id": "RSU10103",
+              "value": "75%"
+            },
+            {
+              "metric_name": "First Contact Resolution (FCR) Rate",
+              "metric_id": "RSU10104",
+              "value": "65%"
+            },
+            {
+              "metric_name": "Customer Satisfaction (CSAT) with Support",
+              "metric_id": "RSU10105",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Resource Availability",
+              "metric_id": "RSU10106",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Mean Time to Repair (MTTR)",
+              "metric_id": "RSU10107",
+              "value": "71%"
+            },
+            {
+              "metric_name": "Escalation Rate",
+              "metric_id": "RSU10108",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Support Agent Productivity",
+              "metric_id": "RSU10109",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Service Level Agreement (SLA) Compliance",
+              "metric_id": "RSU10110",
+              "value": "75%"
+            },
+            {
+              "metric_name": "Support Cost per Incident",
+              "metric_id": "RSU10111",
+              "value": "65%"
+            },
+            {
+              "metric_name": "Customer Feedback on Support",
+              "metric_id": "RSU10112",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Knowledge Base Utilization",
+              "metric_id": "RSU10113",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Support Training Hours per Agent",
+              "metric_id": "RSU10114",
+              "value": "71%"
+            },
+            {
+              "metric_name": "Support System Uptime",
+              "metric_id": "RSU10115",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Support Interaction Quality Score",
+              "metric_id": "RSU10116",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Support Channel Effectiveness",
+              "metric_id": "RSU10117",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Incident Recurrence Rate",
+              "metric_id": "RSU10118",
+              "value": "71%"
+            },
+            {
+              "metric_name": "Root Cause Analysis (RCA) Completion Rate",
+              "metric_id": "RSU10119",
+              "value": "68%"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sub_module_name": "Resource Order Management",
+      "sub_module_id": "ROR10000",
+      "value": [],
+      "groups": [
+        {
+          "group_name": "Resource Order Management Metrics",
+          "group_id": "ROR10001",
+          "value": [
+            {
+              "metric_name": "Order Processing Time",
+              "metric_id": "ROR10101",
+              "value": "65%"
+            },
+            {
+              "metric_name": "Order Accuracy Rate",
+              "metric_id": "ROR10102",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Order Completion Rate",
+              "metric_id": "ROR10103",
+              "value": "75%"
+            },
+            {
+              "metric_name": "Order Fulfillment Time",
+              "metric_id": "ROR10104",
+              "value": "65%"
+            },
+            {
+              "metric_name": "First-Time Right Rate",
+              "metric_id": "ROR10105",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Customer Satisfaction (CSAT) with Order Management",
+              "metric_id": "ROR10106",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Order Cancellation Rate",
+              "metric_id": "ROR10107",
+              "value": "71%"
+            },
+            {
+              "metric_name": "Order Escalation Rate",
+              "metric_id": "ROR10108",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Order Management Cost",
+              "metric_id": "ROR10109",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Order Status Tracking",
+              "metric_id": "ROR10110",
+              "value": "75%"
+            },
+            {
+              "metric_name": "Order Backlog",
+              "metric_id": "ROR10111",
+              "value": "65%"
+            },
+            {
+              "metric_name": "Order Error Resolution Time",
+              "metric_id": "ROR10112",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Order Fulfillment Compliance",
+              "metric_id": "ROR10113",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Resource Allocation Efficiency",
+              "metric_id": "ROR10114",
+              "value": "71%"
+            },
+            {
+              "metric_name": "Order Communication Effectiveness",
+              "metric_id": "ROR10115",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Order Management System Uptime",
+              "metric_id": "ROR10116",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Order Handling Productivity",
+              "metric_id": "ROR10117",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Customer Feedback on Order Management",
+              "metric_id": "ROR10118",
+              "value": "71%"
+            },
+            {
+              "metric_name": "Automated Order Processing Rate",
+              "metric_id": "ROR10119",
+              "value": "68%"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sub_module_name": "Resource Data Management",
+      "sub_module_id": "RDA10000",
+      "value": [],
+      "groups": [
+        {
+          "group_name": "Resource Data Management Metrics",
+          "group_id": "RDA10001",
+          "value": [
+            {
+              "metric_name": "Data Accuracy Rate",
+              "metric_id": "RDA10101",
+              "value": "65%"
+            },
+            {
+              "metric_name": "Data Completeness",
+              "metric_id": "RDA10102",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Data Consistency",
+              "metric_id": "RDA10103",
+              "value": "75%"
+            },
+            {
+              "metric_name": "Data Update Frequency",
+              "metric_id": "RDA10104",
+              "value": "65%"
+            },
+            {
+              "metric_name": "Data Retrieval Time",
+              "metric_id": "RDA10105",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Data Access Compliance",
+              "metric_id": "RDA10106",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Data Security Incident Rate",
+              "metric_id": "RDA10107",
+              "value": "71%"
+            },
+            {
+              "metric_name": "Data Backup Success Rate",
+              "metric_id": "RDA10108",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Data Recovery Time",
+              "metric_id": "RDA10109",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Data Utilization Rate",
+              "metric_id": "RDA10110",
+              "value": "75%"
+            },
+            {
+              "metric_name": "Data Quality Score",
+              "metric_id": "RDA10111",
+              "value": "65%"
+            },
+            {
+              "metric_name": "Customer Satisfaction (CSAT) with Data Management",
+              "metric_id": "RDA10112",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Data Error Resolution Time",
+              "metric_id": "RDA10113",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Data Management Cost",
+              "metric_id": "RDA10114",
+              "value": "71%"
+            },
+            {
+              "metric_name": "Data Integration Efficiency",
+              "metric_id": "RDA10115",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Data Access Request Fulfillment Time",
+              "metric_id": "RDA10116",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Data Retention Compliance",
+              "metric_id": "RDA10117",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Data Lifecycle Management Efficiency",
+              "metric_id": "RDA10118",
+              "value": "71%"
+            },
+            {
+              "metric_name": "Data Analytics Utilization",
+              "metric_id": "RDA10119",
+              "value": "68%"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sub_module_name": "Resource Trouble Management",
+      "sub_module_id": "RTR10000",
+      "value": [],
+      "groups": [
+        {
+          "group_name": "Resource Trouble Management Metrics",
+          "group_id": "RTR10001",
+          "value": [
+            {
+              "metric_name": "Incident Response Time",
+              "metric_id": "RTR10101",
+              "value": "65%"
+            },
+            {
+              "metric_name": "Incident Resolution Time",
+              "metric_id": "RTR10102",
+              "value": "85%"
+            },
+            {
+              "metric_name": "First Contact Resolution (FCR) Rate",
+              "metric_id": "RTR10103",
+              "value": "75%"
+            },
+            {
+              "metric_name": "Customer Satisfaction (CSAT) with Trouble Management",
+              "metric_id": "RTR10104",
+              "value": "65%"
+            },
+            {
+              "metric_name": "Mean Time to Repair (MTTR)",
+              "metric_id": "RTR10105",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Incident Recurrence Rate",
+              "metric_id": "RTR10106",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Root Cause Analysis (RCA) Completion Rate",
+              "metric_id": "RTR10107",
+              "value": "71%"
+            },
+            {
+              "metric_name": "Trouble Ticket Volume",
+              "metric_id": "RTR10108",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Escalation Rate",
+              "metric_id": "RTR10109",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Trouble Management Cost",
+              "metric_id": "RTR10110",
+              "value": "75%"
+            },
+            {
+              "metric_name": "Service Level Agreement (SLA) Compliance",
+              "metric_id": "RTR10111",
+              "value": "65%"
+            },
+            {
+              "metric_name": "Incident Detection Rate",
+              "metric_id": "RTR10112",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Incident Severity Levels",
+              "metric_id": "RTR10113",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Trouble Resolution Success Rate",
+              "metric_id": "RTR10114",
+              "value": "71%"
+            },
+            {
+              "metric_name": "Customer Feedback on Trouble Management",
+              "metric_id": "RTR10115",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Trouble Management Training Hours",
+              "metric_id": "RTR10116",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Trouble Management System Uptime",
+              "metric_id": "RTR10117",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Incident Reporting Accuracy",
+              "metric_id": "RTR10118",
+              "value": "71%"
+            },
+            {
+              "metric_name": "Incident Trend Analysis",
+              "metric_id": "RTR10119",
+              "value": "68%"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sub_module_name": "Resource Performance Management",
+      "sub_module_id": "RPR10000",
+      "value": [],
+      "groups": [
+        {
+          "group_name": "Resource Performance Management Metrics",
+          "group_id": "RPR10001",
+          "value": [
+            {
+              "metric_name": "Resource Utilization Rate",
+              "metric_id": "RPR10101",
+              "value": "65%"
+            },
+            {
+              "metric_name": "Resource Efficiency",
+              "metric_id": "RPR10102",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Resource Availability",
+              "metric_id": "RPR10103",
+              "value": "75%"
+            },
+            {
+              "metric_name": "Resource Performance Metrics",
+              "metric_id": "RPR10104",
+              "value": "65%"
+            },
+            {
+              "metric_name": "Mean Time Between Failures (MTBF)",
+              "metric_id": "RPR10105",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Mean Time to Repair (MTTR)",
+              "metric_id": "RPR10106",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Resource Capacity Utilization",
+              "metric_id": "RPR10107",
+              "value": "71%"
+            },
+            {
+              "metric_name": "Resource Scalability",
+              "metric_id": "RPR10108",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Resource Downtime",
+              "metric_id": "RPR10109",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Resource Performance Improvement Rate",
+              "metric_id": "RPR10110",
+              "value": "75%"
+            },
+            {
+              "metric_name": "Resource Cost Efficiency",
+              "metric_id": "RPR10111",
+              "value": "65%"
+            },
+            {
+              "metric_name": "Resource Load Balancing",
+              "metric_id": "RPR10112",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Resource Performance Trend Analysis",
+              "metric_id": "RPR10113",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Resource Quality Score",
+              "metric_id": "RPR10114",
+              "value": "71%"
+            },
+            {
+              "metric_name": "Customer Satisfaction (CSAT) with Resource Performance",
+              "metric_id": "RPR10115",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Resource Performance Compliance",
+              "metric_id": "RPR10116",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Resource Performance Monitoring Frequency",
+              "metric_id": "RPR10117",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Resource Performance Reporting Accuracy",
+              "metric_id": "RPR10118",
+              "value": "71%"
+            },
+            {
+              "metric_name": "Resource Performance Benchmarking",
+              "metric_id": "RPR10119",
+              "value": "68%"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sub_module_name": "Resource Mediation & Reporting",
+      "sub_module_id": "RMR10000",
+      "value": [],
+      "groups": [
+        {
+          "group_name": "Resource Mediation & Reporting Metrics",
+          "group_id": "RMR10001",
+          "value": [
+            {
+              "metric_name": "Mediation Accuracy Rate",
+              "metric_id": "RMR10101",
+              "value": "65%"
+            },
+            {
+              "metric_name": "Data Collection Efficiency",
+              "metric_id": "RMR10102",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Data Normalization Rate",
+              "metric_id": "RMR10103",
+              "value": "75%"
+            },
+            {
+              "metric_name": "Report Generation Time",
+              "metric_id": "RMR10104",
+              "value": "65%"
+            },
+            {
+              "metric_name": "Report Accuracy",
+              "metric_id": "RMR10105",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Data Conversion Success Rate",
+              "metric_id": "RMR10106",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Data Correlation Rate",
+              "metric_id": "RMR10107",
+              "value": "71%"
+            },
+            {
+              "metric_name": "Duplicate Record Removal Rate",
+              "metric_id": "RMR10108",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Data Integrity Score",
+              "metric_id": "RMR10109",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Customer Satisfaction (CSAT) with Reporting",
+              "metric_id": "RMR10110",
+              "value": "75%"
+            },
+            {
+              "metric_name": "Report Distribution Efficiency",
+              "metric_id": "RMR10111",
+              "value": "65%"
+            },
+            {
+              "metric_name": "Data Audit Compliance",
+              "metric_id": "RMR10112",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Error Detection Rate",
+              "metric_id": "RMR10113",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Error Resolution Time",
+              "metric_id": "RMR10114",
+              "value": "71%"
+            },
+            {
+              "metric_name": "Data Security Incident Rate",
+              "metric_id": "RMR10115",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Data Backup Success Rate",
+              "metric_id": "RMR10116",
+              "value": "69%"
+            },
+            {
+              "metric_name": "Data Recovery Time",
+              "metric_id": "RMR10117",
+              "value": "72%"
+            },
+            {
+              "metric_name": "Data Utilization Rate",
+              "metric_id": "RMR10118",
+              "value": "78%"
+            },
+            {
+              "metric_name": "Data Quality Score",
+              "metric_id": "RMR10119",
+              "value": "77%"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sub_module_name": "Resource Capacity Management",
+      "sub_module_id": "RCM10000",
+      "value": [],
+      "groups": [
+        {
+          "group_name": "Resource Capacity Management Metrics",
+          "group_id": "RCM10001",
+          "value": [
+            {
+              "metric_name": "Resource Utilization Rate",
+              "metric_id": "RCM10101",
+              "value": "65%"
+            },
+            {
+              "metric_name": "Resource Efficiency",
+              "metric_id": "RCM10102",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Resource Availability",
+              "metric_id": "RCM10103",
+              "value": "75%"
+            },
+            {
+              "metric_name": "Resource Performance Metrics",
+              "metric_id": "RCM10104",
+              "value": "65%"
+            },
+            {
+              "metric_name": "Mean Time Between Failures (MTBF)",
+              "metric_id": "RCM10105",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Mean Time to Repair (MTTR)",
+              "metric_id": "RCM10106",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Resource Capacity Utilization",
+              "metric_id": "RCM10107",
+              "value": "71%"
+            },
+            {
+              "metric_name": "Resource Scalability",
+              "metric_id": "RCM10108",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Resource Downtime",
+              "metric_id": "RCM10109",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Resource Performance Improvement Rate",
+              "metric_id": "RCM10110",
+              "value": "75%"
+            },
+            {
+              "metric_name": "Resource Cost Efficiency",
+              "metric_id": "RCM10111",
+              "value": "65%"
+            },
+            {
+              "metric_name": "Resource Load Balancing",
+              "metric_id": "RCM10112",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Resource Performance Trend Analysis",
+              "metric_id": "RCM10113",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Resource Quality Score",
+              "metric_id": "RCM10114",
+              "value": "71%"
+            },
+            {
+              "metric_name": "Customer Satisfaction (CSAT) with Resource Performance",
+              "metric_id": "RCM10115",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Resource Performance Compliance",
+              "metric_id": "RCM10116",
+              "value": "76%"
+            },
+            {
+              "metric_name": "Resource Performance Monitoring Frequency",
+              "metric_id": "RCM10117",
+              "value": "81%"
+            },
+            {
+              "metric_name": "Resource Performance Reporting Accuracy",
+              "metric_id": "RCM10118",
+              "value": "93%"
+            },
+            {
+              "metric_name": "Resource Performance Benchmarking",
+              "metric_id": "RCM10119",
+              "value": "63%"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

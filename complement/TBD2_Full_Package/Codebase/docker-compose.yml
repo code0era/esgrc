@@ -1,0 +1,144 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: tbd2
+      POSTGRES_USER: tbd2
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U tbd2"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  redis:
+    image: redis:7-alpine
+    restart: unless-stopped
+    command: redis-server --maxmemory 256mb --maxmemory-policy allkeys-lru
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  esgrc_api:
+    build:
+      context: .
+      dockerfile: ESGRC/Dockerfile
+    restart: unless-stopped
+    # Run migrations once before starting the workers, so the per-worker lifespan
+    # upgrade is a no-op (avoids concurrent alembic races with --workers > 1).
+    command: sh -c "alembic upgrade head && uvicorn main:app --host 0.0.0.0 --port 8000 --workers 2"
+    environment:
+      PYTHONPATH: /app
+      DATABASE_URL: postgresql+psycopg://tbd2:${POSTGRES_PASSWORD}@postgres:5432/tbd2
+      REDIS_URL: redis://redis:6379/0
+      SECRET_KEY: ${SECRET_KEY}
+      ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY}
+      ORCHESTRATOR_MODEL: ${ORCHESTRATOR_MODEL:-claude-sonnet-5}
+      SPECIALIST_MODEL: ${SPECIALIST_MODEL:-claude-haiku-4-5}
+      CLOUDFLARE_R2_BUCKET: ${CLOUDFLARE_R2_BUCKET}
+      CLOUDFLARE_R2_ENDPOINT: ${CLOUDFLARE_R2_ENDPOINT}
+      CLOUDFLARE_R2_ACCESS_KEY: ${CLOUDFLARE_R2_ACCESS_KEY}
+      CLOUDFLARE_R2_SECRET_KEY: ${CLOUDFLARE_R2_SECRET_KEY}
+      # Path-style addressing for local MinIO (pipeline/tasks/r2.py); unset/empty
+      # is a no-op against real R2. See docker-compose.local.yml.
+      S3_ADDRESSING_STYLE: ${S3_ADDRESSING_STYLE:-}
+      LANGFUSE_PUBLIC_KEY: ${LANGFUSE_PUBLIC_KEY:-}
+      LANGFUSE_SECRET_KEY: ${LANGFUSE_SECRET_KEY:-}
+      SENTRY_DSN: ${SENTRY_DSN:-}
+      CELERY_BROKER_URL: redis://redis:6379/1
+      CELERY_RESULT_BACKEND: redis://redis:6379/2
+      DEMO_MODE: ${DEMO_MODE:-false}
+      # Nightly ESGRC agent scheduler (ESGRC/app/agent/scheduler.py). Defaults to
+      # true (matches ESGRC/app/config.py) if not set in .env.
+      AGENT_ENABLED: ${AGENT_ENABLED:-true}
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    ports:
+      - "8000:8000"
+
+  celery_worker:
+    build:
+      context: .
+      dockerfile: pipeline/Dockerfile
+    restart: unless-stopped
+    command: celery -A pipeline.celery_app worker --loglevel=info --concurrency=12
+    environment:
+      DATABASE_URL: postgresql+psycopg://tbd2:${POSTGRES_PASSWORD}@postgres:5432/tbd2
+      REDIS_URL: redis://redis:6379/0
+      CELERY_BROKER_URL: redis://redis:6379/1
+      CELERY_RESULT_BACKEND: redis://redis:6379/2
+      ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY}
+      CLOUDFLARE_R2_BUCKET: ${CLOUDFLARE_R2_BUCKET}
+      CLOUDFLARE_R2_ENDPOINT: ${CLOUDFLARE_R2_ENDPOINT}
+      CLOUDFLARE_R2_ACCESS_KEY: ${CLOUDFLARE_R2_ACCESS_KEY}
+      CLOUDFLARE_R2_SECRET_KEY: ${CLOUDFLARE_R2_SECRET_KEY}
+      # Path-style addressing for local MinIO (pipeline/tasks/r2.py); unset/empty
+      # is a no-op against real R2. See docker-compose.local.yml.
+      S3_ADDRESSING_STYLE: ${S3_ADDRESSING_STYLE:-}
+      LANGFUSE_PUBLIC_KEY: ${LANGFUSE_PUBLIC_KEY:-}
+      LANGFUSE_SECRET_KEY: ${LANGFUSE_SECRET_KEY:-}
+      DEMO_MODE: ${DEMO_MODE:-false}
+    depends_on:
+      redis:
+        condition: service_healthy
+      postgres:
+        condition: service_healthy
+    volumes:
+      - /tmp/tbd2:/tmp/tbd2
+
+  celery_beat:
+    build:
+      context: .
+      dockerfile: pipeline/Dockerfile
+    restart: unless-stopped
+    command: celery -A pipeline.celery_app beat --loglevel=info --scheduler celery.beat:PersistentScheduler --schedule /tmp/celerybeat-schedule
+    environment:
+      DATABASE_URL: postgresql+psycopg://tbd2:${POSTGRES_PASSWORD}@postgres:5432/tbd2
+      REDIS_URL: redis://redis:6379/0
+      CELERY_BROKER_URL: redis://redis:6379/1
+      CELERY_RESULT_BACKEND: redis://redis:6379/2
+    depends_on:
+      - celery_worker
+
+  # Builds the SPA and publishes it into the frontend_dist volume, then exits 0.
+  # Not a server: nginx serves the assets. See frontend/Dockerfile.
+  frontend:
+    build:
+      context: .
+      dockerfile: frontend/Dockerfile
+    volumes:
+      - frontend_dist:/dist
+
+  nginx:
+    image: nginx:alpine
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/certs:/etc/nginx/certs:ro
+      - frontend_dist:/usr/share/nginx/html:ro
+    depends_on:
+      esgrc_api:
+        # service_started (not just started) previously let nginx begin
+        # proxying before alembic upgrade head + uvicorn finished starting,
+        # producing early 502s on first boot - ESGRC/Dockerfile already
+        # defines a real HEALTHCHECK, so wait for it instead.
+        condition: service_healthy
+      # Wait for the bundle to exist, otherwise nginx starts on an empty
+      # document root and every page load 404s until the build happens to land.
+      frontend:
+        condition: service_completed_successfully
+
+volumes:
+  postgres_data:
+  frontend_dist:

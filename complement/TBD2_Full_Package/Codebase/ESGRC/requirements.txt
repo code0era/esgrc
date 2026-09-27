@@ -1,0 +1,26 @@
+fastapi==0.139.0
+starlette==1.3.1
+uvicorn[standard]==0.30.6
+sqlalchemy==2.0.36
+alembic==1.13.3
+pydantic==2.9.2
+pydantic-settings==2.5.2
+python-dotenv==1.2.2
+httpx==0.27.2
+pytest==9.1.1
+pytest-asyncio==1.4.0
+# Pinned below anyio 4.15.0 (released 2026-09-02): that release deprecated
+# anyio.abc.BlockingPortal with a runtime DeprecationWarning. starlette==1.3.1
+# (through its latest 1.6.0) type-hints against exactly that deprecated symbol
+# in testclient.py, so `from fastapi.testclient import TestClient` triggers the
+# warning at import time. pytest.ini has `filterwarnings = error`, so every
+# test file that imports TestClient failed collection - this broke CI (both
+# ESGRC and pipeline jobs) on every push since 2026-09-09, unnoticed because
+# nobody was watching the Actions tab. MUST stay in sync with the same pin in
+# pipeline/requirements.txt.
+anyio<4.15
+PyJWT[crypto]==2.13.0
+bcrypt==4.2.1
+apscheduler==3.11.0
+pytz>=2024.1
+anthropic>=0.40.0

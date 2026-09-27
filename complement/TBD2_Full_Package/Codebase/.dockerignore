@@ -1,0 +1,44 @@
+# Keep the Docker build context lean when building from the repo root.
+
+# Virtual environments
+**/.venv
+**/.venv2
+**/venv
+**/env
+
+# Python caches
+**/__pycache__
+**/*.pyc
+**/*.pyo
+**/.pytest_cache
+**/.mypy_cache
+**/.ruff_cache
+
+# Node / frontend build
+**/node_modules
+frontend/dist
+
+# Git / CI / IDE / tooling
+.git
+.github
+.idea
+.vscode
+.claude
+
+# Databases & data snapshots (regenerated at runtime).
+# Must be **/ prefixed: bare *.db only matches the context root, so ESGRC/esgrc.db
+# was being copied into the image by COPY ESGRC/ /app/.
+**/*.db
+**/*.sqlite3
+**/*.db-shm
+**/*.db-wal
+
+# Archives and logs
+**/*.zip
+**/*.log
+
+# Environment files. Same **/ reasoning as above: ESGRC/.env holds a real
+# SECRET_KEY and was landing in image layers. Runtime env comes from compose,
+# so no .env file of any kind belongs in the build context.
+**/.env
+**/.env.*

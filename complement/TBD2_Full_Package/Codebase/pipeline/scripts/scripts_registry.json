@@ -1,0 +1,1232 @@
+{
+  "_comment": "Source of truth for all analytics script wrappers. ScriptRunner is module-agnostic - it only reads this file. To add a new module, add a new top-level key with the same step schema. ScriptRunner requires zero changes.",
+  "_version": "2.0",
+  "_last_audited": "2026-06-17 - C-01 complete against Repo-01-main",
+  "_schema_notes": {
+    "execution_mode": "subprocess (default) | import (only if C-01 proves zero side effects on import)",
+    "source": "run_scoped (default) | stable_r2 (org-level module output) | org_settings_r2 (org-level reference file) | user_upload (user uploaded per run)",
+    "status": "active | not_implemented (fails cleanly at preflight) | deprecated",
+    "depends_on": "list of step keys that must be COMPLETED before this step can start",
+    "chord_group": "true = this step runs in parallel with other chord_group steps in the same pipeline"
+  },
+  "_scripts_note": "The `scripts` block below is what ScriptRunner actually reads (_load_registry returns data['scripts']; keys are the flat script_name values esgrc_chain.py / apex_chord.py pass to runner.run(); output_files is the list of stable output filenames used by DEMO mode). The richer per-module `esgrc`/`apex` sections are the design reference for wiring the real (non-DEMO) subprocess runner and are not yet consumed by the code.",
+  "scripts": {
+    "data_prep_1": {
+      "script_filename": "AI_ready_Low_Performing_M_G_SM_ESGRC_4_0.py",
+      "execution_mode": "subprocess",
+      "output_files": [
+        "low_performing_entities_report_esgrc.txt",
+        "module_values_esgrc.csv"
+      ]
+    },
+    "data_prep_2": {
+      "script_filename": "M_G_Sub_M_split_ESGRC_1_0.py",
+      "execution_mode": "subprocess",
+      "output_files": [
+        "filtered_metrics_data_esgrc.csv",
+        "filtered_groups_data_esgrc.csv",
+        "filtered_sub_modules_data_esgrc.csv",
+        "data_for_risk_assessment_esgrc.csv"
+      ]
+    },
+    "correlation_CHAID_FT": {
+      "script_filename": "Correlation_CHAID_FT_Analysis_ESGRC_8_0.py",
+      "execution_mode": "subprocess",
+      "output_files": [
+        "M_G_SM_correlation_report_esgrc.txt",
+        "trends_and_repetitions_report_esgrc.txt",
+        "inconsistencies_report_esgrc.txt",
+        "chaid_risk_segmentation_report_esgrc.txt"
+      ]
+    },
+    "SPC_RPN": {
+      "script_filename": "x_bar_r_chart_fmea_esg_5_0.py",
+      "execution_mode": "subprocess",
+      "output_files": [
+        "metrics_summary.txt",
+        "rpn_summary.txt"
+      ],
+      "optional_output_files": [
+        "RPN_summary_report.pdf",
+        "SPC_charts_report.pdf"
+      ],
+      "output_file_patterns": {
+        "metrics_summary.txt": "metrics_summary_*.txt",
+        "rpn_summary.txt": "rpn_summary_*.txt",
+        "RPN_summary_report.pdf": "RPN_summary_report_*.pdf",
+        "SPC_charts_report.pdf": "SPC_charts_report_*.pdf"
+      }
+    },
+    "regression_esgrc": {
+      "script_filename": "AI_ready_Mutiple_Regression_Model_implementation_ESGRC_5_0.py",
+      "execution_mode": "subprocess",
+      "output_files": [
+        "ESGRC_Module_model_summary.txt"
+      ]
+    },
+    "all_module_low_perf": {
+      "script_filename": "all_module_low_performance_analysis_1_0.py",
+      "execution_mode": "subprocess",
+      "output_files": [
+        "all_module_values.csv",
+        "performance_report_2025.txt"
+      ],
+      "output_file_patterns": {
+        "performance_report_2025.txt": "performance_report*.txt"
+      }
+    },
+    "correlation_CHAID_L0": {
+      "script_filename": "AI_Ready_Correlation_and_CHAID_Analysis_L0_6_0.py",
+      "execution_mode": "subprocess",
+      "output_files": [
+        "correlation_analysis_L0.txt",
+        "trends_and_repetitions_report_L0.txt",
+        "inconsistency_report_L0.txt",
+        "chaid_risk_segmentation_L0.txt"
+      ]
+    },
+    "SPC_RPN_L0": {
+      "script_filename": "SS_x_bar_r_chart_fmea_L0_6_0.py",
+      "execution_mode": "subprocess",
+      "output_files": [
+        "SPC_summary_L0.txt",
+        "rpn_summary_L0.txt"
+      ],
+      "optional_output_files": [
+        "RPN_summary_L0.pdf",
+        "SPC_charts_L0.pdf"
+      ],
+      "output_file_patterns": {
+        "SPC_summary_L0.txt": "SPC_summary_L0_*.txt",
+        "rpn_summary_L0.txt": "rpn_summary_L0_*.txt",
+        "RPN_summary_L0.pdf": "RPN_summary_L0_*.pdf",
+        "SPC_charts_L0.pdf": "SPC_charts_L0_*.pdf"
+      }
+    },
+    "regression_L0": {
+      "script_filename": "AI_ready_Multiple_Regression_Model_implementation_L0_19_0.py",
+      "execution_mode": "subprocess",
+      "output_files": [
+        "L0_Risk_Analysis_Report_2025.txt"
+      ],
+      "output_file_patterns": {
+        "L0_Risk_Analysis_Report_2025.txt": "L0_Risk_Analysis_Report*.txt"
+      }
+    },
+    "customer_data_prep_1": {
+      "script_filename": "AI_ready_Low_Performing_M_G_SM_Customer_3_0.py",
+      "execution_mode": "subprocess",
+      "output_files": [
+        "low_performing_entities_report_customer.txt",
+        "module_values_customer.csv"
+      ]
+    },
+    "customer_data_prep_2": {
+      "script_filename": "M_G_Sub_M_split_Customer_1_0.py",
+      "execution_mode": "subprocess",
+      "output_files": [
+        "filtered_metrics_data_customer.csv",
+        "filtered_groups_data_customer.csv",
+        "filtered_sub_modules_data_customer.csv",
+        "data_for_risk_assessment_customer.csv"
+      ]
+    },
+    "customer_correlation": {
+      "script_filename": "Correlation_CHAID_FT_Analysis_Customer_8_0.py",
+      "execution_mode": "subprocess",
+      "output_files": [
+        "M_G_SM_correlation_report_customer.txt",
+        "trends_and_repetitions_report_customer.txt",
+        "inconsistencies_report_customer.txt",
+        "chaid_risk_segmentation_report_customer.txt"
+      ]
+    },
+    "customer_spc_rpn": {
+      "script_filename": "x_bar_r_chart_fmea_customer_5_0.py",
+      "execution_mode": "subprocess",
+      "output_files": [
+        "metrics_summary_customer.txt",
+        "rpn_summary_customer.txt"
+      ],
+      "optional_output_files": [
+        "RPN_summary_report_customer.pdf",
+        "SPC_charts_report_customer.pdf"
+      ],
+      "output_file_patterns": {
+        "metrics_summary_customer.txt": "metrics_summary_customer_*.txt",
+        "rpn_summary_customer.txt": "rpn_summary_customer_*.txt",
+        "RPN_summary_report_customer.pdf": "RPN_summary_report_customer_*.pdf",
+        "SPC_charts_report_customer.pdf": "SPC_charts_report_customer_*.pdf"
+      }
+    },
+    "customer_regression": {
+      "script_filename": "AI_ready_Mutiple_Regression_Model_implementation_Customer_5_0.py",
+      "execution_mode": "subprocess",
+      "output_files": [
+        "Customer_Module_model_summary.txt"
+      ]
+    },
+    "shared_data_prep_1": {
+      "script_filename": "AI_ready_Low_Performing_M_G_SM_Shared_3_0.py",
+      "execution_mode": "subprocess",
+      "output_files": [
+        "low_performing_entities_report_shared.txt",
+        "module_values_shared.csv"
+      ]
+    },
+    "shared_data_prep_2": {
+      "script_filename": "M_G_Sub_M_split_Shared_1_0.py",
+      "execution_mode": "subprocess",
+      "output_files": [
+        "filtered_metrics_data_shared.csv",
+        "filtered_groups_data_shared.csv",
+        "filtered_sub_modules_data_shared.csv",
+        "data_for_risk_assessment_shared.csv"
+      ]
+    },
+    "shared_correlation": {
+      "script_filename": "Correlation_CHAID_FT_Analysis_Shared_8_0.py",
+      "execution_mode": "subprocess",
+      "output_files": [
+        "M_G_SM_correlation_report_shared.txt",
+        "trends_and_repetitions_report_shared.txt",
+        "inconsistencies_report_shared.txt",
+        "chaid_risk_segmentation_report_shared.txt"
+      ]
+    },
+    "shared_spc_rpn": {
+      "script_filename": "x_bar_r_chart_fmea_shared_5_0.py",
+      "execution_mode": "subprocess",
+      "output_files": [
+        "metrics_summary_shared.txt",
+        "rpn_summary_shared.txt"
+      ],
+      "optional_output_files": [
+        "RPN_summary_report_shared.pdf",
+        "SPC_charts_report_shared.pdf"
+      ],
+      "output_file_patterns": {
+        "metrics_summary_shared.txt": "metrics_summary_shared_*.txt",
+        "rpn_summary_shared.txt": "rpn_summary_shared_*.txt",
+        "RPN_summary_report_shared.pdf": "RPN_summary_report_shared_*.pdf",
+        "SPC_charts_report_shared.pdf": "SPC_charts_report_shared_*.pdf"
+      }
+    },
+    "shared_regression": {
+      "script_filename": "AI_ready_Mutiple_Regression_Model_implementation_Shared_4_0.py",
+      "execution_mode": "subprocess",
+      "output_files": [
+        "Shared_Module_model_summary.txt"
+      ]
+    },
+    "bspt_data_prep_1": {
+      "script_filename": "AI_ready_Low_Performing_M_G_SM_BSPT_2_0.py",
+      "execution_mode": "subprocess",
+      "output_files": [
+        "low_performing_entities_report_bspt.txt",
+        "module_values_bspt.csv"
+      ]
+    },
+    "bspt_data_prep_2": {
+      "script_filename": "M_G_Sub_M_split_BSPT_1_0.py",
+      "execution_mode": "subprocess",
+      "output_files": [
+        "filtered_metrics_data_bspt.csv",
+        "filtered_groups_data_bspt.csv",
+        "filtered_sub_modules_data_bspt.csv",
+        "data_for_risk_assessment_bspt.csv"
+      ]
+    },
+    "bspt_correlation": {
+      "script_filename": "Correlation_CHAID_FT_Analysis_BSPT_8_0.py",
+      "execution_mode": "subprocess",
+      "output_files": [
+        "M_G_SM_correlation_report_bspt.txt",
+        "trends_and_repetitions_report_bspt.txt",
+        "inconsistencies_report_bspt.txt",
+        "chaid_risk_segmentation_report_bspt.txt"
+      ]
+    },
+    "bspt_spc_rpn": {
+      "script_filename": "x_bar_r_chart_fmea_bspt_5_0.py",
+      "execution_mode": "subprocess",
+      "output_files": [
+        "metrics_summary_bspt.txt",
+        "rpn_summary_bspt.txt"
+      ],
+      "optional_output_files": [
+        "RPN_summary_report_bspt.pdf",
+        "SPC_charts_report_bspt.pdf"
+      ],
+      "output_file_patterns": {
+        "metrics_summary_bspt.txt": "metrics_summary_bspt_*.txt",
+        "rpn_summary_bspt.txt": "rpn_summary_bspt_*.txt",
+        "RPN_summary_report_bspt.pdf": "RPN_summary_report_bspt_*.pdf",
+        "SPC_charts_report_bspt.pdf": "SPC_charts_report_bspt_*.pdf"
+      }
+    },
+    "bspt_regression": {
+      "script_filename": "AI_ready_Mutiple_Regression_Model_implementation_BSPT_5_0.py",
+      "execution_mode": "subprocess",
+      "output_files": [
+        "BSPT_Module_model_summary.txt"
+      ]
+    },
+    "enterprise_data_prep_1": {
+      "script_filename": "AI_ready_Low_Performing_M_G_SM_Enterprise_3_0.py",
+      "execution_mode": "subprocess",
+      "output_files": [
+        "low_performing_entities_report_enterprise.txt",
+        "module_values_enterprise.csv"
+      ]
+    },
+    "enterprise_data_prep_2": {
+      "script_filename": "M_G_Sub_M_split_Enterprise_1_0.py",
+      "execution_mode": "subprocess",
+      "output_files": [
+        "filtered_metrics_data_enterprise.csv",
+        "filtered_groups_data_enterprise.csv",
+        "filtered_sub_modules_data_enterprise.csv",
+        "data_for_risk_assessment_enterprise.csv"
+      ]
+    },
+    "enterprise_correlation": {
+      "script_filename": "Correlation_CHAID_FT_Analysis_Enterprise_8_0.py",
+      "execution_mode": "subprocess",
+      "output_files": [
+        "M_G_SM_correlation_report_enterprise.txt",
+        "trends_and_repetitions_report_enterprise.txt",
+        "inconsistencies_report_enterprise.txt",
+        "chaid_risk_segmentation_report_enterprise.txt"
+      ]
+    },
+    "enterprise_spc_rpn": {
+      "script_filename": "x_bar_r_chart_fmea_enterprise_5_0.py",
+      "execution_mode": "subprocess",
+      "output_files": [
+        "metrics_summary_enterprise.txt",
+        "rpn_summary_enterprise.txt"
+      ],
+      "optional_output_files": [
+        "RPN_summary_report_enterprise.pdf",
+        "SPC_charts_report_enterprise.pdf"
+      ],
+      "output_file_patterns": {
+        "metrics_summary_enterprise.txt": "metrics_summary_enterprise_*.txt",
+        "rpn_summary_enterprise.txt": "rpn_summary_enterprise_*.txt",
+        "RPN_summary_report_enterprise.pdf": "RPN_summary_report_enterprise_*.pdf",
+        "SPC_charts_report_enterprise.pdf": "SPC_charts_report_enterprise_*.pdf"
+      }
+    },
+    "enterprise_regression": {
+      "script_filename": "AI_ready_Mutiple_Regression_Model_implementation_Enterprise_4_0.py",
+      "execution_mode": "subprocess",
+      "output_files": [
+        "Enterprise_Module_model_summary.txt"
+      ]
+    },
+    "ictm_data_prep_1": {
+      "script_filename": "AI_ready_Low_Performing_M_G_SM_ICTM_3_0.py",
+      "execution_mode": "subprocess",
+      "output_files": [
+        "low_performing_entities_report_ictm.txt",
+        "module_values_ictm.csv"
+      ]
+    },
+    "ictm_data_prep_2": {
+      "script_filename": "M_G_Sub_M_split_ICTM_1_0.py",
+      "execution_mode": "subprocess",
+      "output_files": [
+        "filtered_metrics_data_ictm.csv",
+        "filtered_groups_data_ictm.csv",
+        "filtered_sub_modules_data_ictm.csv",
+        "data_for_risk_assessment_ictm.csv"
+      ]
+    },
+    "ictm_correlation": {
+      "script_filename": "Correlation_CHAID_FT_Analysis_ICTM_8_0.py",
+      "execution_mode": "subprocess",
+      "output_files": [
+        "M_G_SM_correlation_report_ictm.txt",
+        "trends_and_repetitions_report_ictm.txt",
+        "inconsistencies_report_ictm.txt",
+        "chaid_risk_segmentation_report_ictm.txt"
+      ]
+    },
+    "ictm_spc_rpn": {
+      "script_filename": "x_bar_r_chart_fmea_ictm_5_0.py",
+      "execution_mode": "subprocess",
+      "output_files": [
+        "metrics_summary_ictm.txt",
+        "rpn_summary_ictm.txt"
+      ],
+      "optional_output_files": [
+        "RPN_summary_report_ictm.pdf",
+        "SPC_charts_report_ictm.pdf"
+      ],
+      "output_file_patterns": {
+        "metrics_summary_ictm.txt": "metrics_summary_ictm_*.txt",
+        "rpn_summary_ictm.txt": "rpn_summary_ictm_*.txt",
+        "RPN_summary_report_ictm.pdf": "RPN_summary_report_ictm_*.pdf",
+        "SPC_charts_report_ictm.pdf": "SPC_charts_report_ictm_*.pdf"
+      }
+    },
+    "ictm_regression": {
+      "script_filename": "AI_ready_Mutiple_Regression_Model_implementation_ICTM_4_0.py",
+      "execution_mode": "subprocess",
+      "output_files": [
+        "ICTM_Module_model_summary.txt"
+      ]
+    },
+    "product_data_prep_1": {
+      "script_filename": "AI_ready_Low_Performing_M_G_SM_Product_3_0.py",
+      "execution_mode": "subprocess",
+      "output_files": [
+        "low_performing_entities_report_product.txt",
+        "module_values_product.csv"
+      ]
+    },
+    "product_data_prep_2": {
+      "script_filename": "M_G_Sub_M_split_Product_1_0.py",
+      "execution_mode": "subprocess",
+      "output_files": [
+        "filtered_metrics_data_product.csv",
+        "filtered_groups_data_product.csv",
+        "filtered_sub_modules_data_product.csv",
+        "data_for_risk_assessment_product.csv"
+      ]
+    },
+    "product_correlation": {
+      "script_filename": "Correlation_CHAID_FT_Analysis_Product_8_0.py",
+      "execution_mode": "subprocess",
+      "output_files": [
+        "M_G_SM_correlation_report_product.txt",
+        "trends_and_repetitions_report_product.txt",
+        "inconsistencies_report_product.txt",
+        "chaid_risk_segmentation_report_product.txt"
+      ]
+    },
+    "product_spc_rpn": {
+      "script_filename": "x_bar_r_chart_fmea_product_5_0.py",
+      "execution_mode": "subprocess",
+      "output_files": [
+        "metrics_summary_product.txt",
+        "rpn_summary_product.txt"
+      ],
+      "optional_output_files": [
+        "RPN_summary_report_product.pdf",
+        "SPC_charts_report_product.pdf"
+      ],
+      "output_file_patterns": {
+        "metrics_summary_product.txt": "metrics_summary_product_*.txt",
+        "rpn_summary_product.txt": "rpn_summary_product_*.txt",
+        "RPN_summary_report_product.pdf": "RPN_summary_report_product_*.pdf",
+        "SPC_charts_report_product.pdf": "SPC_charts_report_product_*.pdf"
+      }
+    },
+    "product_regression": {
+      "script_filename": "AI_ready_Mutiple_Regression_Model_implementation_Product_4_0.py",
+      "execution_mode": "subprocess",
+      "output_files": [
+        "Product_Module_model_summary.txt"
+      ]
+    },
+    "resource_data_prep_1": {
+      "script_filename": "AI_ready_Low_Performing_M_G_SM_Resource_3_0.py",
+      "execution_mode": "subprocess",
+      "output_files": [
+        "low_performing_entities_report_resource.txt",
+        "module_values_resource.csv"
+      ]
+    },
+    "resource_data_prep_2": {
+      "script_filename": "M_G_Sub_M_split_Resource_1_0.py",
+      "execution_mode": "subprocess",
+      "output_files": [
+        "filtered_metrics_data_resource.csv",
+        "filtered_groups_data_resource.csv",
+        "filtered_sub_modules_data_resource.csv",
+        "data_for_risk_assessment_resource.csv"
+      ]
+    },
+    "resource_correlation": {
+      "script_filename": "Correlation_CHAID_FT_Analysis_Resource_8_0.py",
+      "execution_mode": "subprocess",
+      "output_files": [
+        "M_G_SM_correlation_report_resource.txt",
+        "trends_and_repetitions_report_resource.txt",
+        "inconsistencies_report_resource.txt",
+        "chaid_risk_segmentation_report_resource.txt"
+      ]
+    },
+    "resource_spc_rpn": {
+      "script_filename": "x_bar_r_chart_fmea_resource_5_0.py",
+      "execution_mode": "subprocess",
+      "output_files": [
+        "metrics_summary_resource.txt",
+        "rpn_summary_resource.txt"
+      ],
+      "optional_output_files": [
+        "RPN_summary_report_resource.pdf",
+        "SPC_charts_report_resource.pdf"
+      ],
+      "output_file_patterns": {
+        "metrics_summary_resource.txt": "metrics_summary_resource_*.txt",
+        "rpn_summary_resource.txt": "rpn_summary_resource_*.txt",
+        "RPN_summary_report_resource.pdf": "RPN_summary_report_resource_*.pdf",
+        "SPC_charts_report_resource.pdf": "SPC_charts_report_resource_*.pdf"
+      }
+    },
+    "resource_regression": {
+      "script_filename": "AI_ready_Mutiple_Regression_Model_implementation_Resource_4_0.py",
+      "execution_mode": "subprocess",
+      "output_files": [
+        "Resource_Module_model_summary.txt"
+      ]
+    },
+    "service_data_prep_1": {
+      "script_filename": "AI_ready_Low_Performing_M_G_SM_Service_3_0.py",
+      "execution_mode": "subprocess",
+      "output_files": [
+        "low_performing_entities_report_service.txt",
+        "module_values_service.csv"
+      ]
+    },
+    "service_data_prep_2": {
+      "script_filename": "M_G_Sub_M_split_Service_1_0.py",
+      "execution_mode": "subprocess",
+      "output_files": [
+        "filtered_metrics_data_service.csv",
+        "filtered_groups_data_service.csv",
+        "filtered_sub_modules_data_service.csv",
+        "data_for_risk_assessment_service.csv"
+      ]
+    },
+    "service_correlation": {
+      "script_filename": "Correlation_CHAID_FT_Analysis_Service_8_0.py",
+      "execution_mode": "subprocess",
+      "output_files": [
+        "M_G_SM_correlation_report_service.txt",
+        "trends_and_repetitions_report_service.txt",
+        "inconsistencies_report_service.txt",
+        "chaid_risk_segmentation_report_service.txt"
+      ]
+    },
+    "service_spc_rpn": {
+      "script_filename": "x_bar_r_chart_fmea_service_5_0.py",
+      "execution_mode": "subprocess",
+      "output_files": [
+        "metrics_summary_service.txt",
+        "rpn_summary_service.txt"
+      ],
+      "optional_output_files": [
+        "RPN_summary_report_service.pdf",
+        "SPC_charts_report_service.pdf"
+      ],
+      "output_file_patterns": {
+        "metrics_summary_service.txt": "metrics_summary_service_*.txt",
+        "rpn_summary_service.txt": "rpn_summary_service_*.txt",
+        "RPN_summary_report_service.pdf": "RPN_summary_report_service_*.pdf",
+        "SPC_charts_report_service.pdf": "SPC_charts_report_service_*.pdf"
+      }
+    },
+    "service_regression": {
+      "script_filename": "AI_ready_Mutiple_Regression_Model_implementation_Service_4_0.py",
+      "execution_mode": "subprocess",
+      "output_files": [
+        "Service_Module_model_summary.txt"
+      ]
+    },
+    "brand_data_prep_1": {
+      "script_filename": "AI_ready_Low_Performing_M_G_SM_Brand_3_0.py",
+      "execution_mode": "subprocess",
+      "output_files": [
+        "low_performing_entities_report_brand.txt",
+        "module_values_brand.csv"
+      ]
+    },
+    "brand_data_prep_2": {
+      "script_filename": "M_G_Sub_M_split_Brand_1_0.py",
+      "execution_mode": "subprocess",
+      "output_files": [
+        "filtered_metrics_data_brand.csv",
+        "filtered_groups_data_brand.csv",
+        "filtered_sub_modules_data_brand.csv",
+        "data_for_risk_assessment_brand.csv"
+      ]
+    },
+    "brand_correlation": {
+      "script_filename": "Correlation_CHAID_FT_Analysis_Brand_8_0.py",
+      "execution_mode": "subprocess",
+      "output_files": [
+        "M_G_SM_correlation_report_brand.txt",
+        "trends_and_repetitions_report_brand.txt",
+        "inconsistencies_report_brand.txt",
+        "chaid_risk_segmentation_report_brand.txt"
+      ]
+    },
+    "brand_spc_rpn": {
+      "script_filename": "x_bar_r_chart_fmea_brand_5_0.py",
+      "execution_mode": "subprocess",
+      "output_files": [
+        "metrics_summary_brand.txt",
+        "rpn_summary_brand.txt"
+      ],
+      "optional_output_files": [
+        "RPN_summary_report_brand.pdf",
+        "SPC_charts_report_brand.pdf"
+      ],
+      "output_file_patterns": {
+        "metrics_summary_brand.txt": "metrics_summary_brand_*.txt",
+        "rpn_summary_brand.txt": "rpn_summary_brand_*.txt",
+        "RPN_summary_report_brand.pdf": "RPN_summary_report_brand_*.pdf",
+        "SPC_charts_report_brand.pdf": "SPC_charts_report_brand_*.pdf"
+      }
+    },
+    "brand_regression": {
+      "script_filename": "AI_ready_Mutiple_Regression_Model_implementation_Brand_4_0.py",
+      "execution_mode": "subprocess",
+      "output_files": [
+        "Brand_Module_model_summary.txt"
+      ]
+    },
+    "mkts_data_prep_1": {
+      "script_filename": "AI_ready_Low_Performing_M_G_SM_MKTS_3_0.py",
+      "execution_mode": "subprocess",
+      "output_files": [
+        "low_performing_entities_report_mkts.txt",
+        "module_values_mkts.csv"
+      ]
+    },
+    "mkts_data_prep_2": {
+      "script_filename": "M_G_Sub_M_split_MKTS_1_0.py",
+      "execution_mode": "subprocess",
+      "output_files": [
+        "filtered_metrics_data_mkts.csv",
+        "filtered_groups_data_mkts.csv",
+        "filtered_sub_modules_data_mkts.csv",
+        "data_for_risk_assessment_mkts.csv"
+      ]
+    },
+    "mkts_correlation": {
+      "script_filename": "Correlation_CHAID_FT_Analysis_MKTS_8_0.py",
+      "execution_mode": "subprocess",
+      "output_files": [
+        "M_G_SM_correlation_report_mkts.txt",
+        "trends_and_repetitions_report_mkts.txt",
+        "inconsistencies_report_mkts.txt",
+        "chaid_risk_segmentation_report_mkts.txt"
+      ]
+    },
+    "mkts_spc_rpn": {
+      "script_filename": "x_bar_r_chart_fmea_mkts_5_0.py",
+      "execution_mode": "subprocess",
+      "output_files": [
+        "metrics_summary_mkts.txt",
+        "rpn_summary_mkts.txt"
+      ],
+      "optional_output_files": [
+        "RPN_summary_report_mkts.pdf",
+        "SPC_charts_report_mkts.pdf"
+      ],
+      "output_file_patterns": {
+        "metrics_summary_mkts.txt": "metrics_summary_mkts_*.txt",
+        "rpn_summary_mkts.txt": "rpn_summary_mkts_*.txt",
+        "RPN_summary_report_mkts.pdf": "RPN_summary_report_mkts_*.pdf",
+        "SPC_charts_report_mkts.pdf": "SPC_charts_report_mkts_*.pdf"
+      }
+    },
+    "mkts_regression": {
+      "script_filename": "AI_ready_Mutiple_Regression_Model_implementation_MKTS_4_0.py",
+      "execution_mode": "subprocess",
+      "output_files": [
+        "MKTS_Module_model_summary.txt"
+      ]
+    },
+    "integration_data_prep_1": {
+      "script_filename": "AI_ready_Low_Performing_M_G_SM_Integration_3_0.py",
+      "execution_mode": "subprocess",
+      "output_files": [
+        "low_performing_entities_report_integration.txt",
+        "module_values_integration.csv"
+      ]
+    },
+    "integration_data_prep_2": {
+      "script_filename": "M_G_Sub_M_split_Integration_1_0.py",
+      "execution_mode": "subprocess",
+      "output_files": [
+        "filtered_metrics_data_integration.csv",
+        "filtered_groups_data_integration.csv",
+        "filtered_sub_modules_data_integration.csv",
+        "data_for_risk_assessment_integration.csv"
+      ]
+    },
+    "integration_correlation": {
+      "script_filename": "Correlation_CHAID_FT_Analysis_Integration_8_0.py",
+      "execution_mode": "subprocess",
+      "output_files": [
+        "M_G_SM_correlation_report_integration.txt",
+        "trends_and_repetitions_report_integration.txt",
+        "inconsistencies_report_integration.txt",
+        "chaid_risk_segmentation_report_integration.txt"
+      ]
+    },
+    "integration_spc_rpn": {
+      "script_filename": "x_bar_r_chart_fmea_integration_5_0.py",
+      "execution_mode": "subprocess",
+      "output_files": [
+        "metrics_summary_integration.txt",
+        "rpn_summary_integration.txt"
+      ],
+      "optional_output_files": [
+        "RPN_summary_report_integration.pdf",
+        "SPC_charts_report_integration.pdf"
+      ],
+      "output_file_patterns": {
+        "metrics_summary_integration.txt": "metrics_summary_integration_*.txt",
+        "rpn_summary_integration.txt": "rpn_summary_integration_*.txt",
+        "RPN_summary_report_integration.pdf": "RPN_summary_report_integration_*.pdf",
+        "SPC_charts_report_integration.pdf": "SPC_charts_report_integration_*.pdf"
+      }
+    },
+    "integration_regression": {
+      "script_filename": "AI_ready_Mutiple_Regression_Model_implementation_Integration_4_0.py",
+      "execution_mode": "subprocess",
+      "output_files": [
+        "Integration_Module_model_summary.txt"
+      ]
+    }
+  },
+  "esgrc": {
+    "step1_data_prep_1": {
+      "status": "active",
+      "script_filename": "AI_ready_Low_Performing_M_G_SM_ESGRC_4_0.py",
+      "execution_mode": "subprocess",
+      "entry_function": null,
+      "command_template": [
+        "python",
+        "{script_path}"
+      ],
+      "working_dir": "{output_dir}",
+      "depends_on": [],
+      "input_files": [
+        {
+          "param_name": "input_metrics_data",
+          "filename": "input_metric_values_esgrc.csv",
+          "required": true,
+          "source": "user_upload"
+        },
+        {
+          "param_name": "esgrc_performance_json",
+          "filename": "esgrc_performance_json_file.json",
+          "required": true,
+          "source": "user_upload"
+        }
+      ],
+      "output_files": [
+        {
+          "stable_name": "low_performing_entities_report_esgrc.txt",
+          "output_file_pattern": "low_performing_entities_report_esgrc.txt",
+          "required": true,
+          "has_dated_filename": false
+        },
+        {
+          "stable_name": "module_values_esgrc.csv",
+          "output_file_pattern": "module_values_esgrc.csv",
+          "required": true,
+          "has_dated_filename": false
+        }
+      ],
+      "audit_notes": "C-01 complete. Flask app.run inside __main__ guard - subprocess safe. Input is input_metric_values_esgrc.csv. Only needs esgrc_performance_json - no separate low_performing_json."
+    },
+    "step2_data_prep_2": {
+      "status": "active",
+      "script_filename": "M_G_Sub_M_split_ESGRC_1_0.py",
+      "execution_mode": "subprocess",
+      "entry_function": null,
+      "command_template": [
+        "python",
+        "{script_path}"
+      ],
+      "working_dir": "{output_dir}",
+      "depends_on": [
+        "step1_data_prep_1"
+      ],
+      "input_files": [
+        {
+          "param_name": "module_values_esgrc",
+          "filename": "module_values_esgrc.csv",
+          "required": true,
+          "source": "run_scoped"
+        },
+        {
+          "param_name": "esgrc_performance_json",
+          "filename": "esgrc_performance_json_file.json",
+          "required": true,
+          "source": "user_upload"
+        }
+      ],
+      "output_files": [
+        {
+          "stable_name": "filtered_metrics_data_esgrc.csv",
+          "output_file_pattern": "filtered_metrics_data_esgrc.csv",
+          "required": true,
+          "has_dated_filename": false
+        },
+        {
+          "stable_name": "filtered_groups_data_esgrc.csv",
+          "output_file_pattern": "filtered_groups_data_esgrc.csv",
+          "required": true,
+          "has_dated_filename": false
+        },
+        {
+          "stable_name": "filtered_sub_modules_data_esgrc.csv",
+          "output_file_pattern": "filtered_sub_modules_data_esgrc.csv",
+          "required": true,
+          "has_dated_filename": false
+        },
+        {
+          "stable_name": "data_for_risk_assessment_esgrc.csv",
+          "output_file_pattern": "data_for_risk_assessment_esgrc.csv",
+          "required": true,
+          "has_dated_filename": false,
+          "also_upload_to_stable_r2": "org/{org_id}/module_outputs/data_for_risk_assessment_esgrc.csv"
+        }
+      ],
+      "audit_notes": "C-01 complete. Script is M_G_Sub_M_split_ESGRC_1_0.py. Clean imports (pandas, json only). No Flask, no side effects, no hardcoded paths - uses relative filenames in __main__. subprocess is default; import would also work but subprocess chosen for consistency. data_for_risk_assessment_esgrc.csv uploaded to stable org R2 path for Apex Step 1 handoff (D5 decision)."
+    },
+    "step3_correlation_chaid_ft": {
+      "status": "active",
+      "script_filename": "Correlation_CHAID_FT_Analysis_ESGRC_8_0.py",
+      "execution_mode": "subprocess",
+      "entry_function": null,
+      "command_template": [
+        "python",
+        "{script_path}"
+      ],
+      "working_dir": "{output_dir}",
+      "depends_on": [
+        "step2_data_prep_2"
+      ],
+      "chord_group": true,
+      "input_files": [
+        {
+          "param_name": "filtered_metrics_data",
+          "filename": "filtered_metrics_data_esgrc.csv",
+          "required": true,
+          "source": "run_scoped"
+        },
+        {
+          "param_name": "filtered_groups_data",
+          "filename": "filtered_groups_data_esgrc.csv",
+          "required": true,
+          "source": "run_scoped"
+        },
+        {
+          "param_name": "filtered_sub_modules_data",
+          "filename": "filtered_sub_modules_data_esgrc.csv",
+          "required": true,
+          "source": "run_scoped"
+        },
+        {
+          "param_name": "esgrc_performance_json",
+          "filename": "esgrc_performance_json_file.json",
+          "required": false,
+          "source": "reference",
+          "note": "Metric/group/sub-module NAME lookup (build_metric_lookup). Script degrades to raw IDs if absent; staged by esgrc_step3 so reports #2-#5 carry human-readable names."
+        }
+      ],
+      "output_files": [
+        {
+          "stable_name": "M_G_SM_correlation_report_esgrc.txt",
+          "output_file_pattern": "M_G_SM_correlation_report_esgrc.txt",
+          "required": true,
+          "has_dated_filename": false
+        },
+        {
+          "stable_name": "trends_and_repetitions_report_esgrc.txt",
+          "output_file_pattern": "trends_and_repetitions_report_esgrc.txt",
+          "required": true,
+          "has_dated_filename": false
+        },
+        {
+          "stable_name": "inconsistencies_report_esgrc.txt",
+          "output_file_pattern": "inconsistencies_report_esgrc.txt",
+          "required": true,
+          "has_dated_filename": false
+        },
+        {
+          "stable_name": "chaid_risk_segmentation_report_esgrc.txt",
+          "output_file_pattern": "chaid_risk_segmentation_report_esgrc.txt",
+          "required": true,
+          "has_dated_filename": false
+        }
+      ],
+      "audit_notes": "C-01 complete. Flask app.run inside __main__ guard - subprocess safe. All output filenames are lowercase - case matters on Linux. chord_group=true: runs in parallel with step4 and step5 after step2 completes."
+    },
+    "step4_spc_rpn": {
+      "status": "active",
+      "script_filename": "x_bar_r_chart_fmea_esg_5_0.py",
+      "execution_mode": "subprocess",
+      "entry_function": null,
+      "command_template": [
+        "python",
+        "{script_path}"
+      ],
+      "working_dir": "{output_dir}",
+      "depends_on": [
+        "step1_data_prep_1"
+      ],
+      "chord_group": true,
+      "input_files": [
+        {
+          "param_name": "input_metrics_data",
+          "filename": "input_metric_values_esgrc.csv",
+          "required": true,
+          "source": "user_upload"
+        }
+      ],
+      "output_files": [
+        {
+          "stable_name": "metrics_summary.txt",
+          "output_file_pattern": "metrics_summary_*.txt",
+          "required": true,
+          "has_dated_filename": true
+        },
+        {
+          "stable_name": "rpn_summary.txt",
+          "output_file_pattern": "rpn_summary_*.txt",
+          "required": true,
+          "has_dated_filename": true
+        },
+        {
+          "stable_name": "RPN_summary_report.pdf",
+          "output_file_pattern": "RPN_summary_report_*.pdf",
+          "required": false,
+          "has_dated_filename": true,
+          "user_download_only": true
+        },
+        {
+          "stable_name": "SPC_charts_report.pdf",
+          "output_file_pattern": "SPC_charts_report_*.pdf",
+          "required": false,
+          "has_dated_filename": true,
+          "user_download_only": true
+        }
+      ],
+      "audit_notes": "C-01 complete. HARDCODED date 2026-01-07 in ANALYSIS_DATE constant - glob required (D2). RPN summary is now emitted as BOTH .txt (spec report #7 - fed to the Step 6 combine and Claude) and .pdf (user download). metrics_summary.txt (#6) and rpn_summary.txt (#7) both go to Step 6. SPC-charts PDF stays user-download-only, excluded from Claude by the .txt combine filter. chord_group=true: depends on step1 only, runs in parallel with step3 and step5."
+    },
+    "step5_regression": {
+      "status": "active",
+      "script_filename": "AI_ready_Mutiple_Regression_Model_implementation_ESGRC_5_0.py",
+      "execution_mode": "subprocess",
+      "entry_function": null,
+      "command_template": [
+        "python",
+        "{script_path}"
+      ],
+      "working_dir": "{output_dir}",
+      "depends_on": [
+        "step1_data_prep_1"
+      ],
+      "chord_group": true,
+      "input_files": [
+        {
+          "param_name": "module_values_esgrc",
+          "filename": "module_values_esgrc.csv",
+          "required": true,
+          "source": "run_scoped"
+        },
+        {
+          "param_name": "esgrc_performance_json",
+          "filename": "esgrc_performance_json_file.json",
+          "required": true,
+          "source": "user_upload"
+        }
+      ],
+      "output_files": [
+        {
+          "stable_name": "ESGRC_Module_model_summary.txt",
+          "output_file_pattern": "ESGRC_Module_model_summary.txt",
+          "required": true,
+          "has_dated_filename": false
+        }
+      ],
+      "audit_notes": "C-01 complete. Flask app.run inside __main__ guard - subprocess safe. Output is ESGRC_Module_model_summary.txt (capital letters). chord_group=true: depends on step1 only, runs in parallel with step3 and step4."
+    }
+  },
+  "apex": {
+    "step1_all_module_low_perf": {
+      "status": "active",
+      "script_filename": "all_module_low_performance_analysis_1_0.py",
+      "execution_mode": "subprocess",
+      "entry_function": null,
+      "command_template": [
+        "python",
+        "{script_path}"
+      ],
+      "working_dir": "{output_dir}",
+      "depends_on": [],
+      "input_files": [
+        {
+          "param_name": "data_for_risk_assessment_brand",
+          "filename": "data_for_risk_assessment_brand.csv",
+          "required": true,
+          "source": "stable_r2"
+        },
+        {
+          "param_name": "data_for_risk_assessment_shared",
+          "filename": "data_for_risk_assessment_shared.csv",
+          "required": true,
+          "source": "stable_r2"
+        },
+        {
+          "param_name": "data_for_risk_assessment_esgrc",
+          "filename": "data_for_risk_assessment_esgrc.csv",
+          "required": true,
+          "source": "stable_r2"
+        },
+        {
+          "param_name": "data_for_risk_assessment_enterprise",
+          "filename": "data_for_risk_assessment_enterprise.csv",
+          "required": true,
+          "source": "stable_r2"
+        },
+        {
+          "param_name": "data_for_risk_assessment_customer",
+          "filename": "data_for_risk_assessment_customer.csv",
+          "required": true,
+          "source": "stable_r2"
+        },
+        {
+          "param_name": "data_for_risk_assessment_service",
+          "filename": "data_for_risk_assessment_service.csv",
+          "required": true,
+          "source": "stable_r2"
+        },
+        {
+          "param_name": "data_for_risk_assessment_product",
+          "filename": "data_for_risk_assessment_product.csv",
+          "required": true,
+          "source": "stable_r2"
+        },
+        {
+          "param_name": "data_for_risk_assessment_mkts",
+          "filename": "data_for_risk_assessment_mkts.csv",
+          "required": true,
+          "source": "stable_r2"
+        },
+        {
+          "param_name": "data_for_risk_assessment_bspt",
+          "filename": "data_for_risk_assessment_bspt.csv",
+          "required": true,
+          "source": "stable_r2"
+        },
+        {
+          "param_name": "data_for_risk_assessment_integration",
+          "filename": "data_for_risk_assessment_integration.csv",
+          "required": true,
+          "source": "stable_r2"
+        },
+        {
+          "param_name": "data_for_risk_assessment_ictm",
+          "filename": "data_for_risk_assessment_ictm.csv",
+          "required": true,
+          "source": "stable_r2"
+        },
+        {
+          "param_name": "data_for_risk_assessment_resource",
+          "filename": "data_for_risk_assessment_resource.csv",
+          "required": true,
+          "source": "stable_r2"
+        }
+      ],
+      "output_files": [
+        {
+          "stable_name": "all_module_values.csv",
+          "output_file_pattern": "all_module_values.csv",
+          "required": true,
+          "has_dated_filename": false
+        },
+        {
+          "stable_name": "performance_report_2025.txt",
+          "output_file_pattern": "performance_report*.txt",
+          "required": true,
+          "has_dated_filename": false
+        }
+      ],
+      "audit_notes": "C-01 complete. Business partner module key is 'bspt' not 'business_partner' - confirmed in script. All 12 inputs from stable org R2 paths. Output performance_report has year in name - glob covers it."
+    },
+    "step2_correlation_chaid_L0": {
+      "status": "active",
+      "script_filename": "AI_Ready_Correlation_and_CHAID_Analysis_L0_6_0.py",
+      "execution_mode": "subprocess",
+      "entry_function": null,
+      "command_template": [
+        "python",
+        "{script_path}"
+      ],
+      "working_dir": "{output_dir}",
+      "depends_on": [
+        "step1_all_module_low_perf"
+      ],
+      "chord_group": true,
+      "input_files": [
+        {
+          "param_name": "all_module_values",
+          "filename": "all_module_values.csv",
+          "required": true,
+          "source": "run_scoped"
+        }
+      ],
+      "output_files": [
+        {
+          "stable_name": "correlation_analysis_L0.txt",
+          "output_file_pattern": "correlation_analysis_L0.txt",
+          "required": true,
+          "has_dated_filename": false
+        },
+        {
+          "stable_name": "trends_and_repetitions_report_L0.txt",
+          "output_file_pattern": "trends_and_repetitions_report_L0.txt",
+          "required": true,
+          "has_dated_filename": false
+        },
+        {
+          "stable_name": "inconsistency_report_L0.txt",
+          "output_file_pattern": "inconsistency_report_L0.txt",
+          "required": true,
+          "has_dated_filename": false
+        },
+        {
+          "stable_name": "chaid_risk_segmentation_L0.txt",
+          "output_file_pattern": "chaid_risk_segmentation_L0.txt",
+          "required": true,
+          "has_dated_filename": false
+        }
+      ],
+      "audit_notes": "C-01 complete. Flask app.run inside __main__ guard - subprocess safe. ALL output filenames lowercase. chord_group=true: runs in parallel with step3 and step4."
+    },
+    "step3_spc_rpn_L0": {
+      "status": "active",
+      "script_filename": "SS_x_bar_r_chart_fmea_L0_6_0.py",
+      "execution_mode": "subprocess",
+      "entry_function": null,
+      "command_template": [
+        "python",
+        "{script_path}"
+      ],
+      "working_dir": "{output_dir}",
+      "depends_on": [
+        "step1_all_module_low_perf"
+      ],
+      "chord_group": true,
+      "input_files": [
+        {
+          "param_name": "all_module_values",
+          "filename": "all_module_values.csv",
+          "required": true,
+          "source": "run_scoped"
+        }
+      ],
+      "output_files": [
+        {
+          "stable_name": "SPC_summary_L0.txt",
+          "output_file_pattern": "SPC_summary_L0_*.txt",
+          "required": true,
+          "has_dated_filename": true
+        },
+        {
+          "stable_name": "rpn_summary_L0.txt",
+          "output_file_pattern": "rpn_summary_L0_*.txt",
+          "required": true,
+          "has_dated_filename": true
+        },
+        {
+          "stable_name": "RPN_summary_L0.pdf",
+          "output_file_pattern": "RPN_summary_L0_*.pdf",
+          "required": false,
+          "has_dated_filename": true,
+          "user_download_only": true
+        },
+        {
+          "stable_name": "SPC_charts_L0.pdf",
+          "output_file_pattern": "SPC_charts_L0_*.pdf",
+          "required": false,
+          "has_dated_filename": true,
+          "user_download_only": true
+        }
+      ],
+      "audit_notes": "C-01 complete. HARDCODED date 2026-01-07 in ANALYSIS_DATE - glob required (D2). Capital S in SPC_summary_L0 - case matters on Linux. RPN summary is now emitted as BOTH .txt (fed to the Step 7 statistical combine and the Step 8 SPC/RPN Claude call) and .pdf (user download). SPC_summary_L0.txt and rpn_summary_L0.txt both go to Step 7; the SPC-charts + RPN PDFs stay user-download-only, excluded from Claude by the .txt combine filter. chord_group=true: runs in parallel with step2 and step4."
+    },
+    "step4_regression_L0": {
+      "status": "active",
+      "script_filename": "AI_ready_Multiple_Regression_Model_implementation_L0_19_0.py",
+      "execution_mode": "subprocess",
+      "entry_function": null,
+      "command_template": [
+        "python",
+        "{script_path}"
+      ],
+      "working_dir": "{output_dir}",
+      "depends_on": [
+        "step1_all_module_low_perf"
+      ],
+      "chord_group": true,
+      "input_files": [
+        {
+          "param_name": "all_module_values",
+          "filename": "all_module_values.csv",
+          "required": true,
+          "source": "run_scoped"
+        },
+        {
+          "param_name": "module_mapping",
+          "filename": "module_mapping.csv",
+          "required": true,
+          "source": "org_settings_r2"
+        },
+        {
+          "param_name": "module_matrix",
+          "filename": "module_matrix.csv",
+          "required": true,
+          "source": "org_settings_r2"
+        }
+      ],
+      "output_files": [
+        {
+          "stable_name": "L0_Risk_Analysis_Report_2025.txt",
+          "output_file_pattern": "L0_Risk_Analysis_Report*.txt",
+          "required": true,
+          "has_dated_filename": false
+        }
+      ],
+      "audit_notes": "C-01 complete. CRITICAL BUG FIXED: script uses BASE_DIR=dirname(__file__) - patch to os.getcwd() before deploying (see Fix 5). Output is L0_Risk_Analysis_Report_2025.txt with capital letters. chord_group=true: runs in parallel with step2 and step3."
+    },
+    "text_report_combiner": {
+      "status": "active",
+      "script_filename": "text_report_combiner.py",
+      "execution_mode": "import",
+      "entry_function": "combine_reports",
+      "command_template": null,
+      "depends_on": [],
+      "input_files": "variable - passed at call time by esgrc_chain.py and apex_chord.py",
+      "output_files": "variable - passed at call time",
+      "audit_notes": "Dev C authored - clean for import. No side effects on module load."
+    }
+  },
+  "_module_contract": {
+    "_comment": "Every module (ESGRC, Brand, Audit, Policy, etc.) follows this 5-step contract. ScriptRunner is module-agnostic - it reads only pipeline and script_name. To add a new module: add a new top-level key here with steps matching this contract. Zero ScriptRunner changes needed.",
+    "step1": "low_performance_analysis - inputs: raw metrics CSV + config JSON. outputs: module_values.csv + low_performing_report.txt",
+    "step2": "data_preparation - inputs: module_values.csv + config JSON. outputs: filtered_metrics.csv + filtered_groups.csv + filtered_sub_modules.csv + data_for_risk_assessment.csv",
+    "step3": "correlation_chaid_ft - inputs: 3 filtered CSVs. outputs: correlation.txt + trends.txt + inconsistencies.txt + chaid.txt",
+    "step4": "spc_rpn - inputs: raw metrics CSV. outputs: metrics_summary.txt + rpn.pdf (user download)",
+    "step5": "regression - inputs: module_values.csv + config JSON. outputs: module_model_summary.txt"
+  },
+  "_r2_path_conventions": {
+    "run_scoped": "org/{org_id}/runs/{run_id}/step_{step_number}/{filename}",
+    "stable_module_output": "org/{org_id}/module_outputs/data_for_risk_assessment_{module}.csv",
+    "org_settings": "org/{org_id}/settings/{filename}",
+    "user_uploads": "org/{org_id}/uploads/{filename}"
+  }
+}

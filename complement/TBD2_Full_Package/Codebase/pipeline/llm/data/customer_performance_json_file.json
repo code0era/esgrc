@@ -1,0 +1,1994 @@
+{
+  "module_name": "Customer",
+  "module_id": "CUST_001",
+  "value": [],
+  "sub_modules": [
+    {
+      "sub_module_name": "Customer Support and Readiness",
+      "sub_module_id": "CSR10000",
+      "value": [],
+      "groups": [
+        {
+          "group_name": "Customer Support and Readiness Metrics",
+          "group_id": "CSR10001",
+          "value": [
+            {
+              "metric_name": "Average Response Time",
+              "metric_id": "CSR10101",
+              "value": "65%"
+            },
+            {
+              "metric_name": "First Contact Resolution (FCR)",
+              "metric_id": "CSR10102",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Customer Satisfaction (CSAT) Score",
+              "metric_id": "CSR10103",
+              "value": "75%"
+            },
+            {
+              "metric_name": "Service Level Agreement (SLA) Compliance",
+              "metric_id": "CSR10104",
+              "value": "65%"
+            },
+            {
+              "metric_name": "Call Abandonment Rate",
+              "metric_id": "CSR10105",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Agent Productivity",
+              "metric_id": "CSR10106",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Training Hours per Agent",
+              "metric_id": "CSR10107",
+              "value": "71%"
+            },
+            {
+              "metric_name": "Knowledge Base Utilization",
+              "metric_id": "CSR10108",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Ticket Volume",
+              "metric_id": "CSR10109",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Customer Retention Rate",
+              "metric_id": "CSR10110",
+              "value": "75%"
+            },
+            {
+              "metric_name": "Average Handle Time (AHT)",
+              "metric_id": "CSR10111",
+              "value": "65%"
+            },
+            {
+              "metric_name": "Escalation Rate",
+              "metric_id": "CSR10112",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Customer Feedback",
+              "metric_id": "CSR10113",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Agent Turnover Rate",
+              "metric_id": "CSR10114",
+              "value": "71%"
+            },
+            {
+              "metric_name": "Technology Utilization",
+              "metric_id": "CSR10115",
+              "value": "68%"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sub_module_name": "Customer Experience Management",
+      "sub_module_id": "CEM10000",
+      "value": [],
+      "groups": [
+        {
+          "group_name": "Customer Experience Management Metrics",
+          "group_id": "CEM10001",
+          "value": [
+            {
+              "metric_name": "Customer Effort Score (CES)",
+              "metric_id": "CEM10101",
+              "value": "75%"
+            },
+            {
+              "metric_name": "Customer Satisfaction (CSAT) Score",
+              "metric_id": "CEM10102",
+              "value": "65%"
+            },
+            {
+              "metric_name": "Customer Retention Rate",
+              "metric_id": "CEM10103",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Customer Churn Rate",
+              "metric_id": "CEM10104",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Average Handling Time (AHT)",
+              "metric_id": "CEM10105",
+              "value": "71%"
+            },
+            {
+              "metric_name": "First Contact Resolution (FCR)",
+              "metric_id": "CEM10106",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Customer Journey Analytics",
+              "metric_id": "CEM10107",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Service Quality (SQ) Metrics",
+              "metric_id": "CEM10108",
+              "value": "75%"
+            },
+            {
+              "metric_name": "Customer Complaints",
+              "metric_id": "CEM10109",
+              "value": "65%"
+            },
+            {
+              "metric_name": "Customer Feedback",
+              "metric_id": "CEM10110",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Customer Engagement",
+              "metric_id": "CEM10111",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Customer Lifetime Value (CLV)",
+              "metric_id": "CEM10112",
+              "value": "71%"
+            },
+            {
+              "metric_name": "Customer Segmentation",
+              "metric_id": "CEM10113",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Customer Loyalty Programs",
+              "metric_id": "CEM10114",
+              "value": "76%"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sub_module_name": "Order Handling",
+      "sub_module_id": "ORH10000",
+      "value": [],
+      "groups": [
+        {
+          "group_name": "Order Handling Metrics",
+          "group_id": "ORH10001",
+          "value": [
+            {
+              "metric_name": "Order Processing Time",
+              "metric_id": "ORH10101",
+              "value": "75%"
+            },
+            {
+              "metric_name": "Order Accuracy Rate",
+              "metric_id": "ORH10102",
+              "value": "65%"
+            },
+            {
+              "metric_name": "Order Fulfillment Rate",
+              "metric_id": "ORH10103",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Order Backlog",
+              "metric_id": "ORH10104",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Order Cancellation Rate",
+              "metric_id": "ORH10105",
+              "value": "71%"
+            },
+            {
+              "metric_name": "Order Modification Rate",
+              "metric_id": "ORH10106",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Order Tracking Accuracy",
+              "metric_id": "ORH10107",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Customer Order Inquiry Response Time",
+              "metric_id": "ORH10108",
+              "value": "75%"
+            },
+            {
+              "metric_name": "Order Completion Rate",
+              "metric_id": "ORH10109",
+              "value": "65%"
+            },
+            {
+              "metric_name": "Order Rejection Rate",
+              "metric_id": "ORH10110",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Order Entry Error Rate",
+              "metric_id": "ORH10111",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Order Status Updates",
+              "metric_id": "ORH10112",
+              "value": "71%"
+            },
+            {
+              "metric_name": "Order Confirmation Time",
+              "metric_id": "ORH10113",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Order Payment Processing Time",
+              "metric_id": "ORH10114",
+              "value": "76%"
+            },
+            {
+              "metric_name": "Order Returns Rate",
+              "metric_id": "ORH10115",
+              "value": "79%"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sub_module_name": "Customer Relationship Management",
+      "sub_module_id": "CRM10000",
+      "value": [],
+      "groups": [
+        {
+          "group_name": "Customer Relationship Management Metrics",
+          "group_id": "CRM10001",
+          "value": [
+            {
+              "metric_name": "Customer Lifetime Value (CLV)",
+              "metric_id": "CRM10101",
+              "value": "75%"
+            },
+            {
+              "metric_name": "Customer Retention Rate",
+              "metric_id": "CRM10102",
+              "value": "65%"
+            },
+            {
+              "metric_name": "Customer Acquisition Cost (CAC)",
+              "metric_id": "CRM10103",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Net Promoter Score (NPS)",
+              "metric_id": "CRM10104",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Customer Satisfaction (CSAT) Score",
+              "metric_id": "CRM10105",
+              "value": "71%"
+            },
+            {
+              "metric_name": "Churn Rate",
+              "metric_id": "CRM10106",
+              "value": "68%"
+            },
+            {
+              "metric_name": "First Contact Resolution (FCR)",
+              "metric_id": "CRM10107",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Average Response Time",
+              "metric_id": "CRM10108",
+              "value": "75%"
+            },
+            {
+              "metric_name": "Customer Engagement Rate",
+              "metric_id": "CRM10109",
+              "value": "65%"
+            },
+            {
+              "metric_name": "Sales Conversion Rate",
+              "metric_id": "CRM10110",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Customer Complaints",
+              "metric_id": "CRM10111",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Customer Feedback",
+              "metric_id": "CRM10112",
+              "value": "71%"
+            },
+            {
+              "metric_name": "Customer Interaction Volume",
+              "metric_id": "CRM10113",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Referral Rate",
+              "metric_id": "CRM10114",
+              "value": "76%"
+            },
+            {
+              "metric_name": "Customer Segmentation",
+              "metric_id": "CRM10115",
+              "value": "81%"
+            },
+            {
+              "metric_name": "Customer Touchpoint Effectiveness",
+              "metric_id": "CRM10116",
+              "value": "79%"
+            },
+            {
+              "metric_name": "Upsell and Cross-Sell Rates",
+              "metric_id": "CRM10117",
+              "value": "67%"
+            },
+            {
+              "metric_name": "Customer Onboarding Time",
+              "metric_id": "CRM10118",
+              "value": "59%"
+            },
+            {
+              "metric_name": "CRM System Utilization",
+              "metric_id": "CRM10119",
+              "value": "62%"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sub_module_name": "Customer Interaction Management",
+      "sub_module_id": "ITM10000",
+      "value": [],
+      "groups": [
+        {
+          "group_name": "Customer Interaction Management Metrics",
+          "group_id": "ITM10001",
+          "value": [
+            {
+              "metric_name": "First Contact Resolution (FCR)",
+              "metric_id": "ITM10101",
+              "value": "75%"
+            },
+            {
+              "metric_name": "Average Handling Time (AHT)",
+              "metric_id": "ITM10102",
+              "value": "65%"
+            },
+            {
+              "metric_name": "Customer Satisfaction (CSAT) Score",
+              "metric_id": "ITM10103",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Net Promoter Score (NPS)",
+              "metric_id": "ITM10104",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Customer Effort Score (CES)",
+              "metric_id": "ITM10105",
+              "value": "71%"
+            },
+            {
+              "metric_name": "Interaction Volume by Channel",
+              "metric_id": "ITM10106",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Average Response Time",
+              "metric_id": "ITM10107",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Customer Engagement Rate",
+              "metric_id": "ITM10108",
+              "value": "75%"
+            },
+            {
+              "metric_name": "Interaction Quality Score",
+              "metric_id": "ITM10109",
+              "value": "65%"
+            },
+            {
+              "metric_name": "Interaction Abandonment Rate",
+              "metric_id": "ITM10110",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Escalation Rate",
+              "metric_id": "ITM10111",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Interaction Conversion Rate",
+              "metric_id": "ITM10112",
+              "value": "71%"
+            },
+            {
+              "metric_name": "Repeat Contact Rate",
+              "metric_id": "ITM10113",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Agent Productivity",
+              "metric_id": "ITM10114",
+              "value": "76%"
+            },
+            {
+              "metric_name": "Interaction Cost",
+              "metric_id": "ITM10115",
+              "value": "81%"
+            },
+            {
+              "metric_name": "Customer Feedback",
+              "metric_id": "ITM10116",
+              "value": "79%"
+            },
+            {
+              "metric_name": "Knowledge Base Utilization",
+              "metric_id": "ITM10117",
+              "value": "67%"
+            },
+            {
+              "metric_name": "Interaction Channel Preference",
+              "metric_id": "ITM10118",
+              "value": "59%"
+            },
+            {
+              "metric_name": "Customer Retention Rate",
+              "metric_id": "ITM10119",
+              "value": "62%"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sub_module_name": "Customer Information Management",
+      "sub_module_id": "CIM10000",
+      "value": [],
+      "groups": [
+        {
+          "group_name": "Customer Information Management Metrics",
+          "group_id": "CIM10001",
+          "value": [
+            {
+              "metric_name": "Data Accuracy Rate",
+              "metric_id": "CIM10101",
+              "value": "75%"
+            },
+            {
+              "metric_name": "Data Completeness",
+              "metric_id": "CIM10102",
+              "value": "65%"
+            },
+            {
+              "metric_name": "Data Timeliness",
+              "metric_id": "CIM10103",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Data Consistency",
+              "metric_id": "CIM10104",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Data Integrity",
+              "metric_id": "CIM10105",
+              "value": "71%"
+            },
+            {
+              "metric_name": "Customer Data Access Frequency",
+              "metric_id": "CIM10106",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Data Security Incidents",
+              "metric_id": "CIM10107",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Customer Data Update Rate",
+              "metric_id": "CIM10108",
+              "value": "75%"
+            },
+            {
+              "metric_name": "Data Usage Rate",
+              "metric_id": "CIM10109",
+              "value": "65%"
+            },
+            {
+              "metric_name": "Data Redundancy",
+              "metric_id": "CIM10110",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Customer Privacy Compliance",
+              "metric_id": "CIM10111",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Data Storage Efficiency",
+              "metric_id": "CIM10112",
+              "value": "71%"
+            },
+            {
+              "metric_name": "Customer Data Enrichment Rate",
+              "metric_id": "CIM10113",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Data Matching Accuracy",
+              "metric_id": "CIM10114",
+              "value": "76%"
+            },
+            {
+              "metric_name": "Customer Data Retention Rate",
+              "metric_id": "CIM10115",
+              "value": "81%"
+            },
+            {
+              "metric_name": "Data Quality Score",
+              "metric_id": "CIM10116",
+              "value": "79%"
+            },
+            {
+              "metric_name": "Customer Information Accessibility",
+              "metric_id": "CIM10117",
+              "value": "67%"
+            },
+            {
+              "metric_name": "Data Anonymization Rate",
+              "metric_id": "CIM10118",
+              "value": "59%"
+            },
+            {
+              "metric_name": "Customer Consent Management",
+              "metric_id": "CIM10119",
+              "value": "62%"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sub_module_name": "Customer Problem Management",
+      "sub_module_id": "CPM10000",
+      "value": [],
+      "groups": [
+        {
+          "group_name": "Customer Problem Management Metrics",
+          "group_id": "CPM10001",
+          "value": [
+            {
+              "metric_name": "Problem Resolution Time",
+              "metric_id": "CPM10101",
+              "value": "75%"
+            },
+            {
+              "metric_name": "First Contact Resolution (FCR) Rate",
+              "metric_id": "CPM10102",
+              "value": "65%"
+            },
+            {
+              "metric_name": "Customer Satisfaction (CSAT) Score",
+              "metric_id": "CPM10103",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Escalation Rate",
+              "metric_id": "CPM10104",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Problem Recurrence Rate",
+              "metric_id": "CPM10105",
+              "value": "71%"
+            },
+            {
+              "metric_name": "Resolution Effectiveness",
+              "metric_id": "CPM10106",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Average Response Time",
+              "metric_id": "CPM10107",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Backlog Volume",
+              "metric_id": "CPM10108",
+              "value": "75%"
+            },
+            {
+              "metric_name": "Root Cause Analysis (RCA) Completion Rate",
+              "metric_id": "CPM10109",
+              "value": "65%"
+            },
+            {
+              "metric_name": "Customer Retention Rate",
+              "metric_id": "CPM10110",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Churn Rate",
+              "metric_id": "CPM10111",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Customer Complaints Volume",
+              "metric_id": "CPM10112",
+              "value": "71%"
+            },
+            {
+              "metric_name": "Service Level Agreement (SLA) Compliance",
+              "metric_id": "CPM10113",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Cost per Problem Resolution",
+              "metric_id": "CPM10114",
+              "value": "76%"
+            },
+            {
+              "metric_name": "Agent Productivity",
+              "metric_id": "CPM10115",
+              "value": "81%"
+            },
+            {
+              "metric_name": "Customer Feedback",
+              "metric_id": "CPM10116",
+              "value": "79%"
+            },
+            {
+              "metric_name": "Time to Escalate",
+              "metric_id": "CPM10117",
+              "value": "67%"
+            },
+            {
+              "metric_name": "Resolution Quality Score",
+              "metric_id": "CPM10118",
+              "value": "59%"
+            },
+            {
+              "metric_name": "Problem Severity Levels",
+              "metric_id": "CPM10119",
+              "value": "62%"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sub_module_name": "Customer QoS/SLA Management",
+      "sub_module_id": "QSL10000",
+      "value": [],
+      "groups": [
+        {
+          "group_name": "Customer QoS/SLA Management Metrics",
+          "group_id": "QSL10001",
+          "value": [
+            {
+              "metric_name": "Service Availability",
+              "metric_id": "QSL10101",
+              "value": "75%"
+            },
+            {
+              "metric_name": "Service Downtime",
+              "metric_id": "QSL10102",
+              "value": "65%"
+            },
+            {
+              "metric_name": "Mean Time to Repair (MTTR)",
+              "metric_id": "QSL10103",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Mean Time Between Failures (MTBF)",
+              "metric_id": "QSL10104",
+              "value": "85%"
+            },
+            {
+              "metric_name": "SLA Compliance Rate",
+              "metric_id": "QSL10105",
+              "value": "71%"
+            },
+            {
+              "metric_name": "Incident Response Time",
+              "metric_id": "QSL10106",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Incident Resolution Time",
+              "metric_id": "QSL10107",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Customer Satisfaction (CSAT) Score",
+              "metric_id": "QSL10108",
+              "value": "75%"
+            },
+            {
+              "metric_name": "Net Promoter Score (NPS)",
+              "metric_id": "QSL10109",
+              "value": "65%"
+            },
+            {
+              "metric_name": "Service Quality Index (SQI)",
+              "metric_id": "QSL10110",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Uptime Percentage",
+              "metric_id": "QSL10111",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Service Reliability",
+              "metric_id": "QSL10112",
+              "value": "71%"
+            },
+            {
+              "metric_name": "Network Latency",
+              "metric_id": "QSL10113",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Packet Loss Rate",
+              "metric_id": "QSL10114",
+              "value": "76%"
+            },
+            {
+              "metric_name": "Throughput",
+              "metric_id": "QSL10115",
+              "value": "81%"
+            },
+            {
+              "metric_name": "Customer Complaints",
+              "metric_id": "QSL10116",
+              "value": "79%"
+            },
+            {
+              "metric_name": "Service Degradation Incidents",
+              "metric_id": "QSL10117",
+              "value": "67%"
+            },
+            {
+              "metric_name": "Problem Resolution Time",
+              "metric_id": "QSL10118",
+              "value": "59%"
+            },
+            {
+              "metric_name": "Service Improvement Rate",
+              "metric_id": "QSL10119",
+              "value": "62%"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sub_module_name": "Billing and Invoice Management",
+      "sub_module_id": "BIM10000",
+      "value": [],
+      "groups": [
+        {
+          "group_name": "Billing and Invoice Management Metrics",
+          "group_id": "BIM10001",
+          "value": [
+            {
+              "metric_name": "Billing Accuracy Rate",
+              "metric_id": "BIM10101",
+              "value": "75%"
+            },
+            {
+              "metric_name": "Invoice Generation Time",
+              "metric_id": "BIM10102",
+              "value": "65%"
+            },
+            {
+              "metric_name": "On-Time Invoice Delivery Rate",
+              "metric_id": "BIM10103",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Billing Dispute Rate",
+              "metric_id": "BIM10104",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Dispute Resolution Time",
+              "metric_id": "BIM10105",
+              "value": "71%"
+            },
+            {
+              "metric_name": "Automated Billing Percentage",
+              "metric_id": "BIM10106",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Customer Satisfaction (CSAT) with Billing",
+              "metric_id": "BIM10107",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Billing Cycle Time",
+              "metric_id": "BIM10108",
+              "value": "75%"
+            },
+            {
+              "metric_name": "Invoice Payment Rate",
+              "metric_id": "BIM10109",
+              "value": "65%"
+            },
+            {
+              "metric_name": "Accounts Receivable Turnover",
+              "metric_id": "BIM10110",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Days Sales Outstanding (DSO)",
+              "metric_id": "BIM10111",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Late Payment Rate",
+              "metric_id": "BIM10112",
+              "value": "71%"
+            },
+            {
+              "metric_name": "Collection Rate",
+              "metric_id": "BIM10113",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Credit Note Issuance Rate",
+              "metric_id": "BIM10114",
+              "value": "76%"
+            },
+            {
+              "metric_name": "Recurring Billing Error Rate",
+              "metric_id": "BIM10115",
+              "value": "81%"
+            },
+            {
+              "metric_name": "Customer Feedback on Billing",
+              "metric_id": "BIM10116",
+              "value": "79%"
+            },
+            {
+              "metric_name": "Billing System Uptime",
+              "metric_id": "BIM10117",
+              "value": "67%"
+            },
+            {
+              "metric_name": "Cost per Invoice",
+              "metric_id": "BIM10118",
+              "value": "59%"
+            },
+            {
+              "metric_name": "Compliance Rate with Billing Regulations",
+              "metric_id": "BIM10119",
+              "value": "62%"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sub_module_name": "Bill Payments and Receivables Management",
+      "sub_module_id": "BPR10000",
+      "value": [],
+      "groups": [
+        {
+          "group_name": "Bill Payments and Receivables Management Metrics",
+          "group_id": "BPR10001",
+          "value": [
+            {
+              "metric_name": "Billing Accuracy Rate",
+              "metric_id": "BPR10101",
+              "value": "75%"
+            },
+            {
+              "metric_name": "Invoice Generation Time",
+              "metric_id": "BPR10102",
+              "value": "65%"
+            },
+            {
+              "metric_name": "On-Time Invoice Delivery Rate",
+              "metric_id": "BPR10103",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Billing Dispute Rate",
+              "metric_id": "BPR10104",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Dispute Resolution Time",
+              "metric_id": "BPR10105",
+              "value": "71%"
+            },
+            {
+              "metric_name": "Automated Billing Percentage",
+              "metric_id": "BPR10106",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Customer Satisfaction (CSAT) with Billing",
+              "metric_id": "BPR10107",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Billing Cycle Time",
+              "metric_id": "BPR10108",
+              "value": "75%"
+            },
+            {
+              "metric_name": "Invoice Payment Rate",
+              "metric_id": "BPR10109",
+              "value": "65%"
+            },
+            {
+              "metric_name": "Accounts Receivable Turnover",
+              "metric_id": "BPR10110",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Days Sales Outstanding (DSO)",
+              "metric_id": "BPR10111",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Late Payment Rate",
+              "metric_id": "BPR10112",
+              "value": "71%"
+            },
+            {
+              "metric_name": "Collection Rate",
+              "metric_id": "BPR10113",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Credit Note Issuance Rate",
+              "metric_id": "BPR10114",
+              "value": "76%"
+            },
+            {
+              "metric_name": "Recurring Billing Error Rate",
+              "metric_id": "BPR10115",
+              "value": "81%"
+            },
+            {
+              "metric_name": "Customer Feedback on Billing",
+              "metric_id": "BPR10116",
+              "value": "79%"
+            },
+            {
+              "metric_name": "Billing System Uptime",
+              "metric_id": "BPR10117",
+              "value": "67%"
+            },
+            {
+              "metric_name": "Cost per Invoice",
+              "metric_id": "BPR10118",
+              "value": "59%"
+            },
+            {
+              "metric_name": "Compliance Rate with Billing Regulations",
+              "metric_id": "BPR10119",
+              "value": "62%"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sub_module_name": "Billing Inquiry Handling",
+      "sub_module_id": "BIH10000",
+      "value": [],
+      "groups": [
+        {
+          "group_name": "Billing Inquiry Handling Metrics",
+          "group_id": "BIH10001",
+          "value": [
+            {
+              "metric_name": "Average Response Time",
+              "metric_id": "BIH10101",
+              "value": "75%"
+            },
+            {
+              "metric_name": "First Contact Resolution (FCR) Rate",
+              "metric_id": "BIH10102",
+              "value": "65%"
+            },
+            {
+              "metric_name": "Customer Satisfaction (CSAT) with Billing Inquiries",
+              "metric_id": "BIH10103",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Inquiry Resolution Time",
+              "metric_id": "BIH10104",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Billing Inquiry Volume",
+              "metric_id": "BIH10105",
+              "value": "71%"
+            },
+            {
+              "metric_name": "Escalation Rate",
+              "metric_id": "BIH10106",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Inquiry Accuracy Rate",
+              "metric_id": "BIH10107",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Customer Feedback on Billing Inquiries",
+              "metric_id": "BIH10108",
+              "value": "75%"
+            },
+            {
+              "metric_name": "Agent Productivity",
+              "metric_id": "BIH10109",
+              "value": "65%"
+            },
+            {
+              "metric_name": "Repeat Inquiry Rate",
+              "metric_id": "BIH10110",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Inquiry Abandonment Rate",
+              "metric_id": "BIH10111",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Average Handling Time (AHT)",
+              "metric_id": "BIH10112",
+              "value": "71%"
+            },
+            {
+              "metric_name": "Billing Inquiry Resolution Effectiveness",
+              "metric_id": "BIH10113",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Cost per Inquiry",
+              "metric_id": "BIH10114",
+              "value": "76%"
+            },
+            {
+              "metric_name": "Inquiry Closure Rate",
+              "metric_id": "BIH10115",
+              "value": "81%"
+            },
+            {
+              "metric_name": "Customer Retention Post-Inquiry",
+              "metric_id": "BIH10116",
+              "value": "79%"
+            },
+            {
+              "metric_name": "Inquiry Channel Utilization",
+              "metric_id": "BIH10117",
+              "value": "67%"
+            },
+            {
+              "metric_name": "Training Hours per Agent",
+              "metric_id": "BIH10118",
+              "value": "59%"
+            },
+            {
+              "metric_name": "Knowledge Base Utilization",
+              "metric_id": "BIH10119",
+              "value": "62%"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sub_module_name": "Manage Billing Events",
+      "sub_module_id": "BEV10000",
+      "value": [],
+      "groups": [
+        {
+          "group_name": "Manage Billing Events Metrics",
+          "group_id": "BEV10001",
+          "value": [
+            {
+              "metric_name": "Billing Event Accuracy Rate",
+              "metric_id": "BEV10101",
+              "value": "75%"
+            },
+            {
+              "metric_name": "Event Processing Time",
+              "metric_id": "BEV10102",
+              "value": "65%"
+            },
+            {
+              "metric_name": "Event Detection Rate",
+              "metric_id": "BEV10103",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Event Handling Efficiency",
+              "metric_id": "BEV10104",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Event Correlation Success Rate",
+              "metric_id": "BEV10105",
+              "value": "71%"
+            },
+            {
+              "metric_name": "Real-Time Event Processing Rate",
+              "metric_id": "BEV10106",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Event Verification Rate",
+              "metric_id": "BEV10107",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Customer Notification Time",
+              "metric_id": "BEV10108",
+              "value": "75%"
+            },
+            {
+              "metric_name": "Event Dispute Rate",
+              "metric_id": "BEV10109",
+              "value": "65%"
+            },
+            {
+              "metric_name": "Event Resolution Time",
+              "metric_id": "BEV10110",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Event Volume",
+              "metric_id": "BEV10111",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Event Audit Compliance Rate",
+              "metric_id": "BEV10112",
+              "value": "71%"
+            },
+            {
+              "metric_name": "Error Correction Rate",
+              "metric_id": "BEV10113",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Customer Impact Rate",
+              "metric_id": "BEV10114",
+              "value": "76%"
+            },
+            {
+              "metric_name": "Event-Based Billing Accuracy",
+              "metric_id": "BEV10115",
+              "value": "81%"
+            },
+            {
+              "metric_name": "Event System Uptime",
+              "metric_id": "BEV10116",
+              "value": "79%"
+            },
+            {
+              "metric_name": "Event Integration Success Rate",
+              "metric_id": "BEV10117",
+              "value": "67%"
+            },
+            {
+              "metric_name": "Customer Feedback on Billing Events",
+              "metric_id": "BEV10118",
+              "value": "59%"
+            },
+            {
+              "metric_name": "Cost per Event Processed",
+              "metric_id": "BEV10119",
+              "value": "62%"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sub_module_name": "Charging",
+      "sub_module_id": "CHG10000",
+      "value": [],
+      "groups": [
+        {
+          "group_name": "Charging Metrics",
+          "group_id": "CHG10001",
+          "value": [
+            {
+              "metric_name": "Charge Accuracy Rate",
+              "metric_id": "CHG10101",
+              "value": "75%"
+            },
+            {
+              "metric_name": "Real-Time Charging Rate",
+              "metric_id": "CHG10102",
+              "value": "65%"
+            },
+            {
+              "metric_name": "Charging Event Volume",
+              "metric_id": "CHG10103",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Latency in Charging",
+              "metric_id": "CHG10104",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Revenue Assurance Rate",
+              "metric_id": "CHG10105",
+              "value": "71%"
+            },
+            {
+              "metric_name": "Customer Satisfaction (CSAT) with Charging",
+              "metric_id": "CHG10106",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Charge Reversal Rate",
+              "metric_id": "CHG10107",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Dispute Resolution Time",
+              "metric_id": "CHG10108",
+              "value": "75%"
+            },
+            {
+              "metric_name": "Charge Dispute Rate",
+              "metric_id": "CHG10109",
+              "value": "65%"
+            },
+            {
+              "metric_name": "Revenue Leakage",
+              "metric_id": "CHG10110",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Charge Consistency Rate",
+              "metric_id": "CHG10111",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Billing Cycle Time for Charges",
+              "metric_id": "CHG10112",
+              "value": "71%"
+            },
+            {
+              "metric_name": "Charge Notification Time",
+              "metric_id": "CHG10113",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Charging System Uptime",
+              "metric_id": "CHG10114",
+              "value": "76%"
+            },
+            {
+              "metric_name": "Chargeback Rate",
+              "metric_id": "CHG10115",
+              "value": "81%"
+            },
+            {
+              "metric_name": "Rate Plan Accuracy",
+              "metric_id": "CHG10116",
+              "value": "79%"
+            },
+            {
+              "metric_name": "Automated Charging Percentage",
+              "metric_id": "CHG10117",
+              "value": "67%"
+            },
+            {
+              "metric_name": "Cost per Charging Event",
+              "metric_id": "CHG10118",
+              "value": "59%"
+            },
+            {
+              "metric_name": "Compliance Rate with Charging Regulations",
+              "metric_id": "CHG10119",
+              "value": "62%"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sub_module_name": "Manage Balances",
+      "sub_module_id": "CBC10000",
+      "value": [],
+      "groups": [
+        {
+          "group_name": "Manage Balances Metrics",
+          "group_id": "CBC10001",
+          "value": [
+            {
+              "metric_name": "Balance Accuracy Rate",
+              "metric_id": "CBC10101",
+              "value": "75%"
+            },
+            {
+              "metric_name": "Balance Update Frequency",
+              "metric_id": "CBC10102",
+              "value": "65%"
+            },
+            {
+              "metric_name": "Real-Time Balance Availability",
+              "metric_id": "CBC10103",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Balance Inquiry Response Time",
+              "metric_id": "CBC10104",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Balance Dispute Rate",
+              "metric_id": "CBC10105",
+              "value": "71%"
+            },
+            {
+              "metric_name": "Dispute Resolution Time",
+              "metric_id": "CBC10106",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Balance Reconciliation Rate",
+              "metric_id": "CBC10107",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Overdraft Occurrence Rate",
+              "metric_id": "CBC10108",
+              "value": "75%"
+            },
+            {
+              "metric_name": "Balance Notification Timeliness",
+              "metric_id": "CBC10109",
+              "value": "65%"
+            },
+            {
+              "metric_name": "Customer Satisfaction (CSAT) with Balance Management",
+              "metric_id": "CBC10110",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Balance Adjustment Rate",
+              "metric_id": "CBC10111",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Automated Balance Management Rate",
+              "metric_id": "CBC10112",
+              "value": "71%"
+            },
+            {
+              "metric_name": "Cost per Balance Inquiry",
+              "metric_id": "CBC10113",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Balance Data Integrity",
+              "metric_id": "CBC10114",
+              "value": "76%"
+            },
+            {
+              "metric_name": "Balance Monitoring Coverage",
+              "metric_id": "CBC10115",
+              "value": "81%"
+            },
+            {
+              "metric_name": "Customer Feedback on Balance Management",
+              "metric_id": "CBC10116",
+              "value": "79%"
+            },
+            {
+              "metric_name": "Balance Management System Uptime",
+              "metric_id": "CBC10117",
+              "value": "67%"
+            },
+            {
+              "metric_name": "Compliance Rate with Balance Management Regulations",
+              "metric_id": "CBC10118",
+              "value": "59%"
+            },
+            {
+              "metric_name": "Balance Report Accuracy",
+              "metric_id": "CBC10119",
+              "value": "62%"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sub_module_name": "Customer Retention Management",
+      "sub_module_id": "RTN10000",
+      "value": [],
+      "groups": [
+        {
+          "group_name": "Customer Retention Management Metrics",
+          "group_id": "RTN10001",
+          "value": [
+            {
+              "metric_name": "Customer Retention Rate",
+              "metric_id": "RTN10101",
+              "value": "75%"
+            },
+            {
+              "metric_name": "Churn Rate",
+              "metric_id": "RTN10102",
+              "value": "65%"
+            },
+            {
+              "metric_name": "Customer Lifetime Value (CLV)",
+              "metric_id": "RTN10103",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Net Promoter Score (NPS)",
+              "metric_id": "RTN10104",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Customer Satisfaction (CSAT) Score",
+              "metric_id": "RTN10105",
+              "value": "71%"
+            },
+            {
+              "metric_name": "Average Customer Tenure",
+              "metric_id": "RTN10106",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Repeat Purchase Rate",
+              "metric_id": "RTN10107",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Engagement Rate",
+              "metric_id": "RTN10108",
+              "value": "75%"
+            },
+            {
+              "metric_name": "Customer Loyalty Program Participation",
+              "metric_id": "RTN10109",
+              "value": "65%"
+            },
+            {
+              "metric_name": "Customer Feedback on Retention Efforts",
+              "metric_id": "RTN10110",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Retention Campaign Effectiveness",
+              "metric_id": "RTN10111",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Upsell and Cross-Sell Rates",
+              "metric_id": "RTN10112",
+              "value": "71%"
+            },
+            {
+              "metric_name": "Customer Support Interaction Frequency",
+              "metric_id": "RTN10113",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Service Utilization Rate",
+              "metric_id": "RTN10114",
+              "value": "76%"
+            },
+            {
+              "metric_name": "Customer Exit Survey Results",
+              "metric_id": "RTN10115",
+              "value": "81%"
+            },
+            {
+              "metric_name": "Retention Cost per Customer",
+              "metric_id": "RTN10116",
+              "value": "79%"
+            },
+            {
+              "metric_name": "Product/Service Quality Perception",
+              "metric_id": "RTN10117",
+              "value": "67%"
+            },
+            {
+              "metric_name": "Customer Complaints Resolution Rate",
+              "metric_id": "RTN10118",
+              "value": "59%"
+            },
+            {
+              "metric_name": "Referral Rate",
+              "metric_id": "RTN10119",
+              "value": "62%"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sub_module_name": "Customer Insight and Intelligence",
+      "sub_module_id": "CII10000",
+      "value": [],
+      "groups": [
+        {
+          "group_name": "Customer Insight and Intelligence Metrics",
+          "group_id": "CII10001",
+          "value": [
+            {
+              "metric_name": "Customer Satisfaction (CSAT) Score",
+              "metric_id": "CII10101",
+              "value": "75%"
+            },
+            {
+              "metric_name": "Net Promoter Score (NPS)",
+              "metric_id": "CII10102",
+              "value": "65%"
+            },
+            {
+              "metric_name": "Customer Lifetime Value (CLV)",
+              "metric_id": "CII10103",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Churn Rate",
+              "metric_id": "CII10104",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Customer Retention Rate",
+              "metric_id": "CII10105",
+              "value": "71%"
+            },
+            {
+              "metric_name": "Customer Segmentation Accuracy",
+              "metric_id": "CII10106",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Customer Journey Mapping Effectiveness",
+              "metric_id": "CII10107",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Predictive Analytics Accuracy",
+              "metric_id": "CII10108",
+              "value": "75%"
+            },
+            {
+              "metric_name": "Customer Interaction Volume",
+              "metric_id": "CII10109",
+              "value": "65%"
+            },
+            {
+              "metric_name": "Customer Feedback Collection Rate",
+              "metric_id": "CII10110",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Customer Sentiment Analysis",
+              "metric_id": "CII10111",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Behavioral Analytics Utilization",
+              "metric_id": "CII10112",
+              "value": "71%"
+            },
+            {
+              "metric_name": "Customer Data Integration Rate",
+              "metric_id": "CII10113",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Customer Profile Completeness",
+              "metric_id": "CII10114",
+              "value": "76%"
+            },
+            {
+              "metric_name": "Customer Insight Actionability",
+              "metric_id": "CII10115",
+              "value": "81%"
+            },
+            {
+              "metric_name": "Marketing Campaign Effectiveness",
+              "metric_id": "CII10116",
+              "value": "79%"
+            },
+            {
+              "metric_name": "Customer Intelligence Utilization",
+              "metric_id": "CII10117",
+              "value": "67%"
+            },
+            {
+              "metric_name": "Conversion Rate",
+              "metric_id": "CII10118",
+              "value": "59%"
+            },
+            {
+              "metric_name": "Upsell and Cross-Sell Success Rate",
+              "metric_id": "CII10119",
+              "value": "62%"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sub_module_name": "Customer Communication Management",
+      "sub_module_id": "CCM10000",
+      "value": [],
+      "groups": [
+        {
+          "group_name": "Customer Communication Management Metrics",
+          "group_id": "CCM10001",
+          "value": [
+            {
+              "metric_name": "Average Response Time",
+              "metric_id": "CCM10101",
+              "value": "75%"
+            },
+            {
+              "metric_name": "First Contact Resolution (FCR) Rate",
+              "metric_id": "CCM10102",
+              "value": "65%"
+            },
+            {
+              "metric_name": "Customer Satisfaction (CSAT) with Communication",
+              "metric_id": "CCM10103",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Net Promoter Score (NPS)",
+              "metric_id": "CCM10104",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Customer Effort Score (CES)",
+              "metric_id": "CCM10105",
+              "value": "71%"
+            },
+            {
+              "metric_name": "Communication Channel Effectiveness",
+              "metric_id": "CCM10106",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Interaction Volume by Channel",
+              "metric_id": "CCM10107",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Communication Accuracy Rate",
+              "metric_id": "CCM10108",
+              "value": "75%"
+            },
+            {
+              "metric_name": "Customer Feedback on Communication",
+              "metric_id": "CCM10109",
+              "value": "65%"
+            },
+            {
+              "metric_name": "Escalation Rate",
+              "metric_id": "CCM10110",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Repeat Contact Rate",
+              "metric_id": "CCM10111",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Communication Quality Score",
+              "metric_id": "CCM10112",
+              "value": "71%"
+            },
+            {
+              "metric_name": "Customer Engagement Rate",
+              "metric_id": "CCM10113",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Average Handling Time (AHT)",
+              "metric_id": "CCM10114",
+              "value": "76%"
+            },
+            {
+              "metric_name": "Communication Abandonment Rate",
+              "metric_id": "CCM10115",
+              "value": "81%"
+            },
+            {
+              "metric_name": "Customer Retention Rate",
+              "metric_id": "CCM10116",
+              "value": "79%"
+            },
+            {
+              "metric_name": "Training Hours per Agent",
+              "metric_id": "CCM10117",
+              "value": "67%"
+            },
+            {
+              "metric_name": "Cost per Communication",
+              "metric_id": "CCM10118",
+              "value": "59%"
+            },
+            {
+              "metric_name": "Knowledge Base Utilization",
+              "metric_id": "CCM10119",
+              "value": "62%"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sub_module_name": "Customer Segmentation and Profiling",
+      "sub_module_id": "CSP10000",
+      "value": [],
+      "groups": [
+        {
+          "group_name": "Customer Segmentation and Profiling Metrics",
+          "group_id": "CSP10001",
+          "value": [
+            {
+              "metric_name": "Segmentation Accuracy",
+              "metric_id": "CSP10101",
+              "value": "75%"
+            },
+            {
+              "metric_name": "Customer Profile Completeness",
+              "metric_id": "CSP10102",
+              "value": "65%"
+            },
+            {
+              "metric_name": "Segmentation Utilization Rate",
+              "metric_id": "CSP10103",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Profile Update Frequency",
+              "metric_id": "CSP10104",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Customer Lifetime Value (CLV)",
+              "metric_id": "CSP10105",
+              "value": "71%"
+            },
+            {
+              "metric_name": "Segment Profitability",
+              "metric_id": "CSP10106",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Customer Engagement Rate by Segment",
+              "metric_id": "CSP10107",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Response Rate to Targeted Campaigns",
+              "metric_id": "CSP10108",
+              "value": "75%"
+            },
+            {
+              "metric_name": "Conversion Rate by Segment",
+              "metric_id": "CSP10109",
+              "value": "65%"
+            },
+            {
+              "metric_name": "Customer Retention Rate by Segment",
+              "metric_id": "CSP10110",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Churn Rate by Segment",
+              "metric_id": "CSP10111",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Net Promoter Score (NPS) by Segment",
+              "metric_id": "CSP10112",
+              "value": "71%"
+            },
+            {
+              "metric_name": "Customer Satisfaction (CSAT) Score by Segment",
+              "metric_id": "CSP10113",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Segment Size and Growth Rate",
+              "metric_id": "CSP10114",
+              "value": "76%"
+            },
+            {
+              "metric_name": "Behavioral Patterns by Segment",
+              "metric_id": "CSP10115",
+              "value": "81%"
+            },
+            {
+              "metric_name": "Demographic Trends",
+              "metric_id": "CSP10116",
+              "value": "79%"
+            },
+            {
+              "metric_name": "Segment-Specific Revenue",
+              "metric_id": "CSP10117",
+              "value": "67%"
+            },
+            {
+              "metric_name": "Customer Feedback by Segment",
+              "metric_id": "CSP10118",
+              "value": "59%"
+            },
+            {
+              "metric_name": "Cost per Segment Profile",
+              "metric_id": "CSP10119",
+              "value": "62%"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sub_module_name": "Customer Feedback and Survey Management",
+      "sub_module_id": "CFS10000",
+      "value": [],
+      "groups": [
+        {
+          "group_name": "Customer Feedback and Survey Management Metrics",
+          "group_id": "CFS10001",
+          "value": [
+            {
+              "metric_name": "Response Rate",
+              "metric_id": "CFS10101",
+              "value": "75%"
+            },
+            {
+              "metric_name": "Customer Satisfaction (CSAT) Score",
+              "metric_id": "CFS10102",
+              "value": "65%"
+            },
+            {
+              "metric_name": "Net Promoter Score (NPS)",
+              "metric_id": "CFS10103",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Feedback Volume",
+              "metric_id": "CFS10104",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Survey Completion Rate",
+              "metric_id": "CFS10105",
+              "value": "71%"
+            },
+            {
+              "metric_name": "Feedback Quality Score",
+              "metric_id": "CFS10106",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Average Feedback Response Time",
+              "metric_id": "CFS10107",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Sentiment Analysis",
+              "metric_id": "CFS10108",
+              "value": "75%"
+            },
+            {
+              "metric_name": "Customer Effort Score (CES)",
+              "metric_id": "CFS10109",
+              "value": "65%"
+            },
+            {
+              "metric_name": "Actionable Feedback Rate",
+              "metric_id": "CFS10110",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Survey Accuracy",
+              "metric_id": "CFS10111",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Follow-up Rate",
+              "metric_id": "CFS10112",
+              "value": "71%"
+            },
+            {
+              "metric_name": "Feedback Resolution Time",
+              "metric_id": "CFS10113",
+              "value": "68%"
+            },
+            {
+              "metric_name": "Survey Distribution Channels",
+              "metric_id": "CFS10114",
+              "value": "76%"
+            },
+            {
+              "metric_name": "Customer Participation Rate",
+              "metric_id": "CFS10115",
+              "value": "81%"
+            },
+            {
+              "metric_name": "Feedback Loop Closure Rate",
+              "metric_id": "CFS10116",
+              "value": "79%"
+            },
+            {
+              "metric_name": "Customer Feedback Engagement",
+              "metric_id": "CFS10117",
+              "value": "67%"
+            },
+            {
+              "metric_name": "Survey Design Effectiveness",
+              "metric_id": "CFS10118",
+              "value": "59%"
+            },
+            {
+              "metric_name": "Cost per Survey Response",
+              "metric_id": "CFS10119",
+              "value": "62%"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

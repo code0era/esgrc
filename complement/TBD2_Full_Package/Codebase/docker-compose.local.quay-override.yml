@@ -1,0 +1,27 @@
+# Machine-local workaround (not meant to be committed):
+#
+# 1. This Docker Desktop install's registry policy blocks pulling minio/minio
+#    and minio/mc from Docker Hub ("pull access denied"). Both are available
+#    unrestricted on quay.io (MinIO's other official mirror), so this swaps
+#    just the image refs.
+# 2. The esgrc_api/celery_worker custom-build images fail in-VM (their
+#    Dockerfiles apt-get install gcc/libpq-dev, and the Docker Desktop Linux
+#    VM's DNS cannot currently resolve deb.debian.org). Running the API and
+#    worker directly on the host with the existing .venv_verify interpreter
+#    sidesteps that entirely, so postgres/redis need host ports exposed
+#    (they have none in docker-compose.yml, being internal-only by default).
+#    Ports 5432/6379 are already taken on this host by an unrelated
+#    "yusanet-agents" stack, hence the non-default 5434/6380 host ports.
+services:
+  postgres:
+    ports:
+      - "5555:5432"
+
+  redis:
+    ports:
+      - "6390:6379"
+
+  minio:
+    image: quay.io/minio/minio:latest
+  createbuckets:
+    image: quay.io/minio/mc:latest

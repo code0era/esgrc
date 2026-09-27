@@ -1,0 +1,71 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# Dockerfile.hf — single-container demo image for Hugging Face Spaces.
+#
+# One container serves the whole app: built React frontend (nginx static) +
+# FastAPI backend (uvicorn) + in-container Redis + SQLite (reseeded on boot).
+# No external Postgres / Redis / R2 / Celery worker. Celery runs in eager mode
+# and DEMO_MODE fakes the analytics scripts, so torch/CUDA is never needed.
+#
+# Build:  docker build -f Dockerfile.hf -t tbd2-hf .
+# Run:    docker run -p 7860:7860 tbd2-hf   ->  http://localhost:7860
+# ─────────────────────────────────────────────────────────────────────────────
+
+# ── Stage 1: build the React frontend into static assets ─────────────────────
+FROM node:20-slim AS frontend
+WORKDIR /fe
+COPY frontend/package.json frontend/package-lock.json ./
+RUN npm ci
+COPY frontend/ ./
+RUN npm run build          # -> /fe/dist (production build, hits real /api)
+
+# ── Stage 2: runtime ─────────────────────────────────────────────────────────
+FROM python:3.12-slim
+
+ENV PYTHONUNBUFFERED=1 \
+    PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONPATH=/app
+
+# nginx (front proxy), redis-server (+ redis-cli via redis-tools), and runtime
+# libs for the scientific wheels (libgomp1 for scipy/scikit-learn).
+RUN apt-get update && apt-get install -y --no-install-recommends \
+        nginx \
+        redis-server \
+        curl \
+        gcc \
+        libpq-dev \
+        libgomp1 \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /app
+
+# Python deps: both the ESGRC backend and pipeline sets (the API mounts the
+# pipeline + copilot routers, so it needs both — same as ESGRC/Dockerfile).
+# torch is deliberately NOT installed (see header).
+COPY ESGRC/requirements.txt /tmp/esgrc-req.txt
+COPY pipeline/requirements.txt /tmp/pipeline-req.txt
+RUN pip install --no-cache-dir -r /tmp/esgrc-req.txt -r /tmp/pipeline-req.txt
+
+# Application code: ESGRC app at /app, pipeline package at /app/pipeline.
+COPY ESGRC/ /app/
+COPY pipeline/ /app/pipeline/
+COPY deploy/ /app/deploy/
+
+# Backend-provided pipeline CONFIG files (present so a manual live run can find
+# them; unused in view-only demo mode). These moved under modules/ on
+# 2026-08-08; the flat /app destination is unchanged because the analytics
+# scripts resolve their inputs by bare filename from the working directory.
+COPY modules/esgrc/reference_data/esgrc_performance_json_file.json /app/
+COPY pipeline/llm/data/module_mapping.csv modules/apex/reference_data/module_matrix.csv /app/
+
+# Built frontend from stage 1.
+COPY --from=frontend /fe/dist /app/frontend_dist
+
+# Non-root (HF runs containers as uid 1000).
+RUN chmod +x /app/deploy/hf/entrypoint.sh \
+    && useradd -m -u 1000 appuser \
+    && chown -R appuser:appuser /app
+
+USER appuser
+EXPOSE 7860
+
+CMD ["/app/deploy/hf/entrypoint.sh"]

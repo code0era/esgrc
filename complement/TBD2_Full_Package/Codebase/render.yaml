@@ -1,0 +1,27 @@
+# Render Blueprint — deploys the single-container demo (the same image as
+# Dockerfile.hf: React frontend + FastAPI + in-container Redis + SQLite reseeded
+# on boot).
+#
+# DEPLOY STATUS: Render signup/dashboard is not reachable from Pakistan.
+# Shubham to deploy from India.
+#
+# Deploy: Render dashboard -> New -> Blueprint -> connect AI-ERMT-TBD-02/tbd2.
+# Render reads this file, builds Dockerfile.hf, and serves on its own $PORT
+# (the entrypoint binds nginx to $PORT automatically).
+services:
+  - type: web
+    name: vigilant-lens-demo
+    runtime: docker
+    dockerfilePath: ./Dockerfile.hf
+    plan: free
+    healthCheckPath: /api/health
+    autoDeploy: true
+    envVars:
+      # View-only seeded demo, $0 Claude spend. To enable live pipeline runs,
+      # add ANTHROPIC_API_KEY as a secret in the Render dashboard (costs money).
+      - key: DEMO_MODE
+        value: "true"
+      - key: CELERY_TASK_ALWAYS_EAGER
+        value: "true"
+      - key: AGENT_ENABLED
+        value: "false"

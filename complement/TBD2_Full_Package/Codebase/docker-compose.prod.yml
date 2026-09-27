@@ -1,0 +1,65 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# PRODUCTION override — layer on top of docker-compose.yml:
+#
+#   docker compose -f docker-compose.yml -f docker-compose.prod.yml up -d
+#
+# What this changes vs. dev:
+#   • Redis requires a password (REDIS_PASSWORD) — all clients use it.
+#   • esgrc_api is NOT published directly — only nginx exposes 80/443.
+#   • ALLOWED_ORIGINS is set (CORS locked to your domain) and DEBUG=false.
+#   • nginx uses nginx.prod.conf (TLS) and mounts real certs.
+#
+# Required in .env (see docs/deployment/PROD_DEPLOY.md): POSTGRES_PASSWORD, SECRET_KEY,
+# REDIS_PASSWORD, ALLOWED_ORIGINS, ANTHROPIC_API_KEY, CLOUDFLARE_R2_*.
+# ─────────────────────────────────────────────────────────────────────────────
+services:
+  redis:
+    command: >
+      redis-server --maxmemory 256mb --maxmemory-policy allkeys-lru
+      --requirepass ${REDIS_PASSWORD:?REDIS_PASSWORD must be set in prod}
+    healthcheck:
+      test: ["CMD", "redis-cli", "-a", "${REDIS_PASSWORD}", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  esgrc_api:
+    # Do not publish uvicorn to the host — nginx is the only public entrypoint.
+    ports: !override []
+    environment:
+      DEBUG: "false"
+      DEMO_MODE: "false"
+      ALLOWED_ORIGINS: ${ALLOWED_ORIGINS:?set your prod origin(s), comma-separated}
+      REDIS_URL: redis://:${REDIS_PASSWORD}@redis:6379/0
+      CELERY_BROKER_URL: redis://:${REDIS_PASSWORD}@redis:6379/1
+      CELERY_RESULT_BACKEND: redis://:${REDIS_PASSWORD}@redis:6379/2
+
+  celery_worker:
+    environment:
+      REDIS_URL: redis://:${REDIS_PASSWORD}@redis:6379/0
+      CELERY_BROKER_URL: redis://:${REDIS_PASSWORD}@redis:6379/1
+      CELERY_RESULT_BACKEND: redis://:${REDIS_PASSWORD}@redis:6379/2
+    # The base file bind-mounts /tmp/tbd2 from the host. On a fresh prod host
+    # Docker auto-creates that path as root, but the worker runs as uid 1000
+    # (pipeline/Dockerfile) - its first os.makedirs() under it (pipeline_work_dir
+    # in tasks/shared.py) hits PermissionError, failing every step of the first
+    # real run. Per-step work dirs are pure scratch (real outputs go to R2), so
+    # there's nothing worth persisting on the host: drop the mount and use the
+    # container's own writable /tmp, same fix docker-compose.local.yml already
+    # applies for the same reason.
+    volumes: !override []
+
+  celery_beat:
+    environment:
+      REDIS_URL: redis://:${REDIS_PASSWORD}@redis:6379/0
+      CELERY_BROKER_URL: redis://:${REDIS_PASSWORD}@redis:6379/1
+      CELERY_RESULT_BACKEND: redis://:${REDIS_PASSWORD}@redis:6379/2
+
+  nginx:
+    # Volume lists merge by target path, so the base file's
+    # frontend_dist:/usr/share/nginx/html mount carries through to prod; only
+    # the nginx.conf target is replaced here (dev conf -> prod TLS conf).
+    volumes:
+      - ./nginx/nginx.prod.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/certs:/etc/nginx/certs:ro
+      - ./nginx/certbot-www:/var/www/certbot:ro

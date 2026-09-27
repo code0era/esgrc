@@ -1,0 +1,86 @@
+# Pipeline worker dependencies
+# Pin everything - conflicts caught during C-01 audit
+
+# ── Celery + broker ───────────────────────────────────────────────────────────
+celery==5.6.3
+redis==5.0.8
+kombu==5.6.2
+
+# ── Database ──────────────────────────────────────────────────────────────────
+sqlalchemy==2.0.36
+psycopg[binary]==3.2.3
+alembic==1.13.3
+
+# ── Cloudflare R2 (S3-compatible) ────────────────────────────────────────────
+boto3==1.35.76
+botocore==1.35.76
+
+# ── Anthropic SDK ────────────────────────────────────────────────────────────
+# Bumped 2026-07-31 from 0.40.0: that version never exposed messages.count_tokens
+# at all (verified live - hasattr() False), so guard.py's context-window check
+# had been running on its char-estimate fallback for every single call, in every
+# module, since inception - not an occasional degradation, the ONLY path. 0.120.2
+# is the latest available (verified via `pip index versions anthropic`) and does
+# expose it (verified live: real MessageTokensCount response). See guard.py's
+# CHARS_PER_TOKEN_FALLBACK comment for the failure this caused on Customer.
+anthropic==0.120.2
+
+# ── Observability ────────────────────────────────────────────────────────────
+langfuse==2.57.6
+structlog==24.4.0
+sentry-sdk[fastapi]==2.19.2
+
+# ── FastAPI (for pipeline router + SSE) ──────────────────────────────────────
+fastapi==0.139.0
+starlette==1.3.1
+uvicorn[standard]==0.30.6
+httpx==0.27.2
+python-multipart==0.0.32
+pydantic==2.9.2
+pydantic-settings==2.5.2
+# Pinned below anyio 4.15.0 (released 2026-09-02): that release deprecated
+# anyio.abc.BlockingPortal with a runtime DeprecationWarning. starlette==1.3.1
+# (through its latest 1.6.0) type-hints against exactly that deprecated symbol
+# in testclient.py, so `from fastapi.testclient import TestClient` triggers the
+# warning at import time. pytest.ini has `filterwarnings = error`, so every
+# test file that imports TestClient failed collection - this broke CI (both
+# ESGRC and pipeline jobs) on every push since 2026-09-09, unnoticed because
+# nobody was watching the Actions tab. MUST stay in sync with the same pin in
+# ESGRC/requirements.txt.
+anyio<4.15
+
+# ── ESGRC app.* (pipeline.routers.copilot_router imports app.dependencies.auth,
+# which pulls in app.services.auth for JWT decode + password hashing). MUST stay
+# in sync with the same two pins in ESGRC/requirements.txt.
+PyJWT[crypto]==2.13.0
+bcrypt==4.2.1
+
+# ── Analytics script dependencies ────────────────────────────────────────────
+# MUST stay in sync with modules/requirements-analytics.txt.
+# These exact versions are verified to run all 10 Repo-01 scripts end-to-end
+# (2026-07-05). The worker runs those scripts via subprocess, so it needs the
+# full set - including flask (scripts import it), CHAID, and graphviz.
+numpy==2.2.6
+pandas==2.3.3
+scipy==1.15.3
+scikit-learn==1.7.2
+matplotlib==3.10.9
+statsmodels==0.14.6
+flask==3.1.3
+CHAID==5.4.3
+graphviz==0.21
+openpyxl==3.1.5
+xlrd==2.0.1
+# torch is installed separately in the Dockerfile (CPU wheel via the pytorch
+# index) to avoid pulling the ~2 GB CUDA build:
+#   pip install torch --index-url https://download.pytorch.org/whl/cpu
+
+# ── Utilities ────────────────────────────────────────────────────────────────
+python-dotenv==1.2.2
+pytz==2024.2
+tenacity==9.0.0
+# On-the-fly PDF rendering of .txt/.md outputs (step-file download endpoint)
+reportlab==4.2.5
+
+
+slowapi==0.1.9

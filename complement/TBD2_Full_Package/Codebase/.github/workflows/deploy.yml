@@ -1,0 +1,108 @@
+name: Deploy to Railway
+
+# DISABLED as an automatic trigger, and NOT the current deploy path.
+#
+# Railway needs a paid plan/card and was never wired up, so this workflow is
+# manual-only (workflow_dispatch) to stop a push to main firing a failing or
+# surprise deploy. Re-add `push: branches: [main]` only if Railway is adopted.
+#
+# An earlier version of this comment named Hugging Face Spaces as "the chosen
+# public demo target". That is no longer true: HF Docker Spaces began requiring
+# billing, and from Pakistan every free tier we tried (Render, Vercel, Koyeb,
+# HF) triggers card KYC. Dockerfile.hf still builds and is verified by CI, so it
+# remains usable, but it is not the plan.
+#
+# The single source of truth for how the demo is deployed is docs/deployment/DEMO_DEPLOY.md.
+on:
+  workflow_dispatch:
+
+# Only deploy if CI passes — enforced via needs: [ci]
+# Secrets required in GitHub repository settings:
+#   RAILWAY_TOKEN         — from Railway dashboard → Account Settings → Tokens
+#   ANTHROPIC_API_KEY     — Anthropic console (staging key)
+#   POSTGRES_PASSWORD     — strong random password
+#   CLOUDFLARE_R2_BUCKET
+#   CLOUDFLARE_R2_ENDPOINT
+#   CLOUDFLARE_R2_ACCESS_KEY
+#   CLOUDFLARE_R2_SECRET_KEY
+#   SECRET_KEY            — python -c "import secrets; print(secrets.token_hex(32))"
+#   DATABASE_URL          — used by the post-deploy `alembic upgrade head` step
+#   SENTRY_DSN            — optional
+
+jobs:
+  # ── Gate: CI must be green before any deploy ──────────────────────────────
+  ci:
+    name: CI Gate
+    uses: ./.github/workflows/ci.yml
+
+  # ── Deploy ────────────────────────────────────────────────────────────────
+  deploy:
+    name: Deploy to Railway
+    runs-on: ubuntu-latest
+    needs: [ci]
+    environment: production
+
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Install Railway CLI
+        run: |
+          curl -fsSL https://railway.app/install.sh | sh
+          echo "$HOME/.railway/bin" >> $GITHUB_PATH
+
+      - name: Mask secrets in logs
+        run: |
+          echo "::add-mask::${{ secrets.ANTHROPIC_API_KEY }}"
+          echo "::add-mask::${{ secrets.POSTGRES_PASSWORD }}"
+          echo "::add-mask::${{ secrets.CLOUDFLARE_R2_ACCESS_KEY }}"
+          echo "::add-mask::${{ secrets.CLOUDFLARE_R2_SECRET_KEY }}"
+          echo "::add-mask::${{ secrets.SECRET_KEY }}"
+          echo "::add-mask::${{ secrets.RAILWAY_TOKEN }}"
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build and push ESGRC API image
+        uses: docker/build-push-action@v5
+        with:
+          # Repo-root context: both Dockerfiles COPY from ESGRC/ and pipeline/, so a
+          # subdir context breaks those COPYs (matches ci.yml's build-images job).
+          context: .
+          file: ./ESGRC/Dockerfile
+          push: true
+          tags: registry.railway.app/tbd2-esgrc-api:${{ github.sha }},registry.railway.app/tbd2-esgrc-api:latest
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+      - name: Build and push pipeline worker image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: ./pipeline/Dockerfile
+          push: true
+          tags: registry.railway.app/tbd2-pipeline-worker:${{ github.sha }},registry.railway.app/tbd2-pipeline-worker:latest
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+      - name: Deploy to Railway
+        env:
+          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+        run: railway up --detach
+
+      - name: Run post-deploy migration
+        env:
+          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+        run: |
+          railway run --service esgrc-api alembic upgrade head
+          echo "✅ Migrations applied"
+
+      - name: Smoke test — liveness check
+        run: |
+          sleep 15
+          STATUS=$(curl -s -o /dev/null -w "%{http_code}" https://${{ vars.RAILWAY_PUBLIC_URL }}/health)
+          if [ "$STATUS" != "200" ]; then
+            echo "❌ Health check failed — status $STATUS"
+            exit 1
+          fi
+          echo "✅ Deployment healthy — /health returned 200"

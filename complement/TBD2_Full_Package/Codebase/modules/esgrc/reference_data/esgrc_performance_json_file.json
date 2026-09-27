@@ -1,0 +1,435 @@
+{
+  "module_id": "ESRC_001",
+  "module_name": "ESGRC Module (Enterprise Risk & Compliance)",
+  "sub_modules": [
+    {
+      "sub_module_id": "ESU10000",
+      "sub_module_name": "Environmental & Sustainability Unit",
+      "value": [],
+      "groups": [
+        {
+          "group_id": "ESU10101",
+          "group_name": "Environmental Reporting Group",
+          "value": [
+            {"metric_id": "ESU10102", "metric_name": "Emissions Compliance Rate", "weight": 1},
+            {"metric_id": "ESU10103", "metric_name": "Waste Reduction Score", "weight": 1},
+            {"metric_id": "ESU10104", "metric_name": "Resource Efficiency Index", "weight": 1}
+          ]
+        },
+        {
+          "group_id": "ESU10105",
+          "group_name": "Sustainability Strategy Group",
+          "value": [
+            {"metric_id": "ESU10106", "metric_name": "Green Sourcing Metric", "weight": 1},
+            {"metric_id": "ESU10107", "metric_name": "Renewable Energy Usage", "weight": 1}
+          ]
+        },
+        {
+          "group_id": "ESU10108",
+          "group_name": "Climate Risk Group",
+          "value": [
+            {"metric_id": "ESU10109", "metric_name": "T.C.F.D. Alignment Score", "weight": 1},
+            {"metric_id": "ESU10110", "metric_name": "Physical Risk Assessment", "weight": 1}
+          ]
+        }
+      ]
+    },
+
+    {
+      "sub_module_id": "SSU10000",
+      "sub_module_name": "Social & Safety Unit",
+      "value": [],
+      "groups": [
+        {
+          "group_id": "SSU10101",
+          "group_name": "Employee Safety Group",
+          "value": [
+            {"metric_id": "SSU10102", "metric_name": "Incident Rate (LTI)", "weight": 1},
+            {"metric_id": "SSU10103", "metric_name": "Safety Training Compliance", "weight": 1}
+          ]
+        },
+        {
+          "group_id": "SSU10104",
+          "group_name": "Workforce Practices Group",
+          "value": [
+            {"metric_id": "SSU10105", "metric_name": "Diversity & Inclusion Index", "weight": 1},
+            {"metric_id": "SSU10106", "metric_name": "Employee Turnover Rate", "weight": 1}
+          ]
+        },
+        {
+          "group_id": "SSU10107",
+          "group_name": "Social Impact Group",
+          "value": [
+            {"metric_id": "SSU10108", "metric_name": "Community Investment Score", "weight": 1},
+            {"metric_id": "SSU10109", "metric_name": "Supplier Labor Standards Score", "weight": 1}
+          ]
+        }
+      ]
+    },
+    {
+      "sub_module_id": "CSU10000",
+      "sub_module_name": "Cybersecurity Unit",
+      "value": [],
+      "groups": [
+        {
+          "group_id": "CSU10101",
+          "group_name": "Threat and Vulnerability Group",
+          "value": [
+            {"metric_id": "CSU10102", "metric_name": "Average Patching Time", "weight": 1},
+            {"metric_id": "CSU10103", "metric_name": "Critical Vulnerabilities Count", "weight": 1}
+          ]
+        },
+        {
+          "group_id": "CSU10104",
+          "group_name": "Data Protection Group",
+          "value": [
+            {"metric_id": "CSU10105", "metric_name": "Data Encryption Compliance", "weight": 1},
+            {"metric_id": "CSU10106", "metric_name": "Access Control Audit Score", "weight": 1}
+          ]
+        },
+        {
+          "group_id": "CSU10107",
+          "group_name": "Training and Awareness Group",
+          "value": [
+            {"metric_id": "CSU10108", "metric_name": "Phishing Click-Through Rate", "weight": 1},
+            {"metric_id": "CSU10109", "metric_name": "Security Policy Adherence", "weight": 1}
+          ]
+        }
+      ]
+    },
+    {
+      "sub_module_id": "GNT10000",
+      "sub_module_name": "General Notes & Training",
+      "value": [],
+      "groups": [
+        {
+          "group_id": "GNT10101",
+          "group_name": "Training Completion Group",
+          "value": [
+            {"metric_id": "GNT10102", "metric_name": "Mandatory Training Completion %", "weight": 1},
+            {"metric_id": "GNT10103", "metric_name": "Average Training Score", "weight": 1}
+          ]
+        },
+        {
+          "group_id": "GNT10104",
+          "group_name": "Internal Communication Group",
+          "value": [
+            {"metric_id": "GNT10105", "metric_name": "Policy Read Receipt %", "weight": 1},
+            {"metric_id": "GNT10106", "metric_name": "Compliance Reminder Effectiveness", "weight": 1}
+          ]
+        }
+      ]
+    },
+    {
+      "sub_module_id": "CGS10000",
+      "sub_module_name": "Corporate Governance Systems",
+      "value": [],
+      "groups": [
+        {
+          "group_id": "CGS10101",
+          "group_name": "Board Structure Group",
+          "value": [
+            {"metric_id": "CGS10102", "metric_name": "Board Independence Score", "weight": 1},
+            {"metric_id": "CGS10103", "metric_name": "Director Tenure Average", "weight": 1}
+          ]
+        },
+        {
+          "group_id": "CGS10104",
+          "group_name": "Executive Compensation Group",
+          "value": [
+            {"metric_id": "CGS10105", "metric_name": "Pay-to-Performance Alignment", "weight": 1},
+            {"metric_id": "CGS10106", "metric_name": "Say-on-Pay Approval %", "weight": 1}
+          ]
+        },
+        {
+          "group_id": "CGS10107",
+          "group_name": "Shareholder Rights Group",
+          "value": [
+            {"metric_id": "CGS10108", "metric_name": "Shareholder Proposal Success Rate", "weight": 1},
+            {"metric_id": "CGS10109", "metric_name": "Voting Turnout %", "weight": 1}
+          ]
+        }
+      ]
+    },
+    {
+      "sub_module_id": "GRC10000",
+      "sub_module_name": "Governance, Risk & Compliance",
+      "value": [],
+      "groups": [
+        {
+          "group_id": "GRC10101",
+          "group_name": "Risk Identification Group",
+          "value": [
+            {"metric_id": "GRC10102", "metric_name": "Risk Register Completeness", "weight": 1},
+            {"metric_id": "GRC10103", "metric_name": "Emerging Risk Flagging Frequency", "weight": 1},
+            {"metric_id": "GRC10104", "metric_name": "Risk Assessment Coverage", "weight": 1}
+          ]
+        },
+        {
+          "group_id": "GRC10105",
+          "group_name": "Compliance Monitoring Group",
+          "value": [
+            {"metric_id": "GRC10106", "metric_name": "Control Effectiveness Score", "weight": 1},
+            {"metric_id": "GRC10107", "metric_name": "Compliance Violation Count", "weight": 1}
+          ]
+        },
+		{
+		  "group_id": "GRC10108",
+		  "group_name": "Incident Reporting Group",
+		  "value": [
+		  	{"metric_id": "GRC10109", "metric_name": "Incident Response Time", "weight": 1},
+		  	{"metric_id": "GRC10110", "metric_name": "Root Cause Analysis Completion %", "weight": 1}
+          ]
+		}
+      ]
+    },
+	{
+	  "sub_module_id": "ERM10000",
+	  "sub_module_name": "Enterprise Risk Management",
+	  "value": [],
+	  "groups": [
+	    {
+		  "group_id": "ERM10101",
+		  "group_name": "Risk Strategy Group",
+		  "value" : [
+		  	{"metric_id": "ERM10102", "metric_name": "Risk Appetite Alignment Score", "weight": 1},
+		  	{"metric_id": "ERM10103", "metric_name": "Risk Mitigation Cost Efficiency", "weight": 1}
+		  ]
+		},
+		{
+		  "group_id": "ERM10104",
+		  "group_name": "Operational Risk Group",
+		  "value" : [
+		  	{"metric_id": "ERM10105", "metric_name": "Business Interruption Frequency", "weight": 1},
+		  	{"metric_id": "ERM10106", "metric_name": "Process Control Failure Rate", "weight": 1}
+		  ]
+		},
+		{
+		  "group_id": "ERM10107",
+		  "group_name": "Financial Risk Group",
+		  "value" : [
+		  	{"metric_id": "ERM10108", "metric_name": "Liquidity Risk Index", "weight": 1},
+		  	{"metric_id": "ERM10109", "metric_name": "Credit Exposure Score", "weight": 1}
+		  ]
+		}
+	  ]
+	},
+	{
+	  "sub_module_id": "AUD10000",
+	  "sub_module_name": "Audit",
+	  "value": [],
+	  "groups": [
+		{
+		  "group_id": "AUD10101",
+		  "group_name": "Audit Planning Group",
+		  "value" : [
+		  	{"metric_id": "AUD10102", "metric_name": "Audit Coverage %", "weight": 1},
+		  	{"metric_id": "AUD10103", "metric_name": "Audit Plan Adherence %", "weight": 1}
+		  ]
+		},
+		{
+		  "group_id": "AUD10104",
+		  "group_name": "Findings & Remediation Group",
+		  "value" : [
+		  	{"metric_id": "AUD10105", "metric_name": "High-Risk Findings Count", "weight": 1},
+		  	{"metric_id": "AUD10106", "metric_name": "Remediation Timeliness", "weight": 1}
+		  ]
+		},
+		{
+		  "group_id": "AUD10107",
+		  "group_name": "Audit Efficiency Group",
+		  "value" : [
+		  	{"metric_id": "AUD10108", "metric_name": "Audit Cycle Time", "weight": 1},
+		  	{"metric_id": "AUD10109", "metric_name": "Management Satisfaction Score", "weight": 1}
+		  	]
+		}
+		]
+	},
+	{
+	  "sub_module_id": "POL10000",
+	  "sub_module_name": "Policy Management",
+	  "value": [],
+	  "groups": [
+		{
+		  "group_id": "POL10101",
+		  "group_name": "Policy Creation Group",
+		  "value" : [
+		  	{"metric_id": "POL10102", "metric_name": "Policy Review Frequency", "weight": 1},
+		  	{"metric_id": "POL10103", "metric_name": "New Policy Approval Time", "weight": 1}
+		  	]
+		},
+		{
+		  "group_id": "POL10104",
+		  "group_name": "Policy Distribution Group",
+		  "value" : [
+		  	{"metric_id": "POL10105", "metric_name": "Policy Access Rate", "weight": 1},
+		  	{"metric_id": "POL10106", "metric_name": "Policy Acknowledgment Rate", "weight": 1}
+		    ]
+		},
+		{
+		  "group_id": "POL10107",
+		  "group_name": "Policy Adherence Group",
+		  "value" : [
+		  	{"metric_id": "POL10108", "metric_name": "Policy Breach Count", "weight": 1},
+		  	{"metric_id": "POL10109", "metric_name": "Compliance Monitoring Gaps", "weight": 1}
+			]
+		}
+		]
+	},
+	{
+	  "sub_module_id": "REG10000",
+	  "sub_module_name": "Regulatory Compliance",
+	  "value": [],
+	  "groups": [
+		{
+		  "group_id": "REG10101",
+		  "group_name": "Regulatory Monitoring Group",
+		  "value" : [
+		  	{"metric_id": "REG10102", "metric_name": "Regulatory Change Tracking %", "weight": 1},
+		  	{"metric_id": "REG10103", "metric_name": "Rule Set Implementation Lag", "weight": 1}
+			]
+		},
+		{
+		  "group_id": "REG10104",
+		  "group_name": "Reporting Group",
+		  "value" : [
+		  	{"metric_id": "REG10105", "metric_name": "Report Filing Timeliness", "weight": 1},
+		  	{"metric_id": "REG10106", "metric_name": "Regulatory Inquiry Count", "weight": 1}
+			]
+		},
+		{
+		  "group_id": "REG10107",
+		  "group_name": "Inspection & Audit Group",
+		  "value" : [
+		  	{"metric_id": "REG10108", "metric_name": "Adverse Finding Rate", "weight": 1},
+		  	{"metric_id": "REG10109", "metric_name": "Inspection Preparation Time", "weight": 1}
+		  ]
+		}
+		]
+	},
+	{
+	  "sub_module_id": "ETI10000",
+	  "sub_module_name": "Ethics & Integrity",
+	  "value": [],
+	  "groups": [
+		{
+		  "group_id": "ETI10101",
+		  "group_name": "Code of Conduct Group",
+		  "value" : [
+		  	{"metric_id": "ETI10102", "metric_name": "Code of Conduct Acknowledgment %", "weight": 1},
+		 	{"metric_id": "ETI10103", "metric_name": "Ethics Training Completion %", "weight": 1}
+			]
+		},
+			{
+		  "group_id": "ETI10104",
+		  "group_name": "Whistleblower Group",
+		  "value" : [
+		  	{"metric_id": "ETI10105", "metric_name": "Ethics Hotline Utilization Rate", "weight": 1},
+		  	{"metric_id": "ETI10106", "metric_name": "Case Resolution Timeliness", "weight": 1}
+			]
+		},
+		{
+		  "group_id": "ETI10107",
+		  "group_name": "Anti-Corruption Group",
+		  "value" : [
+		  	{"metric_id": "ETI10108", "metric_name": "Anti-Corruption Audit Findings", "weight": 1},
+		  	{"metric_id": "ETI10109", "metric_name": "Conflict of Interest Disclosure %", "weight": 1}
+			]
+		}
+		]
+	},
+	{
+	  "sub_module_id": "CGV10000",
+	  "sub_module_name": "Corporate Governance",
+	  "value": [],
+	  "groups": [
+		{
+		  "group_id": "CGV10101",
+		  "group_name": "Shareholder Relations Group",
+		  "value" : [
+		  	{"metric_id": "CGV10102", "metric_name": "ESG Rating Agency Score", "weight": 1},
+		  	{"metric_id": "CGV10103", "metric_name": "Investor Engagement Frequency", "weight": 1}
+			]
+		},
+		{
+		  "group_id": "CGV10104",
+		  "group_name": "Board Administration Group",
+		  "value" : [
+		  	{"metric_id": "CGV10105", "metric_name": "Board Meeting Attendance %", "weight": 1},
+		  	{"metric_id": "CGV10106", "metric_name": "Committee Charter Compliance", "weight": 1}
+			]
+		},
+		{
+		  "group_id": "CGV10107",
+		  "group_name": "Disclosure & Transparency Group",
+		  "value" : [
+		  	{"metric_id": "CGV10108", "metric_name": "Sustainability Report Score", "weight": 1},
+		  	{"metric_id": "CGV10109", "metric_name": "Reporting Framework Adherence", "weight": 1}
+			]
+		}
+		]
+	},
+	{
+	  "sub_module_id": "IGV10000",
+	  "sub_module_name": "Information Governance",
+	  "value": [],
+	  "groups": [
+		{
+		  "group_id": "IGV10101",
+		  "group_name": "Data Quality Group",
+		  "value" : [
+		  	{"metric_id": "IGV10102", "metric_name": "Data Accuracy Rate", "weight": 1},
+		  	{"metric_id": "IGV10103", "metric_name": "Master Data Management Score", "weight": 1}
+			]
+		},
+		{
+		  "group_id": "IGV10104",
+		  "group_name": "Record Management Group",
+		  "value" : [
+		  	{"metric_id": "IGV10105", "metric_name": "Retention Policy Compliance", "weight": 1},
+		   	{"metric_id": "IGV10106", "metric_name": "Legal Hold Response Time", "weight": 1}
+			]
+		},
+		{
+		  "group_id": "IGV10107",
+		  "group_name": "Information Security Group",
+		  "value" : [
+		  	{"metric_id": "IGV10108", "metric_name": "Data Leakage Prevention Score", "weight": 1},
+		  	{"metric_id": "IGV10109", "metric_name": "Sensitive Data Access Log Audits", "weight": 1}
+			]
+		}
+		]
+	},
+	{
+	  "sub_module_id": "CPI10000",
+	  "sub_module_name": "Corporate Social Programs",
+	  "value": [],
+	  "groups": [
+		{
+		  "group_id": "CPI10101",
+		  "group_name": "Employee Wellness Group",
+		  "value" : [
+		  	{"metric_id": "CPI10102", "metric_name": "Wellness Program Participation", "weight": 1},
+		  	{"metric_id": "CPI10103", "metric_name": "Absenteeism Rate", "weight": 1}
+			]
+		},
+		{
+		  "group_id": "CPI10104",
+		  "group_name": "Volunteering Group",
+		  "value" : [
+		  	{"metric_id": "CPI10105", "metric_name": "Volunteer Hours Per Employee", "weight": 1},
+		  	{"metric_id": "CPI10106", "metric_name": "Community Partner Satisfaction", "weight": 1}
+		  	]
+		},
+		{
+		  "group_id": "CPI10107",
+		  "group_name": "Philanthropy Group",
+		  "value" : [
+		  	{"metric_id": "CPI10108", "metric_name": "Donation Match Utilization", "weight": 1},
+		  	{"metric_id": "CPI10109", "metric_name": "Philanthropic Focus Alignment", "weight": 1}
+			]
+		}
+	  ]
+	}
+  ]
+}

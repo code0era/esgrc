@@ -1,0 +1,2707 @@
+{
+    "module_name": "Enterprise",
+    "module_id": "ETPR_001",
+    "value": [], 
+    "sub_modules": [
+      {
+        "sub_module_name": "Strategic Management",
+        "sub_module_id": "EST10000",
+	"value": [],
+        "groups": [
+          {
+            "group_name": "1. Strategic Planning",
+            "group_id": "EST10101",
+            "value": [
+              {
+                "metric_name": "Strategic Plan Development Time",
+                "metric_id": "EST10102",
+                "value": "85%"
+              },
+              {
+                "metric_name": "Plan Execution Rate",
+                "metric_id": "EST10103",
+                "value": "75%"
+              },
+              {
+                "metric_name": "Strategic Alignment Score",
+                "metric_id": "EST10104",
+                "value": "65%"
+              }
+            ]
+          },
+          {
+            "group_name": "2. Business Plan Development",
+            "group_id": "EST10105",
+            "value": [
+              {
+                "metric_name": "Business Plan Accuracy",
+                "metric_id": "EST10106",
+                "value": "65%"
+              },
+              {
+                "metric_name": "Plan Implementation Time",
+                "metric_id": "EST10107",
+                "value": "75%"
+              },
+              {
+                "metric_name": "Plan Adaptability Score",
+                "metric_id": "EST10108",
+                "value": "78%"
+              }
+            ]
+          },
+          {
+            "group_name": "3. Revenue Stream Concepts",
+            "group_id": "EST10109",
+            "value": [
+              {
+                "metric_name": "Revenue Growth Rate",
+                "metric_id": "EST10110",
+                "value": "67%"
+              },
+              {
+                "metric_name": "Revenue Diversification Rate",
+                "metric_id": "EST10111",
+                "value": "85%"
+              },
+              {
+                "metric_name": "Revenue Forecast Accuracy",
+                "metric_id": "EST10112",
+                "value": "75%"
+              }
+            ]
+          },
+          {
+            "group_name": "4. Customer Base Focus",
+            "group_id": "EST10113",
+            "value": [
+              {
+                "metric_name": "Customer Retention Rate",
+                "metric_id": "EST10114",
+                "value": "84%"
+              },
+              {
+                "metric_name": "Customer Acquisition Cost",
+                "metric_id": "EST10115",
+                "value": "86%"
+              },
+              {
+                "metric_name": "Customer Satisfaction Score",
+                "metric_id": "EST10116",
+                "value": "74%"
+              }
+            ]
+          },
+          {
+            "group_name": "5. Outsourcing Opportunities",
+            "group_id": "EST10117",
+            "value": [
+              {
+                "metric_name": "Outsourcing Cost Savings",
+                "metric_id": "EST10118",
+                "value": "76%"
+              },
+              {
+                "metric_name": "Outsourcing Efficiency Rate",
+                "metric_id": "EST10119",
+                "value": "75%"
+              },
+              {
+                "metric_name": "Outsourcing Risk Management Score",
+                "metric_id": "EST10120",
+                "value": "86%"
+              }
+            ]
+          },
+          {
+            "group_name": "6. Strategic Business Direction",
+            "group_id": "EST10121",
+            "value": [
+              {
+                "metric_name": "Strategic Direction Clarity Score",
+                "metric_id": "EST10122",
+                "value": "74%"
+              },
+              {
+                "metric_name": "Strategic Initiative Success Rate",
+                "metric_id": "EST10123",
+                "value": "73%"
+              },
+              {
+                "metric_name": "Strategic Performance Metrics",
+                "metric_id": "EST10124",
+                "value": "76%"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "sub_module_name": "Enterprise Risk Management",
+        "sub_module_id": "ERK10000",
+	"value": [],
+        "groups": [
+          {
+            "group_name": "1. Risk Identification and Assessment",
+            "group_id": "ERK10101",
+            "value": [
+              {
+                "metric_name": "Risk Identification Rate",
+                "metric_id": "ERK10102",
+                "value": "85%"
+              },
+              {
+                "metric_name": "Risk Assessment Accuracy",
+                "metric_id": "ERK10103",
+                "value": "75%"
+              },
+              {
+                "metric_name": "Risk Prioritization Score",
+                "metric_id": "ERK10104",
+                "value": "65%"
+              }
+            ]
+          },
+          {
+            "group_name": "2. Risk Mitigation",
+            "group_id": "ERK10105",
+            "value": [
+              {
+                "metric_name": "Mitigation Plan Implementation Rate",
+                "metric_id": "ERK10106",
+                "value": "65%"
+              },
+              {
+                "metric_name": "Mitigation Effectiveness Score",
+                "metric_id": "ERK10107",
+                "value": "75%"
+              },
+              {
+                "metric_name": "Incident Response Time",
+                "metric_id": "ERK10108",
+                "value": "78%"
+              }
+            ]
+          },
+          {
+            "group_name": "3. Compliance and Audit",
+            "group_id": "ERK10109",
+            "value": [
+              {
+                "metric_name": "Compliance Rate",
+                "metric_id": "ERK10110",
+                "value": "67%"
+              },
+              {
+                "metric_name": "Audit Findings Resolution Time",
+                "metric_id": "ERK10111",
+                "value": "85%"
+              },
+              {
+                "metric_name": "Audit Frequency",
+                "metric_id": "ERK10112",
+                "value": "75%"
+              }
+            ]
+          },
+          {
+            "group_name": "4. Financial Impact",
+            "group_id": "ERK10113",
+            "value": [
+              {
+                "metric_name": "Estimated Financial Impact",
+                "metric_id": "ERK10114",
+                "value": "84%"
+              },
+              {
+                "metric_name": "Actual Financial Impact",
+                "metric_id": "ERK10115",
+                "value": "86%"
+              },
+              {
+                "metric_name": "Cost of Risk Management",
+                "metric_id": "ERK10116",
+                "value": "74%"
+              }
+            ]
+          },
+          {
+            "group_name": "5. Partner and Stakeholder Satisfaction",
+            "group_id": "ERK10117",
+            "value": [
+              {
+                "metric_name": "Partner Satisfaction Score",
+                "metric_id": "ERK10118",
+                "value": "76%"
+              },
+              {
+                "metric_name": "Stakeholder Feedback Implementation Rate",
+                "metric_id": "ERK10119",
+                "value": "75%"
+              },
+              {
+                "metric_name": "Net Promoter Score (NPS)",
+                "metric_id": "ERK10120",
+                "value": "86%"
+              }
+            ]
+          },
+          {
+            "group_name": "6. Operational Efficiency",
+            "group_id": "ERK10121",
+            "value": [
+              {
+                "metric_name": "Resource Utilization",
+                "metric_id": "ERK10122",
+                "value": "74%"
+              },
+              {
+                "metric_name": "Backlog of Unresolved Risks",
+                "metric_id": "ERK10123",
+                "value": "73%"
+              },
+              {
+                "metric_name": "Process Improvement Rate",
+                "metric_id": "ERK10124",
+                "value": "76%"
+              }
+            ]
+          },
+          {
+            "group_name": "7. Proactive Measures",
+            "group_id": "ERK10125",
+            "value": [
+              {
+                "metric_name": "Proactive Issue Resolution Rate",
+                "metric_id": "ERK10126",
+                "value": "75%"
+              },
+              {
+                "metric_name": "Support Knowledge Base Utilization",
+                "metric_id": "ERK10127",
+                "value": "75%"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "sub_module_name": "Financial Management",
+        "sub_module_id": "EFI10000",
+	"value": [],
+        "groups": [
+          {
+            "group_name": "1. Budget Management",
+            "group_id": "EFI10101",
+            "value": [
+              {
+                "metric_name": "Budget Variance",
+                "metric_id": "EFI10102",
+                "value": "85%"
+              },
+              {
+                "metric_name": "Budget Utilization Rate",
+                "metric_id": "EFI10103",
+                "value": "75%"
+              },
+              {
+                "metric_name": "Cost Control Effectiveness",
+                "metric_id": "EFI10104",
+                "value": "65%"
+              }
+            ]
+          },
+          {
+            "group_name": "2. Financial Planning",
+            "group_id": "EFI10105",
+            "value": [
+              {
+                "metric_name": "Forecast Accuracy",
+                "metric_id": "EFI10106",
+                "value": "65%"
+              },
+              {
+                "metric_name": "Planning Horizon",
+                "metric_id": "EFI10107",
+                "value": "75%"
+              },
+              {
+                "metric_name": "Scenario Analysis",
+                "metric_id": "EFI10108",
+                "value": "78%"
+              }
+            ]
+          },
+          {
+            "group_name": "3. Cash Flow Management",
+            "group_id": "EFI10109",
+            "value": [
+              {
+                "metric_name": "Cash Flow Variance",
+                "metric_id": "EFI10110",
+                "value": "67%"
+              },
+              {
+                "metric_name": "Days Sales Outstanding (DSO)",
+                "metric_id": "EFI10111",
+                "value": "85%"
+              },
+              {
+                "metric_name": "Cash Conversion Cycle",
+                "metric_id": "EFI10112",
+                "value": "75%"
+              }
+            ]
+          },
+          {
+            "group_name": "4. Revenue Management",
+            "group_id": "EFI10113",
+            "value": [
+              {
+                "metric_name": "Revenue Growth Rate",
+                "metric_id": "EFI10114",
+                "value": "84%"
+              },
+              {
+                "metric_name": "Revenue Forecast Accuracy",
+                "metric_id": "EFI10115",
+                "value": "86%"
+              },
+              {
+                "metric_name": "Revenue Recognition Accuracy",
+                "metric_id": "EFI10116",
+                "value": "74%"
+              }
+            ]
+          },
+          {
+            "group_name": "5. Expense Management",
+            "group_id": "EFI10117",
+            "value": [
+              {
+                "metric_name": "Expense Variance",
+                "metric_id": "EFI10118",
+                "value": "76%"
+              },
+              {
+                "metric_name": "Cost per Unit",
+                "metric_id": "EFI10119",
+                "value": "75%"
+              },
+              {
+                "metric_name": "Expense Reduction Rate",
+                "metric_id": "EFI10120",
+                "value": "86%"
+              }
+            ]
+          },
+          {
+            "group_name": "6. Financial Reporting",
+            "group_id": "EFI10121",
+            "value": [
+              {
+                "metric_name": "Reporting Accuracy",
+                "metric_id": "EFI10122",
+                "value": "74%"
+              },
+              {
+                "metric_name": "Reporting Timeliness",
+                "metric_id": "EFI10123",
+                "value": "73%"
+              },
+              {
+                "metric_name": "Audit Findings Resolution Time",
+                "metric_id": "EFI10124",
+                "value": "76%"
+              }
+            ]
+          },
+          {
+            "group_name": "7. Investment Management",
+            "group_id": "EFI10125",
+            "value": [
+              {
+                "metric_name": "Return on Investment (ROI)",
+                "metric_id": "EFI10126",
+                "value": "75%"
+              },
+              {
+                "metric_name": "Investment Portfolio Diversification",
+                "metric_id": "EFI10127",
+                "value": "75%"
+              },
+              {
+                "metric_name": "Investment Risk Management Score",
+                "metric_id": "EFI10128",
+                "value": "84%"
+              }
+            ]
+          },
+          {
+            "group_name": "8. Partner and Stakeholder Satisfaction",
+            "group_id": "EFI10129",
+            "value": [
+              {
+                "metric_name": "Partner Satisfaction Score",
+                "metric_id": "EFI10130",
+                "value": "79%"
+              },
+              {
+                "metric_name": "Stakeholder Feedback Implementation Rate",
+                "metric_id": "EFI10131",
+                "value": "81%"
+              },
+              {
+                "metric_name": "Net Promoter Score (NPS)",
+                "metric_id": "EFI10132",
+                "value": "85%"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "sub_module_name": "Knowledge Management",
+        "sub_module_id": "EKW10000",
+	"value": [],
+        "groups": [
+          {
+            "group_name": "1. Knowledge Capture and Storage",
+            "group_id": "EKW10101",
+            "value": [
+              {
+                "metric_name": "Knowledge Capture Rate",
+                "metric_id": "EKW10102",
+                "value": "85%"
+              },
+              {
+                "metric_name": "Knowledge Storage Accuracy",
+                "metric_id": "EKW10103",
+                "value": "75%"
+              },
+              {
+                "metric_name": "Knowledge Retrieval Time",
+                "metric_id": "EKW10104",
+                "value": "65%"
+              }
+            ]
+          },
+          {
+            "group_name": "2. Knowledge Sharing and Collaboration",
+            "group_id": "EKW10105",
+            "value": [
+              {
+                "metric_name": "Knowledge Sharing Rate",
+                "metric_id": "EKW10106",
+                "value": "65%"
+              },
+              {
+                "metric_name": "Collaboration Participation Rate",
+                "metric_id": "EKW10107",
+                "value": "75%"
+              },
+              {
+                "metric_name": "Collaboration Effectiveness Score",
+                "metric_id": "EKW10108",
+                "value": "78%"
+              }
+            ]
+          },
+          {
+            "group_name": "3. Knowledge Utilization",
+            "group_id": "EKW10109",
+            "value": [
+              {
+                "metric_name": "Knowledge Utilization Rate",
+                "metric_id": "EKW10110",
+                "value": "67%"
+              },
+              {
+                "metric_name": "Knowledge Application Accuracy",
+                "metric_id": "EKW10111",
+                "value": "85%"
+              },
+              {
+                "metric_name": "Knowledge Impact Score",
+                "metric_id": "EKW10112",
+                "value": "75%"
+              }
+            ]
+          },
+          {
+            "group_name": "4. Knowledge Quality",
+            "group_id": "EKW10113",
+            "value": [
+              {
+                "metric_name": "Knowledge Quality Score",
+                "metric_id": "EKW10114",
+                "value": "84%"
+              },
+              {
+                "metric_name": "Error Rate in Knowledge",
+                "metric_id": "EKW10115",
+                "value": "86%"
+              },
+              {
+                "metric_name": "Knowledge Update Frequency",
+                "metric_id": "EKW10116",
+                "value": "74%"
+              }
+            ]
+          },
+          {
+            "group_name": "5. Training and Development",
+            "group_id": "EKW10117",
+            "value": [
+              {
+                "metric_name": "Training Participation Rate",
+                "metric_id": "EKW10118",
+                "value": "76%"
+              },
+              {
+                "metric_name": "Training Effectiveness Score",
+                "metric_id": "EKW10119",
+                "value": "75%"
+              },
+              {
+                "metric_name": "Skill Improvement Rate",
+                "metric_id": "EKW10120",
+                "value": "86%"
+              }
+            ]
+          },
+          {
+            "group_name": "6. Partner and Stakeholder Satisfaction",
+            "group_id": "EKW10121",
+            "value": [
+              {
+                "metric_name": "Partner Satisfaction Score",
+                "metric_id": "EKW10122",
+                "value": "74%"
+              },
+              {
+                "metric_name": "Stakeholder Feedback Implementation Rate",
+                "metric_id": "EKW10123",
+                "value": "73%"
+              },
+              {
+                "metric_name": "Net Promoter Score (NPS)",
+                "metric_id": "EKW10124",
+                "value": "76%"
+              }
+            ]
+          },
+          {
+            "group_name": "7. Continuous Improvement",
+            "group_id": "EKW10125",
+            "value": [
+              {
+                "metric_name": "Policy Update Frequency",
+                "metric_id": "EKW10126",
+                "value": "75%"
+              },
+              {
+                "metric_name": "Process Improvement Rate",
+                "metric_id": "EKW10127",
+                "value": "75%"
+              },
+              {
+                "metric_name": "Innovation in Knowledge Management",
+                "metric_id": "EKW10128",
+                "value": "84%"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "sub_module_name": "Human Resources Management",
+        "sub_module_id": "EHU10000",
+	"value": [],
+        "groups": [
+          {
+            "group_name": "1. Recruitment and Hiring",
+            "group_id": "EHU10101",
+            "value": [
+              {
+                "metric_name": "Time to Hire",
+                "metric_id": "EHU10102",
+                "value": "85%"
+              },
+              {
+                "metric_name": "Cost per Hire",
+                "metric_id": "EHU10103",
+                "value": "75%"
+              },
+              {
+                "metric_name": "Quality of Hire",
+                "metric_id": "EHU10104",
+                "value": "65%"
+              }
+            ]
+          },
+          {
+            "group_name": "2. Employee Retention",
+            "group_id": "EHU10105",
+            "value": [
+              {
+                "metric_name": "Employee Turnover Rate",
+                "metric_id": "EHU10106",
+                "value": "65%"
+              },
+              {
+                "metric_name": "Retention Rate",
+                "metric_id": "EHU10107",
+                "value": "75%"
+              },
+              {
+                "metric_name": "Reasons for Leaving",
+                "metric_id": "EHU10108",
+                "value": "78%"
+              }
+            ]
+          },
+          {
+            "group_name": "3. Employee Engagement",
+            "group_id": "EHU10109",
+            "value": [
+              {
+                "metric_name": "Employee Engagement Score",
+                "metric_id": "EHU10110",
+                "value": "67%"
+              },
+              {
+                "metric_name": "Employee Net Promoter Score (eNPS)",
+                "metric_id": "EHU10111",
+                "value": "85%"
+              },
+              {
+                "metric_name": "Absenteeism Rate",
+                "metric_id": "EHU10112",
+                "value": "75%"
+              }
+            ]
+          },
+          {
+            "group_name": "4. Training and Development",
+            "group_id": "EHU10113",
+            "value": [
+              {
+                "metric_name": "Training Participation Rate",
+                "metric_id": "EHU10114",
+                "value": "84%"
+              },
+              {
+                "metric_name": "Training Effectiveness Score",
+                "metric_id": "EHU10115",
+                "value": "86%"
+              },
+              {
+                "metric_name": "Skill Improvement Rate",
+                "metric_id": "EHU10116",
+                "value": "74%"
+              }
+            ]
+          },
+          {
+            "group_name": "5. Performance Management",
+            "group_id": "EHU10117",
+            "value": [
+              {
+                "metric_name": "Performance Review Accuracy",
+                "metric_id": "EHU10118",
+                "value": "76%"
+              },
+              {
+                "metric_name": "Goal Achievement Rate",
+                "metric_id": "EHU10119",
+                "value": "75%"
+              },
+              {
+                "metric_name": "Performance Improvement Plans",
+                "metric_id": "EHU10120",
+                "value": "86%"
+              }
+            ]
+          },
+          {
+            "group_name": "6. Compensation and Benefits",
+            "group_id": "EHU10121",
+            "value": [
+              {
+                "metric_name": "Salary Averages",
+                "metric_id": "EHU10122",
+                "value": "74%"
+              },
+              {
+                "metric_name": "Salary Range Penetration",
+                "metric_id": "EHU10123",
+                "value": "73%"
+              },
+              {
+                "metric_name": "Benefits Utilization Rate",
+                "metric_id": "EHU10124",
+                "value": "76%"
+              }
+            ]
+          },
+          {
+            "group_name": "7. Diversity and Inclusion",
+            "group_id": "EHU10125",
+            "value": [
+              {
+                "metric_name": "Diversity Ratios",
+                "metric_id": "EHU10126",
+                "value": "75%"
+              },
+              {
+                "metric_name": "Inclusion Score",
+                "metric_id": "EHU10127",
+                "value": "75%"
+              },
+              {
+                "metric_name": "Diversity Training Participation",
+                "metric_id": "EHU10128",
+                "value": "84%"
+              }
+            ]
+          },
+          {
+            "group_name": "8. Partner and Stakeholder Satisfaction",
+            "group_id": "EHU10129",
+            "value": [
+              {
+                "metric_name": "Partner Satisfaction Score",
+                "metric_id": "EHU10130",
+                "value": "75%"
+              },
+              {
+                "metric_name": "Stakeholder Feedback Implementation Rate",
+                "metric_id": "EHU10131",
+                "value": "86%"
+              },
+              {
+                "metric_name": "Net Promoter Score (NPS)",
+                "metric_id": "EHU10132",
+                "value": "79%"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "sub_module_name": "Business Assurance Framework Management",
+        "sub_module_id": "EBA10000",
+	"value": [],
+        "groups": [
+          {
+            "group_name": "1. Assurance Process Efficiency",
+            "group_id": "EBA10101",
+            "value": [
+              {
+                "metric_name": "Process Efficiency Score",
+                "metric_id": "EBA10102",
+                "value": "85%"
+              },
+              {
+                "metric_name": "Average Resolution Time",
+                "metric_id": "EBA10103",
+                "value": "75%"
+              },
+              {
+                "metric_name": "Process Automation Rate",
+                "metric_id": "EBA10104",
+                "value": "65%"
+              }
+            ]
+          },
+          {
+            "group_name": "2. Risk and Compliance",
+            "group_id": "EBA10105",
+            "value": [
+              {
+                "metric_name": "Compliance Rate",
+                "metric_id": "EBA10106",
+                "value": "65%"
+              },
+              {
+                "metric_name": "Risk Identification Rate",
+                "metric_id": "EBA10107",
+                "value": "75%"
+              },
+              {
+                "metric_name": "Risk Mitigation Effectiveness",
+                "metric_id": "EBA10108",
+                "value": "78%"
+              }
+            ]
+          },
+          {
+            "group_name": "3. Data Integrity and Quality",
+            "group_id": "EBA10109",
+            "value": [
+              {
+                "metric_name": "Data Accuracy Score",
+                "metric_id": "EBA10110",
+                "value": "67%"
+              },
+              {
+                "metric_name": "Data Quality Improvement Rate",
+                "metric_id": "EBA10111",
+                "value": "85%"
+              },
+              {
+                "metric_name": "Data Integrity Incidents",
+                "metric_id": "EBA10112",
+                "value": "75%"
+              }
+            ]
+          },
+          {
+            "group_name": "4. Customer Experience",
+            "group_id": "EBA10113",
+            "value": [
+              {
+                "metric_name": "Customer Satisfaction Score",
+                "metric_id": "EBA10114",
+                "value": "84%"
+              },
+              {
+                "metric_name": "Customer Complaint Resolution Time",
+                "metric_id": "EBA10115",
+                "value": "86%"
+              },
+              {
+                "metric_name": "Customer Experience Improvement Rate",
+                "metric_id": "EBA10116",
+                "value": "74%"
+              }
+            ]
+          },
+          {
+            "group_name": "5. Financial Impact",
+            "group_id": "EBA10117",
+            "value": [
+              {
+                "metric_name": "Cost of Assurance",
+                "metric_id": "EBA10118",
+                "value": "76%"
+              },
+              {
+                "metric_name": "Financial Impact of Assurance",
+                "metric_id": "EBA10119",
+                "value": "75%"
+              },
+              {
+                "metric_name": "Return on Assurance Investment",
+                "metric_id": "EBA10120",
+                "value": "86%"
+              }
+            ]
+          },
+          {
+            "group_name": "6. Partner and Stakeholder Satisfaction",
+            "group_id": "EBA10121",
+            "value": [
+              {
+                "metric_name": "Partner Satisfaction Score",
+                "metric_id": "EBA10122",
+                "value": "74%"
+              },
+              {
+                "metric_name": "Stakeholder Feedback Implementation Rate",
+                "metric_id": "EBA10123",
+                "value": "73%"
+              },
+              {
+                "metric_name": "Net Promoter Score (NPS)",
+                "metric_id": "EBA10124",
+                "value": "76%"
+              }
+            ]
+          },
+          {
+            "group_name": "7. Continuous Improvement",
+            "group_id": "EBA10125",
+            "value": [
+              {
+                "metric_name": "Policy Update Frequency",
+                "metric_id": "EBA10126",
+                "value": "75%"
+              },
+              {
+                "metric_name": "Process Improvement Rate",
+                "metric_id": "EBA10127",
+                "value": "75%"
+              },
+              {
+                "metric_name": "Innovation in Assurance",
+                "metric_id": "EBA10128",
+                "value": "84%"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "sub_module_name": "Supply Chain Management",
+        "sub_module_id": "ESC10000",
+	"value": [],
+        "groups": [
+          {
+            "group_name": "1. Supply Chain Efficiency",
+            "group_id": "ESC10101",
+            "value": [
+              {
+                "metric_name": "Order Fulfillment Cycle Time",
+                "metric_id": "ESC10102",
+                "value": "85%"
+              },
+              {
+                "metric_name": "Inventory Turnover Ratio",
+                "metric_id": "ESC10103",
+                "value": "75%"
+              },
+              {
+                "metric_name": "Supply Chain Cost per Unit",
+                "metric_id": "ESC10104",
+                "value": "65%"
+              }
+            ]
+          },
+          {
+            "group_name": "2. Supplier Performance",
+            "group_id": "ESC10105",
+            "value": [
+              {
+                "metric_name": "Supplier On-Time Delivery Rate",
+                "metric_id": "ESC10106",
+                "value": "65%"
+              },
+              {
+                "metric_name": "Supplier Quality Score",
+                "metric_id": "ESC10107",
+                "value": "75%"
+              },
+              {
+                "metric_name": "Supplier Compliance Rate",
+                "metric_id": "ESC10108",
+                "value": "78%"
+              }
+            ]
+          },
+          {
+            "group_name": "3. Inventory Management",
+            "group_id": "ESC10109",
+            "value": [
+              {
+                "metric_name": "Stockout Rate",
+                "metric_id": "ESC10110",
+                "value": "67%"
+              },
+              {
+                "metric_name": "Excess Inventory Rate",
+                "metric_id": "ESC10111",
+                "value": "85%"
+              },
+              {
+                "metric_name": "Inventory Accuracy",
+                "metric_id": "ESC10112",
+                "value": "75%"
+              }
+            ]
+          },
+          {
+            "group_name": "4. Transportation and Logistics",
+            "group_id": "ESC10113",
+            "value": [
+              {
+                "metric_name": "Freight Cost per Unit",
+                "metric_id": "ESC10114",
+                "value": "84%"
+              },
+              {
+                "metric_name": "Transportation Lead Time",
+                "metric_id": "ESC10115",
+                "value": "86%"
+              },
+              {
+                "metric_name": "Logistics Cost per Unit",
+                "metric_id": "ESC10116",
+                "value": "74%"
+              }
+            ]
+          },
+          {
+            "group_name": "5. Customer Service",
+            "group_id": "ESC10117",
+            "value": [
+              {
+                "metric_name": "Order Accuracy Rate",
+                "metric_id": "ESC10118",
+                "value": "76%"
+              },
+              {
+                "metric_name": "Customer Order Cycle Time",
+                "metric_id": "ESC10119",
+                "value": "75%"
+              },
+              {
+                "metric_name": "Customer Satisfaction Score",
+                "metric_id": "ESC10120",
+                "value": "86%"
+              }
+            ]
+          },
+          {
+            "group_name": "6. Sustainability and Compliance",
+            "group_id": "ESC10121",
+            "value": [
+              {
+                "metric_name": "Carbon Footprint",
+                "metric_id": "ESC10122",
+                "value": "74%"
+              },
+              {
+                "metric_name": "Sustainability Compliance Rate",
+                "metric_id": "ESC10123",
+                "value": "73%"
+              },
+              {
+                "metric_name": "Regulatory Compliance Rate",
+                "metric_id": "ESC10124",
+                "value": "76%"
+              }
+            ]
+          },
+          {
+            "group_name": "7. Continuous Improvement",
+            "group_id": "ESC10125",
+            "value": [
+              {
+                "metric_name": "Process Improvement Rate",
+                "metric_id": "ESC10126",
+                "value": "75%"
+              },
+              {
+                "metric_name": "Innovation Rate",
+                "metric_id": "ESC10127",
+                "value": "75%"
+              },
+              {
+                "metric_name": "Continuous Improvement Initiatives",
+                "metric_id": "ESC10128",
+                "value": "84%"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "sub_module_name": "Enterprise Security Management",
+        "sub_module_id": "ESE10000",
+	"value": [],
+        "groups": [
+          {
+            "group_name": "1. Security Incident Management",
+            "group_id": "ESE10101",
+            "value": [
+              {
+                "metric_name": "Incident Detection Time",
+                "metric_id": "ESE10102",
+                "value": "85%"
+              },
+              {
+                "metric_name": "Incident Response Time",
+                "metric_id": "ESE10103",
+                "value": "75%"
+              },
+              {
+                "metric_name": "Incident Resolution Time",
+                "metric_id": "ESE10104",
+                "value": "65%"
+              }
+            ]
+          },
+          {
+            "group_name": "2. Threat and Vulnerability Management",
+            "group_id": "ESE10105",
+            "value": [
+              {
+                "metric_name": "Threat Detection Rate",
+                "metric_id": "ESE10106",
+                "value": "65%"
+              },
+              {
+                "metric_name": "Vulnerability Identification Rate",
+                "metric_id": "ESE10107",
+                "value": "75%"
+              },
+              {
+                "metric_name": "Threat Mitigation Effectiveness",
+                "metric_id": "ESE10108",
+                "value": "78%"
+              }
+            ]
+          },
+          {
+            "group_name": "3. Access Control",
+            "group_id": "ESE10109",
+            "value": [
+              {
+                "metric_name": "Access Control Compliance Rate",
+                "metric_id": "ESE10110",
+                "value": "67%"
+              },
+              {
+                "metric_name": "Unauthorized Access Attempts",
+                "metric_id": "ESE10111",
+                "value": "85%"
+              },
+              {
+                "metric_name": "Access Review Frequency",
+                "metric_id": "ESE10112",
+                "value": "75%"
+              }
+            ]
+          },
+          {
+            "group_name": "4. Data Protection",
+            "group_id": "ESE10113",
+            "value": [
+              {
+                "metric_name": "Data Breach Incidents",
+                "metric_id": "ESE10114",
+                "value": "84%"
+              },
+              {
+                "metric_name": "Data Encryption Rate",
+                "metric_id": "ESE10115",
+                "value": "86%"
+              },
+              {
+                "metric_name": "Data Loss Prevention Effectiveness",
+                "metric_id": "ESE10116",
+                "value": "74%"
+              }
+            ]
+          },
+          {
+            "group_name": "5. Compliance and Audit",
+            "group_id": "ESE10117",
+            "value": [
+              {
+                "metric_name": "Compliance Rate",
+                "metric_id": "ESE10118",
+                "value": "76%"
+              },
+              {
+                "metric_name": "Audit Findings Resolution Time",
+                "metric_id": "ESE10119",
+                "value": "75%"
+              },
+              {
+                "metric_name": "Audit Frequency",
+                "metric_id": "ESE10120",
+                "value": "86%"
+              }
+            ]
+          },
+          {
+            "group_name": "6. Partner and Stakeholder Satisfaction",
+            "group_id": "ESE10121",
+            "value": [
+              {
+                "metric_name": "Partner Satisfaction Score",
+                "metric_id": "ESE10122",
+                "value": "74%"
+              },
+              {
+                "metric_name": "Stakeholder Feedback Implementation Rate",
+                "metric_id": "ESE10123",
+                "value": "73%"
+              },
+              {
+                "metric_name": "Net Promoter Score (NPS)",
+                "metric_id": "ESE10124",
+                "value": "76%"
+              }
+            ]
+          },
+          {
+            "group_name": "7. Continuous Improvement",
+            "group_id": "ESE10125",
+            "value": [
+              {
+                "metric_name": "Policy Update Frequency",
+                "metric_id": "ESE10126",
+                "value": "75%"
+              },
+              {
+                "metric_name": "Process Improvement Rate",
+                "metric_id": "ESE10127",
+                "value": "75%"
+              },
+              {
+                "metric_name": "Innovation in Security",
+                "metric_id": "ESE10128",
+                "value": "84%"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "sub_module_name": "Enterprise Asset Management",
+        "sub_module_id": "EAS10000",
+	"value": [],
+        "groups": [
+          {
+            "group_name": "1. Asset Availability",
+            "group_id": "EAS10101",
+            "value": [
+              {
+                "metric_name": "Asset Availability Rate",
+                "metric_id": "EAS10102",
+                "value": "85%"
+              },
+              {
+                "metric_name": "Mean Time Between Failures (MTBF)",
+                "metric_id": "EAS10103",
+                "value": "75%"
+              },
+              {
+                "metric_name": "Mean Time to Repair (MTTR)",
+                "metric_id": "EAS10104",
+                "value": "65%"
+              }
+            ]
+          },
+          {
+            "group_name": "2. Maintenance Management",
+            "group_id": "EAS10105",
+            "value": [
+              {
+                "metric_name": "Planned Maintenance Percentage",
+                "metric_id": "EAS10106",
+                "value": "65%"
+              },
+              {
+                "metric_name": "Unplanned Downtime",
+                "metric_id": "EAS10107",
+                "value": "75%"
+              },
+              {
+                "metric_name": "Maintenance Cost as a Percentage of Asset Value",
+                "metric_id": "EAS10108",
+                "value": "78%"
+              }
+            ]
+          },
+          {
+            "group_name": "3. Asset Utilization",
+            "group_id": "EAS10109",
+            "value": [
+              {
+                "metric_name": "Asset Utilization Rate",
+                "metric_id": "EAS10110",
+                "value": "67%"
+              },
+              {
+                "metric_name": "Overall Equipment Effectiveness (OEE)",
+                "metric_id": "EAS10111",
+                "value": "85%"
+              },
+              {
+                "metric_name": "Energy Consumption per Unit of Production",
+                "metric_id": "EAS10112",
+                "value": "75%"
+              }
+            ]
+          },
+          {
+            "group_name": "4. Financial Metrics",
+            "group_id": "EAS10113",
+            "value": [
+              {
+                "metric_name": "Return on Assets (ROA)",
+                "metric_id": "EAS10114",
+                "value": "84%"
+              },
+              {
+                "metric_name": "Total Cost of Ownership (TCO)",
+                "metric_id": "EAS10115",
+                "value": "86%"
+              },
+              {
+                "metric_name": "Maintenance Backlog",
+                "metric_id": "EAS10116",
+                "value": "74%"
+              }
+            ]
+          },
+          {
+            "group_name": "5. Compliance and Audit",
+            "group_id": "EAS10117",
+            "value": [
+              {
+                "metric_name": "Compliance Rate",
+                "metric_id": "EAS10118",
+                "value": "76%"
+              },
+              {
+                "metric_name": "Audit Findings Resolution Time",
+                "metric_id": "EAS10119",
+                "value": "75%"
+              },
+              {
+                "metric_name": "Audit Frequency",
+                "metric_id": "EAS10120",
+                "value": "86%"
+              }
+            ]
+          },
+          {
+            "group_name": "6. Partner and Stakeholder Satisfaction",
+            "group_id": "EAS10121",
+            "value": [
+              {
+                "metric_name": "Partner Satisfaction Score",
+                "metric_id": "EAS10122",
+                "value": "74%"
+              },
+              {
+                "metric_name": "Stakeholder Feedback Implementation Rate",
+                "metric_id": "EAS10123",
+                "value": "73%"
+              },
+              {
+                "metric_name": "Net Promoter Score (NPS)",
+                "metric_id": "EAS10124",
+                "value": "76%"
+              }
+            ]
+          },
+          {
+            "group_name": "7. Continuous Improvement",
+            "group_id": "EAS10125",
+            "value": [
+              {
+                "metric_name": "Policy Update Frequency",
+                "metric_id": "EAS10126",
+                "value": "75%"
+              },
+              {
+                "metric_name": "Process Improvement Rate",
+                "metric_id": "EAS10127",
+                "value": "75%"
+              },
+              {
+                "metric_name": "Innovation in Asset Management",
+                "metric_id": "EAS10128",
+                "value": "84%"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "sub_module_name": "Enterprise Performance Management",
+        "sub_module_id": "EPR10000",
+	"value": [],
+        "groups": [
+          {
+            "group_name": "1. Performance Measurement",
+            "group_id": "EPR10101",
+            "value": [
+              {
+                "metric_name": "Key Performance Indicators (KPIs)",
+                "metric_id": "EPR10102",
+                "value": "85%"
+              },
+              {
+                "metric_name": "Benchmarking",
+                "metric_id": "EPR10103",
+                "value": "75%"
+              },
+              {
+                "metric_name": "Performance Scorecards",
+                "metric_id": "EPR10104",
+                "value": "65%"
+              }
+            ]
+          },
+          {
+            "group_name": "2. Strategic Planning",
+            "group_id": "EPR10105",
+            "value": [
+              {
+                "metric_name": "Strategic Plan Alignment",
+                "metric_id": "EPR10106",
+                "value": "65%"
+              },
+              {
+                "metric_name": "Goal Achievement Rate",
+                "metric_id": "EPR10107",
+                "value": "75%"
+              },
+              {
+                "metric_name": "Strategic Initiative Success Rate",
+                "metric_id": "EPR10108",
+                "value": "78%"
+              }
+            ]
+          },
+          {
+            "group_name": "3. Financial Performance",
+            "group_id": "EPR10109",
+            "value": [
+              {
+                "metric_name": "Return on Investment (ROI)",
+                "metric_id": "EPR10110",
+                "value": "67%"
+              },
+              {
+                "metric_name": "Profit Margins",
+                "metric_id": "EPR10111",
+                "value": "85%"
+              },
+              {
+                "metric_name": "Cost Efficiency",
+                "metric_id": "EPR10112",
+                "value": "75%"
+              }
+            ]
+          },
+          {
+            "group_name": "4. Operational Efficiency",
+            "group_id": "EPR10113",
+            "value": [
+              {
+                "metric_name": "Operational Efficiency Score",
+                "metric_id": "EPR10114",
+                "value": "84%"
+              },
+              {
+                "metric_name": "Process Improvement Rate",
+                "metric_id": "EPR10115",
+                "value": "86%"
+              },
+              {
+                "metric_name": "Cycle Time Reduction",
+                "metric_id": "EPR10116",
+                "value": "74%"
+              }
+            ]
+          },
+          {
+            "group_name": "5. Customer Satisfaction",
+            "group_id": "EPR10117",
+            "value": [
+              {
+                "metric_name": "Customer Satisfaction Score (CSAT)",
+                "metric_id": "EPR10118",
+                "value": "76%"
+              },
+              {
+                "metric_name": "Customer Retention Rate",
+                "metric_id": "EPR10119",
+                "value": "75%"
+              },
+              {
+                "metric_name": "Customer Complaint Resolution Time",
+                "metric_id": "EPR10120",
+                "value": "86%"
+              }
+            ]
+          },
+          {
+            "group_name": "6. Employee Performance",
+            "group_id": "EPR10121",
+            "value": [
+              {
+                "metric_name": "Employee Productivity",
+                "metric_id": "EPR10122",
+                "value": "74%"
+              },
+              {
+                "metric_name": "Employee Engagement Score",
+                "metric_id": "EPR10123",
+                "value": "73%"
+              },
+              {
+                "metric_name": "Employee Turnover Rate",
+                "metric_id": "EPR10124",
+                "value": "76%"
+              }
+            ]
+          },
+          {
+            "group_name": "7. Innovation and Growth",
+            "group_id": "EPR10125",
+            "value": [
+              {
+                "metric_name": "Innovation Rate",
+                "metric_id": "EPR10126",
+                "value": "75%"
+              },
+              {
+                "metric_name": "Growth Rate",
+                "metric_id": "EPR10127",
+                "value": "75%"
+              },
+              {
+                "metric_name": "New Product Success Rate",
+                "metric_id": "EPR10128",
+                "value": "84%"
+              }
+            ]
+          },
+          {
+            "group_name": "8. Partner and Stakeholder Satisfaction",
+            "group_id": "EPR10129",
+            "value": [
+              {
+                "metric_name": "Partner Satisfaction Score",
+                "metric_id": "EPR10130",
+                "value": "86%"
+              },
+              {
+                "metric_name": "Stakeholder Feedback Implementation Rate",
+                "metric_id": "EPR10131",
+                "value": "91%"
+              },
+              {
+                "metric_name": "Net Promoter Score (NPS)",
+                "metric_id": "EPR10132",
+                "value": "85%"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "sub_module_name": "Enterprise Governance Management",
+        "sub_module_id": "EGV10000",
+	"value": [],
+        "groups": [
+          {
+            "group_name": "1. Governance Effectiveness",
+            "group_id": "EGV10101",
+            "value": [
+              {
+                "metric_name": "Governance Compliance Rate",
+                "metric_id": "EGV10102",
+                "value": "85%"
+              },
+              {
+                "metric_name": "Governance Process Efficiency",
+                "metric_id": "EGV10103",
+                "value": "75%"
+              },
+              {
+                "metric_name": "Governance Policy Adherence",
+                "metric_id": "EGV10104",
+                "value": "65%"
+              }
+            ]
+          },
+          {
+            "group_name": "2. Risk Management",
+            "group_id": "EGV10105",
+            "value": [
+              {
+                "metric_name": "Risk Identification Rate",
+                "metric_id": "EGV10106",
+                "value": "65%"
+              },
+              {
+                "metric_name": "Risk Mitigation Effectiveness",
+                "metric_id": "EGV10107",
+                "value": "75%"
+              },
+              {
+                "metric_name": "Risk Compliance Rate",
+                "metric_id": "EGV10108",
+                "value": "78%"
+              }
+            ]
+          },
+          {
+            "group_name": "3. Audit and Assurance",
+            "group_id": "EGV10109",
+            "value": [
+              {
+                "metric_name": "Audit Findings Resolution Time",
+                "metric_id": "EGV10110",
+                "value": "67%"
+              },
+              {
+                "metric_name": "Audit Frequency",
+                "metric_id": "EGV10111",
+                "value": "85%"
+              },
+              {
+                "metric_name": "Audit Compliance Rate",
+                "metric_id": "EGV10112",
+                "value": "75%"
+              }
+            ]
+          },
+          {
+            "group_name": "4. Ethical Conduct",
+            "group_id": "EGV10113",
+            "value": [
+              {
+                "metric_name": "Ethical Conduct Compliance Rate",
+                "metric_id": "EGV10114",
+                "value": "84%"
+              },
+              {
+                "metric_name": "Ethical Violations Reported",
+                "metric_id": "EGV10115",
+                "value": "86%"
+              },
+              {
+                "metric_name": "Ethical Training Participation Rate",
+                "metric_id": "EGV10116",
+                "value": "74%"
+              }
+            ]
+          },
+          {
+            "group_name": "5. Stakeholder Engagement",
+            "group_id": "EGV10117",
+            "value": [
+              {
+                "metric_name": "Stakeholder Satisfaction Score",
+                "metric_id": "EGV10118",
+                "value": "76%"
+              },
+              {
+                "metric_name": "Stakeholder Feedback Implementation Rate",
+                "metric_id": "EGV10119",
+                "value": "75%"
+              },
+              {
+                "metric_name": "Net Promoter Score (NPS)",
+                "metric_id": "EGV10120",
+                "value": "86%"
+              }
+            ]
+          },
+          {
+            "group_name": "6. Continuous Improvement",
+            "group_id": "EGV10121",
+            "value": [
+              {
+                "metric_name": "Policy Update Frequency",
+                "metric_id": "EGV10122",
+                "value": "74%"
+              },
+              {
+                "metric_name": "Process Improvement Rate",
+                "metric_id": "EGV10123",
+                "value": "73%"
+              },
+              {
+                "metric_name": "Innovation in Governance",
+                "metric_id": "EGV10124",
+                "value": "76%"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "sub_module_name": "Research Management",
+        "sub_module_id": "ERS10000",
+	"value": [],
+        "groups": [
+          {
+            "group_name": "1. Research Efficiency",
+            "group_id": "ERS10101",
+            "value": [
+              {
+                "metric_name": "Research Project Completion Rate",
+                "metric_id": "ERS10102",
+                "value": "85%"
+              },
+              {
+                "metric_name": "Average Research Project Duration",
+                "metric_id": "ERS10103",
+                "value": "75%"
+              },
+              {
+                "metric_name": "Resource Utilization Rate",
+                "metric_id": "ERS10104",
+                "value": "65%"
+              }
+            ]
+          },
+          {
+            "group_name": "2. Innovation and Impact",
+            "group_id": "ERS10105",
+            "value": [
+              {
+                "metric_name": "Innovation Rate",
+                "metric_id": "ERS10106",
+                "value": "65%"
+              },
+              {
+                "metric_name": "Research Impact Score",
+                "metric_id": "ERS10107",
+                "value": "75%"
+              },
+              {
+                "metric_name": "Patent Filings",
+                "metric_id": "ERS10108",
+                "value": "78%"
+              }
+            ]
+          },
+          {
+            "group_name": "3. Collaboration and Partnerships",
+            "group_id": "ERS10109",
+            "value": [
+              {
+                "metric_name": "Collaboration Participation Rate",
+                "metric_id": "ERS10110",
+                "value": "67%"
+              },
+              {
+                "metric_name": "Partner Satisfaction Score",
+                "metric_id": "ERS10111",
+                "value": "85%"
+              },
+              {
+                "metric_name": "Number of Joint Research Initiatives",
+                "metric_id": "ERS10112",
+                "value": "75%"
+              }
+            ]
+          },
+          {
+            "group_name": "4. Knowledge Capture and Sharing",
+            "group_id": "ERS10113",
+            "value": [
+              {
+                "metric_name": "Knowledge Capture Rate",
+                "metric_id": "ERS10114",
+                "value": "84%"
+              },
+              {
+                "metric_name": "Knowledge Sharing Rate",
+                "metric_id": "ERS10115",
+                "value": "86%"
+              },
+              {
+                "metric_name": "Research Publication Rate",
+                "metric_id": "ERS10116",
+                "value": "74%"
+              }
+            ]
+          },
+          {
+            "group_name": "5. Financial Metrics",
+            "group_id": "ERS10117",
+            "value": [
+              {
+                "metric_name": "Research Budget Utilization",
+                "metric_id": "ERS10118",
+                "value": "76%"
+              },
+              {
+                "metric_name": "Return on Research Investment (ROI)",
+                "metric_id": "ERS10119",
+                "value": "75%"
+              },
+              {
+                "metric_name": "Cost per Research Project",
+                "metric_id": "ERS10120",
+                "value": "86%"
+              }
+            ]
+          },
+          {
+            "group_name": "6. Compliance and Audit",
+            "group_id": "ERS10121",
+            "value": [
+              {
+                "metric_name": "Compliance Rate",
+                "metric_id": "ERS10122",
+                "value": "74%"
+              },
+              {
+                "metric_name": "Audit Findings Resolution Time",
+                "metric_id": "ERS10123",
+                "value": "73%"
+              },
+              {
+                "metric_name": "Audit Frequency",
+                "metric_id": "ERS10124",
+                "value": "76%"
+              }
+            ]
+          },
+          {
+            "group_name": "7. Continuous Improvement",
+            "group_id": "ERS10125",
+            "value": [
+              {
+                "metric_name": "Policy Update Frequency",
+                "metric_id": "ERS10126",
+                "value": "83%"
+              },
+              {
+                "metric_name": "Process Improvement Rate",
+                "metric_id": "ERS10127",
+                "value": "87%"
+              },
+              {
+                "metric_name": "Innovation in Research",
+                "metric_id": "ERS10128",
+                "value": "78%"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "sub_module_name": "Learning Management",
+        "sub_module_id": "ELR10000",
+	"value": [],
+        "groups": [
+          {
+            "group_name": "1. Learning Efficiency",
+            "group_id": "ELR10101",
+            "value": [
+              {
+                "metric_name": "Course Completion Rate",
+                "metric_id": "ELR10102",
+                "value": "85%"
+              },
+              {
+                "metric_name": "Average Course Duration",
+                "metric_id": "ELR10103",
+                "value": "75%"
+              },
+              {
+                "metric_name": "Resource Utilization Rate",
+                "metric_id": "ELR10104",
+                "value": "65%"
+              }
+            ]
+          },
+          {
+            "group_name": "2. Learning Effectiveness",
+            "group_id": "ELR10105",
+            "value": [
+              {
+                "metric_name": "Learning Gains",
+                "metric_id": "ELR10106",
+                "value": "65%"
+              },
+              {
+                "metric_name": "Assessment Scores",
+                "metric_id": "ELR10107",
+                "value": "75%"
+              },
+              {
+                "metric_name": "Certification Rates",
+                "metric_id": "ELR10108",
+                "value": "78%"
+              }
+            ]
+          },
+          {
+            "group_name": "3. Engagement and Participation",
+            "group_id": "ELR10109",
+            "value": [
+              {
+                "metric_name": "Learner Engagement Score",
+                "metric_id": "ELR10110",
+                "value": "67%"
+              },
+              {
+                "metric_name": "Participation Rate",
+                "metric_id": "ELR10111",
+                "value": "85%"
+              },
+              {
+                "metric_name": "Discussion Participation",
+                "metric_id": "ELR10112",
+                "value": "75%"
+              }
+            ]
+          },
+          {
+            "group_name": "4. Compliance and Regulatory Training",
+            "group_id": "ELR10113",
+            "value": [
+              {
+                "metric_name": "Compliance Training Completion Rate",
+                "metric_id": "ELR10114",
+                "value": "84%"
+              },
+              {
+                "metric_name": "Regulatory Training Effectiveness",
+                "metric_id": "ELR10115",
+                "value": "86%"
+              },
+              {
+                "metric_name": "Compliance Audit Results",
+                "metric_id": "ELR10116",
+                "value": "74%"
+              }
+            ]
+          },
+          {
+            "group_name": "5. Customer Satisfaction",
+            "group_id": "ELR10117",
+            "value": [
+              {
+                "metric_name": "Customer Satisfaction Score (CSAT)",
+                "metric_id": "ELR10118",
+                "value": "76%"
+              },
+              {
+                "metric_name": "Customer Feedback Implementation Rate",
+                "metric_id": "ELR10119",
+                "value": "75%"
+              },
+              {
+                "metric_name": "Customer Complaint Resolution Time",
+                "metric_id": "ELR10120",
+                "value": "86%"
+              }
+            ]
+          },
+          {
+            "group_name": "6. Continuous Improvement",
+            "group_id": "ELR10121",
+            "value": [
+              {
+                "metric_name": "Policy Update Frequency",
+                "metric_id": "ELR10122",
+                "value": "74%"
+              },
+              {
+                "metric_name": "Process Improvement Rate",
+                "metric_id": "ELR10123",
+                "value": "73%"
+              },
+              {
+                "metric_name": "Innovation in Learning",
+                "metric_id": "ELR10124",
+                "value": "76%"
+              }
+            ]
+          },
+          {
+            "group_name": "7. Financial Metrics",
+            "group_id": "ELR10125",
+            "value": [
+              {
+                "metric_name": "Training Budget Utilization",
+                "metric_id": "ELR10126",
+                "value": "83%"
+              },
+              {
+                "metric_name": "Return on Training Investment (ROI)",
+                "metric_id": "ELR10127",
+                "value": "87%"
+              },
+              {
+                "metric_name": "Cost per Training Program",
+                "metric_id": "ELR10128",
+                "value": "78%"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "sub_module_name": "Training Management",
+        "sub_module_id": "ETR10000",
+	"value": [],
+        "groups": [
+          {
+            "group_name": "1. Training Efficiency",
+            "group_id": "ETR10101",
+            "value": [
+              {
+                "metric_name": "Training Completion Rate",
+                "metric_id": "ETR10102",
+                "value": "85%"
+              },
+              {
+                "metric_name": "Average Training Duration",
+                "metric_id": "ETR10103",
+                "value": "75%"
+              },
+              {
+                "metric_name": "Resource Utilization Rate",
+                "metric_id": "ETR10104",
+                "value": "65%"
+              }
+            ]
+          },
+          {
+            "group_name": "2. Training Effectiveness",
+            "group_id": "ETR10105",
+            "value": [
+              {
+                "metric_name": "Learning Gains",
+                "metric_id": "ETR10106",
+                "value": "65%"
+              },
+              {
+                "metric_name": "Assessment Scores",
+                "metric_id": "ETR10107",
+                "value": "75%"
+              },
+              {
+                "metric_name": "Certification Rates",
+                "metric_id": "ETR10108",
+                "value": "78%"
+              }
+            ]
+          },
+          {
+            "group_name": "3. Engagement and Participation",
+            "group_id": "ETR10109",
+            "value": [
+              {
+                "metric_name": "Learner Engagement Score",
+                "metric_id": "ETR10110",
+                "value": "67%"
+              },
+              {
+                "metric_name": "Participation Rate",
+                "metric_id": "ETR10111",
+                "value": "85%"
+              },
+              {
+                "metric_name": "Discussion Participation",
+                "metric_id": "ETR10112",
+                "value": "75%"
+              }
+            ]
+          },
+          {
+            "group_name": "4. Compliance and Regulatory Training",
+            "group_id": "ETR10113",
+            "value": [
+              {
+                "metric_name": "Compliance Training Completion Rate",
+                "metric_id": "ETR10114",
+                "value": "84%"
+              },
+              {
+                "metric_name": "Regulatory Training Effectiveness",
+                "metric_id": "ETR10115",
+                "value": "86%"
+              },
+              {
+                "metric_name": "Compliance Audit Results",
+                "metric_id": "ETR10116",
+                "value": "74%"
+              }
+            ]
+          },
+          {
+            "group_name": "5. Customer Satisfaction",
+            "group_id": "ETR10117",
+            "value": [
+              {
+                "metric_name": "Customer Satisfaction Score (CSAT)",
+                "metric_id": "ETR10118",
+                "value": "76%"
+              },
+              {
+                "metric_name": "Customer Feedback Implementation Rate",
+                "metric_id": "ETR10119",
+                "value": "75%"
+              },
+              {
+                "metric_name": "Customer Complaint Resolution Time",
+                "metric_id": "ETR10120",
+                "value": "86%"
+              }
+            ]
+          },
+          {
+            "group_name": "6. Continuous Improvement",
+            "group_id": "ETR10121",
+            "value": [
+              {
+                "metric_name": "Policy Update Frequency",
+                "metric_id": "ETR10122",
+                "value": "74%"
+              },
+              {
+                "metric_name": "Process Improvement Rate",
+                "metric_id": "ETR10123",
+                "value": "73%"
+              },
+              {
+                "metric_name": "Innovation in Training",
+                "metric_id": "ETR10124",
+                "value": "76%"
+              }
+            ]
+          },
+          {
+            "group_name": "7. Financial Metrics",
+            "group_id": "ETR10125",
+            "value": [
+              {
+                "metric_name": "Training Budget Utilization",
+                "metric_id": "ETR10126",
+                "value": "83%"
+              },
+              {
+                "metric_name": "Return on Training Investment (ROI)",
+                "metric_id": "ETR10127",
+                "value": "87%"
+              },
+              {
+                "metric_name": "Cost per Training Program",
+                "metric_id": "ETR10128",
+                "value": "78%"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "sub_module_name": "Enterprise Audit Management",
+        "sub_module_id": "EAU10000",
+	"value": [],
+        "groups": [
+          {
+            "group_name": "1. Audit Efficiency",
+            "group_id": "EAU10101",
+            "value": [
+              {
+                "metric_name": "Audit Cycle Time",
+                "metric_id": "EAU10102",
+                "value": "85%"
+              },
+              {
+                "metric_name": "Audit Resource Utilization",
+                "metric_id": "EAU10103",
+                "value": "75%"
+              },
+              {
+                "metric_name": "Audit Cost per Unit",
+                "metric_id": "EAU10104",
+                "value": "65%"
+              }
+            ]
+          },
+          {
+            "group_name": "2. Audit Effectiveness",
+            "group_id": "EAU10105",
+            "value": [
+              {
+                "metric_name": "Audit Findings Resolution Time",
+                "metric_id": "EAU10106",
+                "value": "65%"
+              },
+              {
+                "metric_name": "Audit Compliance Rate",
+                "metric_id": "EAU10107",
+                "value": "75%"
+              },
+              {
+                "metric_name": "Audit Coverage",
+                "metric_id": "EAU10108",
+                "value": "78%"
+              }
+            ]
+          },
+          {
+            "group_name": "3. Risk Management",
+            "group_id": "EAU10109",
+            "value": [
+              {
+                "metric_name": "Risk Identification Rate",
+                "metric_id": "EAU10110",
+                "value": "67%"
+              },
+              {
+                "metric_name": "Risk Mitigation Effectiveness",
+                "metric_id": "EAU10111",
+                "value": "85%"
+              },
+              {
+                "metric_name": "Risk Compliance Rate",
+                "metric_id": "EAU10112",
+                "value": "75%"
+              }
+            ]
+          },
+          {
+            "group_name": "4. Compliance and Governance",
+            "group_id": "EAU10113",
+            "value": [
+              {
+                "metric_name": "Governance Compliance Rate",
+                "metric_id": "EAU10114",
+                "value": "84%"
+              },
+              {
+                "metric_name": "Compliance Rate",
+                "metric_id": "EAU10115",
+                "value": "86%"
+              },
+              {
+                "metric_name": "Governance Policy Adherence",
+                "metric_id": "EAU10116",
+                "value": "74%"
+              }
+            ]
+          },
+          {
+            "group_name": "5. Stakeholder Satisfaction",
+            "group_id": "EAU10117",
+            "value": [
+              {
+                "metric_name": "Stakeholder Satisfaction Score",
+                "metric_id": "EAU10118",
+                "value": "76%"
+              },
+              {
+                "metric_name": "Stakeholder Feedback Implementation Rate",
+                "metric_id": "EAU10119",
+                "value": "75%"
+              },
+              {
+                "metric_name": "Net Promoter Score (NPS)",
+                "metric_id": "EAU10120",
+                "value": "86%"
+              }
+            ]
+          },
+          {
+            "group_name": "6. Continuous Improvement",
+            "group_id": "EAU10121",
+            "value": [
+              {
+                "metric_name": "Policy Update Frequency",
+                "metric_id": "EAU10122",
+                "value": "74%"
+              },
+              {
+                "metric_name": "Process Improvement Rate",
+                "metric_id": "EAU10123",
+                "value": "73%"
+              },
+              {
+                "metric_name": "Innovation in Audit",
+                "metric_id": "EAU10124",
+                "value": "76%"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "sub_module_name": "Enterprise Privacy Management",
+        "sub_module_id": "EPV10000",
+	"value": [],
+        "groups": [
+          {
+            "group_name": "1. Privacy Compliance",
+            "group_id": "EPV10101",
+            "value": [
+              {
+                "metric_name": "Privacy Compliance Rate",
+                "metric_id": "EPV10102",
+                "value": "85%"
+              },
+              {
+                "metric_name": "Privacy Policy Adherence",
+                "metric_id": "EPV10103",
+                "value": "75%"
+              },
+              {
+                "metric_name": "Regulatory Audit Results",
+                "metric_id": "EPV10104",
+                "value": "65%"
+              }
+            ]
+          },
+          {
+            "group_name": "2. Incident Management",
+            "group_id": "EPV10105",
+            "value": [
+              {
+                "metric_name": "Privacy Incident Detection Time",
+                "metric_id": "EPV10106",
+                "value": "65%"
+              },
+              {
+                "metric_name": "Privacy Incident Response Time",
+                "metric_id": "EPV10107",
+                "value": "75%"
+              },
+              {
+                "metric_name": "Privacy Incident Resolution Time",
+                "metric_id": "EPV10108",
+                "value": "78%"
+              }
+            ]
+          },
+          {
+            "group_name": "3. Data Protection",
+            "group_id": "EPV10109",
+            "value": [
+              {
+                "metric_name": "Data Breach Incidents",
+                "metric_id": "EPV10110",
+                "value": "67%"
+              },
+              {
+                "metric_name": "Data Encryption Rate",
+                "metric_id": "EPV10111",
+                "value": "85%"
+              },
+              {
+                "metric_name": "Data Loss Prevention Effectiveness",
+                "metric_id": "EPV10112",
+                "value": "75%"
+              }
+            ]
+          },
+          {
+            "group_name": "4. Access Control",
+            "group_id": "EPV10113",
+            "value": [
+              {
+                "metric_name": "Access Control Compliance Rate",
+                "metric_id": "EPV10114",
+                "value": "84%"
+              },
+              {
+                "metric_name": "Unauthorized Access Attempts",
+                "metric_id": "EPV10115",
+                "value": "86%"
+              },
+              {
+                "metric_name": "Access Review Frequency",
+                "metric_id": "EPV10116",
+                "value": "74%"
+              }
+            ]
+          },
+          {
+            "group_name": "5. Stakeholder Satisfaction",
+            "group_id": "EPV10117",
+            "value": [
+              {
+                "metric_name": "Stakeholder Satisfaction Score",
+                "metric_id": "EPV10118",
+                "value": "76%"
+              },
+              {
+                "metric_name": "Stakeholder Feedback Implementation Rate",
+                "metric_id": "EPV10119",
+                "value": "75%"
+              },
+              {
+                "metric_name": "Net Promoter Score (NPS)",
+                "metric_id": "EPV10120",
+                "value": "86%"
+              }
+            ]
+          },
+          {
+            "group_name": "6. Continuous Improvement",
+            "group_id": "EPV10121",
+            "value": [
+              {
+                "metric_name": "Policy Update Frequency",
+                "metric_id": "EPV10122",
+                "value": "74%"
+              },
+              {
+                "metric_name": "Process Improvement Rate",
+                "metric_id": "EPV10123",
+                "value": "73%"
+              },
+              {
+                "metric_name": "Innovation in Privacy",
+                "metric_id": "EPV10124",
+                "value": "76%"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "sub_module_name": "Corporate Finance Management",
+        "sub_module_id": "ECF10000",
+	"value": [],
+        "groups": [
+          {
+            "group_name": "1. Financial Performance",
+            "group_id": "ECF10101",
+            "value": [
+              {
+                "metric_name": "Return on Investment (ROI)",
+                "metric_id": "ECF10102",
+                "value": "85%"
+              },
+              {
+                "metric_name": "Profit Margins",
+                "metric_id": "ECF10103",
+                "value": "75%"
+              },
+              {
+                "metric_name": "Cost Efficiency",
+                "metric_id": "ECF10104",
+                "value": "65%"
+              }
+            ]
+          },
+          {
+            "group_name": "2. Budget Management",
+            "group_id": "ECF10105",
+            "value": [
+              {
+                "metric_name": "Budget Utilization Rate",
+                "metric_id": "ECF10106",
+                "value": "65%"
+              },
+              {
+                "metric_name": "Budget Variance",
+                "metric_id": "ECF10107",
+                "value": "75%"
+              },
+              {
+                "metric_name": "Cost Control",
+                "metric_id": "ECF10108",
+                "value": "78%"
+              }
+            ]
+          },
+          {
+            "group_name": "3. Cash Flow Management",
+            "group_id": "ECF10109",
+            "value": [
+              {
+                "metric_name": "Cash Flow Forecast Accuracy",
+                "metric_id": "ECF10110",
+                "value": "67%"
+              },
+              {
+                "metric_name": "Days Sales Outstanding (DSO)",
+                "metric_id": "ECF10111",
+                "value": "85%"
+              },
+              {
+                "metric_name": "Cash Conversion Cycle (CCC)",
+                "metric_id": "ECF10112",
+                "value": "75%"
+              }
+            ]
+          },
+          {
+            "group_name": "4. Financial Risk Management",
+            "group_id": "ECF10113",
+            "value": [
+              {
+                "metric_name": "Risk Identification Rate",
+                "metric_id": "ECF10114",
+                "value": "84%"
+              },
+              {
+                "metric_name": "Risk Mitigation Effectiveness",
+                "metric_id": "ECF10115",
+                "value": "86%"
+              },
+              {
+                "metric_name": "Risk Compliance Rate",
+                "metric_id": "ECF10116",
+                "value": "74%"
+              }
+            ]
+          },
+          {
+            "group_name": "5. Compliance and Audit",
+            "group_id": "ECF10117",
+            "value": [
+              {
+                "metric_name": "Compliance Rate",
+                "metric_id": "ECF10118",
+                "value": "76%"
+              },
+              {
+                "metric_name": "Audit Findings Resolution Time",
+                "metric_id": "ECF10119",
+                "value": "75%"
+              },
+              {
+                "metric_name": "Audit Frequency",
+                "metric_id": "ECF10120",
+                "value": "86%"
+              }
+            ]
+          },
+          {
+            "group_name": "6. Stakeholder Satisfaction",
+            "group_id": "ECF10121",
+            "value": [
+              {
+                "metric_name": "Stakeholder Satisfaction Score",
+                "metric_id": "ECF10122",
+                "value": "74%"
+              },
+              {
+                "metric_name": "Stakeholder Feedback Implementation Rate",
+                "metric_id": "ECF10123",
+                "value": "73%"
+              },
+              {
+                "metric_name": "Net Promoter Score (NPS)",
+                "metric_id": "ECF10124",
+                "value": "76%"
+              }
+            ]
+          },
+          {
+            "group_name": "7. Continuous Improvement",
+            "group_id": "ECF10125",
+            "value": [
+              {
+                "metric_name": "Policy Update Frequency",
+                "metric_id": "ECF10126",
+                "value": "86%"
+              },
+              {
+                "metric_name": "Process Improvement Rate",
+                "metric_id": "ECF10127",
+                "value": "86%"
+              },
+              {
+                "metric_name": "Innovation in Finance",
+                "metric_id": "ECF10128",
+                "value": "85%"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "sub_module_name": "Enterprise Information Management",
+        "sub_module_id": "EIF10000",
+	"value": [],
+        "groups": [
+          {
+            "group_name": "Enterprise Information Demography",
+            "group_id": "EIF10101",
+            "value": [
+              {
+                "metric_name": "Segmentation Accuracy",
+                "metric_id": "EIF10102",
+                "value": "85%"
+              },
+              {
+                "metric_name": "Customer Profile Completeness",
+                "metric_id": "EIF10103",
+                "value": "75%"
+              },
+              {
+                "metric_name": "Segmentation Utilization Rate",
+                "metric_id": "EIF10104",
+                "value": "65%"
+              },
+              {
+                "metric_name": "The rate at which customer profiles are updated with new information",
+                "metric_id": "EIF10105",
+                "value": "55%"
+              },
+              {
+                "metric_name": "Customer Lifetime Value (CLV)",
+                "metric_id": "EIF10106",
+                "value": "65%"
+              },
+              {
+                "metric_name": "Segment Profitability",
+                "metric_id": "EIF10107",
+                "value": "75%"
+              },
+              {
+                "metric_name": "Customer Engagement Rate by Segment",
+                "metric_id": "EIF10108",
+                "value": "78%"
+              },
+              {
+                "metric_name": "The percentage of customers in a segment responding to targeted marketing campaigns",
+                "metric_id": "EIF10109",
+                "value": "76%"
+              },
+              {
+                "metric_name": "Conversion Rate by Segment",
+                "metric_id": "EIF10110",
+                "value": "67%"
+              },
+              {
+                "metric_name": "Customer Retention Rate by Segment",
+                "metric_id": "EIF10111",
+                "value": "85%"
+              },
+              {
+                "metric_name": "Churn Rate by Segment",
+                "metric_id": "EIF10112",
+                "value": "75%"
+              },
+              {
+                "metric_name": "Gauges customer loyalty and their likelihood to recommend the service based on their segment",
+                "metric_id": "EIF10113",
+                "value": "87%"
+              },
+              {
+                "metric_name": "Customer Satisfaction (CSAT) Score by Segment",
+                "metric_id": "EIF10114",
+                "value": "84%"
+              },
+              {
+                "metric_name": "Segment Size and Growth Rate",
+                "metric_id": "EIF10115",
+                "value": "86%"
+              },
+              {
+                "metric_name": "Behavioral Patterns by Segment",
+                "metric_id": "EIF10116",
+                "value": "74%"
+              },
+              {
+                "metric_name": "Tracks demographic trends within customer segments",
+                "metric_id": "EIF10117",
+                "value": "73%"
+              },
+              {
+                "metric_name": "Segment-Specific Revenue",
+                "metric_id": "EIF10118",
+                "value": "76%"
+              },
+              {
+                "metric_name": "Customer Feedback by Segment",
+                "metric_id": "EIF10119",
+                "value": "75%"
+              },
+              {
+                "metric_name": "Cost per Segment Profile",
+                "metric_id": "EIF10120",
+                "value": "86%"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }

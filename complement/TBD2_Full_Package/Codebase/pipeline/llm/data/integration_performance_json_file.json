@@ -1,0 +1,694 @@
+{
+  "module_name": "Integration",
+  "module_id": "INTG_001",
+  "sub_modules": [
+    {
+      "sub_module_name": "Lifecycle Integration Management",
+      "sub_module_id": "LIN10000",
+      "value": [],
+      "groups": [
+        {
+          "group_name": "Core Entity Lifecycles",
+          "group_id": "LIN10101",
+      	  "value": [	
+			{
+			  "metric_name": "Customer Lifecycle Management",
+			  "metric_id": "LIN10102",
+			  "value": "84%"
+			},
+			{
+              "metric_name": "Product Lifecycle Management",
+              "metric_id": "LIN10103",
+              "value": "85%"
+			},
+			{
+              "metric_name": "Resource Lifecycle Management",
+              "metric_id": "LIN10104",
+              "value": "75%"
+			}
+		  ]	
+        },
+		{
+		  "group_name": "Operational and Project Lifecycles",
+          "group_id": "LIN10105",
+      	  "value": [
+		    {
+              "metric_name": "Supplier and Partner Management",
+              "metric_id": "LIN10106",
+              "value": "65%"
+            },
+            {
+              "metric_name": "Resource Lifecycle Management",
+              "metric_id": "LIN10107",
+              "value": "75%"
+            },
+            {
+              "metric_name": "Project Lifecycle Management",
+              "metric_id": "LIN10108",
+              "value": "65%"
+            }
+		  ]
+		}, 
+        {
+		  "group_name": "External and Data Governance",
+          "group_id": "LIN10109",
+      	  "value": [
+			{
+              "metric_name": "Supplier and Partner Management",
+              "metric_id": "LIN10110",
+              "value": "75%"
+            },
+            {
+              "metric_name": "Data Lifecycle Management",
+              "metric_id": "LIN10111",
+              "value": "78%"
+            }
+          ]
+        }
+	  ] 	
+    },
+	{
+      "sub_module_name": "API Implementation Management",
+      "sub_module_id": "API10000",
+      "value": [],
+      "groups": [
+        {
+          "group_name": "API Performance",
+          "group_id": "API10101",
+          "value": [
+            {
+              "metric_name": "Response Time",
+              "metric_id": "API10102",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Error Rate",
+              "metric_id": "API10103",
+              "value": "75%"
+            },
+            {
+              "metric_name": "Throughput",
+              "metric_id": "API10104",
+              "value": "65%"
+            }
+          ]
+        },
+        {
+          "group_name": "API Usage",
+          "group_id": "API10105",
+          "value": [
+            {
+              "metric_name": "Request Rate",
+              "metric_id": "API10106",
+              "value": "65%"
+            },
+            {
+              "metric_name": "User Adoption Rate",
+              "metric_id": "API10107",
+              "value": "75%"
+            },
+            {
+              "metric_name": "Usage Patterns",
+              "metric_id": "API10108",
+              "value": "78%"
+            }
+          ]
+        },
+        {
+          "group_name": "API Security",
+          "group_id": "API10109",
+          "value": [
+            {
+              "metric_name": "Access Control Compliance",
+              "metric_id": "API10110",
+              "value": "67%"
+            },
+            {
+              "metric_name": "Unauthorized Access Attempts",
+              "metric_id": "API10111",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Data Encryption Rate",
+              "metric_id": "API10112",
+              "value": "75%"
+            }
+          ]
+        },
+        {
+          "group_name": "API Integration",
+          "group_id": "API10113",
+          "value": [
+            {
+              "metric_name": "Integration Success Rate",
+              "metric_id": "API10114",
+              "value": "84%"
+            },
+            {
+              "metric_name": "Integration Time",
+              "metric_id": "API10115",
+              "value": "86%"
+            },
+            {
+              "metric_name": "Dependency Health",
+              "metric_id": "API10116",
+              "value": "74%"
+            }
+          ]
+        },
+        {
+          "group_name": "API Governance",
+          "group_id": "API10117",
+          "value": [
+            {
+              "metric_name": "Compliance Rate",
+              "metric_id": "API10118",
+              "value": "76%"
+            },
+            {
+              "metric_name": "Policy Update Frequency",
+              "metric_id": "API10119",
+              "value": "75%"
+            },
+            {
+              "metric_name": "Audit Findings Resolution Time",
+              "metric_id": "API10120",
+              "value": "86%"
+            }
+          ]
+        },
+        {
+          "group_name": "Stakeholder Satisfaction",
+          "group_id": "API10121",
+          "value": [
+            {
+              "metric_name": "Stakeholder Satisfaction Score",
+              "metric_id": "API10122",
+              "value": "74%"
+            },
+            {
+              "metric_name": "Feedback Implementation Rate",
+              "metric_id": "API10123",
+              "value": "73%"
+            },
+            {
+              "metric_name": "Net Promoter Score (NPS)",
+              "metric_id": "API10124",
+              "value": "76%"
+            }
+          ]
+        },
+        {
+          "group_name": "Continuous Improvement",
+          "group_id": "API10125",
+          "value": [
+            {
+              "metric_name": "Process Improvement Rate",
+              "metric_id": "API10126",
+              "value": "74%"
+            },
+            {
+              "metric_name": "Innovation in API Management",
+              "metric_id": "API10127",
+              "value": "73%"
+            },
+            {
+              "metric_name": "Policy Update Frequency",
+              "metric_id": "API10128",
+              "value": "76%"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sub_module_name": "Business Requirements, Process & Rules Management",
+      "sub_module_id": "BRP10000",
+      "value": [],
+      "groups": [	  
+        {
+          "group_name": "Operational Efficiency",
+          "group_id": "BRP10101",
+          "value": [		  
+			{
+			  "metric_name": "Process Efficiency",
+              "metric_id": "BRP10102",
+              "value": "84%"
+            },
+            {
+              "metric_name": "Compliance Rate",
+              "metric_id": "BRP10103",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Process Cycle Time",
+              "metric_id": "BRP10104",
+              "value": "75%"
+            }
+	      ]
+		},  
+        {
+          "group_name": "Quality and Compliance",
+          "group_id": "BRP10105",
+          "value": [		  
+			{
+              "metric_name": "Error Rate",
+              "metric_id": "BRP10106",
+              "value": "65%"
+            },
+            {
+              "metric_name": "Customer Satisfaction",
+              "metric_id": "BRP10107",
+              "value": "75%"
+            },
+            {
+              "metric_name": "Resource Utilization",
+              "metric_id": "BRP10108",
+              "value": "65%"
+            }
+		  ]	
+		},	
+        {
+          "group_name": "Strategic Value and Agility",
+          "group_id": "BRP10109",
+          "value": [		  
+			{
+			
+              "metric_name": "Process Improvement Rate",
+              "metric_id": "BRP10110",
+              "value": "75%"
+            },
+            {
+              "metric_name": "Integration Success Rate",
+              "metric_id": "BRP10111",
+              "value": "78%"
+            },
+            {
+              "metric_name": "Cost Efficiency",
+              "metric_id": "BRP10112",
+              "value": "67%"
+            }
+		  ]
+		},
+		{
+          "group_name": "Continuous Improvement",
+          "group_id": "BRP10113",
+          "value": [		  
+
+            {
+              "metric_name": "Business Agility",
+              "metric_id": "BRP10114",
+              "value": "64%"
+            }
+		  ] 
+		}	
+      ]
+	},
+    {
+      "sub_module_name": "Fulfillment Integration Management",
+      "sub_module_id": "FUL10000",
+      "value": [],
+	  "groups": [	  
+		{
+          "group_name": "Order and Fulfillment Performance",
+          "group_id": "FUL10101",
+          "value": [	  
+			{
+			  "metric_name": "Order Fulfillment Accuracy",
+              "metric_id": "FUL10102",
+              "value": "84%"
+			},
+			{
+			  "metric_name": "Order Cycle Time",
+              "metric_id": "FUL10103",
+              "value": "85%"
+			},
+			{
+              "metric_name": "Fulfillment Rate",
+              "metric_id": "FUL10104",
+              "value": "75%"
+			},
+		  	{
+              "metric_name": "Customer Order Management Efficiency",
+              "metric_id": "FUL10105",
+              "value": "65%"
+			}
+          ]
+		},  
+		{
+          "group_name": "Inventory and Logistics",
+          "group_id": "FUL10106",
+          "value": [			
+		    {
+			"metric_name": "Inventory Turnover Ratio",
+              "metric_id": "FUL10107",
+              "value": "75%"
+			},
+			{
+              "metric_name": "Backorder Rate",
+              "metric_id": "FUL10108",
+              "value": "65%"
+			}
+		  ]
+		},
+		{
+          "group_name": "Service Quality & Financials",
+          "group_id": "FUL10109",
+          "value": [		
+			{
+              "metric_name": "Service Level Agreement (SLA) Compliance",
+              "metric_id": "FUL10110",
+              "value": "75%"
+			},
+			{
+              "metric_name": "Cost per Order Fulfilled",
+              "metric_id": "FUL10111",
+              "value": "78%"
+			},
+			{
+              "metric_name": "Return Rate",
+              "metric_id": "FUL10112",
+              "value": "67%"
+			},
+			{
+              "metric_name": "Integration Success Rate",
+              "metric_id": "FUL10113",
+              "value": "64%"
+			}
+		  ]	
+		}	
+      ]
+	},
+    {
+      "sub_module_name": "Assurance Integration Management",
+      "sub_module_id": "ASI10000",
+      "value": [],
+	  "groups": [	  
+		{
+          "group_name": "Service Quality and Performance",
+          "group_id": "ASI10101",
+          "value": [
+			{
+              "metric_name": "Service Quality",
+              "metric_id": "ASI10102",
+              "value": "84%"
+			},
+			{
+              "metric_name": "Fault Detection Rate",
+              "metric_id": "ASI10103",
+              "value": "85%"
+			},
+			{
+              "metric_name": "Mean Time to Detect (MTTD)",
+              "metric_id": "ASI10104",
+              "value": "75%"
+			}
+		  ]	
+		},
+		{
+		  "group_name": "Incident and Fault Management",
+          "group_id": "ASI10105",
+          "value": [
+
+		    {
+              "metric_name": "Mean Time to Repair (MTTR)",
+              "metric_id": "ASI10106",
+              "value": "65%"
+			},
+			{
+              "metric_name": "Incident Resolution Rate",
+              "metric_id": "ASI10107",
+              "value": "75%"
+			},
+			{
+              "metric_name": "Customer Satisfaction Score (CSAT)",
+              "metric_id": "ASI10108",
+              "value": "65%"
+			},
+			{
+              "metric_name": "Compliance Rate",
+              "metric_id": "ASI10109",
+              "value": "75%"
+			},
+			{
+              "metric_name": "Root Cause Analysis (RCA) Effectiveness",
+              "metric_id": "ASI10110",
+              "value": "78%"
+			}
+		  ]
+		},
+		{
+          "group_name": "Compliance & Satisfaction",
+          "group_id": "ASI10111",
+          "value": [	
+			{
+              "metric_name": "Network Performance",
+              "metric_id": "ASI10112",
+              "value": "67%"
+			},
+			{
+              "metric_name": "Integration Success Rate",
+              "metric_id": "ASI10113",
+              "value": "64%"
+			}
+		  ]	
+		}
+      ]		
+    },
+    {
+      "sub_module_name": "API Management",
+      "sub_module_id": "APM10000",
+      "value": [],
+	  "groups": [  
+		{
+          "group_name": "API Performance and Availability",
+          "group_id": "APM10101",
+          "value": [	  
+			{
+              "metric_name": "API Usage Rate",
+              "metric_id": "APM10102",
+              "value": "84%"
+			},
+			{
+              "metric_name": "API Response Time",
+              "metric_id": "APM10103",
+              "value": "85%"
+			},
+			{
+              "metric_name": "Error Rate",
+              "metric_id": "APM10104",
+              "value": "75%"
+			},
+			{
+              "metric_name": "API Availability",
+              "metric_id": "APM10105",
+              "value": "65%"
+			}
+		  ]
+		},
+		{
+		  "group_name": "API Usage and Adoption",
+          "group_id": "APM10106",
+          "value": [	
+			{
+              "metric_name": "Rate Limiting Compliance",
+              "metric_id": "APM10107",
+              "value": "75%"
+			},
+			{
+              "metric_name": "API Versioning",
+              "metric_id": "APM10108",
+              "value": "65%"
+			}
+		  ]	
+		},
+		{
+		  "group_name": "Security and Governance",
+          "group_id": "APM10109",
+          "value": [
+		    {
+              "metric_name": "Security Incidents",
+              "metric_id": "APM10110",
+              "value": "75%"
+			},
+			{
+              "metric_name": "API Adoption Rate",
+              "metric_id": "APM10111",
+              "value": "78%"
+			},
+			{
+              "metric_name": "API Performance",
+              "metric_id": "APM10112",
+              "value": "67%"
+			}
+		  ]	
+		},
+		{
+		  "group_name": "Integration Performance",
+          "group_id": "APM10113",
+          "value": [
+			{
+              "metric_name": "Integration Success Rate",
+              "metric_id": "APM10114",
+              "value": "64%"
+			}
+		  ]	
+        }
+	  ]  
+    },
+    {
+      "sub_module_name": "AI Integration Management",
+      "sub_module_id": "AII10000",
+      "value": [],
+      "groups": [
+        {
+          "group_name": "1. AI Deployment",
+          "group_id": "AII10101",
+          "value": [
+            {
+              "metric_name": "Deployment Success Rate",
+              "metric_id": "AII10102",
+              "value": "85%"
+            },
+            {
+              "metric_name": "Deployment Time",
+              "metric_id": "AII10103",
+              "value": "75%"
+            },
+            {
+              "metric_name": "Scalability",
+              "metric_id": "AII10104",
+              "value": "65%"
+            }
+          ]
+        },
+        {
+          "group_name": "2. AI Performance",
+          "group_id": "AII10105",
+          "value": [
+            {
+              "metric_name": "Accuracy",
+              "metric_id": "AII10106",
+              "value": "65%"
+            },
+            {
+              "metric_name": "Response Time",
+              "metric_id": "AII10107",
+              "value": "75%"
+            },
+            {
+              "metric_name": "Model Retraining Frequency",
+              "metric_id": "AII10108",
+              "value": "78%"
+            }
+          ]
+        },
+        {
+          "group_name": "3. AI Utilization",
+          "group_id": "AII10109",
+          "value": [
+            {
+              "metric_name": "Usage Rate",
+              "metric_id": "AII10110",
+              "value": "67%"
+            },
+            {
+              "metric_name": "Adoption Rate",
+              "metric_id": "AII10111",
+              "value": "85%"
+            },
+            {
+              "metric_name": "User Satisfaction Score",
+              "metric_id": "AII10112",
+              "value": "75%"
+            }
+          ]
+        },
+        {
+          "group_name": "4. AI Impact",
+          "group_id": "AII10113",
+          "value": [
+            {
+              "metric_name": "Efficiency Improvement",
+              "metric_id": "AII10114",
+              "value": "84%"
+            },
+            {
+              "metric_name": "Cost Savings",
+              "metric_id": "AII10115",
+              "value": "86%"
+            },
+            {
+              "metric_name": "Productivity Increase",
+              "metric_id": "AII10116",
+              "value": "74%"
+            }
+          ]
+        },
+        {
+          "group_name": "5. AI Governance",
+          "group_id": "AII10117",
+          "value": [
+            {
+              "metric_name": "Compliance Rate",
+              "metric_id": "AII10118",
+              "value": "76%"
+            },
+            {
+              "metric_name": "Bias Detection Rate",
+              "metric_id": "AII10119",
+              "value": "75%"
+            },
+            {
+              "metric_name": "Ethical AI Score",
+              "metric_id": "AII10120",
+              "value": "86%"
+            }
+          ]
+        },
+        {
+          "group_name": "6. Stakeholder Satisfaction",
+          "group_id": "AII10121",
+          "value": [
+            {
+              "metric_name": "Stakeholder Satisfaction Score",
+              "metric_id": "AII10122",
+              "value": "74%"
+            },
+            {
+              "metric_name": "Feedback Implementation Rate",
+              "metric_id": "AII10123",
+              "value": "73%"
+            },
+            {
+              "metric_name": "Net Promoter Score (NPS)",
+              "metric_id": "AII10124",
+              "value": "76%"
+            }
+          ]
+        },
+        {
+          "group_name": "7. Continuous Improvement",
+          "group_id": "AII10125",
+          "value": [
+            {
+              "metric_name": "Process Improvement Rate",
+              "metric_id": "AII10126",
+              "value": "74%"
+            },
+            {
+              "metric_name": "Innovation in AI",
+              "metric_id": "AII10127",
+              "value": "73%"
+            },
+            {
+              "metric_name": "Policy Update Frequency",
+              "metric_id": "AII10128",
+              "value": "76%"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}   

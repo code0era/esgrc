@@ -1,0 +1,12 @@
+# Shell scripts must keep LF endings even when checked out on Windows —
+# a CRLF shebang (#!/usr/bin/env bash\r) breaks execution inside the Linux
+# Docker container. Force LF for scripts that run in containers.
+*.sh text eol=lf
+deploy/hf/entrypoint.sh text eol=lf
+
+# Binary assets — never apply line-ending conversion (would corrupt them).
+*.pdf binary
+*.png binary
+*.jpg binary
+*.zip binary
+*.db binary

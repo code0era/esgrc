@@ -1,0 +1,63 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Virtual environments
+.venv/
+.venv*/
+venv/
+env/
+
+# Environment / secrets (keep .env.example tracked)
+.env
+!.env.example
+
+# Database
+*.db
+*.sqlite3
+*.db-shm
+*.db-wal
+
+# Archives (don't commit zipped snapshots into git)
+*.zip
+
+# Logs
+*.log
+
+# Testing / coverage
+.local/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Type checkers / linters
+.mypy_cache/
+.ruff_cache/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# Alembic
+alembic/versions/*.pyc
+
+# Jupyter
+.ipynb_checkpoints/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Monorepo Additions
+node_modules/
+
+# Local Claude Code settings (not part of the project)
+.claude/
