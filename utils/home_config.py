@@ -8,7 +8,7 @@ MODULE_HOME_CONFIG = {
         "display": "Apex Enterprise",
         "badge": "Enterprise Command Center",
         "title": "Enterprise Risk & Governance Command Center",
-        "subtitle": "Synthesize multi-departmental intelligence, aggregate cross-functional risk matrices, and empower C-level governance with autonomous AI insights.",
+        "subtitle": "Enable multi-departmental intelligence, aggregate cross-functional risk metrices, and speed up C-level governance with autonomous AI insights.",
         "icon": "🛡️",
         "theme_color": "#CD6752",
         "stats": [
@@ -44,7 +44,7 @@ MODULE_HOME_CONFIG = {
         "display": "ESGRC",
         "badge": "Sustainability & Regulatory Governance",
         "title": "ESG, Risk & Compliance Intelligence Hub",
-        "subtitle": "Continuously monitor environmental emissions, social governance commitments, and strict regulatory compliance across complex supply chains.",
+        "subtitle": "Continuously monitor ESG commitments, and regulatory compliance across multiple supply chains.",
         "icon": "🌱",
         "theme_color": "#10B981",
         "stats": [
@@ -79,8 +79,8 @@ MODULE_HOME_CONFIG = {
     "CUSTOMER": {
         "display": "Customer",
         "badge": "Customer Experience & Retention",
-        "title": "Customer Experience & Satisfaction Intelligence Hub",
-        "subtitle": "Elevate customer loyalty, optimize support resolution velocity, and proactively eliminate churn risks with AI-driven sentiment and service analytics.",
+        "title": "Customer Experience Intelligence Hub",
+        "subtitle": "Elevate customer loyalty, optimize support resolution velocity, and proactively eliminate churn risks with AI-driven sentiment and customer analytics.",
         "icon": "🤝",
         "theme_color": "#0284C7",
         "stats": [
@@ -114,9 +114,9 @@ MODULE_HOME_CONFIG = {
     },
     "PRODUCT": {
         "display": "Product",
-        "badge": "Product Quality & Lifecycle",
-        "title": "Product Engineering & Quality Assurance Hub",
-        "subtitle": "Accelerate release readiness, minimize defect density, and continuously track product reliability metrics across all engineering lifecycles.",
+        "badge": "Product Lifecycle and Support",
+        "title": "Product Portfolio, Catalogue and Offering Hub",
+        "subtitle": "Monitor the Product ecosystem including orchestration, offerings, anomaly, catalogues, support, inventory, capability, specification and reliability metrics.",
         "icon": "📦",
         "theme_color": "#8B5CF6",
         "stats": [
@@ -150,9 +150,9 @@ MODULE_HOME_CONFIG = {
     },
     "BRAND": {
         "display": "Brand",
-        "badge": "Brand Equity & Reputation",
-        "title": "Brand Perception & Reputation Intelligence",
-        "subtitle": "Protect enterprise brand equity, monitor market perception vectors, and identify emerging PR or reputation risks in real time.",
+        "badge": "Brand Command Center",
+        "title": "Enterprise Brand Intelligence",
+        "subtitle": "Build enterprise brand equity, monitor market perception vectors, and measure to manage in real time.",
         "icon": "✨",
         "theme_color": "#EC4899",
         "stats": [
@@ -294,9 +294,9 @@ MODULE_HOME_CONFIG = {
     },
     "ICTM": {
         "display": "ICTM",
-        "badge": "IT Systems & Cybersecurity",
-        "title": "Information & Cyber Technology Management",
-        "subtitle": "Ensure enterprise IT infrastructure resilience, enforce zero-trust security postures, and safeguard continuous systems availability.",
+        "badge": "ICT Systems",
+        "title": "Information & Communication Technology Management",
+        "subtitle": "Manage high maturity enterprise IT infrastructure, resilience, enforce zero-trust security postures, and ensure continuous systems availability.",
         "icon": "💻",
         "theme_color": "#3B82F6",
         "stats": [
@@ -365,10 +365,10 @@ MODULE_HOME_CONFIG = {
         ]
     },
     "BSPT": {
-        "display": "BSPT",
-        "badge": "Business Strategy & Portfolio",
-        "title": "Business Strategy & Portfolio Tracking Hub",
-        "subtitle": "Align multi-year strategic objectives with tactical portfolio execution, monitor initiative velocity, and govern ROI realization.",
+        "display": "Business Partner",
+        "badge": "Business Partner Management",
+        "title": "Business Partner Tracking Hub",
+        "subtitle": "Align business partner relationships with tactical portfolio execution, monitor initiative velocity and ROI realization.",
         "icon": "🎯",
         "theme_color": "#A855F7",
         "stats": [
