@@ -85,8 +85,9 @@ footer, [data-testid="stFooter"] { display: none !important; }
     z-index: 99999999 !important;
     pointer-events: auto !important; /* Re-enable clicking for the button */
     position: fixed !important;
-    top: 75px !important;
-    left: 10px !important;
+    top: 15px !important;
+    left: 15px !important;
+    margin: 0 !important;
     display: flex !important;
     opacity: 1 !important;
     visibility: visible !important;
@@ -333,7 +334,7 @@ div[data-testid="element-container"], div[data-testid="stVerticalBlock"] {
 /* ── Custom page header bar ──────────────────────────────────────────── */
 div[data-testid="stHorizontalBlock"]:has(.meteoerait-software-header-left) {
     background: linear-gradient(135deg, #25282d 0%, #21151b 100%) !important;
-    padding: 0.5rem 3rem !important;
+    padding: 0.5rem 3rem 0.5rem 4rem !important;
     position: fixed !important;
     top: 0 !important;
     left: 0 !important;
