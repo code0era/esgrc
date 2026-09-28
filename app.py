@@ -98,6 +98,11 @@ footer, [data-testid="stFooter"] { display: none !important; }
     fill: #F8F6F0 !important;
     stroke: #F8F6F0 !important;
 }
+[data-testid="collapsedControl"] span[data-testid="stIconMaterial"], 
+[data-testid="stSidebarCollapsedControl"] span[data-testid="stIconMaterial"],
+[data-testid="stSidebar"] button span[data-testid="stIconMaterial"] {
+    color: #4facfe !important;
+}
 
 /* ── Reset margins and paddings for all layout wrappers ─────────────── */
 [data-testid="stAppViewContainer"], [data-testid="stAppViewBlockContainer"], [data-testid="stMainBlockContainer"], .main, .block-container, [data-testid="stApp"] {
