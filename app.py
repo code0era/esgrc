@@ -85,7 +85,7 @@ footer, [data-testid="stFooter"] { display: none !important; }
     z-index: 99999999 !important;
     pointer-events: auto !important; /* Re-enable clicking for the button */
     position: fixed !important;
-    top: 15px !important;
+    top: 26px !important;
     left: 15px !important;
     margin: 0 !important;
     display: flex !important;
