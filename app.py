@@ -2192,6 +2192,19 @@ def _render_pipeline_results():
 
 def render_pipeline_tab():
     """Full Pipeline Automation tab — routes by role/active module to the correct module pipeline."""
+    
+    # If a report is loaded from the sidebar, render the report view instead
+    if st.session_state.get("report_generated"):
+        render_report()
+        st.markdown("<br>", unsafe_allow_html=True)
+        if st.button("← Back to Pipeline", use_container_width=True):
+            st.session_state.report_generated = False
+            st.session_state.report_content = ""
+            st.session_state.report_context = {}
+            st.session_state.chat_messages = []
+            st.rerun()
+        return
+
     from utils.pipeline_flows import render_esgrc_pipeline, render_apex_pipeline, render_module_pipeline, ALL_ROLES, MODULE_REGISTRY
 
     role = st.session_state.get("active_module", st.session_state.get("role", "ESGRC")).upper()
