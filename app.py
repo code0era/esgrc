@@ -745,6 +745,7 @@ def render_auth():
     [data-testid="stAppViewBlockContainer"] {
         background: transparent !important;
         padding-top: 10vh !important;
+        padding-bottom: 0 !important;
         min-height: 100vh;
         max-width: 100% !important;
     }
