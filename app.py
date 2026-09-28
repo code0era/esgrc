@@ -75,14 +75,14 @@ header[data-testid="stHeader"] {
 footer, [data-testid="stFooter"] { display: none !important; }
 
 /* ── Highlight Sidebar Toggle Button ──────────────────────────────────── */
-[data-testid="collapsedControl"], [data-testid="stSidebarCollapsedControl"] {
+[data-testid="collapsedControl"], [data-testid="stSidebarCollapsedControl"], [data-testid="stExpandSidebarButton"], [data-testid="stCollapseSidebarButton"] {
     background-color: rgba(255, 255, 255, 0.1) !important;
     border-radius: 8px !important;
     margin: 10px !important;
     color: #F8F6F0 !important;
     border: 1px solid rgba(255, 255, 255, 0.2) !important;
     transition: all 0.3s ease !important;
-    z-index: 9999999 !important;
+    z-index: 99999999 !important;
     pointer-events: auto !important; /* Re-enable clicking for the button */
     position: fixed !important;
     top: 75px !important;
@@ -91,15 +91,17 @@ footer, [data-testid="stFooter"] { display: none !important; }
     opacity: 1 !important;
     visibility: visible !important;
 }
-[data-testid="collapsedControl"]:hover, [data-testid="stSidebarCollapsedControl"]:hover {
+[data-testid="collapsedControl"]:hover, [data-testid="stSidebarCollapsedControl"]:hover, [data-testid="stExpandSidebarButton"]:hover, [data-testid="stCollapseSidebarButton"]:hover {
     background-color: rgba(255, 255, 255, 0.25) !important;
 }
-[data-testid="collapsedControl"] svg, [data-testid="stSidebarCollapsedControl"] svg {
+[data-testid="collapsedControl"] svg, [data-testid="stSidebarCollapsedControl"] svg, [data-testid="stExpandSidebarButton"] svg, [data-testid="stCollapseSidebarButton"] svg {
     fill: #F8F6F0 !important;
     stroke: #F8F6F0 !important;
 }
 [data-testid="collapsedControl"] span[data-testid="stIconMaterial"], 
 [data-testid="stSidebarCollapsedControl"] span[data-testid="stIconMaterial"],
+[data-testid="stExpandSidebarButton"] span[data-testid="stIconMaterial"],
+[data-testid="stCollapseSidebarButton"] span[data-testid="stIconMaterial"],
 [data-testid="stSidebar"] button span[data-testid="stIconMaterial"] {
     color: #4facfe !important;
 }
