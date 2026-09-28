@@ -748,19 +748,19 @@ def render_auth():
         max-width: 100% !important;
     }
     .auth-title {
-        font-size: 4rem;
+        font-size: 3rem;
         font-weight: 900;
         color: #FFFFFF;
         text-align: center;
         letter-spacing: -2px;
-        margin-bottom: 0.5rem;
-        margin-top: 15vh;
+        margin-bottom: 0.2rem;
+        margin-top: 8vh;
     }
     .auth-subtitle {
-        font-size: 1.25rem;
+        font-size: 1.15rem;
         color: rgba(255, 255, 255, 0.7);
         text-align: center;
-        margin-bottom: 3.5rem;
+        margin-bottom: 1.5rem;
         font-weight: 500;
         max-width: 650px;
         margin-left: auto;
@@ -1037,6 +1037,7 @@ def render_auth():
 </div>
 
 <div class="auth-title">METEOERAIT SOFTWARE</div>
+<div style="text-align:center; font-size:1.1rem; color:#84BABF; font-weight:600; margin-top:0.2rem; margin-bottom:1rem; letter-spacing:1px; text-transform:lowercase;">eriskmonitor</div>
 <div class="auth-subtitle">
     Empower your enterprise with autonomous AI-driven analytics, continuous risk compliance, and intelligent performance reporting.
 </div>
@@ -1051,7 +1052,6 @@ def render_auth():
         # SIGN IN
         # ---------------------------------------------------------------------
         with tab_in:
-            st.markdown("<br>", unsafe_allow_html=True)
             with st.form("login_form"):
                 username = st.text_input("Username or Email", placeholder="Enter your username or email")
                 password = st.text_input("Password", type="password", placeholder="Password")
@@ -1081,7 +1081,6 @@ def render_auth():
         # CREATE ACCOUNT (WITH OTP)
         # ---------------------------------------------------------------------
         with tab_reg:
-            st.markdown("<br>", unsafe_allow_html=True)
             st.info("Disclaimer: Please provide a valid email address. A 6-digit verification code will be sent to this email to complete your registration.")
             
             if "reg_step" not in st.session_state:
@@ -1162,7 +1161,6 @@ def render_auth():
         # FORGOT PASSWORD
         # ---------------------------------------------------------------------
         with tab_forgot:
-            st.markdown("<br>", unsafe_allow_html=True)
             if "fp_step" not in st.session_state:
                 st.session_state.fp_step = 1
                 
