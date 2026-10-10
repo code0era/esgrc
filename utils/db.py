@@ -139,8 +139,11 @@ def mark_sqlite_mode():
     pass
 
 
+_INDEXES_CREATED = False
+
 def get_db():
-    """Return a MongoDB database handle, creating indexes if possible."""
+    """Return a MongoDB database handle, creating indexes once if possible."""
+    global _INDEXES_CREATED
     client = _get_mongo_client()
     if client is None:
         raise ConnectionError("MongoDB client could not be initialized.")
@@ -148,13 +151,15 @@ def get_db():
     db_name = st.secrets.get("MONGODB_DB", "esgrc_db")
     db = client[db_name]
 
-    # Best-effort index creation (silently skipped if cluster has no primary)
-    try:
-        db.users.create_index("username", unique=True)
-        db.users.create_index("email", unique=True)
-        db.reports.create_index([("user_id", 1), ("created_at", DESCENDING)])
-    except Exception:
-        pass
+    if not _INDEXES_CREATED:
+        # Best-effort index creation (silently skipped if cluster has no primary)
+        try:
+            db.users.create_index("username", unique=True)
+            db.users.create_index("email", unique=True)
+            db.reports.create_index([("user_id", 1), ("created_at", DESCENDING)])
+            _INDEXES_CREATED = True
+        except Exception:
+            pass
 
     return db
 
