@@ -619,42 +619,25 @@ hr { border: none !important; border-top: 1.5px solid #E0F2FE !important; margin
 
 
 # ─────────────────────────────────────────────────────────────────────────────
-# SESSION STATE  — 24-hour persistent login via server-side token
+# SESSION STATE  — 24-hour persistent login via server-side token in URL
 # ─────────────────────────────────────────────────────────────────────────────
-_SESSION_JS = """
-<script>
-(function() {
-    // Write token from query-param into localStorage (called right after login)
-    const params = new URLSearchParams(window.location.search);
-    const newToken = params.get('_st');
-    if (newToken) {
-        localStorage.setItem('esgrc_session_token', newToken);
-        // Clean the URL without reloading
-        const clean = window.location.pathname;
-        window.history.replaceState({}, '', clean);
-    }
-    // If Streamlit reloads and there's a stored token, push it back as query param
-    const stored = localStorage.getItem('esgrc_session_token');
-    if (stored && !newToken) {
-        const url = window.location.pathname + '?_st=' + encodeURIComponent(stored);
-        window.location.replace(url);
-    }
-})();
-</script>
-"""
 
 def _restore_session_from_token():
-    """Check token from query param, validate against DB, restore session state."""
+    """Check ?_st=<token> in URL, validate against DB, restore session state.
+    If valid, keeps the token in st.query_params so it survives Streamlit reruns.
+    """
     from utils.db import get_session_user
     token = st.query_params.get("_st", "")
     if token and not st.session_state.get("logged_in"):
         sess = get_session_user(token)
         if sess:
-            st.session_state.logged_in = True
-            st.session_state.user_id   = sess.get("user_id", "")
-            st.session_state.username  = sess.get("username", "")
-            st.session_state.role      = sess.get("role", "ESGRC")
-            st.session_state["_session_token"] = token
+            st.session_state.logged_in            = True
+            st.session_state.user_id              = sess.get("user_id", "")
+            st.session_state.username             = sess.get("username", "")
+            st.session_state.role                 = sess.get("role", "ESGRC")
+            st.session_state["_session_token"]    = token
+            # Keep token in URL so browser refresh preserves session
+            st.query_params["_st"] = token
 
 def init_session():
     defaults = {
@@ -692,8 +675,6 @@ def init_session():
             st.session_state[k] = v
     _restore_session_from_token()
 
-# Inject JS to sync localStorage token on every page load
-st.markdown(_SESSION_JS, unsafe_allow_html=True)
 init_session()
 
 
