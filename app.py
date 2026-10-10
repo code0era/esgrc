@@ -1089,9 +1089,7 @@ def render_auth():
                         st.session_state.username  = res["user"]["username"]
                         st.session_state.role      = res["user"].get("role", "ESGRC")
                         st.session_state["_session_token"] = token
-                        # Pass token via query param so JS can store it in localStorage
                         st.query_params["_st"] = token
-                        time.sleep(0.4)
                         st.rerun()
                     else:
                         st.toast(res["error"], icon="🚨")

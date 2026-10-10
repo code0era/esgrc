@@ -746,11 +746,6 @@ def save_session_token(token: str, user: Dict[str, Any]) -> None:
         if not should_use_sqlite():
             db = get_db()
             db.sessions.update_one({"token": token}, {"$set": doc}, upsert=True)
-            # TTL index (create once — safe to call repeatedly)
-            try:
-                db.sessions.create_index("expires_at", expireAfterSeconds=0)
-            except Exception:
-                pass
             return
     except Exception:
         pass
