@@ -722,3 +722,69 @@ def user_exists(email: str) -> bool:
         if res: return True
     except: pass
     return False
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# 24-HOUR SESSION TOKEN  (MongoDB) / local dict fallback (SQLite mode)
+# ─────────────────────────────────────────────────────────────────────────────
+from datetime import timedelta
+
+_LOCAL_SESSIONS: Dict[str, Any] = {}   # fallback in-memory store
+
+
+def save_session_token(token: str, user: Dict[str, Any]) -> None:
+    """Persist a session token that expires in 24 hours."""
+    expiry = datetime.utcnow() + timedelta(hours=24)
+    doc = {
+        "token":      token,
+        "user_id":    str(user.get("_id", user.get("id", ""))),
+        "username":   user.get("username", ""),
+        "role":       user.get("role", "ESGRC"),
+        "expires_at": expiry,
+    }
+    try:
+        if not should_use_sqlite():
+            db = get_db()
+            db.sessions.update_one({"token": token}, {"$set": doc}, upsert=True)
+            # TTL index (create once — safe to call repeatedly)
+            try:
+                db.sessions.create_index("expires_at", expireAfterSeconds=0)
+            except Exception:
+                pass
+            return
+    except Exception:
+        pass
+    # Fallback: in-memory
+    _LOCAL_SESSIONS[token] = doc
+
+
+def get_session_user(token: str) -> Optional[Dict[str, Any]]:
+    """Return session user dict if token is valid and not expired, else None."""
+    if not token:
+        return None
+    try:
+        if not should_use_sqlite():
+            db = get_db()
+            doc = db.sessions.find_one({"token": token})
+            if doc and doc.get("expires_at", datetime.utcnow()) > datetime.utcnow():
+                return doc
+            return None
+    except Exception:
+        pass
+    # Fallback: in-memory
+    doc = _LOCAL_SESSIONS.get(token)
+    if doc and doc.get("expires_at", datetime.utcnow()) > datetime.utcnow():
+        return doc
+    return None
+
+
+def delete_session_token(token: str) -> None:
+    """Invalidate a session token (logout)."""
+    try:
+        if not should_use_sqlite():
+            db = get_db()
+            db.sessions.delete_one({"token": token})
+            return
+    except Exception:
+        pass
+    _LOCAL_SESSIONS.pop(token, None)

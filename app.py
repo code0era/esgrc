@@ -619,19 +619,50 @@ hr { border: none !important; border-top: 1.5px solid #E0F2FE !important; margin
 
 
 # ─────────────────────────────────────────────────────────────────────────────
-# SESSION STATE
+# SESSION STATE  — 24-hour persistent login via server-side token
 # ─────────────────────────────────────────────────────────────────────────────
+_SESSION_JS = """
+<script>
+(function() {
+    // Write token from query-param into localStorage (called right after login)
+    const params = new URLSearchParams(window.location.search);
+    const newToken = params.get('_st');
+    if (newToken) {
+        localStorage.setItem('esgrc_session_token', newToken);
+        // Clean the URL without reloading
+        const clean = window.location.pathname;
+        window.history.replaceState({}, '', clean);
+    }
+    // If Streamlit reloads and there's a stored token, push it back as query param
+    const stored = localStorage.getItem('esgrc_session_token');
+    if (stored && !newToken) {
+        const url = window.location.pathname + '?_st=' + encodeURIComponent(stored);
+        window.location.replace(url);
+    }
+})();
+</script>
+"""
+
+def _restore_session_from_token():
+    """Check token from query param, validate against DB, restore session state."""
+    from utils.db import get_session_user
+    token = st.query_params.get("_st", "")
+    if token and not st.session_state.get("logged_in"):
+        sess = get_session_user(token)
+        if sess:
+            st.session_state.logged_in = True
+            st.session_state.user_id   = sess.get("user_id", "")
+            st.session_state.username  = sess.get("username", "")
+            st.session_state.role      = sess.get("role", "ESGRC")
+            st.session_state["_session_token"] = token
+
 def init_session():
-    qp_logged = st.query_params.get("logged_in") == "true"
-    qp_user_id = st.query_params.get("user_id")
-    qp_username = st.query_params.get("username")
-    qp_role = st.query_params.get("role", "ESGRC")
-    
     defaults = {
-        "logged_in":        qp_logged,
-        "user_id":          qp_user_id,
-        "username":         qp_username,
-        "role":             qp_role,
+        "logged_in":        False,
+        "user_id":          None,
+        "username":         None,
+        "role":             "ESGRC",
+        "_session_token":   "",
         "csv_bytes":        None,
         "json_data":        None,
         "csv_filename":     "",
@@ -642,7 +673,7 @@ def init_session():
         "report_generated": False,
         "is_generating":    False,
         "chat_messages":    [],
-        "chat_open":        True,   # right panel visibility
+        "chat_open":        True,
         # ── Pipeline Automation ───────────────────────────────────────────
         "pipeline_csv_bytes":       None,
         "pipeline_json_data":       None,
@@ -659,7 +690,10 @@ def init_session():
     for k, v in defaults.items():
         if k not in st.session_state:
             st.session_state[k] = v
+    _restore_session_from_token()
 
+# Inject JS to sync localStorage token on every page load
+st.markdown(_SESSION_JS, unsafe_allow_html=True)
 init_session()
 
 
@@ -1064,16 +1098,19 @@ def render_auth():
                 else:
                     res = login_user(username, password)
                     if res["ok"]:
+                        import secrets as _sec
+                        from utils.db import save_session_token
+                        token = _sec.token_urlsafe(32)
+                        save_session_token(token, res["user"])
                         st.toast(f"Login successful! Welcome {username}.", icon="✅")
                         st.session_state.logged_in = True
-                        st.session_state.user_id   = str(res["user"]["_id"])
+                        st.session_state.user_id   = str(res["user"].get("_id", res["user"].get("id", "")))
                         st.session_state.username  = res["user"]["username"]
                         st.session_state.role      = res["user"].get("role", "ESGRC")
-                        st.query_params["logged_in"] = "true"
-                        st.query_params["user_id"]   = str(res["user"]["_id"])
-                        st.query_params["username"]  = res["user"]["username"]
-                        st.query_params["role"]      = st.session_state.role
-                        time.sleep(0.6)
+                        st.session_state["_session_token"] = token
+                        # Pass token via query param so JS can store it in localStorage
+                        st.query_params["_st"] = token
+                        time.sleep(0.4)
                         st.rerun()
                     else:
                         st.toast(res["error"], icon="🚨")
@@ -1367,6 +1404,15 @@ def render_header():
         """, unsafe_allow_html=True)
         
         if st.button("Log Out", key="header_signout", use_container_width=True):
+            from utils.db import delete_session_token
+            token = st.session_state.get("_session_token", "")
+            if token:
+                delete_session_token(token)
+            # Clear localStorage token via JS before clearing state
+            st.markdown("""
+<script>
+(function() { localStorage.removeItem('esgrc_session_token'); })();
+</script>""", unsafe_allow_html=True)
             for k in list(st.session_state.keys()):
                 del st.session_state[k]
             st.query_params.clear()
