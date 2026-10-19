@@ -597,69 +597,30 @@ def render_apex_pipeline():
             "data_for_risk_assessment_shared.csv"
         ]
         
-        # Check if reference files exist in repository
-        ref_dir = os.path.join(os.path.dirname(__file__), "modules", "apex", "reference_data")
-        has_ref = os.path.exists(ref_dir) and all(os.path.exists(os.path.join(ref_dir, f)) for f in required_files)
-
-        col_auto, col_clr = st.columns([2, 1])
-        with col_auto:
-            if has_ref:
-                if st.button("⚡ Auto-load All 12 Department Reference Files", key="apex_autoload_btn", use_container_width=True):
-                    for rf in required_files:
-                        src = os.path.join(ref_dir, rf)
-                        dst = os.path.join(work_dir, rf)
-                        with open(src, "rb") as sf, open(dst, "wb") as df:
-                            df.write(sf.read())
-                    st.success("✅ All 12 reference department files auto-loaded!")
-                    st.rerun()
-        with col_clr:
-            if os.path.exists(work_dir):
-                existing_cnt = sum(1 for req in required_files if os.path.exists(os.path.join(work_dir, req)))
-                if existing_cnt > 0:
-                    if st.button("🗑️ Reset Files", key="apex_reset_files_btn", use_container_width=True):
-                        for rf in required_files:
-                            p = os.path.join(work_dir, rf)
-                            if os.path.exists(p):
-                                try: os.remove(p)
-                                except Exception: pass
-                        st.rerun()
-
-        uploaded = st.file_uploader("Or drop department CSV files here", type=["csv"], accept_multiple_files=True, key="apex_s1_files")
+        uploaded = st.file_uploader("Drop all 12 CSV files here", type=["csv"], accept_multiple_files=True, key="apex_s1_files")
         
-        # Persist any uploaded files immediately to work_dir so they are not lost on rerun
-        if uploaded:
+        uploaded_names = [f.name for f in uploaded] if uploaded else []
+        
+        missing_files = [req for req in required_files if req not in uploaded_names]
+        missing_count = len(missing_files)
+        
+        if missing_count == 0 and len(uploaded_names) >= len(required_files):
+            st.success("✅ All 12 required files uploaded successfully!")
+        else:
+            st.markdown("### Upload Checklist")
+            for req in required_files:
+                if req in uploaded_names:
+                    st.markdown(f"<div style='color: #16A34A; margin-bottom: 4px;'>✅ {req}</div>", unsafe_allow_html=True)
+                else:
+                    st.markdown(f"<div style='color: #DC2626; margin-bottom: 4px;'>❌ {req} (Missing)</div>", unsafe_allow_html=True)
+                
+        if missing_count == 0 and len(uploaded_names) > 0:
+            # Write all files to work_dir
             for uf in uploaded:
                 with open(os.path.join(work_dir, uf.name), "wb") as f:
                     f.write(uf.getvalue())
-        
-        # Check files present in work_dir
-        available_files = set()
-        if os.path.exists(work_dir):
-            for rf in required_files:
-                target_p = os.path.join(work_dir, rf)
-                if os.path.exists(target_p) and os.path.getsize(target_p) > 0:
-                    available_files.add(rf)
-        if uploaded:
-            for uf in uploaded:
-                if uf.name in required_files:
-                    available_files.add(uf.name)
-
-        missing_files = [req for req in required_files if req not in available_files]
-        missing_count = len(missing_files)
-        
-        if missing_count == 0:
-            st.success("✅ All 12 required department files are loaded and ready!")
             return True, {"work_dir": work_dir}
-        else:
-            st.markdown(f"### Upload Checklist ({len(available_files)}/12 Ready)")
-            cols = st.columns(2)
-            for idx, req in enumerate(required_files):
-                c = cols[idx % 2]
-                if req in available_files:
-                    c.markdown(f"<div style='color: #16A34A; margin-bottom: 4px;'>✅ {req}</div>", unsafe_allow_html=True)
-                else:
-                    c.markdown(f"<div style='color: #DC2626; margin-bottom: 4px;'>❌ {req} (Missing)</div>", unsafe_allow_html=True)
-                
+            
         return False, {}
         
     render_pipeline_step(pipeline_key, 1, total_steps, "All-Module L0 Consolidation",

@@ -261,41 +261,36 @@ div[data-testid="stTabs"] > div {
 }
 
 
-/* ── Main App Container ──────────────────────────────────────────────── */
+/* ── Remove the white strip between Header and Hero ──────────────────────── */
 div[data-testid="stAppViewBlockContainer"] {
-    padding-top: 1.25rem !important;
-    padding-bottom: 2.5rem !important;
+    padding-top: 0 !important;
 }
 
-/* ── Target specifically the main navigation tabs ─────────────────────── */
-.st-key-main_nav_tabs > div:first-child,
-div[data-testid="stTabs"].st-key-main_nav_tabs > div:first-child {
+/* Target specifically the FIRST tabs widget (the main navigation) */
+div[data-testid="stVerticalBlock"] > div:first-child > div[data-testid="stTabs"] > div:first-child,
+div[data-testid="stTabs"]:first-of-type > div:first-child {
     background: linear-gradient(135deg, #25282d 0%, #21151b 100%) !important;
-    margin: 0 0 1.25rem 0 !important;
-    padding: 0 1.5rem !important;
-    border-bottom: 2px solid #362A28 !important;
-    border-radius: 8px !important;
-    min-height: 56px !important;
+    margin: 0 !important;
+    padding: 0 3rem !important;
+    border-bottom: none !important;
+    min-height: 64px !important;
     display: flex !important;
     align-items: center !important;
 }
 
-.st-key-main_nav_tabs > div:first-child button[data-baseweb="tab"],
-div[data-testid="stTabs"].st-key-main_nav_tabs > div:first-child button[data-baseweb="tab"] {
-    color: rgba(255,255,255,0.7) !important;
-    padding-top: 0.9rem !important;
-    padding-bottom: 0.9rem !important;
-    padding-left: 1.25rem !important;
-    padding-right: 1.25rem !important;
-    min-height: 56px !important;
+div[data-testid="stTabs"]:first-of-type > div:first-child button[data-baseweb="tab"] {
+    color: rgba(255,255,255,0.6) !important;
+    padding-top: 1.25rem !important;
+    padding-bottom: 1.25rem !important;
+    padding-left: 1.2rem !important;
+    padding-right: 1.2rem !important;
+    min-height: 64px !important;
     background: transparent !important;
     font-size: 0.95rem !important;
-    font-weight: 600 !important;
     white-space: nowrap !important;
 }
 
-.st-key-main_nav_tabs > div:first-child button[data-baseweb="tab"][aria-selected="true"],
-div[data-testid="stTabs"].st-key-main_nav_tabs > div:first-child button[data-baseweb="tab"][aria-selected="true"] {
+div[data-testid="stTabs"]:first-of-type > div:first-child button[data-baseweb="tab"][aria-selected="true"] {
     color: #FFFFFF !important;
     border-bottom: 2px solid #CD6752 !important;
 }
@@ -304,7 +299,7 @@ div[data-testid="stTabs"].st-key-main_nav_tabs > div:first-child button[data-bas
 #hero-container {
     background: linear-gradient(135deg, #25282d 0%, #21151b 100%) !important;
     margin-top: 0 !important;
-    border-radius: 8px !important;
+    border-radius: 0 !important;
 }
 
 /* ── Metrics ─────────────────────────────────────────────────────────── */
@@ -344,17 +339,23 @@ div[data-testid="element-container"], div[data-testid="stVerticalBlock"] {
     transition: none !important;
 }
 
-/* ── Custom page header bar (Scrollable in-page, non-fixed) ───────────── */
+/* ── Custom page header bar ──────────────────────────────────────────── */
 div[data-testid="stHorizontalBlock"]:has(.meteoerait-software-header-left) {
     background: linear-gradient(135deg, #25282d 0%, #21151b 100%) !important;
-    padding: 0.85rem 1.75rem !important;
-    position: relative !important;
-    width: 100% !important;
-    margin: 0 0 1.25rem 0 !important;
+    padding: 0.5rem 3rem 0.5rem 4rem !important;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    z-index: 99999 !important;
+    margin: 0 !important;
     border-bottom: 2px solid #CD6752 !important;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.25) !important;
-    border-radius: 8px !important;
+    box-shadow: 0 8px 15px -5px rgba(0,0,0,0.5) !important;
     align-items: center !important;
+}
+[data-testid="stAppViewBlockContainer"] {
+    padding-top: 150px !important;
+    padding-bottom: 120px !important;
 }
 .meteoerait-software-header-left  { display:flex; align-items:center; gap:14px; }
 .meteoerait-software-header-logo  { font-size:1.8rem; line-height:1; }
@@ -386,17 +387,20 @@ div[data-testid="stHorizontalBlock"]:has(.meteoerait-software-header-left) {
 }
 .meteoerait-software-header-date  { font-size:0.75rem; font-weight: 500; color:#FDFBF7; opacity: 0.8; }
 
-/* ── Page footer (Scrollable at bottom of page, non-fixed) ─────────────── */
+/* ── Page footer ─────────────────────────────────────────────────────── */
 .meteoerait-software-footer {
     background: linear-gradient(135deg, #25282d 0%, #21151b 100%) !important;
     opacity: 1 !important;
     background-color: #21151b !important;
-    border-top: 2px solid #CD6752;
-    border-radius: 8px !important;
-    padding: 1.5rem 2.5rem !important;
-    margin: 3.5rem 0 1rem 0 !important;
-    width: 100% !important;
-    position: relative !important;
+    border-top: 1px solid #362A28;
+    border-radius: 0 !important;
+    padding: 0.5rem 4vw !important;
+    margin: 0 !important;
+    width: 100vw !important;
+    position: fixed !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    z-index: 999999;
     font-family: 'Inter', sans-serif;
     display: flex;
     flex-direction: column;
@@ -537,7 +541,7 @@ hr { border: none !important; border-top: 1.5px solid #E0F2FE !important; margin
     }
     .meteoerait-software-footer-security { display: none; }
     .meteoerait-software-footer-links { gap: 10px; flex-wrap: wrap; justify-content: center; }
-    [data-testid="stAppViewBlockContainer"] { padding: 1rem 0.5rem !important; }
+    [data-testid="stAppViewBlockContainer"] { padding-top: 80px !important; }
 }
 @media (max-width: 600px) {
     .meteoerait-software-header-sub { display: none; }
@@ -572,7 +576,9 @@ hr { border: none !important; border-top: 1.5px solid #E0F2FE !important; margin
         flex-shrink: 0 !important;
     }
     [data-testid="stAppViewBlockContainer"] {
-        padding: 0.75rem 0.5rem !important;
+        padding-top: 60px !important;
+        padding-left: 0.5rem !important;
+        padding-right: 0.5rem !important;
     }
     
     /* Footer — compact on small screens */
@@ -1370,13 +1376,13 @@ def render_header():
     user    = st.session_state.get("username", "")
 
     st.markdown('<br>', unsafe_allow_html=True)
-    hc1, hc2 = st.columns([7, 5], vertical_alignment="center")
+    hc1, hc2 = st.columns([10, 2], vertical_alignment="center")
     
     with hc1:
         st.markdown(f"""
         <div class="meteoerait-software-header-left">
             <a aria-label="Meteoerait home" href="/" class="governance-brand"><span class="brand-lockup"><svg class="brand-lockup-mark" viewBox="0 0 58 58" fill="none" aria-hidden="true"><path d="M8 41.5V16.5C8 14.01 10.01 12 12.5 12h4.8c1.6 0 3.09.88 3.85 2.29L29 29.2l7.85-14.91A4.36 4.36 0 0 1 40.7 12h4.8c2.49 0 4.5 2.01 4.5 4.5v25" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M8 41.5c8.1-5.77 14.95-5.77 21 0 6.05 5.77 12.9 5.77 21 0" stroke="var(--gov-coral)" stroke-width="4.5" stroke-linecap="round"></path><circle cx="29" cy="29.2" r="3.2" fill="var(--gov-coral)"></circle><circle cx="29" cy="29.2" r="7.2" stroke="var(--gov-coral)" stroke-width="1.2" opacity=".28"></circle></svg><span class="brand-lockup-type"><span class="brand-lockup-name">Meteoer<span class="brand-lockup-accent">ai</span>t</span><span class="brand-lockup-tagline">eriskmonitor / control</span></span></span></a>
-            <div class="meteoerait-software-header-sub" style="margin-left: 10px; font-size: 0.85rem; padding-top: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Enterprise Risk &nbsp;·&nbsp; Compliance &nbsp;·&nbsp; AI Analytics</div>
+            <div class="meteoerait-software-header-sub" style="margin-left: 10px; font-size: 0.9rem; padding-top: 6px;">Enterprise Risk &nbsp;·&nbsp; Compliance &nbsp;·&nbsp; Performance Metrics &nbsp;·&nbsp; AI Analytics</div>
         </div>
         """, unsafe_allow_html=True)
         
@@ -1385,32 +1391,30 @@ def render_header():
         user_role = st.session_state.get("role", "")
         role_display = f'<span style="opacity: 0.7; font-size: 0.8rem;">({user_role})</span>' if user_role else ''
         
-        h_info, h_btn = st.columns([3.5, 1.2], vertical_alignment="center")
-        with h_info:
-            st.markdown(f"""
-            <div style="text-align: right; display: flex; justify-content: flex-end; align-items: center; gap: 8px; flex-wrap: nowrap;">
-                <div style="color: white; font-size: 0.88rem; white-space: nowrap;">
-                    Welcome, <b>{user_name}</b> {role_display}
-                </div>
-                <div class="meteoerait-software-header-badge"><span class="meteoerait-software-header-dot"></span> Live</div>
-                <div class="meteoerait-software-header-date" id="live-clock" style="white-space: nowrap; font-size: 0.78rem;">{now_str}</div>
+        st.markdown(f"""
+        <div style="text-align: right; margin-bottom: 8px; display: flex; justify-content: flex-end; align-items: center; gap: 8px;">
+            <div style="color: white; font-size: 0.95rem; margin-right: 10px;">
+                Welcome, <b>{user_name}</b> {role_display}
             </div>
-            """, unsafe_allow_html=True)
-            
-        with h_btn:
-            if st.button("Log Out", key="header_signout", use_container_width=True):
-                from utils.db import delete_session_token
-                token = st.session_state.get("_session_token", "")
-                if token:
-                    delete_session_token(token)
-                st.markdown("""
+            <div class="meteoerait-software-header-badge"><span class="meteoerait-software-header-dot"></span> Live</div>
+            <div class="meteoerait-software-header-date" id="live-clock">{now_str}</div>
+        </div>
+        """, unsafe_allow_html=True)
+        
+        if st.button("Log Out", key="header_signout", use_container_width=True):
+            from utils.db import delete_session_token
+            token = st.session_state.get("_session_token", "")
+            if token:
+                delete_session_token(token)
+            # Clear localStorage token via JS before clearing state
+            st.markdown("""
 <script>
 (function() { localStorage.removeItem('esgrc_session_token'); })();
 </script>""", unsafe_allow_html=True)
-                for k in list(st.session_state.keys()):
-                    del st.session_state[k]
-                st.query_params.clear()
-                st.rerun()
+            for k in list(st.session_state.keys()):
+                del st.session_state[k]
+            st.query_params.clear()
+            st.rerun()
             
     st.markdown("""
 <iframe srcdoc="
