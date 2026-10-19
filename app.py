@@ -2286,7 +2286,7 @@ def render_module_home(active_module: str):
         f'{cfg.get("subtitle", "")}'
         f'</div>'
         f'<div style="display:flex;justify-content:center;gap:1.2rem;align-items:center;">'
-        f'<a id="get-started-btn" href="?tab=pipeline&_st={st.session_state.get("_session_token", "")}" target="_self" style="display:inline-flex;align-items:center;justify-content:center;background:{theme_color};color:white;text-decoration:none;border:none;padding:0.85rem 2.8rem;border-radius:30px;font-weight:700;font-size:1.15rem;cursor:pointer;transition:all 0.3s;box-shadow:0 6px 20px rgba(0,0,0,0.4);">'
+        f'<a id="get-started-btn" href="?tab=pipeline&_st={st.session_state.get("_session_token", "")}&_mod={st.session_state.get("active_module", st.session_state.get("role", "ESGRC"))}" target="_self" style="display:inline-flex;align-items:center;justify-content:center;background:{theme_color};color:white;text-decoration:none;border:none;padding:0.85rem 2.8rem;border-radius:30px;font-weight:700;font-size:1.15rem;cursor:pointer;transition:all 0.3s;box-shadow:0 6px 20px rgba(0,0,0,0.4);">'
         f'Launch {cfg.get("display", mk)} Pipeline →'
         f'</a>'
         f'</div>'
@@ -2341,7 +2341,7 @@ def render_module_home(active_module: str):
         f'</div>'
         f'</div>'
         f'<div>'
-        f'<a id="banner-pipeline-btn" href="?tab=pipeline&_st={st.session_state.get("_session_token", "")}" target="_self" style="display:inline-flex;align-items:center;justify-content:center;background:#162130;color:white;text-decoration:none;border:none;padding:0.75rem 1.8rem;border-radius:8px;font-weight:700;font-size:0.95rem;cursor:pointer;transition:all 0.2s;">'
+        f'<a id="banner-pipeline-btn" href="?tab=pipeline&_st={st.session_state.get("_session_token", "")}&_mod={st.session_state.get("active_module", st.session_state.get("role", "ESGRC"))}" target="_self" style="display:inline-flex;align-items:center;justify-content:center;background:#162130;color:white;text-decoration:none;border:none;padding:0.75rem 1.8rem;border-radius:8px;font-weight:700;font-size:0.95rem;cursor:pointer;transition:all 0.2s;">'
         f'Open {cfg.get("display", mk)} Pipeline →'
         f'</a>'
         f'</div>'
@@ -2409,6 +2409,9 @@ def main():
     if tab_param in ["pipeline", "get_started", "get-started"]:
         st.session_state.active_nav_tab = "Get Started"
         _tok = st.query_params.get("_st")
+        _mod = st.query_params.get("_mod")  # active module passed from home launch button
+        if _mod:
+            st.session_state.active_module = _mod.upper()
         st.query_params.clear()
         if _tok: st.query_params["_st"] = _tok
     elif tab_param in ["home"]:
