@@ -273,13 +273,21 @@ div[data-testid="stTabs"]:first-of-type > div:first-child {
     margin: 0 !important;
     padding: 0 3rem !important;
     border-bottom: none !important;
+    min-height: 64px !important;
+    display: flex !important;
+    align-items: center !important;
 }
 
 div[data-testid="stTabs"]:first-of-type > div:first-child button[data-baseweb="tab"] {
     color: rgba(255,255,255,0.6) !important;
-    padding-top: 1rem !important;
-    padding-bottom: 1rem !important;
+    padding-top: 1.25rem !important;
+    padding-bottom: 1.25rem !important;
+    padding-left: 1.2rem !important;
+    padding-right: 1.2rem !important;
+    min-height: 64px !important;
     background: transparent !important;
+    font-size: 0.95rem !important;
+    white-space: nowrap !important;
 }
 
 div[data-testid="stTabs"]:first-of-type > div:first-child button[data-baseweb="tab"][aria-selected="true"] {
