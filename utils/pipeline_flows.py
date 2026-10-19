@@ -659,15 +659,15 @@ def render_apex_pipeline():
         return True, {
             "work_dir": work_dir,
             "input_files": [
-                os.path.join(work_dir, f"performance_report_{pe.ANALYSIS_DATE}.txt"),
-                os.path.join(work_dir, f"SPC_summary_L0_{pe.ANALYSIS_DATE}.txt"),
-                os.path.join(work_dir, f"correlation_analysis_L0_{pe.ANALYSIS_DATE}.txt"),
-                os.path.join(work_dir, f"trends_and_repetitions_report_L0_{pe.ANALYSIS_DATE}.txt"),
-                os.path.join(work_dir, f"inconsistency_report_L0_{pe.ANALYSIS_DATE}.txt"),
-                os.path.join(work_dir, f"chaid_risk_segmentation_L0_{pe.ANALYSIS_DATE}.txt"),
-                os.path.join(work_dir, f"L0_Risk_Analysis_Report_{pe.ANALYSIS_DATE}.txt")
+                os.path.join(work_dir, "performance_report.txt"),
+                os.path.join(work_dir, "SPC_summary_L0.txt"),
+                os.path.join(work_dir, "correlation_analysis_L0.txt"),
+                os.path.join(work_dir, "trends_and_repetitions_report_L0.txt"),
+                os.path.join(work_dir, "inconsistency_report_L0.txt"),
+                os.path.join(work_dir, "chaid_risk_segmentation_L0.txt"),
+                os.path.join(work_dir, "L0_Risk_Analysis_Report.txt")
             ],
-            "output_filename": f"MASTER_CONSOLIDATED_REPORT_{pe.ANALYSIS_DATE}.txt"
+            "output_filename": "MASTER_CONSOLIDATED_REPORT.txt"
         }
     render_pipeline_step(pipeline_key, 5, total_steps, "Compile Master Report",
                          "Combines all enterprise L0 text reports into a single consolidated file.",
@@ -679,12 +679,12 @@ def render_apex_pipeline():
         
     def run_step6_report(work_dir):
         try:
-            master_path = os.path.join(work_dir, f"MASTER_CONSOLIDATED_REPORT_{pe.ANALYSIS_DATE}.txt")
+            master_path = os.path.join(work_dir, "MASTER_CONSOLIDATED_REPORT.txt")
             if not os.path.exists(master_path):
                 return False, {}, "Master Consolidated Report not found. Please re-run Step 5."
                 
-            out_name = f"FINAL_ENTERPRISE_REPORT_{pe.ANALYSIS_DATE}.txt"
-            pdf_name = f"FINAL_ENTERPRISE_REPORT_{pe.ANALYSIS_DATE}.pdf"
+            out_name = "FINAL_ENTERPRISE_REPORT.txt"
+            pdf_name = "FINAL_ENTERPRISE_REPORT.pdf"
             
             with open(master_path, "r", encoding="utf-8") as fin:
                 content = fin.read()
