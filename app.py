@@ -552,43 +552,53 @@ hr { border: none !important; border-top: 1.5px solid #E0F2FE !important; margin
 
 /* ── Mobile Responsiveness ────────────────────────────────────────────── */
 @media (max-width: 768px) {
-    /* Header */
+    /* Header — keep in one horizontal row, just shrink it */
     div[data-testid="stHorizontalBlock"]:has(.meteoerait-software-header-left) {
-        padding: 0.5rem 1rem !important;
-        flex-direction: column !important;
-        align-items: flex-start !important;
+        padding: 0.4rem 0.75rem !important;
+        flex-direction: row !important;
+        align-items: center !important;
         height: auto !important;
+        min-height: 52px !important;
+        flex-wrap: nowrap !important;
     }
+    div[data-testid="stHorizontalBlock"]:has(.meteoerait-software-header-left) > div[data-testid="column"] {
+        min-width: 0 !important;
+        flex: 1 1 auto !important;
+        overflow: hidden !important;
+    }
+    .meteoerait-software-header-title { font-size: 0.9rem !important; }
+    .meteoerait-software-header-sub { display: none !important; }
+    .meteoerait-software-header-date { display: none !important; }
+    .meteoerait-software-header-badge { display: none !important; }
     .meteoerait-software-header-right {
-        display: none !important; /* Hide badge/date on mobile to save space */
-    }
-    .header-right-panel {
-        align-items: flex-start !important;
-        margin-top: 10px;
+        gap: 6px !important;
+        flex-shrink: 0 !important;
     }
     [data-testid="stAppViewBlockContainer"] {
-        padding-top: 80px !important; /* Adjust padding for mobile header */
-        padding-left: 1rem !important;
-        padding-right: 1rem !important;
+        padding-top: 60px !important;
+        padding-left: 0.5rem !important;
+        padding-right: 0.5rem !important;
     }
     
-    /* Footer */
+    /* Footer — compact on small screens */
     .meteoerait-software-footer {
-        padding: 1.5rem !important;
+        padding: 0.4rem 0.75rem !important;
     }
     .footer-top {
-        flex-direction: column;
-        gap: 1.5rem;
-        text-align: center;
-        padding-bottom: 1.5rem;
+        flex-direction: row !important;
+        gap: 0.5rem;
+        text-align: left;
+        padding-bottom: 0.3rem;
+        flex-wrap: wrap;
     }
     .footer-center-text {
-        text-align: center;
+        font-size: 0.72rem !important;
     }
     .footer-bottom {
-        flex-direction: column;
-        gap: 1rem;
-        text-align: center;
+        flex-direction: row;
+        gap: 0.5rem;
+        text-align: left;
+        font-size: 0.55rem;
     }
     
     .auth-nav { padding: 1rem 1.5rem !important; }
