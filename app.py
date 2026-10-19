@@ -354,7 +354,8 @@ div[data-testid="stHorizontalBlock"]:has(.meteoerait-software-header-left) {
     align-items: center !important;
 }
 [data-testid="stAppViewBlockContainer"] {
-    padding-top: 90px !important;
+    padding-top: 150px !important;
+    padding-bottom: 120px !important;
 }
 .meteoerait-software-header-left  { display:flex; align-items:center; gap:14px; }
 .meteoerait-software-header-logo  { font-size:1.8rem; line-height:1; }
@@ -393,7 +394,7 @@ div[data-testid="stHorizontalBlock"]:has(.meteoerait-software-header-left) {
     background-color: #21151b !important;
     border-top: 1px solid #362A28;
     border-radius: 0 !important;
-    padding: 1rem 4vw 0.5rem 4vw;
+    padding: 0.5rem 4vw !important;
     margin: 0 !important;
     width: 100vw !important;
     position: fixed !important;
