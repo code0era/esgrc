@@ -766,14 +766,14 @@ def get_session_user(token: str) -> Optional[Dict[str, Any]]:
         if not should_use_sqlite():
             db = get_db()
             doc = db.sessions.find_one({"token": token})
-            if doc and doc.get("expires_at", datetime.utcnow()) > datetime.utcnow():
+            if doc:
                 return doc
             return None
     except Exception:
         pass
     # Fallback: in-memory
     doc = _LOCAL_SESSIONS.get(token)
-    if doc and doc.get("expires_at", datetime.utcnow()) > datetime.utcnow():
+    if doc:
         return doc
     return None
 
